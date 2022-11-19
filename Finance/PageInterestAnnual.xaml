@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Finance.PageInterestAnnual">
+
+    <Shell.TitleView>
+        <Label x:Name="lblTitle"
+               Style="{StaticResource labelStyleShellTitleView}"
+               Text="Annual interest starting amount" />
+    </Shell.TitleView>
+    
+    <ScrollView>
+        <Grid RowDefinitions="Auto, 50, 50, 50, 50, 50, 50, 50"
+              ColumnDefinitions="160, 160, 40*"
+              Margin="8"
+              ColumnSpacing="6"
+              RowSpacing="2">
+
+            <BoxView Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="3" />
+            
+            <Label x:Name="lblExplanation"
+                   Style="{StaticResource labelStyleExplanation}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="Calculate the interest per year.  Enter the starting amount, the term in months, and either the amount per term or the final amount." />
+
+            <Label x:Name="lblNumDec"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Number of decimals:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Entry x:Name="entNumDec"
+                       Style="{StaticResource entryStyleNumericNext}"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Text="2"
+                       Placeholder="0 - 6"
+                       MaxLength="1"
+                       Completed="GoToNextField"
+                       Focused="EntryFocused"
+                       TextChanged="EntryTextChanged">
+                </Entry>
+            </Border>
+
+            <Label x:Name="lblCapitalInitial"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="2"
+                   Grid.Column="0" 
+                   Text="Initial capital:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Entry x:Name="entCapitalInitial"
+                       Style="{StaticResource entryStyleNumericNext}"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       Text=""
+                       Placeholder="0 - 9999999999"
+                       MaxLength="21"
+                       Completed="GoToNextField"
+                       Focused="EntryFocused"
+                       TextChanged="EntryTextChanged">
+                </Entry>
+            </Border>
+
+            <Label x:Name="lblDurationMonths"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Text="Duration in months:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Entry x:Name="entDurationMonths"
+                       Style="{StaticResource entryStyleNumericNext}"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       Text="12"
+                       Placeholder="1 - 1200"
+                       MaxLength="5"
+                       Completed="GoToNextField"
+                       Focused="EntryFocused"
+                       TextChanged="EntryTextChanged">
+                </Entry>
+            </Border>
+
+            <Label x:Name="lblAmountPeriod"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="4"
+                   Grid.Column="0" 
+                   Text="Amount per period:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Entry x:Name="entAmountPeriod"
+                       Style="{StaticResource entryStyleNumericNext}"
+                       Grid.Row="4"
+                       Grid.Column="1"
+                       Text="0"
+                       Placeholder="0 - 9999999999"
+                       MaxLength="21"
+                       Completed="GoToNextField"
+                       Focused="EntryFocused"
+                       TextChanged="EntryTextChanged">
+                </Entry>
+            </Border>
+
+            <Label x:Name="lblCapitalFinal"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="5"
+                   Grid.Column="0" 
+                   Text="Final capital:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Entry x:Name="entCapitalFinal"
+                       Style="{StaticResource entryStyleNumericDone}"
+                       Grid.Row="5"
+                       Grid.Column="1"
+                       Text="0"
+                       Placeholder="0 - 9999999999"
+                       MaxLength="21"
+                       Completed="CalculateResult"
+                       Focused="EntryFocused"
+                       TextChanged="EntryTextChanged">
+                </Entry>
+            </Border>
+
+            <Label x:Name="lblInterestRate"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="6"
+                   Grid.Column="0"
+                   Text="Annual interest:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Label x:Name="txtInterestRate"
+                       Style="{StaticResource labelStyleResult}"
+                       Grid.Row="6"
+                       Grid.Column="1" />
+            </Border>
+
+            <Label Style="{StaticResource labelStylePercent}"
+                   Grid.Row="6"
+                   Grid.Column="2" />
+
+            <Button x:Name="btnCalculate"
+                    Style="{StaticResource buttonStyleCalculate}"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Clicked="CalculateResult" />
+
+            <Button x:Name="btnReset"
+                    Style="{StaticResource buttonStyleReset}"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    Clicked="ResetEntryFields" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Finance.PageSettings">
+
+    <Shell.TitleView>
+        <Label x:Name="lblTitle"
+               Style="{StaticResource labelStyleShellTitleView}"
+               Text="Settings" />
+    </Shell.TitleView>
+
+    <ScrollView>
+        <StackLayout>
+            <Grid RowDefinitions="40, 40, 40"
+                  ColumnDefinitions="170, 170*"
+                  Margin="10"
+                  ColumnSpacing="8"
+                  RowSpacing="0">
+            
+                <Label x:Name="lblTheme"
+                       Style="{StaticResource labelStyleDefault}"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       FontSize="14"
+                       Text="Theme" />
+
+                <RadioButton x:Name="rbnThemeSystem"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             GroupName="rbgThemes"
+                             Value="rbnThemeSystem"
+                             Content="System"
+                             CheckedChanged="OnThemesRadioButtonCheckedChanged" />
+
+                <RadioButton x:Name="rbnThemeLight"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             GroupName="rbgThemes"
+                             Value="rbnThemeLight"
+                             Content="Light"
+                             CheckedChanged="OnThemesRadioButtonCheckedChanged" />
+
+                <RadioButton x:Name="rbnThemeDark"
+                             Grid.Row="2"
+                             Grid.Column="1"
+                             GroupName="rbgThemes"
+                             Value="rbnThemeDark"
+                             Content="Dark"
+                             CheckedChanged="OnThemesRadioButtonCheckedChanged" />
+            </Grid>
+            
+            <Grid RowDefinitions="40, 40"
+                  ColumnDefinitions="170, 170*"
+                  Margin="10"
+                  ColumnSpacing="8"
+                  RowSpacing="0">
+
+                <Label x:Name="lblDateFormat"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   FontSize="14"
+                   Text="Date format:" />
+
+                <RadioButton x:Name="rbnDateFormatSystem"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         GroupName="rbgDateFormat"
+                         Value="rbnDateFormatSystem"
+                         Content="System"
+                         CheckedChanged="OnDateFormatRadioButtonCheckedChanged" />
+
+                <RadioButton x:Name="rbnDateFormatISO8601"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         GroupName="rbgDateFormat"
+                         Value="rbnDateFormatISO8601"
+                         Content="ISO 8601"
+                         IsChecked="True"
+                         CheckedChanged="OnDateFormatRadioButtonCheckedChanged" />
+            </Grid>
+
+            <Grid RowDefinitions="40, 40"
+                  ColumnDefinitions="170, 170*"
+                  Margin="10"
+                  ColumnSpacing="8"
+                  RowSpacing="0">
+
+                <Label x:Name="lblPageFormat"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   FontSize="14"
+                   Text="Page format:" />
+
+                <RadioButton x:Name="rbnPageFormatA4"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         GroupName="rbgPageFormat"
+                         Value="rbnPageFormatA4"
+                         Content="A4"
+                         IsChecked="True"
+                         CheckedChanged="OnPageFormatRadioButtonCheckedChanged" />
+
+                <RadioButton x:Name="rbnPageFormatLetter"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         GroupName="rbgPageFormat"
+                         Value="rbnPageFormatLetter"
+                         Content="Letter"
+                         CheckedChanged="OnPageFormatRadioButtonCheckedChanged" />
+            </Grid>
+
+            <Grid RowDefinitions="40, 40"
+                  ColumnDefinitions="170, 170*"
+                  Margin="10"
+                  ColumnSpacing="8"
+                  RowSpacing="0">
+
+                <Label x:Name="lblRoundNumber"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   FontSize="14"
+                   Text="Rounding numbers:" />
+
+                <RadioButton x:Name="rbnRoundNumberAwayFromZero"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         GroupName="rbgRoundNumber"
+                         Value="rbnRoundNumberAwayFromZero"
+                         Content="Away from zero"
+                         CheckedChanged="OnRoundNumberRadioButtonCheckedChanged" />
+
+                <RadioButton x:Name="rbnRoundNumberToEven"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         GroupName="rbgRoundNumber"
+                         Value="rbnRoundNumberToEven"
+                         Content="To even"
+                         IsChecked="True"
+                         CheckedChanged="OnRoundNumberRadioButtonCheckedChanged" />
+            </Grid>
+
+            <Grid RowDefinitions="40, 40, 40, 8, 40"
+                  ColumnDefinitions="170, 170*"
+                  Margin="10"
+                  ColumnSpacing="8"
+                  RowSpacing="0">
+
+                <Label x:Name="lblKeyboard"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   FontSize="14"
+                   Text="Keyboard" />
+
+                <RadioButton x:Name="rbnKeyboardDefault"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         GroupName="rbgKeyboard"
+                         Value="rbnKeyboardDefault"
+                         Content="Default"
+                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
+
+                <RadioButton x:Name="rbnKeyboardNumeric"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         GroupName="rbgKeyboard"
+                         Value="rbnKeyboardNumeric"
+                         Content="Numeric"
+                         IsChecked="True"
+                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
+
+                <RadioButton x:Name="rbnKeyboardText"
+                         Grid.Row="2"
+                         Grid.Column="1"
+                         GroupName="rbgKeyboard"
+                         Value="rbnKeyboardText"
+                         Content="Text"
+                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
+
+                <Button x:Name="btnSettingsSave"
+                    Style="{StaticResource buttonStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    Text="Save"
+                    Clicked="OnSettingsSaveClicked" />
+
+                <Button x:Name="btnSettingsReset"
+                    Style="{StaticResource buttonStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    Text="Reset"
+                    Clicked="OnSettingsResetClicked" />
+            </Grid>
+        </StackLayout>
+        
+        <!--Works in Android but not in Windows.-->
+        <!--<Grid RowDefinitions="36, 36, 36, 6, 36, 36, 6, 36, 36, 36, 6, 36"
+                  ColumnDefinitions="170, 170*"
+                  Margin="10"
+                  ColumnSpacing="8"
+                  RowSpacing="4">
+            
+            <Label x:Name="lblTheme"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   FontSize="14"
+                   Text="Theme" />
+
+            <RadioButton x:Name="rbnThemeSystem"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         GroupName="rbgThemes"
+                         Value="rbnThemeSystem"
+                         Content="System"
+                         CheckedChanged="OnThemesRadioButtonCheckedChanged" />
+
+            <RadioButton x:Name="rbnThemeLight"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         GroupName="rbgThemes"
+                         Value="rbnThemeLight"
+                         Content="Light"
+                         CheckedChanged="OnThemesRadioButtonCheckedChanged" />
+
+            <RadioButton x:Name="rbnThemeDark"
+                         Grid.Row="2"
+                         Grid.Column="1"
+                         GroupName="rbgThemes"
+                         Value="rbnThemeDark"
+                         Content="Dark"
+                         CheckedChanged="OnThemesRadioButtonCheckedChanged" />
+
+            <Label x:Name="lblDateFormat"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   FontSize="14"
+                   Text="Date format:" />
+
+            <RadioButton x:Name="rbnDateFormatSystem"
+                         Grid.Row="4"
+                         Grid.Column="1"
+                         GroupName="rbgDateFormat"
+                         Value="rbnDateFormatSystem"
+                         Content="System"
+                         CheckedChanged="OnDateFormatRadioButtonCheckedChanged" />
+
+            <RadioButton x:Name="rbnDateFormatISO8601"
+                         Grid.Row="5"
+                         Grid.Column="1"
+                         GroupName="rbgDateFormat"
+                         Value="rbnDateFormatISO8601"
+                         Content="ISO 8601"
+                         IsChecked="True"
+                         CheckedChanged="OnDateFormatRadioButtonCheckedChanged" />
+
+            <Label x:Name="lblKeyboard"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="7"
+                   Grid.Column="0"
+                   FontSize="14"
+                   Text="Keyboard" />
+
+            <RadioButton x:Name="rbnKeyboardDefault"
+                         Grid.Row="7"
+                         Grid.Column="1"
+                         GroupName="rbgKeyboard"
+                         Value="rbnKeyboardDefault"
+                         Content="Default"
+                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
+
+            <RadioButton x:Name="rbnKeyboardNumeric"
+                         Grid.Row="8"
+                         Grid.Column="1"
+                         GroupName="rbgKeyboard"
+                         Value="rbnKeyboardNumeric"
+                         Content="Numeric"
+                         IsChecked="True"
+                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
+
+            <RadioButton x:Name="rbnKeyboardText"
+                         Grid.Row="9"
+                         Grid.Column="1"
+                         GroupName="rbgKeyboard"
+                         Value="rbnKeyboardText"
+                         Content="Text"
+                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
+
+            <Button x:Name="btnSettingsSave"
+                    Style="{StaticResource buttonStyleDefault}"
+                    Grid.Row="11"
+                    Grid.Column="0"
+                    Text="Save"
+                    Clicked="OnSettingsSaveClicked" />
+
+            <Button x:Name="btnSettingsClear"
+                    Style="{StaticResource buttonStyleDefault}"
+                    Grid.Row="11"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Text="Clear"
+                    Clicked="OnSettingsClearClicked" />
+        </Grid>-->
+    </ScrollView>
+</ContentPage>
+     

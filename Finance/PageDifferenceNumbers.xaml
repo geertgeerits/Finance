@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="Finance.PageDifferenceNumbers"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Finance">
+
+    <Shell.TitleView>
+        <Label x:Name="lblTitle"
+               Style="{StaticResource labelStyleShellTitleView}"
+               Text="Difference between numbers" />
+    </Shell.TitleView>
+    
+    <ScrollView>
+        <Grid RowDefinitions="Auto, 50, 50, 50, 50, 50, 50, 50, 50"
+              ColumnDefinitions="160, 160, 40*"
+              Margin="8"
+              ColumnSpacing="6"
+              RowSpacing="2">
+
+            <BoxView Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="3" />
+
+            <Label x:Name="lblExplanation"
+                   Style="{StaticResource labelStyleExplanation}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="Calculate the difference between two numbers." />
+
+            <Label x:Name="lblNumDec"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Number of decimals:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Entry x:Name="entNumDec"
+                       Style="{StaticResource entryStyleNumericNext}"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Text="2"
+                       Placeholder="0 - 6"
+                       MaxLength="1"
+                       Completed="GoToNextField"
+                       Focused="EntryFocused"
+                       TextChanged="EntryTextChanged">
+                </Entry>
+            </Border>
+
+            <Label x:Name="lblValue1"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="2"
+                   Grid.Column="0" 
+                   Text="Value 1:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Entry x:Name="entValue1"
+                       Style="{StaticResource entryStyleNumericNext}"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       Text=""
+                       Placeholder="1 - 9999999999"
+                       MaxLength="21"
+                       Completed="GoToNextField"
+                       Focused="EntryFocused"
+                       TextChanged="EntryTextChanged">
+                </Entry>
+            </Border>
+
+            <Label x:Name="lblValue2"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="3"
+                   Grid.Column="0" 
+                   Text="Value 2:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Entry x:Name="entValue2"
+                       Style="{StaticResource entryStyleNumericDone}"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       Text=""
+                       Placeholder="1 - 9999999999"
+                       MaxLength="21"
+                       Completed="CalculateResult"
+                       Focused="EntryFocused"
+                       TextChanged="EntryTextChanged">
+                </Entry>
+            </Border>
+
+            <Label x:Name="lblValueDifference"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   Text="Value difference:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Label x:Name="txtValueDifference"
+                   Style="{StaticResource labelStyleResult}"
+                   Grid.Row="4"
+                   Grid.Column="1" />
+            </Border>
+
+            <Label x:Name="lblValuePercDifference"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="5"
+                   Grid.Column="0"
+                   Text="Percentage difference:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Label x:Name="txtValuePercDifference"
+                       Style="{StaticResource labelStyleResult}"
+                       Grid.Row="5"
+                       Grid.Column="1" />
+            </Border>
+
+            <Label Style="{StaticResource labelStylePercent}"
+                   Grid.Row="5"
+                   Grid.Column="2" />
+
+            <Label x:Name="lblValuePercDiffValue1"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="6"
+                   Grid.Column="0"
+                   Text="Value 1 = % value 2:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Label x:Name="txtValuePercDiffValue1"
+                       Style="{StaticResource labelStyleResult}"
+                       Grid.Row="6"
+                       Grid.Column="1" />
+            </Border>
+
+            <Label Style="{StaticResource labelStylePercent}"
+                   Grid.Row="6"
+                   Grid.Column="2" />
+
+            <Label x:Name="lblValuePercDiffValue2"
+                   Style="{StaticResource labelStyleDefault}"
+                   Grid.Row="7"
+                   Grid.Column="0"
+                   Text="Value 2 = % value 1:" />
+
+            <Border Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                <Label x:Name="txtValuePercDiffValue2"
+                       Style="{StaticResource labelStyleResult}"
+                       Grid.Row="7"
+                       Grid.Column="1" />
+            </Border>
+
+            <Label Style="{StaticResource labelStylePercent}"
+                   Grid.Row="7"
+                   Grid.Column="2" />
+
+            <Button x:Name="btnCalculate"
+                    Style="{StaticResource buttonStyleCalculate}"
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    Clicked="CalculateResult" />
+
+            <Button x:Name="btnReset"
+                    Style="{StaticResource buttonStyleReset}"
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    Clicked="ResetEntryFields" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

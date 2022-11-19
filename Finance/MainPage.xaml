@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Finance.MainPage"
+             Shell.NavBarIsVisible="false"
+             Loaded="OnLoad">
+
+    <!--BUG Shell.TitleView:
+    If the bug is solved remove 'Shell.NavBarIsVisible="false"', uncomment the '<Shell.TitleView>',
+    remove the first Grid after the '</Shell.TitleView>' and remove the '<StackLayout>' commands.-->
+
+    <!--<Shell.TitleView>
+        <Grid RowDefinitions="40"
+              ColumnDefinitions="40, 150*, 130, 40"
+              Margin="5"
+              BackgroundColor="#75F94D">
+
+            <ImageButton Grid.Row="0"
+                         Grid.Column="0"
+                         Source="info_32p.png"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         HeightRequest="28"
+                         WidthRequest="28"
+                         BackgroundColor="#75F94D"
+                         BorderColor="#75F94D"
+                         Clicked="OnPageAboutClicked">
+            </ImageButton>
+
+            <Label Style="{StaticResource labelStyleShellTitleView}"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="0"
+                   HorizontalTextAlignment="Start"
+                   FontSize="26"
+                   Text="Finance">
+            </Label>
+
+            <Picker x:Name="pickerLanguage"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    BackgroundColor="#75F94D"
+                    TextColor="Black"
+                    FontSize="12"
+                    VerticalTextAlignment="Center"
+                    SelectedIndexChanged="OnPickerLanguageChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Deutsch</x:String>
+                            <x:String>English</x:String>
+                            <x:String>Español</x:String>
+                            <x:String>Français</x:String>
+                            <x:String>Italiano</x:String>
+                            <x:String>Nederlands</x:String>
+                            <x:String>Português</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+            </Picker>
+
+            <ImageButton Grid.Row="0"
+                         Grid.Column="3"
+                         Source="settings_32p.png"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         BackgroundColor="#75F94D"
+                         BorderColor="#75F94D"
+                         Clicked="OnPageSettingsClicked">
+            </ImageButton>
+        </Grid>
+    </Shell.TitleView>-->
+    
+    <ScrollView>
+        <!--<VerticalStackLayout Spacing="15" Padding="10">-->
+        <VerticalStackLayout>
+            <Grid RowDefinitions="55"
+              ColumnDefinitions="40, 150*, 130, 40"
+              Margin="0"
+              BackgroundColor="#75F94D">
+
+                <ImageButton Grid.Row="0"
+                         Grid.Column="0"
+                         Source="info_32p.png"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         HeightRequest="28"
+                         WidthRequest="28"
+                         BackgroundColor="#75F94D"
+                         BorderColor="#75F94D"
+                         Clicked="OnPageAboutClicked">
+                </ImageButton>
+
+                <Label Style="{StaticResource labelStyleShellTitleView}"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="0"
+                   HorizontalTextAlignment="Start"
+                   FontSize="26"
+                   Text="Finance">
+                </Label>
+
+                <Picker x:Name="pickerLanguage"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    BackgroundColor="#75F94D"
+                    TextColor="Black"
+                    FontSize="12"
+                    VerticalTextAlignment="Center"
+                    SelectedIndexChanged="OnPickerLanguageChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Deutsch</x:String>
+                            <x:String>English</x:String>
+                            <x:String>Español</x:String>
+                            <x:String>Français</x:String>
+                            <x:String>Italiano</x:String>
+                            <x:String>Nederlands</x:String>
+                            <x:String>Português</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <ImageButton Grid.Row="0"
+                         Grid.Column="3"
+                         Source="settings_32p.png"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         HeightRequest="24"
+                         WidthRequest="24"
+                         BackgroundColor="#75F94D"
+                         BorderColor="#75F94D"
+                         Clicked="OnPageSettingsClicked">
+                </ImageButton>
+            </Grid>
+
+            <StackLayout Spacing="15" Padding="10">
+            <Button x:Name="btnInterestEffective"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Effective interest"
+                    Clicked="OnPageInterestEffectiveClicked" />
+
+            <Button x:Name="btnInterestEffectiveBE"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Effective interest start and end amount"
+                    Clicked="OnPageInterestEffectiveBEClicked" />
+
+            <Button x:Name="btnInterestAnnual"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Annual interest starting amount"
+                    Clicked="OnPageInterestAnnualClicked" />
+
+            <Button x:Name="btnInterestMonthDay"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Interest per month and per day"
+                    Clicked="OnPageInterestMonthDayClicked" />
+
+            <Button x:Name="btnInterestPayDiscount"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Interest payment discount"
+                    Clicked="OnPageInterestPayDiscountClicked" />
+
+            <Button x:Name="btnLoanDetail"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Loan with amortization table"
+                    Clicked="OnPageLoanDetailClicked" />
+
+            <Button x:Name="btnVATCalculation"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="VAT Calculations"
+                    Clicked="OnPageVATCalculationClicked" />
+
+            <Button x:Name="btnAmountGrossOfNet"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Amount gross of net amount"
+                    Clicked="OnPageAmountGrossOfNetClicked" />
+
+            <Button x:Name="btnInvestmentReturn"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Return on investment"
+                    Clicked="OnPageInvestmentReturnClicked" />
+
+            <Button x:Name="btnDifferenceNumbers"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Difference between numbers"
+                    Clicked="OnPageDifferenceNumbersClicked" />
+
+            <Button x:Name="btnDifferenceDates"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Text="Difference between dates"
+                    Clicked="OnPageDifferenceDatesClicked" />
+
+            <Image Source="finance_v3_128p.png"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
