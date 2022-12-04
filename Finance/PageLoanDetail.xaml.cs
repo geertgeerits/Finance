@@ -389,7 +389,7 @@ public partial class PageLoanDetail : ContentPage
         bReCalculateResult = false;
 
         // Set focus.
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Export loan with detail per period.
@@ -1260,26 +1260,6 @@ public partial class PageLoanDetail : ContentPage
         {
             return;
         }
-
-//#if WINDOWS
-//        // Error with 'IsComposeSupported' in Windows Framework 6.
-
-//        // Copy the file location to the clipboard.
-//        //await Clipboard.Default.SetTextAsync(cFile);        
-
-//        await DisplayAlert("E-mail", cEmailMessage + "\n\n" + cFile, MainPage.cButtonCloseText);
-
-//        try
-//        {
-//            await Launcher.OpenAsync(new Uri($"mailto:{cEmailAddress}"));
-//        }
-//        catch (Exception ex)
-//        {
-//            await DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
-//        }
-
-//        return;
-//#endif
 
         try
         {

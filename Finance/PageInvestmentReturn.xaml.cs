@@ -185,7 +185,7 @@ public partial class PageInvestmentReturn : ContentPage
         }
 
         // Set focus.
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry fields.

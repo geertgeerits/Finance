@@ -185,10 +185,9 @@ public partial class PageInterestAnnual : ContentPage
 
         // Rounding interest.
         txtInterestRate.Text = MainPage.RoundDoubleToNumDecimals(ref nInterestRate, nNumDec, "N");
-        
+
         // Set focus.
-        //btnReset.Focus();  // Not working
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry fields.

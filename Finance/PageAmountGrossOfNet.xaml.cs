@@ -138,9 +138,9 @@ public partial class PageAmountGrossOfNet : ContentPage
         {
             return;
         }
-        
+
         // Set focus.
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry fields.

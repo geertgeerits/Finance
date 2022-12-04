@@ -149,7 +149,7 @@ public partial class PageDifferenceNumbers : ContentPage
         txtValuePercDifference.Text = MainPage.RoundDecimalToNumDecimals(ref nValuePercDifference, nNumDec, "N");
 
         // Set focus.
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry fields.

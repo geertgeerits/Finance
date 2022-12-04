@@ -83,7 +83,7 @@ public partial class PageDifferenceDates : ContentPage
         txtDateDifferenceYearMonthDay.Text = dateDifference.ToString();
 
         // Set focus.
-        btnCalculate.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry and result fields.

@@ -143,7 +143,7 @@ public partial class PageInterestPayDiscount : ContentPage
         txtInterestEffective.Text = MainPage.RoundDecimalToNumDecimals(ref nInterestEffective, nNumDec, "N");
 
         // Set focus.
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry fields.

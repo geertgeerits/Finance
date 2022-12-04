@@ -148,8 +148,7 @@ public partial class PageInterestEffectiveBE : ContentPage
         txtInterestEffective.Text = MainPage.RoundDoubleToNumDecimals(ref nInterestEffective, nNumDec, "N");
 
         // Set focus.
-        //btnReset.Focus();  // Not working
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry fields.

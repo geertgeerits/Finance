@@ -122,8 +122,7 @@ public partial class PageInterestMonthDay : ContentPage
         txtInterestDay366.Text = MainPage.RoundDoubleToNumDecimals(ref nInterestDay366, nNumDec, "N");
 
         // Set focus.
-        //btnReset.Focus();  // Not working
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry fields.

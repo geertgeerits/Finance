@@ -181,7 +181,7 @@ public partial class PageVATCalculation : ContentPage
         txtVATAmount.Text = MainPage.RoundDecimalToNumDecimals(ref nVATAmount, nNumDec, "N");
 
         // Set focus.
-        entNumDec.Focus();
+        btnReset.Focus();
     }
 
     // Reset the entry fields.
