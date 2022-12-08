@@ -15,16 +15,18 @@
               Margin="5"
               BackgroundColor="#75F94D">
 
-            <ImageButton Grid.Row="0"
-                         Grid.Column="0"
-                         Source="info_32p.png"
-                         HorizontalOptions="Start"
-                         VerticalOptions="Center"
-                         HeightRequest="28"
-                         WidthRequest="28"
-                         BackgroundColor="#75F94D"
-                         BorderColor="#75F94D"
-                         Clicked="OnPageAboutClicked">
+            <ImageButton
+                x:Name="imgbtnAbout"
+                Grid.Row="0"
+                Grid.Column="0"
+                Source="info_32p.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                HeightRequest="28"
+                WidthRequest="28"
+                BackgroundColor="#75F94D"
+                BorderColor="#75F94D"
+                Clicked="OnPageAboutClicked">
             </ImageButton>
 
             <Label Style="{StaticResource labelStyleShellTitleView}"
@@ -59,16 +61,17 @@
                     </Picker.ItemsSource>
             </Picker>
 
-            <ImageButton Grid.Row="0"
-                         Grid.Column="3"
-                         Source="settings_32p.png"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                         HeightRequest="24"
-                         WidthRequest="24"
-                         BackgroundColor="#75F94D"
-                         BorderColor="#75F94D"
-                         Clicked="OnPageSettingsClicked">
+            <ImageButton
+                Grid.Row="0"
+                Grid.Column="3"
+                Source="settings_32p.png"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="24"
+                WidthRequest="24"
+                BackgroundColor="#75F94D"
+                BorderColor="#75F94D"
+                Clicked="OnPageSettingsClicked">
             </ImageButton>
         </Grid>
     </Shell.TitleView>-->
@@ -81,16 +84,18 @@
               Margin="0"
               BackgroundColor="#75F94D">
 
-                <ImageButton Grid.Row="0"
-                         Grid.Column="0"
-                         Source="info_32p.png"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                         HeightRequest="28"
-                         WidthRequest="28"
-                         BackgroundColor="#75F94D"
-                         BorderColor="#75F94D"
-                         Clicked="OnPageAboutClicked">
+                <ImageButton
+                    x:Name="imgbtnAbout"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Source="info_32p.png"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HeightRequest="28"
+                    WidthRequest="28"
+                    BackgroundColor="#75F94D"
+                    BorderColor="#75F94D"
+                    Clicked="OnPageAboutClicked">
                 </ImageButton>
 
                 <Label Style="{StaticResource labelStyleShellTitleView}"
@@ -102,7 +107,8 @@
                    Text="Finance">
                 </Label>
 
-                <Picker x:Name="pickerLanguage"
+                <Picker
+                    x:Name="pickerLanguage"
                     Grid.Row="0"
                     Grid.Column="2"
                     HorizontalOptions="End"
@@ -125,16 +131,17 @@
                     </Picker.ItemsSource>
                 </Picker>
 
-                <ImageButton Grid.Row="0"
-                         Grid.Column="3"
-                         Source="settings_32p.png"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                         HeightRequest="24"
-                         WidthRequest="24"
-                         BackgroundColor="#75F94D"
-                         BorderColor="#75F94D"
-                         Clicked="OnPageSettingsClicked">
+                <ImageButton
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Source="settings_32p.png"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HeightRequest="24"
+                    WidthRequest="24"
+                    BackgroundColor="#75F94D"
+                    BorderColor="#75F94D"
+                    Clicked="OnPageSettingsClicked">
                 </ImageButton>
             </Grid>
 

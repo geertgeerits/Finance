@@ -1,8 +1,8 @@
 ﻿// Program .....: Finance.sln
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 1992-2022
-// Version .....: 3.0.51 Beta
-// Date ........: 2022-12-04 (YYYY-MM-DD)
+// Version .....: 3.0.52
+// Date ........: 2022-12-08 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET MAUI C# 11.0
 // Description .: Financial calculations
 
@@ -34,7 +34,7 @@ public partial class MainPage : ContentPage
     private string cLicenseText;
     private string cAgree;
     private string cDisagree;
-    private bool bLicense;
+    private readonly bool bLicense;
 
     public MainPage()
     {
@@ -413,7 +413,20 @@ public partial class MainPage : ContentPage
             else
             {
 #if IOS
-                Thread.CurrentThread.Abort();
+                //Thread.CurrentThread.Abort();  // Not allowed in iOS.
+                imgbtnAbout.IsEnabled = false;
+                pickerLanguage.IsEnabled = false;
+                btnInterestEffective.IsEnabled = false;
+                btnInterestEffectiveBE.IsEnabled = false;
+                btnInterestAnnual.IsEnabled = false;
+                btnInterestMonthDay.IsEnabled = false;
+                btnInterestPayDiscount.IsEnabled = false;
+                btnLoanDetail.IsEnabled = false;
+                btnVATCalculation.IsEnabled = false;
+                btnAmountGrossOfNet.IsEnabled = false;
+                btnInvestmentReturn.IsEnabled = false;
+                btnDifferenceNumbers.IsEnabled = false;
+                btnDifferenceDates.IsEnabled = false;
 #else
                 Application.Current.Quit();
 #endif
