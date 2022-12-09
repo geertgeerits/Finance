@@ -183,6 +183,9 @@ Siempre puedes contactarme para cualquier corrección.</value>
   <data name="Clear_Text" xml:space="preserve">
     <value>Retirar</value>
   </data>
+  <data name="CloseApplication_Text" xml:space="preserve">
+    <value>Cierra la aplicación.</value>
+  </data>
   <data name="Contact_Text" xml:space="preserve">
     <value>Contacto:</value>
   </data>

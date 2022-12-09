@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 1992-2022
 // Version .....: 3.0.52
-// Date ........: 2022-12-08 (YYYY-MM-DD)
+// Date ........: 2022-12-09 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET MAUI C# 11.0
 // Description .: Financial calculations
 
@@ -35,6 +35,7 @@ public partial class MainPage : ContentPage
     private string cAgree;
     private string cDisagree;
     private readonly bool bLicense;
+    private string cCloseApplication;
 
     public MainPage()
     {
@@ -375,6 +376,7 @@ public partial class MainPage : ContentPage
         cLicenseText = FinLang.License_Text + "\n\n" + FinLang.LicenseMit2_Text;
         cAgree = FinLang.Agree_Text;
         cDisagree = FinLang.Disagree_Text;
+        cCloseApplication = FinLang.CloseApplication_Text;
 
         //App.Current.MainPage.DisplayAlert(cErrorTitleText, cLanguage, cButtonCloseText);  // For testing.
     }
@@ -427,6 +429,8 @@ public partial class MainPage : ContentPage
                 btnInvestmentReturn.IsEnabled = false;
                 btnDifferenceNumbers.IsEnabled = false;
                 btnDifferenceDates.IsEnabled = false;
+
+                await DisplayAlert(cLicenseTitle, cCloseApplication, cButtonCloseText);
 #else
                 Application.Current.Quit();
 #endif
