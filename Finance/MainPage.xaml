@@ -2,14 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Finance.MainPage"
-             Shell.NavBarIsVisible="false"
+             NavigationPage.HasBackButton="False"
              Loaded="OnLoad">
 
-    <!--BUG Shell.TitleView:
-    If the bug is solved remove 'Shell.NavBarIsVisible="false"', uncomment the '<Shell.TitleView>',
-    remove the first Grid after the '</Shell.TitleView>' and remove the '<StackLayout>' commands.-->
-
-    <!--<Shell.TitleView>
+    <NavigationPage.TitleView>
         <Grid RowDefinitions="40"
               ColumnDefinitions="40, 150*, 130, 40"
               Margin="5"
@@ -62,6 +58,7 @@
             </Picker>
 
             <ImageButton
+                x:Name="imgbtnSettings"
                 Grid.Row="0"
                 Grid.Column="3"
                 Source="settings_32p.png"
@@ -74,78 +71,10 @@
                 Clicked="OnPageSettingsClicked">
             </ImageButton>
         </Grid>
-    </Shell.TitleView>-->
+    </NavigationPage.TitleView>
     
     <ScrollView>
-        <!--<VerticalStackLayout Spacing="15" Padding="10">-->
-        <VerticalStackLayout>
-            <Grid RowDefinitions="55"
-              ColumnDefinitions="40, 150*, 130, 40"
-              Margin="0"
-              BackgroundColor="#75F94D">
-
-                <ImageButton
-                    x:Name="imgbtnAbout"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Source="info_32p.png"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    HeightRequest="28"
-                    WidthRequest="28"
-                    BackgroundColor="#75F94D"
-                    BorderColor="#75F94D"
-                    Clicked="OnPageAboutClicked">
-                </ImageButton>
-
-                <Label Style="{StaticResource labelStyleShellTitleView}"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   Margin="0"
-                   HorizontalTextAlignment="Start"
-                   FontSize="26"
-                   Text="Finance">
-                </Label>
-
-                <Picker
-                    x:Name="pickerLanguage"
-                    Grid.Row="0"
-                    Grid.Column="2"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    BackgroundColor="#75F94D"
-                    TextColor="Black"
-                    FontSize="12"
-                    VerticalTextAlignment="Center"
-                    SelectedIndexChanged="OnPickerLanguageChanged">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Deutsch</x:String>
-                            <x:String>English</x:String>
-                            <x:String>Español</x:String>
-                            <x:String>Français</x:String>
-                            <x:String>Italiano</x:String>
-                            <x:String>Nederlands</x:String>
-                            <x:String>Português</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-
-                <ImageButton
-                    Grid.Row="0"
-                    Grid.Column="3"
-                    Source="settings_32p.png"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    HeightRequest="24"
-                    WidthRequest="24"
-                    BackgroundColor="#75F94D"
-                    BorderColor="#75F94D"
-                    Clicked="OnPageSettingsClicked">
-                </ImageButton>
-            </Grid>
-
-            <StackLayout Spacing="15" Padding="10">
+        <VerticalStackLayout Spacing="15" Padding="10">
             <Button x:Name="btnInterestEffective"
                     Style="{StaticResource buttonStyleMenu}"
                     Text="Effective interest"
@@ -206,7 +135,6 @@
                    WidthRequest="80"
                    HorizontalOptions="Center"
                    VerticalOptions="Center" />
-            </StackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

@@ -5,23 +5,23 @@ namespace Finance;
 public partial class PageLoanDetail : ContentPage
 {
     // Variables for loan detail.
-    private string[] aColHeader = new string[7];
-    private string[,] aLoanDetail = new string[1201, 7];
+    private readonly string[] aColHeader = new string[7];
+    private readonly string[,] aLoanDetail = new string[1201, 7];
 
     // Variables for export / e-mail.
-    private string cDocumentName;
-    private string cDocTitleAnnuity;
-    private string cDocTitleLinear;
+    private readonly string cDocumentName;
+    private readonly string cDocTitleAnnuity;
+    private readonly string cDocTitleLinear;
     private string cExportType;
-    private string cEmailAddressQuestion;
-    private string cEmailBody;
-    private string cEmailSendQuestion;
-    private string cEmailSubject;
-    private string cEmailTitle;
-    private string cEmailMessage;
-    private string cShareQuestion;
-    private string cYes;
-    private string cNo;
+    private readonly string cEmailAddressQuestion;
+    private readonly string cEmailBody;
+    private readonly string cEmailSendQuestion;
+    private readonly string cEmailSubject;
+    private readonly string cEmailTitle;
+    private readonly string cEmailMessage;
+    private readonly string cShareQuestion;
+    private readonly string cYes;
+    private readonly string cNo;
     private bool bReCalculateResult;
 
     public PageLoanDetail()
@@ -35,6 +35,9 @@ public partial class PageLoanDetail : ContentPage
             DisplayAlert("InitializeComponent", ex.Message, MainPage.cButtonCloseText);
             return;
         }
+
+        // Set the current UI culture of the selected language.
+        MainPage.SetCultureSelectedLanguage();
 
         // Put text in the chosen language in the controls.
         lblTitle.Text = FinLang.LoanDetailForm_Text;

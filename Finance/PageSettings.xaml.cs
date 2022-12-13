@@ -20,6 +20,9 @@ public partial class PageSettings : ContentPage
             return;
         }
 
+        // Set the current UI culture of the selected language.
+        MainPage.SetCultureSelectedLanguage();
+
         // Put text in the chosen language in the controls.
         lblTitle.Text = FinLang.Settings_Text;
 
@@ -194,7 +197,7 @@ public partial class PageSettings : ContentPage
     }
 
     // Button save settings clicked event.
-    private void OnSettingsSaveClicked(object sender, EventArgs e)
+    private static void OnSettingsSaveClicked(object sender, EventArgs e)
     {
         Preferences.Default.Set("SettingTheme", MainPage.cTheme);
         Preferences.Default.Set("SettingDateFormatSystem", MainPage.bDateFormatSystem);
@@ -207,7 +210,10 @@ public partial class PageSettings : ContentPage
         Task.Delay(500).Wait();
 
         // Restart the application.
-        Application.Current.MainPage = new AppShell();
+        //Application.Current.MainPage = new AppShell();
+        Application.Current.MainPage = new NavigationPage(new MainPage());
+        //await Navigation.PushAsync(new MainPage());
+        //await Navigation.PopAsync();
     }
 
     // Button reset settings clicked event.
@@ -236,6 +242,7 @@ public partial class PageSettings : ContentPage
         Task.Delay(500).Wait();
 
         // Restart the application.
-        Application.Current.MainPage = new AppShell();
+        //Application.Current.MainPage = new AppShell();
+        Application.Current.MainPage = new NavigationPage(new MainPage());
     }
 }

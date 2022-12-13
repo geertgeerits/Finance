@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 1992-2022
 // Version .....: 3.0.52
-// Date ........: 2022-12-09 (YYYY-MM-DD)
+// Date ........: 2022-12-13 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET MAUI C# 11.0
 // Description .: Financial calculations
 
@@ -114,9 +114,6 @@ public partial class MainPage : ContentPage
         }
 
         SetTextLanguage();
-
-        // Show license.  Does not works in Windows !!!
-        //ShowLicense(bLicense);
     }
 
     // Buttons clicked events.
@@ -381,27 +378,35 @@ public partial class MainPage : ContentPage
         //App.Current.MainPage.DisplayAlert(cErrorTitleText, cLanguage, cButtonCloseText);  // For testing.
     }
 
-    // Show license.
-    //// Does not work in Windows!!!  
-    //private async void ShowLicense(bool bLicense)
-    //{
-    //    if (bLicense == false)
-    //    {
-    //        bool bAnswer = await Application.Current.MainPage.DisplayAlert(cLicenseTitle, "Finance" + "\n" + cCopyright + "\n\n" + cLicenseText, cAgree, cDisagree);
+    // Set the current UI culture of the selected language (used by the other pages).
+    public static void SetCultureSelectedLanguage()
+    {
+        Thread.CurrentThread.CurrentUICulture = cLanguage switch
+        {
+            // German (Deutsch).
+            "de" => CultureInfo.GetCultureInfo("de"),
 
-    //        if (bAnswer)
-    //        {
-    //            Preferences.Default.Set("SettingLicense", true);
-    //        }
-    //        else
-    //        {
-    //            Application.Current.Quit();
-    //        }
-    //    }
-    //}
+            // Spanish (Español).
+            "es" => CultureInfo.GetCultureInfo("es"),
 
-    // Show license for Android and Windows = Workaround !!!
-    // Solution is using the Loaded event of the MainPage.xaml.
+            // French (Français).
+            "fr" => CultureInfo.GetCultureInfo("fr"),
+
+            // Italian (Italiano).
+            "it" => CultureInfo.GetCultureInfo("it"),
+
+            // Dutch (Nederlands).
+            "nl" => CultureInfo.GetCultureInfo("nl"),
+
+            // Portuguese (Português).
+            "pt" => CultureInfo.GetCultureInfo("pt"),
+
+            // English.
+            _ => CultureInfo.GetCultureInfo("en"),
+        };
+    }
+
+    // Show license using the Loaded event of the MainPage.xaml.
     private async void OnLoad(object sender, EventArgs e)
     {
         if (bLicense == false)
@@ -417,6 +422,7 @@ public partial class MainPage : ContentPage
 #if IOS
                 //Thread.CurrentThread.Abort();  // Not allowed in iOS.
                 imgbtnAbout.IsEnabled = false;
+                imgbtnSettings.IsEnabled= false;
                 pickerLanguage.IsEnabled = false;
                 btnInterestEffective.IsEnabled = false;
                 btnInterestEffectiveBE.IsEnabled = false;

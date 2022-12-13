@@ -4,11 +4,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Finance">
 
-    <Shell.TitleView>
+    <NavigationPage.TitleView>
         <Label x:Name="lblTitle"
                Style="{StaticResource labelStyleShellTitleView}"
                Text="Difference between dates" />
-    </Shell.TitleView>
+    </NavigationPage.TitleView>
     
     <ScrollView>
         <Grid RowDefinitions="Auto, 50, 50, 50, 50, 50, 50, 40, 50, 50"

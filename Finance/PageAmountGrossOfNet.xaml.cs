@@ -16,6 +16,9 @@ public partial class PageAmountGrossOfNet : ContentPage
             return;
         }
 
+        // Set the current UI culture of the selected language.
+        MainPage.SetCultureSelectedLanguage();
+
         // Put text in the chosen language in the controls.
         lblTitle.Text = FinLang.AmountGrossOfNetForm_Text;
 
