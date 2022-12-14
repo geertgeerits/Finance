@@ -434,7 +434,7 @@ Enter the amount of the yield per year and the desired yield in percentage.</val
     <value>Portuguese</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
-    <value>Language</value>
+    <value>Language:</value>
   </data>
   <data name="LicenseAgreement_Text" xml:space="preserve">
     <value>Do you agree with the license conditions?</value>

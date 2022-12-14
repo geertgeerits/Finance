@@ -974,7 +974,7 @@ namespace Finance.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language.
+        ///   Looks up a localized string similar to Language:.
         /// </summary>
         internal static string Language_Text {
             get {

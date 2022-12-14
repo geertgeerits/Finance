@@ -11,12 +11,58 @@
 
     <ScrollView>
         <StackLayout>
+            <Grid RowDefinitions="40"
+                  ColumnDefinitions="170, 170*"
+                  Margin="10"
+                  ColumnSpacing="8"
+                  RowSpacing="0">
+
+                <Label
+                    x:Name="lblLanguage"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    VerticalTextAlignment="Center"
+                    Text="Language:" />
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center">
+
+                    <Picker
+                        x:Name="pckLanguage"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        MinimumWidthRequest="190"
+                        VerticalTextAlignment="Center"
+                        SelectedIndexChanged="OnPickerLanguageChanged"
+                        IsEnabled="False">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Deutsch</x:String>
+                                <x:String>English</x:String>
+                                <x:String>Español</x:String>
+                                <x:String>Français</x:String>
+                                <x:String>Italiano</x:String>
+                                <x:String>Nederlands</x:String>
+                                <x:String>Português</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
+            </Grid>
+
             <Grid RowDefinitions="40, 40, 40"
                   ColumnDefinitions="170, 170*"
                   Margin="10"
                   ColumnSpacing="8"
                   RowSpacing="0">
-            
+
                 <Label x:Name="lblTheme"
                        Style="{StaticResource labelStyleDefault}"
                        Grid.Row="0"
@@ -48,7 +94,7 @@
                              Content="Dark"
                              CheckedChanged="OnThemesRadioButtonCheckedChanged" />
             </Grid>
-            
+
             <Grid RowDefinitions="40, 40"
                   ColumnDefinitions="170, 170*"
                   Margin="10"
@@ -192,121 +238,10 @@
                     Style="{StaticResource buttonStyleDefault}"
                     Grid.Row="4"
                     Grid.Column="1"
-                    HorizontalOptions="End"
+                    HorizontalOptions="Start"
                     Text="Reset"
                     Clicked="OnSettingsResetClicked" />
             </Grid>
         </StackLayout>
-        
-        <!--Works in Android but not in Windows.-->
-        <!--<Grid RowDefinitions="36, 36, 36, 6, 36, 36, 6, 36, 36, 36, 6, 36"
-                  ColumnDefinitions="170, 170*"
-                  Margin="10"
-                  ColumnSpacing="8"
-                  RowSpacing="4">
-            
-            <Label x:Name="lblTheme"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   FontSize="14"
-                   Text="Theme" />
-
-            <RadioButton x:Name="rbnThemeSystem"
-                         Grid.Row="0"
-                         Grid.Column="1"
-                         GroupName="rbgThemes"
-                         Value="rbnThemeSystem"
-                         Content="System"
-                         CheckedChanged="OnThemesRadioButtonCheckedChanged" />
-
-            <RadioButton x:Name="rbnThemeLight"
-                         Grid.Row="1"
-                         Grid.Column="1"
-                         GroupName="rbgThemes"
-                         Value="rbnThemeLight"
-                         Content="Light"
-                         CheckedChanged="OnThemesRadioButtonCheckedChanged" />
-
-            <RadioButton x:Name="rbnThemeDark"
-                         Grid.Row="2"
-                         Grid.Column="1"
-                         GroupName="rbgThemes"
-                         Value="rbnThemeDark"
-                         Content="Dark"
-                         CheckedChanged="OnThemesRadioButtonCheckedChanged" />
-
-            <Label x:Name="lblDateFormat"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="4"
-                   Grid.Column="0"
-                   FontSize="14"
-                   Text="Date format:" />
-
-            <RadioButton x:Name="rbnDateFormatSystem"
-                         Grid.Row="4"
-                         Grid.Column="1"
-                         GroupName="rbgDateFormat"
-                         Value="rbnDateFormatSystem"
-                         Content="System"
-                         CheckedChanged="OnDateFormatRadioButtonCheckedChanged" />
-
-            <RadioButton x:Name="rbnDateFormatISO8601"
-                         Grid.Row="5"
-                         Grid.Column="1"
-                         GroupName="rbgDateFormat"
-                         Value="rbnDateFormatISO8601"
-                         Content="ISO 8601"
-                         IsChecked="True"
-                         CheckedChanged="OnDateFormatRadioButtonCheckedChanged" />
-
-            <Label x:Name="lblKeyboard"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="7"
-                   Grid.Column="0"
-                   FontSize="14"
-                   Text="Keyboard" />
-
-            <RadioButton x:Name="rbnKeyboardDefault"
-                         Grid.Row="7"
-                         Grid.Column="1"
-                         GroupName="rbgKeyboard"
-                         Value="rbnKeyboardDefault"
-                         Content="Default"
-                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
-
-            <RadioButton x:Name="rbnKeyboardNumeric"
-                         Grid.Row="8"
-                         Grid.Column="1"
-                         GroupName="rbgKeyboard"
-                         Value="rbnKeyboardNumeric"
-                         Content="Numeric"
-                         IsChecked="True"
-                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
-
-            <RadioButton x:Name="rbnKeyboardText"
-                         Grid.Row="9"
-                         Grid.Column="1"
-                         GroupName="rbgKeyboard"
-                         Value="rbnKeyboardText"
-                         Content="Text"
-                         CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
-
-            <Button x:Name="btnSettingsSave"
-                    Style="{StaticResource buttonStyleDefault}"
-                    Grid.Row="11"
-                    Grid.Column="0"
-                    Text="Save"
-                    Clicked="OnSettingsSaveClicked" />
-
-            <Button x:Name="btnSettingsClear"
-                    Style="{StaticResource buttonStyleDefault}"
-                    Grid.Row="11"
-                    Grid.Column="1"
-                    HorizontalOptions="Start"
-                    Text="Clear"
-                    Clicked="OnSettingsClearClicked" />
-        </Grid>-->
     </ScrollView>
 </ContentPage>
-     

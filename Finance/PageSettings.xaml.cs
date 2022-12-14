@@ -26,6 +26,7 @@ public partial class PageSettings : ContentPage
         // Put text in the chosen language in the controls.
         lblTitle.Text = FinLang.Settings_Text;
 
+        lblLanguage.Text = FinLang.Language_Text;
         lblTheme.Text = FinLang.Theme_Text;
         rbnThemeSystem.Content = FinLang.System_Text;
         rbnThemeLight.Content = FinLang.Light_Text;
@@ -45,6 +46,31 @@ public partial class PageSettings : ContentPage
         rbnKeyboardText.Content = FinLang.Text_Text;
         btnSettingsSave.Text = FinLang.Save_Text;
         btnSettingsReset.Text = FinLang.Reset_Text;
+
+        // Set the current language in the picker.
+        pckLanguage.SelectedIndex = MainPage.cLanguage switch
+        {
+            // German (Deutsch).
+            "de" => 0,
+
+            // Spanish (Español).
+            "es" => 2,
+
+            // French (Français).
+            "fr" => 3,
+
+            // Italian (Italiano).
+            "it" => 4,
+
+            // Dutch (Nederlands).
+            "nl" => 5,
+
+            // Portuguese (Português).
+            "pt" => 6,
+
+            // English.
+            _ => 1,
+        };
 
         // Set radiobutton to the used theme.
         string cCurrentTheme;
@@ -119,6 +145,40 @@ public partial class PageSettings : ContentPage
 
         // Start the stopWatch for resetting all the settings.
         stopWatch.Start();
+    }
+
+    // Picker language clicked event.
+    private void OnPickerLanguageChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        int selectedIndex = picker.SelectedIndex;
+
+        if (selectedIndex != -1)
+        {
+            MainPage.cLanguage = selectedIndex switch
+            {
+                // German (Deutsch).
+                0 => "de",
+
+                // Spanish (Español).
+                2 => "es",
+
+                // French (Français).
+                3 => "fr",
+
+                // Italian (Italiano).
+                4 => "it",
+
+                // Dutch (Nederlands).
+                5 => "nl",
+
+                // Portuguese (Português).
+                6 => "pt",
+
+                // English.
+                _ => "en",
+            };
+        }
     }
 
     // Radio button themes clicked event.

@@ -434,7 +434,7 @@ Entrez le montant du rendement par an et le rendement souhaité en pourcentage.<
     <value>Portugais</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
-    <value>Langue</value>
+    <value>Langue:</value>
   </data>
   <data name="LicenseAgreement_Text" xml:space="preserve">
     <value>Êtes-vous d'accord avec les conditions de licence ?</value>

@@ -434,7 +434,7 @@ Insira o valor do rendimento por ano e o rendimento desejado em porcentagem.</va
     <value>Portugues</value>
   </data>
   <data name="Language_Text" xml:space="preserve">
-    <value>Língua</value>
+    <value>Língua:</value>
   </data>
   <data name="LicenseAgreement_Text" xml:space="preserve">
     <value>Você concorda com as condições da licença?</value>
