@@ -48,7 +48,7 @@
                         Grid.Column="1"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
-                        MinimumWidthRequest="190"
+                        MinimumWidthRequest="140"
                         VerticalTextAlignment="Center"
                         SelectedIndexChanged="OnPickerLanguageChanged"
                         IsEnabled="False">
