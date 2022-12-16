@@ -14,14 +14,12 @@
         RowDefinitions="*, auto"
         ColumnDefinitions="170, 170"
         HorizontalOptions="Center"
-        Margin="8"
-        ColumnSpacing="8">
+        Margin="8">
 
         <ScrollView
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
 
             <Grid
