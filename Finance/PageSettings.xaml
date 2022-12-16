@@ -15,8 +15,7 @@
         ColumnDefinitions="170, 170"
         HorizontalOptions="Center"
         Margin="8"
-        ColumnSpacing="8"
-        RowSpacing="0">
+        ColumnSpacing="8">
 
         <ScrollView
             Grid.Row="0"
@@ -27,10 +26,8 @@
 
             <Grid
                 RowDefinitions="40, 8, 40, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 40"
-                ColumnDefinitions="170, 170*"
-                Margin="10"
-                ColumnSpacing="8"
-                RowSpacing="0">
+                ColumnDefinitions="170, 170"
+                ColumnSpacing="8">
 
                 <Label
                     x:Name="lblLanguage"
@@ -240,7 +237,7 @@
             Style="{StaticResource buttonStyleDefault}"
             Grid.Row="1"
             Grid.Column="1"
-            HorizontalOptions="Start"
+            HorizontalOptions="End"
             Text="Reset"
             Clicked="OnSettingsResetClicked" />
 

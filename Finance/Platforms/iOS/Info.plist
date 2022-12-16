@@ -39,10 +39,10 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.geertgeerits.finance</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.52</string>
+	<string>3.0.53</string>
 	<key>MinimumOSVersion</key>
 	<string>11.0</string>
 	<key>CFBundleVersion</key>
-	<string>52</string>
+	<string>53</string>
 </dict>
 </plist>

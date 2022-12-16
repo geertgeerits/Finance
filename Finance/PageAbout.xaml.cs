@@ -24,7 +24,7 @@ public partial class PageAbout : ContentPage
 
         lblNameProgram.Text = FinLang.NameProgram_Text;
         lblDescription.Text = FinLang.Description_Text;
-        lblVersion.Text = FinLang.Version_Text + " 3.0.52";
+        lblVersion.Text = FinLang.Version_Text + " 3.0.53";
         lblCopyright.Text = FinLang.Copyright_Text + " © 1992-2022 Geert Geerits";
         lblEmail.Text = FinLang.Email_Text + " " + lblEmail.Text;
         lblWebsite.Text = FinLang.Website_Text + " " + lblWebsite.Text;
