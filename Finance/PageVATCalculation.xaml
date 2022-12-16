@@ -4,157 +4,183 @@
              x:Class="Finance.PageVATCalculation">
 
     <NavigationPage.TitleView>
-        <Label x:Name="lblTitle"
-               Style="{StaticResource labelStyleShellTitleView}"
-               Text="VAT calculations" />
+        <Label
+            x:Name="lblTitle"
+            Style="{StaticResource labelStyleShellTitleView}"
+            Text="VAT calculations" />
     </NavigationPage.TitleView>
 
     <ScrollView>
-        <Grid RowDefinitions="Auto, 50, 50, 50, 50, 50, 50"
-              ColumnDefinitions="160, 160, 40*"
-              Margin="8"
-              ColumnSpacing="6"
-              RowSpacing="2">
+        <StackLayout>
+            <Grid
+                RowDefinitions="Auto, 50, 50, 50, 50, 50, 50"
+                ColumnDefinitions="160, 160, 30"
+                HorizontalOptions="Center"
+                Margin="5"
+                ColumnSpacing="6"
+                RowSpacing="2">
 
-            <BoxView Grid.Row="0"
-                     Grid.Column="0"
-                     Grid.ColumnSpan="3" />
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3" />
 
-            <Label x:Name="lblExplanation"
-                   Style="{StaticResource labelStyleExplanation}"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   Text="Calculate the amount excluding VAT or the amount including VAT." />
+                <Label
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Text="Calculate the amount excluding VAT or the amount including VAT." />
 
-            <Label x:Name="lblNumDec"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Text="Number of decimals:" />
+                <Label
+                    x:Name="lblNumDec"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Number of decimals:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entNumDec"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Text="2"
-                       Placeholder="0 - 6"
-                       MaxLength="1"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entNumDec"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="2"
+                        Placeholder="0 - 6"
+                        MaxLength="1"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label x:Name="lblVATPercentage"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="2"
-                   Grid.Column="0" 
-                   Text="VAT percentage:" />
+                <Label
+                    x:Name="lblVATPercentage"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0" 
+                    Text="VAT percentage:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="2"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entVATPercentage"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="2"
-                       Grid.Column="1"
-                       Text=""
-                       Placeholder="0 - 100"
-                       MaxLength="10"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entVATPercentage"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text=""
+                        Placeholder="0 - 100"
+                        MaxLength="10"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label Style="{StaticResource labelStylePercent}"
-                   Grid.Row="2"
-                   Grid.Column="2" />
+                <Label
+                    Style="{StaticResource labelStylePercent}"
+                    Grid.Row="2"
+                    Grid.Column="2" />
 
-            <Label x:Name="lblVATAmountExclusive"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="3"
-                   Grid.Column="0" 
-                   Text="Amount VAT exclusive:" />
+                <Label
+                    x:Name="lblVATAmountExclusive"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0" 
+                    Text="Amount VAT exclusive:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="3"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entVATAmountExclusive"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="3"
-                       Grid.Column="1"
-                       Text="0"
-                       Placeholder="0 - 9999999999"
-                       MaxLength="21"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entVATAmountExclusive"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="0"
+                        Placeholder="0 - 9999999999"
+                        MaxLength="21"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label x:Name="lblVATAmount"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="4"
-                   Grid.Column="0"
-                   Text="Amount VAT:" />
+                <Label
+                    x:Name="lblVATAmount"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="Amount VAT:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="4"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtVATAmount"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="4"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtVATAmount"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="4"
+                        Grid.Column="1" />
+                </Border>
 
-            <Label x:Name="lblVATAmountIncluded"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="5"
-                   Grid.Column="0" 
-                   Text="Amount VAT included:" />
+                <Label
+                    x:Name="lblVATAmountIncluded"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="0" 
+                    Text="Amount VAT included:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="5"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entVATAmountIncluded"
-                       Style="{StaticResource entryStyleNumericDone}"
-                       Grid.Row="5"
-                       Grid.Column="1"
-                       Text="0"
-                       Placeholder="0 - 9999999999"
-                       MaxLength="21"
-                       Completed="CalculateResult"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entVATAmountIncluded"
+                        Style="{StaticResource entryStyleNumericDone}"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Text="0"
+                        Placeholder="0 - 9999999999"
+                        MaxLength="21"
+                        Completed="CalculateResult"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Button x:Name="btnCalculate"
+                <Button
+                    x:Name="btnCalculate"
                     Style="{StaticResource buttonStyleCalculate}"
                     Grid.Row="6"
                     Grid.Column="0"
                     Clicked="CalculateResult" />
 
-            <Button x:Name="btnReset"
+                <Button
+                    x:Name="btnReset"
                     Style="{StaticResource buttonStyleReset}"
                     Grid.Row="6"
                     Grid.Column="1"
                     Clicked="ResetEntryFields" />
-        </Grid>
+            
+            </Grid>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

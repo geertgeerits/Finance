@@ -4,137 +4,161 @@
              x:Class="Finance.PageInterestEffective">
 
     <NavigationPage.TitleView>
-        <Label x:Name="lblTitle"
-               Style="{StaticResource labelStyleShellTitleView}"
-               Text="Effective interest" />
+        <Label
+            x:Name="lblTitle"
+            Style="{StaticResource labelStyleShellTitleView}"
+            Text="Effective interest" />
     </NavigationPage.TitleView>
     
     <ScrollView>
-        <Grid RowDefinitions="Auto, 50, 50, 50, 50, 50"
-              ColumnDefinitions="160, 160, 40*"
-              Margin="8"
-              ColumnSpacing="6"
-              RowSpacing="2">
+        <StackLayout>
+            <Grid
+                RowDefinitions="Auto, 50, 50, 50, 50, 50"
+                ColumnDefinitions="160, 160, 30"
+                HorizontalOptions="Center"
+                Margin="5"
+                ColumnSpacing="6"
+                RowSpacing="2">
 
-            <BoxView Grid.Row="0"
-                     Grid.Column="0"
-                     Grid.ColumnSpan="3"/>
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"/>
             
-            <Label x:Name="lblExplanation"
-                   Style="{StaticResource labelStyleExplanation}"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   Text="Converting the nominal interest rate to the effective interest rate." />
+                <Label
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Text="Converting the nominal interest rate to the effective interest rate." />
 
-            <Label x:Name="lblNumDec"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Text="Number of decimals:" />
+                <Label
+                    x:Name="lblNumDec"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Number of decimals:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entNumDec"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Text="2"
-                       Placeholder="0 - 6"
-                       MaxLength="1"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entNumDec"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="2"
+                        Placeholder="0 - 6"
+                        MaxLength="1"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label x:Name="lblInterestRate"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="2"
-                   Grid.Column="0" 
-                   Text="Annual interest:" />
+                <Label
+                    x:Name="lblInterestRate"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0" 
+                    Text="Annual interest:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="2"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entInterestRate"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="2"
-                       Grid.Column="1"
-                       Text=""
-                       Placeholder="0 - 100"
-                       MaxLength="10"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entInterestRate"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text=""
+                        Placeholder="0 - 100"
+                        MaxLength="10"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label Style="{StaticResource labelStylePercent}"
-                   Grid.Row="2"
-                   Grid.Column="2" />
+                <Label
+                    Style="{StaticResource labelStylePercent}"
+                    Grid.Row="2"
+                    Grid.Column="2" />
 
-            <Label x:Name="lblPeriodsYear"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="3"
-                   Grid.Column="0"
-                   Text="Periods per year:" />
+                <Label
+                    x:Name="lblPeriodsYear"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="Periods per year:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="3"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entPeriodsYear"
-                       Style="{StaticResource entryStyleNumericDone}"
-                       Grid.Row="3"
-                       Grid.Column="1"
-                       Text="12"
-                       Placeholder="1 - 12"
-                       MaxLength="2"
-                       Completed="CalculateResult"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entPeriodsYear"
+                        Style="{StaticResource entryStyleNumericDone}"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="12"
+                        Placeholder="1 - 12"
+                        MaxLength="2"
+                        Completed="CalculateResult"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label x:Name="lblInterestEffective"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="4"
-                   Grid.Column="0"
-                   Text="Effective interest:" />
+                <Label
+                    x:Name="lblInterestEffective"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="Effective interest:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="4"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtInterestEffective"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="4"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtInterestEffective"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="4"
+                        Grid.Column="1" />
+                </Border>
 
-            <Label Style="{StaticResource labelStylePercent}"
-                   Grid.Row="4"
-                   Grid.Column="2" />
+                <Label
+                    Style="{StaticResource labelStylePercent}"
+                    Grid.Row="4"
+                    Grid.Column="2" />
 
-            <Button x:Name="btnCalculate"
+                <Button
+                    x:Name="btnCalculate"
                     Style="{StaticResource buttonStyleCalculate}"
                     Grid.Row="5"
                     Grid.Column="0"
                     Clicked="CalculateResult" />
 
-            <Button x:Name="btnReset"
+                <Button
+                    x:Name="btnReset"
                     Style="{StaticResource buttonStyleReset}"
                     Grid.Row="5"
                     Grid.Column="1"
                     Clicked="ResetEntryFields" />
-        </Grid>
+            
+            </Grid>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

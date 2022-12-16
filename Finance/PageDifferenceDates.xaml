@@ -5,174 +5,204 @@
              xmlns:local="clr-namespace:Finance">
 
     <NavigationPage.TitleView>
-        <Label x:Name="lblTitle"
-               Style="{StaticResource labelStyleShellTitleView}"
-               Text="Difference between dates" />
+        <Label
+            x:Name="lblTitle"
+            Style="{StaticResource labelStyleShellTitleView}"
+            Text="Difference between dates" />
     </NavigationPage.TitleView>
     
     <ScrollView>
-        <Grid RowDefinitions="Auto, 50, 50, 50, 50, 50, 50, 40, 50, 50"
-              ColumnDefinitions="160, 160, 40*"
-              Margin="8"
-              ColumnSpacing="6"
-              RowSpacing="2">
+        <StackLayout>
+            <Grid
+                RowDefinitions="Auto, 50, 50, 50, 50, 50, 50, 40, 50, 50"
+                ColumnDefinitions="160, 160, 30"
+                HorizontalOptions="Center"
+                Margin="5"
+                ColumnSpacing="6"
+                RowSpacing="2">
 
-            <BoxView Grid.Row="0"
-                     Grid.Column="0"
-                     Grid.ColumnSpan="3" />
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3" />
 
-            <Label x:Name="lblExplanation"
-                   Style="{StaticResource labelStyleExplanation}"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   Text="Calculate the difference between two numbers." />
+                <Label
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Text="Calculate the difference between two numbers." />
             
-            <Label x:Name="lblDate1"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Text="Date 1:" />
+                <Label
+                    x:Name="lblDate1"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Date 1:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <DatePicker x:Name="dtpDate1"
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Fill"
-                            WidthRequest="160"
-                            Date="{Binding SelectedDate}"
-                            DateSelected="DatePickerDateSelected" />
-            </Border>
+                    <DatePicker
+                        x:Name="dtpDate1"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        WidthRequest="160"
+                        Date="{Binding SelectedDate}"
+                        DateSelected="DatePickerDateSelected" />
+                </Border>
 
-            <Label x:Name="lblDate2"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="2"
-                   Grid.Column="0"
-                   Text="Date 2:" />
+                <Label
+                    x:Name="lblDate2"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Date 2:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="2"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <DatePicker x:Name="dtpDate2"
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Fill"
-                            WidthRequest="160"
-                            Date="{Binding SelectedDate}"
-                            DateSelected="DatePickerDateSelected" />
-            </Border>
+                    <DatePicker
+                        x:Name="dtpDate2"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        WidthRequest="160"
+                        Date="{Binding SelectedDate}"
+                        DateSelected="DatePickerDateSelected" />
+                </Border>
 
-            <Label x:Name="lblDateDifferenceDays"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="3"
-                   Grid.Column="0"
-                   Text="Date difference in days:" />
+                <Label
+                    x:Name="lblDateDifferenceDays"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="Date difference in days:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="3"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtDateDifferenceDays"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="3"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtDateDifferenceDays"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="3"
+                        Grid.Column="1" />
+                </Border>
 
-            <Label x:Name="lblDateDifferenceHours"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="4"
-                   Grid.Column="0"
-                   Text="= hours:" />
+                <Label
+                    x:Name="lblDateDifferenceHours"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="= hours:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="4"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtDateDifferenceHours"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="4"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtDateDifferenceHours"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="4"
+                        Grid.Column="1" />
+                </Border>
 
-            <Label x:Name="lblDateDifferenceMinutes"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="5"
-                   Grid.Column="0"
-                   Text="= minutes:" />
+                <Label
+                    x:Name="lblDateDifferenceMinutes"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Text="= minutes:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="5"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtDateDifferenceMinutes"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="5"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtDateDifferenceMinutes"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="5"
+                        Grid.Column="1" />
+                </Border>
 
-            <Label x:Name="lblDateDifferenceSeconds"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="6"
-                   Grid.Column="0"
-                   Text="= seconds:" />
+                <Label
+                    x:Name="lblDateDifferenceSeconds"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Text="= seconds:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="6"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtDateDifferenceSeconds"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="6"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtDateDifferenceSeconds"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="6"
+                        Grid.Column="1" />
+                </Border>
 
-            <Label x:Name="lblDateDifferenceYearMonthDay"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="7"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   VerticalOptions="End"
-                   Text="Date difference in years, months and days:" />
+                <Label
+                    x:Name="lblDateDifferenceYearMonthDay"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    VerticalOptions="End"
+                    Text="Date difference in years, months and days:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="8"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtDateDifferenceYearMonthDay"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="8"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="2"
-                       VerticalOptions="Start"
-                       WidthRequest="320"
-                       HorizontalTextAlignment="End" />
-            </Border>
+                    <Label
+                        x:Name="txtDateDifferenceYearMonthDay"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="Start"
+                        WidthRequest="320"
+                        HorizontalTextAlignment="End" />
+                </Border>
 
-            <Button x:Name="btnCalculate"
+                <Button
+                    x:Name="btnCalculate"
                     Style="{StaticResource buttonStyleCalculate}"
                     Grid.Row="9"
                     Grid.Column="0"
                     Clicked="CalculateResult" />
 
-            <Button x:Name="btnReset"
+                <Button
+                    x:Name="btnReset"
                     Style="{StaticResource buttonStyleReset}"
                     Grid.Row="9"
                     Grid.Column="1"
                     Clicked="ResetEntryFields" />
-        </Grid>
+            </Grid>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

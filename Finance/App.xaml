@@ -111,6 +111,14 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
+            <Style x:Key="gridStyleDefault" TargetType="Grid">
+                <Setter Property="ColumnDefinitions" Value="160, 160, 30" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="ColumnSpacing" Value="6" />
+                <Setter Property="RowSpacing" Value="2" />
+            </Style>
+            
             <Style x:Key="borderStyleDefault" TargetType="Border">
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="VerticalOptions" Value="Center" />

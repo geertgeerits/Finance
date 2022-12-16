@@ -4,341 +4,390 @@
              x:Class="Finance.PageLoanDetail">
 
     <NavigationPage.TitleView>
-        <Label x:Name="lblTitle"
-               Style="{StaticResource labelStyleShellTitleView}"
-               Text="Loan with amortization table" />
+        <Label
+            x:Name="lblTitle"
+            Style="{StaticResource labelStyleShellTitleView}"
+            Text="Loan with amortization table" />
     </NavigationPage.TitleView>
 
     <ScrollView>
-        <Grid RowDefinitions="Auto, 40, 40, 40, 40, 40, 40, 40, 40, 50, 40, 40, 40, 40, 40"
-              ColumnDefinitions="160, 160, 40*"
-              Margin="8"
-              ColumnSpacing="6"
-              RowSpacing="2">
+        <StackLayout>
+            <Grid
+                RowDefinitions="Auto, 40, 40, 40, 40, 40, 40, 40, 40, 50, 40, 40, 40, 40, 40"
+                ColumnDefinitions="160, 160, 30"
+                HorizontalOptions="Center"
+                Margin="5"
+                ColumnSpacing="6"
+                RowSpacing="2">
 
-            <BoxView Grid.Row="0"
-                     Grid.Column="0"
-                     Grid.ColumnSpan="3"/>
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"/>
 
-            <Label x:Name="lblExplanation"
-                   Style="{StaticResource labelStyleExplanation}"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   Text="Annuities or linear loan with amortization table." />
+                <Label
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Text="Annuities or linear loan with amortization table." />
 
-            <ActivityIndicator x:Name="activityIndicator"
-                               Grid.Row="0"
-                               Grid.Column="0"
-                               Grid.ColumnSpan="3"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Center"
-                               IsRunning="False"
-                               Color="#75F94D" />
+                <ActivityIndicator
+                    x:Name="activityIndicator"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsRunning="False"
+                    Color="#75F94D" />
 
-            <Label x:Name="lblNumDec"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Text="Number of decimals:" />
+                <Label
+                    x:Name="lblNumDec"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Number of decimals:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="1"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entNumDec"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Text="2"
-                       Placeholder="0 - 6"
-                       MaxLength="1"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entNumDec"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="2"
+                        Placeholder="0 - 6"
+                        MaxLength="1"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label x:Name="lblInterestRate"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="2"
-                   Grid.Column="0" 
-                   Text="Annual interest:" />
+                <Label
+                    x:Name="lblInterestRate"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0" 
+                    Text="Annual interest:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="2"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entInterestRate"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="2"
-                       Grid.Column="1"
-                       Text=""
-                       Placeholder="0 - 100"
-                       MaxLength="10"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entInterestRate"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text=""
+                        Placeholder="0 - 100"
+                        MaxLength="10"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label Style="{StaticResource labelStylePercent}"
-                   Grid.Row="2"
-                   Grid.Column="2" />
+                <Label
+                    Style="{StaticResource labelStylePercent}"
+                    Grid.Row="2"
+                    Grid.Column="2" />
 
-            <Label x:Name="lblCapitalInitial"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="3"
-                   Grid.Column="0" 
-                   Text="Initial capital:" />
+                <Label
+                    x:Name="lblCapitalInitial"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0" 
+                    Text="Initial capital:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="3"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entCapitalInitial"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="3"
-                       Grid.Column="1"
-                       Text=""
-                       Placeholder="1 - 9999999999"
-                       MaxLength="21"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entCapitalInitial"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text=""
+                        Placeholder="1 - 9999999999"
+                        MaxLength="21"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label x:Name="lblDurationYears"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="4"
-                   Grid.Column="0"
-                   Text="Duration in years:" />
+                <Label
+                    x:Name="lblDurationYears"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="Duration in years:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="4"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entDurationYears"
-                       Style="{StaticResource entryStyleNumericNext}"
-                       Grid.Row="4"
-                       Grid.Column="1"
-                       Text=""
-                       Placeholder="1 - 100"
-                       MaxLength="3"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entDurationYears"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text=""
+                        Placeholder="1 - 100"
+                        MaxLength="3"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label x:Name="lblPeriodsYear"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="5"
-                   Grid.Column="0"
-                   Text="Periods per year:" />
+                <Label
+                    x:Name="lblPeriodsYear"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Text="Periods per year:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="5"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entPeriodsYear"
-                       Style="{StaticResource entryStyleNumericDone}"
-                       Grid.Row="5"
-                       Grid.Column="1"
-                       Text="12"
-                       Placeholder="1-2-3-4-6-12"
-                       MaxLength="2"
-                       Completed="CalculateResult"
-                       Focused="EntryFocused"
-                       TextChanged="EntryTextChanged">
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entPeriodsYear"
+                        Style="{StaticResource entryStyleNumericDone}"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Text="12"
+                        Placeholder="1-2-3-4-6-12"
+                        MaxLength="2"
+                        Completed="CalculateResult"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                    </Entry>
+                </Border>
 
-            <Label x:Name="lblAmountPeriod"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="6"
-                   Grid.Column="0"
-                   Text="Amount per period:" />
+                <Label
+                    x:Name="lblAmountPeriod"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Text="Amount per period:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="6"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtAmountPeriod"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="6"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtAmountPeriod"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="6"
+                        Grid.Column="1" />
+                </Border>
 
-            <Label x:Name="lblInterestTotal"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="7"
-                   Grid.Column="0"
-                   Text="Total interest:" />
+                <Label
+                    x:Name="lblInterestTotal"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Text="Total interest:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="7"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtInterestTotal"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="7"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtInterestTotal"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="7"
+                        Grid.Column="1" />
+                </Border>
 
-            <Label x:Name="lblCapitalInterest"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="8"
-                   Grid.Column="0"
-                   Text="Capital + interest:" />
+                <Label
+                    x:Name="lblCapitalInterest"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    Text="Capital + interest:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="8"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Label x:Name="txtCapitalInterest"
-                       Style="{StaticResource labelStyleResult}"
-                       Grid.Row="8"
-                       Grid.Column="1" />
-            </Border>
+                    <Label
+                        x:Name="txtCapitalInterest"
+                        Style="{StaticResource labelStyleResult}"
+                        Grid.Row="8"
+                        Grid.Column="1" />
+                </Border>
 
-            <RadioButton x:Name="rbnLoanAnnuity"
-                         Grid.Row="9"
-                         Grid.Column="0"
-                         Margin="2"
-                         VerticalOptions="Center"
-                         HeightRequest="52"
-                         GroupName="rbgLoanType"
-                         Value="rbnLoanAnnuity"
-                         Content="Loan annuities"
-                         IsChecked="True"
-                         CheckedChanged="OnRbnLoanCheckedChanged" />
+                <RadioButton
+                    x:Name="rbnLoanAnnuity"
+                    Grid.Row="9"
+                    Grid.Column="0"
+                    Margin="2"
+                    VerticalOptions="Center"
+                    HeightRequest="52"
+                    GroupName="rbgLoanType"
+                    Value="rbnLoanAnnuity"
+                    Content="Loan annuities"
+                    IsChecked="True"
+                    CheckedChanged="OnRbnLoanCheckedChanged" />
 
-            <RadioButton x:Name="rbnLoanLinear"
-                         Grid.Row="9"
-                         Grid.Column="1"
-                         VerticalOptions="Center"
-                         HeightRequest="52"
-                         GroupName="rbgLoanType"
-                         Value="rbnLoanLinear"
-                         Content="Linear loan" />
+                <RadioButton
+                    x:Name="rbnLoanLinear"
+                    Grid.Row="9"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HeightRequest="52"
+                    GroupName="rbgLoanType"
+                    Value="rbnLoanLinear"
+                    Content="Linear loan" />
 
-            <Button x:Name="btnCalculate"
+                <Button
+                    x:Name="btnCalculate"
                     Style="{StaticResource buttonStyleCalculate}"
                     Grid.Row="10"
                     Grid.Column="0"
                     Clicked="CalculateResult" />
 
-            <Button x:Name="btnReset"
+                <Button
+                    x:Name="btnReset"
                     Style="{StaticResource buttonStyleReset}"
                     Grid.Row="10"
                     Grid.Column="1"
                     Clicked="ResetEntryFields" />
 
-            <Label x:Name="lblExpirationDate"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="11"
-                   Grid.Column="0"
-                   Text="Date first repayment:" />
+                <Label
+                    x:Name="lblExpirationDate"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="11"
+                    Grid.Column="0"
+                    Text="Date first repayment:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="11"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <DatePicker x:Name="dtpExpirationDate"
-                            Grid.Row="11"
-                            Grid.Column="1"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Fill"
-                            WidthRequest="160"
-                            MinimumDate="{Binding MinDate}"
-                            MaximumDate="{Binding MaxDate}"
-                            Date="{Binding SelectedDate}"
-                            DateSelected="OnDateDataChanged" />
-            </Border>
+                    <DatePicker
+                        x:Name="dtpExpirationDate"
+                        Grid.Row="11"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        WidthRequest="160"
+                        MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding SelectedDate}"
+                        DateSelected="OnDateDataChanged" />
+                </Border>
 
-            <Label x:Name="lblDayEndMonth"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="12"
-                   Grid.Column="0"
-                   Text="End month:" />
+                <Label
+                    x:Name="lblDayEndMonth"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="12"
+                    Grid.Column="0"
+                    Text="End month:" />
 
-            <CheckBox x:Name="ckbDayEndMonth"
-                      Grid.Row="12"
-                      Grid.Column="1"
-                      VerticalOptions="Center"
-                      HorizontalOptions="Start"
-                      CheckedChanged="OnDateDataChanged" />
+                <CheckBox
+                    x:Name="ckbDayEndMonth"
+                    Grid.Row="12"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    CheckedChanged="OnDateDataChanged" />
 
-            <Label x:Name="lblCurrencyCode"
-                   Style="{StaticResource labelStyleDefault}"
-                   Grid.Row="13"
-                   Grid.Column="0"
-                   Text="Currency code:" />
+                <Label
+                    x:Name="lblCurrencyCode"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="13"
+                    Grid.Column="0"
+                    Text="Currency code:" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="13"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Entry x:Name="entCurrencyCode"
-                       Style="{StaticResource entryStyleDefault}"
-                       Grid.Row="13"
-                       Grid.Column="1"
-                       HorizontalOptions="End"
-                       Text="EUR"
-                       MaxLength="3"
-                       ReturnType="Done"
-                       Completed="GoToNextField"
-                       Focused="EntryFocused">
-                    <Entry.Keyboard>
-                        <Keyboard x:FactoryMethod="Create">
-                            <x:Arguments>
-                                <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
-                            </x:Arguments>
-                        </Keyboard>
-                    </Entry.Keyboard>
-                </Entry>
-            </Border>
+                    <Entry
+                        x:Name="entCurrencyCode"
+                        Style="{StaticResource entryStyleDefault}"
+                        Grid.Row="13"
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        Text="EUR"
+                        MaxLength="3"
+                        ReturnType="Done"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused">
+                        <Entry.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Entry.Keyboard>
+                    </Entry>
+                </Border>
           
-            <Button x:Name="btnExport"
+                <Button
+                    x:Name="btnExport"
                     Style="{StaticResource buttonStyleCalculate}"
                     Grid.Row="14"
                     Grid.Column="0"
                     Text="Export"
                     Clicked="ExportDetailLoan" />
 
-            <Border Style="{StaticResource borderStyleDefault}"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="14"
                     Grid.Column="1"
                     StrokeShape="RoundRectangle 5,5,5,5">
 
-                <Picker x:Name="pickerExportType"
+                    <Picker
+                        x:Name="pickerExportType"
                         Grid.Row="14"
                         Grid.Column="1"
                         VerticalOptions="Center"
                         WidthRequest="160"
                         VerticalTextAlignment="Center"
                         SelectedIndexChanged="OnPickerExportTypeChanged">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>CSV ;</x:String>
-                            <x:String>HTML</x:String>
-                            <x:String>PDF</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-            </Border>
-        </Grid>
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>CSV ;</x:String>
+                                <x:String>HTML</x:String>
+                                <x:String>PDF</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
+        
+            </Grid>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

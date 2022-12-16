@@ -4,28 +4,33 @@
              x:Class="Finance.PageSettings">
 
     <NavigationPage.TitleView>
-        <Label x:Name="lblTitle"
-               Style="{StaticResource labelStyleShellTitleView}"
-               Text="Settings" />
+        <Label
+            x:Name="lblTitle"
+            Style="{StaticResource labelStyleShellTitleView}"
+            Text="Settings" />
     </NavigationPage.TitleView>
 
-    <Grid RowDefinitions="*, auto"
-          ColumnDefinitions="170, 170*"
-          Margin="10"
-          ColumnSpacing="8"
-          RowSpacing="0">
+    <Grid
+        RowDefinitions="*, auto"
+        ColumnDefinitions="170, 170"
+        HorizontalOptions="Center"
+        Margin="8"
+        ColumnSpacing="8"
+        RowSpacing="0">
 
-        <ScrollView Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
+        <ScrollView
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
 
-            <Grid RowDefinitions="40, 8, 40, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 40"
-                  ColumnDefinitions="170, 170*"
-                  Margin="10"
-                  ColumnSpacing="8"
-                  RowSpacing="0">
+            <Grid
+                RowDefinitions="40, 8, 40, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 40"
+                ColumnDefinitions="170, 170*"
+                Margin="10"
+                ColumnSpacing="8"
+                RowSpacing="0">
 
                 <Label
                     x:Name="lblLanguage"
@@ -217,6 +222,7 @@
                     Value="rbnKeyboardText"
                     Content="Text"
                     CheckedChanged="OnKeyboardRadioButtonCheckedChanged" />
+            
             </Grid>
         </ScrollView>
 
