@@ -1,4 +1,5 @@
 using Finance.Resources.Languages;
+using System.Xml.Linq;
 
 namespace Finance;
 
@@ -443,7 +444,8 @@ public partial class PageLoanDetail : ContentPage
         }
 
         // File name.
-        string cFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), cDocumentName);
+        //string cFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), cDocumentName);
+        string cFileName = Path.Combine(FileSystem.CacheDirectory, cDocumentName);
 
         // Export.
         activityIndicator.IsRunning = true;
@@ -1239,7 +1241,7 @@ public partial class PageLoanDetail : ContentPage
     {
         try
         {
-            await Launcher.Default.OpenAsync(new OpenFileRequest("", new ReadOnlyFile(cFile)));
+            await Launcher.Default.OpenAsync(new OpenFileRequest(cDocumentName, new ReadOnlyFile(cFile)));
         }
         catch (Exception ex)
         {

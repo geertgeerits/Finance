@@ -34,32 +34,57 @@ public partial class PageAbout : ContentPage
     }
 
     // Open e-mail program.
-    private void OnbtnEmailLinkClicked(object sender, EventArgs e)
+    private async void OnbtnEmailLinkClicked(object sender, EventArgs e)
     {
+#if (IOS || MACCATALYST)
         string cAddress = "geertgeerits@gmail.com";
 
         try
         {
-            Launcher.OpenAsync(new Uri($"mailto:{cAddress}"));
+            await Launcher.OpenAsync(new Uri($"mailto:{cAddress}"));
         }
         catch (Exception ex)
         {
-            DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
+            await DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
         }
+#else
+        if (Email.Default.IsComposeSupported)
+        {
+            string subject = "Finance";
+            string body = "";
+            string[] recipients = new[] { "geertgeerits@gmail.com" };
+
+            var message = new EmailMessage
+            {
+                Subject = subject,
+                Body = body,
+                BodyFormat = EmailBodyFormat.PlainText,
+                To = new List<string>(recipients)
+            };
+
+            try
+            {
+                await Email.Default.ComposeAsync(message);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
+            }
+        }
+#endif
     }
 
-    // Open website.
-    private void OnbtnWebsiteLinkClicked(object sender, EventArgs e)
+    // Open website in default browser.
+    private async void OnbtnWebsiteLinkClicked(object sender, EventArgs e)
     {
-        string cUrl = "https://geertgeerits.wixsite.com/finance";
-
         try
         {
-            Launcher.OpenAsync(new Uri(cUrl));
+            Uri uri = new Uri("https://geertgeerits.wixsite.com/finance");
+            await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
         catch (Exception ex)
         {
-            DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
+            await DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
         }
     }
 }

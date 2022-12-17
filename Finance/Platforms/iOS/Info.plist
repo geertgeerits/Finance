@@ -31,6 +31,8 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mailto</string>
+		<string>lyft</string>
+		<string>fb</string>
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to the photo gallery to save photos and videos.</string>
