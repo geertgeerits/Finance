@@ -168,6 +168,9 @@ Potete sempre contattarmi per eventuali correzioni.</value>
   <data name="ButtonClose_Text" xml:space="preserve">
     <value>Chiudere</value>
   </data>
+  <data name="ButtonShare_Text" xml:space="preserve">
+    <value>Condividi</value>
+  </data>
   <data name="Calculate_Text" xml:space="preserve">
     <value>Calcolare</value>
   </data>
@@ -312,6 +315,9 @@ Il file creato deve essere allegato manualmente all'e-mail.</value>
   </data>
   <data name="ExportFile_Text" xml:space="preserve">
     <value>Esporta</value>
+  </data>
+  <data name="FileOpenQuestion_Text" xml:space="preserve">
+    <value>Aprire questo documento?</value>
   </data>
   <data name="FinanceAmountGrossOfNet_Text" xml:space="preserve">
     <value>Importo lordo di importo netto</value>

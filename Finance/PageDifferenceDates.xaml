@@ -15,7 +15,7 @@
         <StackLayout>
             <Grid
                 RowDefinitions="Auto, 50, 50, 50, 50, 50, 50, 40, 50, 50"
-                ColumnDefinitions="160, 160, 30"
+                ColumnDefinitions="160, 160, 20"
                 HorizontalOptions="Center"
                 Margin="5"
                 ColumnSpacing="6"

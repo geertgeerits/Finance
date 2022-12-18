@@ -1,6 +1,4 @@
 using Finance.Resources.Languages;
-using System.Xml.Linq;
-
 namespace Finance;
 
 public partial class PageLoanDetail : ContentPage
@@ -14,12 +12,13 @@ public partial class PageLoanDetail : ContentPage
     private readonly string cDocTitleAnnuity;
     private readonly string cDocTitleLinear;
     private string cExportType;
-    private readonly string cEmailAddressQuestion;
-    private readonly string cEmailBody;
-    private readonly string cEmailSendQuestion;
-    private readonly string cEmailSubject;
-    private readonly string cEmailTitle;
-    private readonly string cEmailMessage;
+    private readonly string cFileOpenQuestion;
+    //private readonly string cEmailAddressQuestion;
+    //private readonly string cEmailBody;
+    //private readonly string cEmailSendQuestion;
+    //private readonly string cEmailSubject;
+    //private readonly string cEmailTitle;
+    //private readonly string cEmailMessage;
     private readonly string cShareQuestion;
     private readonly string cYes;
     private readonly string cNo;
@@ -61,7 +60,8 @@ public partial class PageLoanDetail : ContentPage
         btnCalculate.Text = FinLang.Calculate_Text;
         btnReset.Text = FinLang.Reset_Text;
         //btnPrint.Text = FinLang.Print_Text;
-        btnExport.Text = FinLang.ExportFile_Text + " ->";
+        //btnExport.Text = FinLang.ExportFile_Text + " ->";
+        btnExport.Text = FinLang.ButtonShare_Text + " ->";
 
         aColHeader[0] = FinLang.LoanDetailColumns_0_Text;
         aColHeader[1] = FinLang.LoanDetailColumns_1_Text;
@@ -75,12 +75,13 @@ public partial class PageLoanDetail : ContentPage
         cDocTitleAnnuity = FinLang.LoanDetailDocTitleAnnuity_Text;
         cDocTitleLinear = FinLang.LoanDetailDocTitleLinear_Text;
 
-        cEmailAddressQuestion = FinLang.EmailAddressQuestion_Text;
-        cEmailBody = FinLang.EmailBody_Text;
-        cEmailSendQuestion = FinLang.EmailSendQuestion_Text;
-        cEmailSubject = FinLang.EmailSubject_Text;
-        cEmailTitle = FinLang.EmailTitle_Text;
-        cEmailMessage = FinLang.EmailMessage_Text;
+        cFileOpenQuestion = FinLang.FileOpenQuestion_Text;
+        //cEmailAddressQuestion = FinLang.EmailAddressQuestion_Text;
+        //cEmailBody = FinLang.EmailBody_Text;
+        //cEmailSendQuestion = FinLang.EmailSendQuestion_Text;
+        //cEmailSubject = FinLang.EmailSubject_Text;
+        //cEmailTitle = FinLang.EmailTitle_Text;
+        //cEmailMessage = FinLang.EmailMessage_Text;
         cShareQuestion = FinLang.ShareQuestion_Text;
         cYes = FinLang.Yes_Text;
         cNo = FinLang.No_Text;
@@ -445,6 +446,7 @@ public partial class PageLoanDetail : ContentPage
 
         // File name.
         //string cFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), cDocumentName);
+        //string cFileName = Path.Combine(FileSystem.AppDataDirectory, cDocumentName);
         string cFileName = Path.Combine(FileSystem.CacheDirectory, cDocumentName);
 
         // Export.
@@ -466,13 +468,18 @@ public partial class PageLoanDetail : ContentPage
             ExportDetailLoanPDF(nNumberPeriods, cCurrency, cDocTitle, cFileName);
         }
 
+        // !!! BUG on iOS and Mac !!!
+        // SendEmail() does not work.
+        // OpenDocumentFile() and OpenShareInterface(): only one of the two is working (not both).
+
+#if ANDROID || WINDOWS
         // Open the file.
-        await OpenExportFile(cFileName);
+        await OpenDocumentFile(cFileName);
 
-        // Send file as attachment to e-mail address.
-        await SendEmail(cFileName);
-
-        // Open the share interface to share the file.
+        // Send file as attachment to e-mail address (not used anymore !!!).
+        //await SendEmail(cFileName);
+#endif
+        // Open the share interface to share the document file+.
         await OpenShareInterface(cFileName);
 
         activityIndicator.IsRunning = false;
@@ -1236,9 +1243,15 @@ public partial class PageLoanDetail : ContentPage
         }
     }
 
-    // Open export file.
-    private async Task OpenExportFile(string cFile)
+    // Open the document file.
+    private async Task OpenDocumentFile(string cFile)
     {
+        bool answer = await DisplayAlert("Finance", cFile + "\n\n" + cFileOpenQuestion, cYes, cNo);
+        if (answer == false)
+        {
+            return;
+        }
+
         try
         {
             await Launcher.Default.OpenAsync(new OpenFileRequest(cDocumentName, new ReadOnlyFile(cFile)));
@@ -1250,64 +1263,74 @@ public partial class PageLoanDetail : ContentPage
     }
 
     // Send e-mail with attachment.
-    private async Task SendEmail(string cFile)
-    {
-        Task.Delay(800).Wait();
+    //private async Task SendEmail(string cFile)
+    //{
+    //    Task.Delay(800).Wait();
 
-        bool answer = await DisplayAlert("Finance", cFile + "\n\n" + cEmailSendQuestion, cYes, cNo);
-        if (answer == false)
-        {
-            return;
-        }
+    //    bool answer = await DisplayAlert("Finance", cFile + "\n\n" + cEmailSendQuestion, cYes, cNo);
+    //    if (answer == false)
+    //    {
+    //        return;
+    //    }
 
-        string cEmailAddress = await DisplayPromptAsync(cEmailTitle, cEmailAddressQuestion, keyboard: Keyboard.Email);
-        if (cEmailAddress == null)
-        {
-            return;
-        }
+    //    string cEmailAddress = await DisplayPromptAsync(cEmailTitle, cEmailAddressQuestion, keyboard: Keyboard.Email);
+    //    if (cEmailAddress == null)
+    //    {
+    //        return;
+    //    }
 
-        try
-        {
-            if (Email.Default.IsComposeSupported)
-            {
-                string subject = cEmailSubject;
-                string body = cEmailBody;
-                string[] recipients = new[] { cEmailAddress };
+    //    try
+    //    {
+    //        if (Email.Default.IsComposeSupported)
+    //        {
+    //            string subject = cEmailSubject;
+    //            string body = cEmailBody;
+    //            string[] recipients = new[] { cEmailAddress };
 
-                var message = new EmailMessage
-                {
-                    Subject = subject,
-                    Body = body,
-                    BodyFormat = EmailBodyFormat.PlainText,
-                    To = new List<string>(recipients)
-                };
+    //            var message = new EmailMessage
+    //            {
+    //                Subject = subject,
+    //                Body = body,
+    //                BodyFormat = EmailBodyFormat.PlainText,
+    //                To = new List<string>(recipients)
+    //            };
 
-                message.Attachments.Add(new EmailAttachment(cFile));
+    //            message.Attachments.Add(new EmailAttachment(cFile));
 
-                await Email.Default.ComposeAsync(message);
-            }
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
-            return;
-        }
-    }
+    //            await Email.Default.ComposeAsync(message);
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        await DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
+    //        return;
+    //    }
+    //}
 
     // Open the share interface.
     private async Task OpenShareInterface(string cFile)
     {
+#if ANDROID || WINDOWS        
+        Task.Delay(800).Wait();
+
         bool answer = await DisplayAlert("Finance", cFile + "\n\n" + cShareQuestion, cYes, cNo);
         if (answer == false)
         {
             return;
         }
-
-        await Share.Default.RequestAsync(new ShareFileRequest
+#endif
+        try
         {
-            Title = "Finance",
-            File = new ShareFile(cFile)
-        });
+            await Share.Default.RequestAsync(new ShareFileRequest
+            {
+                Title = "Finance",
+                File = new ShareFile(cFile)
+            });
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert(MainPage.cErrorTitleText, ex.Message, MainPage.cButtonCloseText);
+        }
     }
 
     // Reset the entry fields.

@@ -168,6 +168,9 @@ Voor eventuele correcties kunt u altijd contact met mij opnemen.</value>
   <data name="ButtonClose_Text" xml:space="preserve">
     <value>Sluiten</value>
   </data>
+  <data name="ButtonShare_Text" xml:space="preserve">
+    <value>Delen</value>
+  </data>
   <data name="Calculate_Text" xml:space="preserve">
     <value>Berekenen</value>
   </data>
@@ -312,6 +315,9 @@ Het aangemaakte bestand moet manueel toegevoegd worden aan de e-mail.</value>
   </data>
   <data name="ExportFile_Text" xml:space="preserve">
     <value>Exporteren</value>
+  </data>
+  <data name="FileOpenQuestion_Text" xml:space="preserve">
+    <value>Dit document openen?</value>
   </data>
   <data name="FinanceAmountGrossOfNet_Text" xml:space="preserve">
     <value>Bedrag bruto van netto bedrag</value>

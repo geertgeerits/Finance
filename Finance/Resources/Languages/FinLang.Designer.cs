@@ -193,6 +193,15 @@ namespace Finance.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share.
+        /// </summary>
+        internal static string ButtonShare_Text {
+            get {
+                return ResourceManager.GetString("ButtonShare_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calculate.
         /// </summary>
         internal static string Calculate_Text {
@@ -622,6 +631,15 @@ namespace Finance.Resources.Languages {
         internal static string ExportFile_Text {
             get {
                 return ResourceManager.GetString("ExportFile_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open this document?.
+        /// </summary>
+        internal static string FileOpenQuestion_Text {
+            get {
+                return ResourceManager.GetString("FileOpenQuestion_Text", resourceCulture);
             }
         }
         
