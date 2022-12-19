@@ -566,6 +566,9 @@ Use this program entirely at your own risk.</value>
   <data name="Save_Text" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="SettingsSaved_Text" xml:space="preserve">
+    <value>Some changed settings must be saved in order to apply them.</value>
+  </data>
   <data name="Settings_Text" xml:space="preserve">
     <value>Settings</value>
   </data>

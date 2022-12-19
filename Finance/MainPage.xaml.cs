@@ -23,6 +23,7 @@ public partial class MainPage : ContentPage
     public static string cISOCurrencyCode;
     public static string cKeyboard;
     public static string cLanguage;
+    public static bool bLanguageChanged = false;
     public static string cPageFormat;
 
     public static string cErrorTitleText;
@@ -108,11 +109,18 @@ public partial class MainPage : ContentPage
         }
 
         // Get and set the system OS user language.
-        if (cLanguage == "")
+        try
         {
-            cLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+            if (cLanguage == "")
+            {
+                cLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+            }
         }
-        
+        catch (Exception)
+        {
+            cLanguage = "en";
+        }
+
         SetTextLanguage();
     }
 
@@ -305,7 +313,7 @@ public partial class MainPage : ContentPage
     private void SetTextLanguage()
     {
         // Set the CurrentUICulture.
-        //cLanguage = "es";
+        //cLanguage = "es";  // For testing.
         //App.Current.MainPage.DisplayAlert("cLanguage", cLanguage, "OK");  // For testing.
 
         switch (cLanguage)
@@ -407,7 +415,7 @@ public partial class MainPage : ContentPage
     }
 
     // Show license using the Loaded event of the MainPage.xaml.
-    private async void OnLoad(object sender, EventArgs e)
+    private async void OnPageLoad(object sender, EventArgs e)
     {
         if (bLicense == false)
         {
@@ -441,6 +449,18 @@ public partial class MainPage : ContentPage
                 Application.Current.Quit();
 #endif
             }
+        }
+    }
+
+    // Set language using the Appearing event of the MainPage.xaml.
+    private void OnPageAppearing(object sender, EventArgs e)
+    {
+        if (bLanguageChanged)
+        {
+            SetTextLanguage();
+            bLanguageChanged = false;
+
+            //DisplayAlert("bLanguageChanged", "true", "OK");  // For testing.
         }
     }
 }

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Finance.MainPage"
              NavigationPage.HasBackButton="False"
-             Loaded="OnLoad">
+             Loaded="OnPageLoad"
+             Appearing="OnPageAppearing">
 
     <NavigationPage.TitleView>
         <Grid RowDefinitions="40"

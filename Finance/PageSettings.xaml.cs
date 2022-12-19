@@ -26,11 +26,9 @@ public partial class PageSettings : ContentPage
         // Put text in the chosen language in the controls.
         lblTitle.Text = FinLang.Settings_Text;
 
+        lblExplanation.Text = FinLang.SettingsSaved_Text;
         lblLanguage.Text = FinLang.Language_Text;
         lblTheme.Text = FinLang.Theme_Text;
-        rbnThemeSystem.Content = FinLang.System_Text;
-        rbnThemeLight.Content = FinLang.Light_Text;
-        rbnThemeDark.Content = FinLang.Dark_Text;
         lblDateFormat.Text = FinLang.DateFormat_Text;
         rbnDateFormatSystem.Content = FinLang.System_Text;
         rbnDateFormatISO8601.Content = FinLang.DateISO8601_Text;
@@ -46,6 +44,14 @@ public partial class PageSettings : ContentPage
         rbnKeyboardText.Content = FinLang.Text_Text;
         btnSettingsSave.Text = FinLang.Save_Text;
         btnSettingsReset.Text = FinLang.Reset_Text;
+
+        var ThemeList = new List<string>
+        {
+            FinLang.System_Text,
+            FinLang.Light_Text,
+            FinLang.Dark_Text
+        };
+        pckTheme.ItemsSource = ThemeList;
 
         // Set the current language in the picker.
         pckLanguage.SelectedIndex = MainPage.cLanguage switch
@@ -72,32 +78,18 @@ public partial class PageSettings : ContentPage
             _ => 1,
         };
 
-        // Set radiobutton to the used theme.
-        string cCurrentTheme;
-        
-        if (MainPage.cTheme == "")
+        // Set the current theme in the picker.
+        pckTheme.SelectedIndex = MainPage.cTheme switch
         {
-            AppTheme currentTheme = Application.Current.RequestedTheme;
-            cCurrentTheme = Convert.ToString(currentTheme);
-        }
-        else
-        {
-            cCurrentTheme = MainPage.cTheme;
-        }
-        //DisplayAlert("cCurrentTheme", cCurrentTheme, "OK");  // For testing
+            // Light.
+            "Light" => 1,
 
-        if (cCurrentTheme == "Light")
-        {
-            rbnThemeLight.IsChecked = true;
-        }
-        else if (cCurrentTheme == "Dark")
-        {
-            rbnThemeDark.IsChecked = true;
-        }
-        else
-        {
-            rbnThemeSystem.IsChecked = true;
-        }
+            // Dark.
+            "Dark" => 2,
+
+            // System.
+            _ => 0,
+        };
 
         // Set radiobutton to the date format.
         if (MainPage.bDateFormatSystem == true)
@@ -150,6 +142,8 @@ public partial class PageSettings : ContentPage
     // Picker language clicked event.
     private void OnPickerLanguageChanged(object sender, EventArgs e)
     {
+        string cLanguageOld = MainPage.cLanguage;
+
         var picker = (Picker)sender;
         int selectedIndex = picker.SelectedIndex;
 
@@ -179,25 +173,35 @@ public partial class PageSettings : ContentPage
                 _ => "en",
             };
         }
+
+        if (cLanguageOld != MainPage.cLanguage)
+        {
+            MainPage.bLanguageChanged = true;
+        }
     }
 
-    // Radio button themes clicked event.
-    private void OnThemesRadioButtonCheckedChanged(object sender, EventArgs e)
+    // Picker theme clicked event.
+    private void OnPickerThemeChanged(object sender, EventArgs e)
     {
-        if (rbnThemeSystem.IsChecked)
+        var picker = (Picker)sender;
+        int selectedIndex = picker.SelectedIndex;
+
+        if (selectedIndex != -1)
         {
-            MainPage.cTheme = "System";
-        }
-        else if (rbnThemeLight.IsChecked)
-        {
-            MainPage.cTheme = "Light";
-        }
-        else if (rbnThemeDark.IsChecked)
-        {
-            MainPage.cTheme = "Dark";
+            MainPage.cTheme = selectedIndex switch
+            {
+                // Light.
+                1 => "Light",
+
+                // Dark.
+                2 => "Dark",
+
+                // System.
+                _ => "System",
+            };
         }
     }
-
+    
     // Radio button date format clicked event.
     private void OnDateFormatRadioButtonCheckedChanged(object sender, EventArgs e)
     {

@@ -566,6 +566,9 @@ Gebruik dit programma geheel op eigen risico.</value>
   <data name="Save_Text" xml:space="preserve">
     <value>Opslaan</value>
   </data>
+  <data name="SettingsSaved_Text" xml:space="preserve">
+    <value>Sommige gewijzigde instellingen moeten worden opgeslagen om ze toe te passen.</value>
+  </data>
   <data name="Settings_Text" xml:space="preserve">
     <value>Instellingen</value>
   </data>

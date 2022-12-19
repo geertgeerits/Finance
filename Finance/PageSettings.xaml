@@ -23,13 +23,26 @@
             VerticalOptions="FillAndExpand">
 
             <Grid
-                RowDefinitions="40, 8, 40, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 40"
+                RowDefinitions="Auto, 6, 40, 8, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 40"
                 ColumnDefinitions="170, 170"
                 ColumnSpacing="8">
 
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"/>
+
+                <Label
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="Some changed settings must be saved in order to apply them." />
+
                 <Label
                     x:Name="lblLanguage"
-                    Grid.Row="0"
+                    Grid.Row="2"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     VerticalTextAlignment="Center"
@@ -37,21 +50,21 @@
 
                 <Border
                     Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="0"
+                    Grid.Row="2"
                     Grid.Column="1"
                     HorizontalOptions="Start"
                     VerticalOptions="Center">
 
                     <Picker
                         x:Name="pckLanguage"
-                        Grid.Row="0"
+                        Grid.Row="2"
                         Grid.Column="1"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
                         MinimumWidthRequest="140"
                         VerticalTextAlignment="Center"
                         SelectedIndexChanged="OnPickerLanguageChanged"
-                        IsEnabled="False">
+                        IsEnabled="True">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Deutsch</x:String>
@@ -69,37 +82,36 @@
                 <Label
                     x:Name="lblTheme"
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="2"
+                    Grid.Row="4"
                     Grid.Column="0"
                     FontSize="14"
                     Text="Theme" />
 
-                <RadioButton
-                    x:Name="rbnThemeSystem"
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    GroupName="rbgThemes"
-                    Value="rbnThemeSystem"
-                    Content="System"
-                    CheckedChanged="OnThemesRadioButtonCheckedChanged" />
-
-                <RadioButton
-                    x:Name="rbnThemeLight"
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    GroupName="rbgThemes"
-                    Value="rbnThemeLight"
-                    Content="Light"
-                    CheckedChanged="OnThemesRadioButtonCheckedChanged" />
-
-                <RadioButton
-                    x:Name="rbnThemeDark"
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="4"
-                    Grid.Column="1"
-                    GroupName="rbgThemes"
-                    Value="rbnThemeDark"
-                    Content="Dark"
-                    CheckedChanged="OnThemesRadioButtonCheckedChanged" />
+                    Grid.Column="2"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center">
+
+                    <Picker
+                        x:Name="pckTheme"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        MinimumWidthRequest="140"
+                        VerticalTextAlignment="Center"
+                        SelectedIndexChanged="OnPickerThemeChanged">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>System</x:String>
+                                <x:String>Light</x:String>
+                                <x:String>Dark</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
 
                 <Label
                     x:Name="lblDateFormat"

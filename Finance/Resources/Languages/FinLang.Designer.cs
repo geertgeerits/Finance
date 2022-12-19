@@ -1380,6 +1380,15 @@ namespace Finance.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Some changed settings must be saved in order to apply them..
+        /// </summary>
+        internal static string SettingsSaved_Text {
+            get {
+                return ResourceManager.GetString("SettingsSaved_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Share this document?.
         /// </summary>
         internal static string ShareQuestion_Text {

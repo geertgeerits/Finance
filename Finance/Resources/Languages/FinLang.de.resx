@@ -566,6 +566,9 @@ Verwenden Sie dieses Programm ausschließlich auf eigene Gefahr.</value>
   <data name="Save_Text" xml:space="preserve">
     <value>Speichern</value>
   </data>
+  <data name="SettingsSaved_Text" xml:space="preserve">
+    <value>Einige geänderte Einstellungen müssen gespeichert werden, um sie zu übernehmen.</value>
+  </data>
   <data name="Settings_Text" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
