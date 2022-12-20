@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 1992-2022
 // Version .....: 3.0.53
-// Date ........: 2022-12-18 (YYYY-MM-DD)
+// Date ........: 2022-12-20 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET MAUI C# 11.0
 // Description .: Financial calculations
 
@@ -316,50 +316,31 @@ public partial class MainPage : ContentPage
         //cLanguage = "es";  // For testing.
         //App.Current.MainPage.DisplayAlert("cLanguage", cLanguage, "OK");  // For testing.
 
-        switch (cLanguage)
+        pickerLanguage.SelectedIndex = cLanguage switch
         {
             // German (Deutsch).
-            case "de":
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("de");
-                pickerLanguage.SelectedIndex = 0;
-                break;
+            "de" => 0,
 
             // Spanish (Español).
-            case "es":
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("es");
-                pickerLanguage.SelectedIndex = 2;
-                break;
+            "es" => 2,
 
             // French (Français).
-            case "fr":
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr");
-                pickerLanguage.SelectedIndex = 3;
-                break;
+            "fr" => 3,
 
             // Italian (Italiano).
-            case "it":
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("it");
-                pickerLanguage.SelectedIndex = 4;
-                break;
+            "it" => 4,
 
             // Dutch (Nederlands).
-            case "nl":
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("nl");
-                pickerLanguage.SelectedIndex = 5;
-                break;
+            "nl" => 5,
 
             // Portuguese (Português).
-            case "pt":
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("pt");
-                pickerLanguage.SelectedIndex = 6;
-                break;
+            "pt" => 6,
 
             // English.
-            default:
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
-                pickerLanguage.SelectedIndex = 1;
-                break;
-        }
+            _ => 1,
+        };
+
+        SetCultureSelectedLanguage();
 
         btnInterestEffective.Text = FinLang.FinanceInterestEffective_Text;
         btnInterestEffectiveBE.Text = FinLang.FinanceInterestEffectiveBE_Text;
@@ -386,32 +367,17 @@ public partial class MainPage : ContentPage
         //App.Current.MainPage.DisplayAlert(cErrorTitleText, cLanguage, cButtonCloseText);  // For testing.
     }
 
-    // Set the current UI culture of the selected language (used by the other pages).
+    // Set the current UI culture of the selected language.
     public static void SetCultureSelectedLanguage()
     {
-        Thread.CurrentThread.CurrentUICulture = cLanguage switch
+        try
         {
-            // German (Deutsch).
-            "de" => CultureInfo.GetCultureInfo("de"),
-
-            // Spanish (Español).
-            "es" => CultureInfo.GetCultureInfo("es"),
-
-            // French (Français).
-            "fr" => CultureInfo.GetCultureInfo("fr"),
-
-            // Italian (Italiano).
-            "it" => CultureInfo.GetCultureInfo("it"),
-
-            // Dutch (Nederlands).
-            "nl" => CultureInfo.GetCultureInfo("nl"),
-
-            // Portuguese (Português).
-            "pt" => CultureInfo.GetCultureInfo("pt"),
-
-            // English.
-            _ => CultureInfo.GetCultureInfo("en"),
-        };
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(cLanguage);
+        }
+        catch
+        {
+            // Do nothing.
+        }
     }
 
     // Show license using the Loaded event of the MainPage.xaml.

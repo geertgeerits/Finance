@@ -20,9 +20,6 @@ public partial class PageSettings : ContentPage
             return;
         }
 
-        // Set the current UI culture of the selected language.
-        MainPage.SetCultureSelectedLanguage();
-
         // Put text in the chosen language in the controls.
         lblTitle.Text = FinLang.Settings_Text;
 
@@ -177,6 +174,9 @@ public partial class PageSettings : ContentPage
         if (cLanguageOld != MainPage.cLanguage)
         {
             MainPage.bLanguageChanged = true;
+
+            // Set the current UI culture of the selected language.
+            MainPage.SetCultureSelectedLanguage();
         }
     }
 
@@ -276,8 +276,6 @@ public partial class PageSettings : ContentPage
         // Restart the application.
         //Application.Current.MainPage = new AppShell();
         Application.Current.MainPage = new NavigationPage(new MainPage());
-        //await Navigation.PushAsync(new MainPage());
-        //await Navigation.PopAsync();
     }
 
     // Button reset settings clicked event.
