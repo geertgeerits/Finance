@@ -12,19 +12,22 @@
 
     <Grid
         RowDefinitions="*, auto"
-        ColumnDefinitions="170, 170"
+        ColumnDefinitions="160, 180"
         HorizontalOptions="Center"
-        Margin="8">
+        Margin="5"
+        ColumnSpacing="8"
+        RowSpacing="0">
 
         <ScrollView
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="FillAndExpand"
+            Orientation="Vertical">
 
             <Grid
                 RowDefinitions="Auto, 6, 40, 8, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 8, 40, 40, 40"
-                ColumnDefinitions="170, 170"
+                ColumnDefinitions="160, 180"
                 ColumnSpacing="8">
 
                 <BoxView
@@ -61,7 +64,7 @@
                         Grid.Column="1"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
-                        MinimumWidthRequest="140"
+                        MinimumWidthRequest="160"
                         VerticalTextAlignment="Center"
                         SelectedIndexChanged="OnPickerLanguageChanged"
                         IsEnabled="True">
@@ -100,7 +103,7 @@
                         Grid.Column="1"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
-                        MinimumWidthRequest="140"
+                        MinimumWidthRequest="160"
                         VerticalTextAlignment="Center"
                         SelectedIndexChanged="OnPickerThemeChanged">
                         <Picker.ItemsSource>

@@ -1243,7 +1243,7 @@ public partial class PageLoanDetail : ContentPage
     // Open the document file.
     private async Task OpenDocumentFile(string cFile)
     {
-        bool answer = await DisplayAlert("Finance", cFile + "\n\n" + cFileOpenQuestion, cYes, cNo);
+        bool answer = await DisplayAlert("Finance", Path.GetFileName(cFile) + "\n\n" + cFileOpenQuestion, cYes, cNo);
         if (answer == false)
         {
             return;
@@ -1264,7 +1264,7 @@ public partial class PageLoanDetail : ContentPage
     //{
     //    Task.Delay(800).Wait();
 
-    //    bool answer = await DisplayAlert("Finance", cFile + "\n\n" + cEmailSendQuestion, cYes, cNo);
+    //    bool answer = await DisplayAlert("Finance", Path.GetFileName(cFile) + "\n\n" + cEmailSendQuestion, cYes, cNo);
     //    if (answer == false)
     //    {
     //        return;
@@ -1310,7 +1310,7 @@ public partial class PageLoanDetail : ContentPage
 #if ANDROID || WINDOWS        
         Task.Delay(800).Wait();
 
-        bool answer = await DisplayAlert("Finance", cFile + "\n\n" + cShareQuestion, cYes, cNo);
+        bool answer = await DisplayAlert("Finance", Path.GetFileName(cFile) + "\n\n" + cShareQuestion, cYes, cNo);
         if (answer == false)
         {
             return;
