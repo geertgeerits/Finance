@@ -79,6 +79,19 @@ public partial class PageVATCalculation : ContentPage
         }
     }
 
+    // Set the value of a another field to '0' if the current field is unfocused.
+    private void EntryUnfocused(object sender, EventArgs e)
+    {
+        if (sender == entVATAmountExclusive && entVATAmountExclusive.Text != "0")
+        {
+            entVATAmountIncluded.Text = "0";
+        }
+        else if (sender == entVATAmountIncluded && entVATAmountIncluded.Text != "0")
+        {
+            entVATAmountExclusive.Text = "0";
+        }
+    }
+
     // Calculate the result.
     private void CalculateResult(object sender, EventArgs e)
     {

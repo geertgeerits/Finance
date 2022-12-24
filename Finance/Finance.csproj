@@ -30,7 +30,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<Authors>Geert Geerits</Authors>
-		<PackageIcon>finance_new_80p.png</PackageIcon>
+		<PackageIcon>appiconfg.png</PackageIcon>
 		<Description>Financial applications</Description>
 		<Copyright>Geert Geerits</Copyright>
 		<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
@@ -140,7 +140,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="Resources\AppIcon\finance_new_80p.png">
+		<None Update="Resources\AppIcon\appiconfg.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>

@@ -84,6 +84,19 @@ public partial class PageInterestAnnual : ContentPage
         }
     }
 
+    // Set the value of a another field to '0' if the current field is unfocused.
+    private void EntryUnfocused(object sender, EventArgs e)
+    {
+        if (sender == entAmountPeriod && entAmountPeriod.Text != "0")
+        {
+            entCapitalFinal.Text = "0";
+        }
+        else if (sender == entCapitalFinal && entCapitalFinal.Text != "0")
+        {
+            entAmountPeriod.Text = "0";
+        }
+    }
+
     // Calculate the result.
     private void CalculateResult(object sender, EventArgs e)
     {
@@ -137,6 +150,17 @@ public partial class PageInterestAnnual : ContentPage
         entAmountPeriod.IsEnabled = true;
         entCapitalFinal.IsEnabled = false;
         entCapitalFinal.IsEnabled = true;
+
+        // Check what needs to be calculated first.
+        if (nCapitalFinal > 0)
+        {
+            nAmountPeriod = 0;
+        }
+
+        if (nAmountPeriod > 0)
+        {
+            nCapitalFinal = 0;
+        }
 
         // Set decimal places for the Entry controls and values passed by reference.
         entCapitalInitial.Text = MainPage.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "F");

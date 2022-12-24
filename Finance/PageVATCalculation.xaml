@@ -115,6 +115,7 @@
                         MaxLength="21"
                         Completed="GoToNextField"
                         Focused="EntryFocused"
+                        Unfocused="EntryUnfocused"
                         TextChanged="EntryTextChanged">
                     </Entry>
                 </Border>
@@ -162,6 +163,7 @@
                         MaxLength="21"
                         Completed="CalculateResult"
                         Focused="EntryFocused"
+                        Unfocused="EntryUnfocused"
                         TextChanged="EntryTextChanged">
                     </Entry>
                 </Border>

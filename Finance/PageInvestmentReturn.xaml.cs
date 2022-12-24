@@ -86,6 +86,24 @@ public partial class PageInvestmentReturn : ContentPage
         }
     }
 
+    // Set the value of a another field to '0' if the current field is unfocused.
+    private void EntryUnfocused(object sender, EventArgs e)
+    {
+        if (sender == entAmountPurchase && entAmountPurchase.Text != "0")
+        {
+            entPercentageReturnYear.Text = "0";
+        }
+        else if (sender == entAmountCost && entAmountCost.Text != "0")
+        {
+            entPercentageReturnYear.Text = "0";
+        }
+        else if (sender == entPercentageReturnYear && entPercentageReturnYear.Text != "0")
+        {
+            entAmountPurchase.Text = "0";
+            entAmountCost.Text = "0";
+        }
+    }
+
     // Calculate the result.
     private void CalculateResult(object sender, EventArgs e)
     {
@@ -140,6 +158,18 @@ public partial class PageInvestmentReturn : ContentPage
         entPercentageReturnYear.IsEnabled = false;
         entPercentageReturnYear.IsEnabled = true;
 
+        // Check what needs to be calculated first.
+        if (nPercentageReturnYear > 0)
+        {
+            nAmountPurchase = 0;
+            nAmountCost = 0;
+        }
+
+        if (nAmountPurchase + nAmountCost > 0)
+        {
+            nPercentageReturnYear = 0;
+        }
+        
         // Set decimal places for the Entry controls and values passed by reference.
         entAmountPurchase.Text = MainPage.RoundDecimalToNumDecimals(ref nAmountPurchase, nNumDec, "F");
         entAmountCost.Text = MainPage.RoundDecimalToNumDecimals(ref nAmountCost, nNumDec, "F");
