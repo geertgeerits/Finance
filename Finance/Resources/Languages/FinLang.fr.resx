@@ -622,7 +622,9 @@ Fermer maintenant ?</value>
     <value>Montant TVA:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Calculez le montant HT ou le montant TTC.</value>
+    <value>Calculez la TVA.
+
+Entrez le pourcentage de TVA, et soit le montant hors TVA, soit le montant TVA incluse.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Calculs de la TVA</value>

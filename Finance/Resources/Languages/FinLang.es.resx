@@ -622,7 +622,9 @@ Utilice este programa bajo su propio riesgo.</value>
     <value>Importe IVA:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Calcule el importe sin IVA o el importe con IVA.</value>
+    <value>Calcular el IVA.
+
+Introduzca el porcentaje de IVA y el importe sin IVA o el importe con IVA incluido.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Cálculos de IVA</value>

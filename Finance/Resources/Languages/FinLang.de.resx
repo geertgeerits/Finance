@@ -622,7 +622,9 @@ Schließe jetzt?</value>
     <value>Betrag Mehrwertsteuer:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Berechnen Sie den Betrag ohne Mehrwertsteuer oder den Betrag mit Mehrwertsteuer.</value>
+    <value>Berechnen Sie die Mehrwertsteuer.
+
+Geben Sie den MwSt.-Prozentsatz und entweder den Betrag ohne MwSt. oder den Betrag mit MwSt. ein.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Mehrwertsteuerberechnungen</value>

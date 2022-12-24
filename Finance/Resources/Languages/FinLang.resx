@@ -622,7 +622,9 @@ Close now?</value>
     <value>Amount VAT:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Calculate the amount excluding VAT or the amount including VAT.</value>
+    <value>Calculate the VAT.
+
+Enter the VAT percentage, and either the amount VAT exclusive or the amount VAT included.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>VAT calculations</value>
