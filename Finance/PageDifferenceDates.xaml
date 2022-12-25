@@ -15,7 +15,7 @@
         <StackLayout>
             <Grid
                 RowDefinitions="Auto, 50, 50, 50, 50, 50, 50, 40, 50, 50"
-                ColumnDefinitions="160, 160, 20"
+                ColumnDefinitions="170, 170"
                 HorizontalOptions="Center"
                 Margin="5"
                 ColumnSpacing="6"
@@ -24,14 +24,14 @@
                 <BoxView
                     Grid.Row="0"
                     Grid.Column="0"
-                    Grid.ColumnSpan="3" />
+                    Grid.ColumnSpan="2" />
 
                 <Label
                     x:Name="lblExplanation"
                     Style="{StaticResource labelStyleExplanation}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Grid.ColumnSpan="3"
+                    Grid.ColumnSpan="2"
                     Text="Calculate the difference between two numbers." />
             
                 <Label
@@ -167,7 +167,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="7"
                     Grid.Column="0"
-                    Grid.ColumnSpan="3"
+                    Grid.ColumnSpan="2"
                     VerticalOptions="End"
                     Text="Date difference in years, months and days:" />
 
@@ -185,7 +185,7 @@
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         VerticalOptions="Start"
-                        WidthRequest="320"
+                        WidthRequest="346"
                         HorizontalTextAlignment="End" />
                 </Border>
 
