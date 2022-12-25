@@ -19,7 +19,7 @@ public partial class PageInvestmentReturn : ContentPage
         // Put text in the chosen language in the controls.
         lblTitle.Text = FinLang.InvestmentReturnForm_Text;
 
-        lblExplanation.Text = FinLang.InvestmentReturnExplanation_Text + "\n";  // BUG auto sizing label for small screens.  Add a new line to solve the bug.
+        lblExplanation.Text = FinLang.InvestmentReturnExplanation_Text + "\n";  // Workaround for !!!BUG!!! auto sizing label for small screens.  Add a new line to solve the bug.
         lblNumDec.Text = FinLang.NumDec_Text;
         lblAmountPurchase.Text = FinLang.AmountPurchase_Text;
         lblAmountCost.Text = FinLang.AmountCost_Text;

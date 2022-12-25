@@ -465,7 +465,7 @@ public partial class PageLoanDetail : ContentPage
             ExportDetailLoanPDF(nNumberPeriods, cCurrency, cDocTitle, cFileName);
         }
 
-        // !!! BUG on iOS and Mac !!!
+        // Workaround for !!!BUG!!! on iOS and Mac !!!
         // SendEmail() does not work.
         // OpenDocumentFile() and OpenShareInterface(): only one of the two is working (not both).
 

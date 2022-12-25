@@ -19,7 +19,7 @@ public partial class PageInterestAnnual : ContentPage
         // Put text in the chosen language in the controls.
         lblTitle.Text = FinLang.InterestAnnualForm_Text;
 
-        lblExplanation.Text = FinLang.InterestAnnualExplanation_Text + "\n";  // BUG auto sizing label for small screens.  Add a new line to solve the bug.;
+        lblExplanation.Text = FinLang.InterestAnnualExplanation_Text + "\n";  // Workaround for !!!BUG!!! auto sizing label for small screens.  Add a new line to solve the bug.
         lblNumDec.Text = FinLang.NumDec_Text;
         lblCapitalInitial.Text = FinLang.CapitalInitial_Text;
         lblDurationMonths.Text = FinLang.DurationMonths_Text;
