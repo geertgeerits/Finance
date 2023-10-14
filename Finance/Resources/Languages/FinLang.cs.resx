@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Agree_Text" xml:space="preserve">
+    <value>Souhlasit</value>
+  </data>
+  <data name="AmountCost_Text" xml:space="preserve">
+    <value>Výše nákladů:</value>
+  </data>
+  <data name="AmountDifference_Text" xml:space="preserve">
+    <value>Rozdíl částky:</value>
+  </data>
+  <data name="AmountGrossOfNetExplanation_Text" xml:space="preserve">
+    <value>Vypočítejte hrubou částku z čisté částky a procenta.</value>
+  </data>
+  <data name="AmountGrossOfNetForm_Text" xml:space="preserve">
+    <value>Částka brutto od čisté částky</value>
+  </data>
+  <data name="AmountGross_Text" xml:space="preserve">
+    <value>Hrubá částka:</value>
+  </data>
+  <data name="AmountNet_Text" xml:space="preserve">
+    <value>Čistá částka:</value>
+  </data>
+  <data name="AmountPeriod_Text" xml:space="preserve">
+    <value>Částka za období:</value>
+  </data>
+  <data name="AmountPurchase_Text" xml:space="preserve">
+    <value>Částka nákupu:</value>
+  </data>
+  <data name="AmountRevenueYear_Text" xml:space="preserve">
+    <value>Tržby za rok:</value>
+  </data>
+  <data name="AmountTotal_Text" xml:space="preserve">
+    <value>Celková částka:</value>
+  </data>
+  <data name="ButtonClose_Text" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="ButtonShare_Text" xml:space="preserve">
+    <value>Podíl</value>
+  </data>
+  <data name="Calculate_Text" xml:space="preserve">
+    <value>Vypočítat</value>
+  </data>
+  <data name="CapitalFinal_Text" xml:space="preserve">
+    <value>Konečný kapitál:</value>
+  </data>
+  <data name="CapitalInitial_Text" xml:space="preserve">
+    <value>Počáteční kapitál:</value>
+  </data>
+  <data name="CapitalInterest_Text" xml:space="preserve">
+    <value>Kapitál + úrok:</value>
+  </data>
+  <data name="Clear_Text" xml:space="preserve">
+    <value>Vymazat</value>
+  </data>
+  <data name="CloseApplication_Text" xml:space="preserve">
+    <value>Zavřete aplikaci.</value>
+  </data>
+  <data name="Contact_Text" xml:space="preserve">
+    <value>Kontakt:</value>
+  </data>
+  <data name="Copyright_Text" xml:space="preserve">
+    <value>Autorská práva</value>
+  </data>
+  <data name="CurrencyCode_Text" xml:space="preserve">
+    <value>Kód měny:</value>
+  </data>
+  <data name="Dark_Text" xml:space="preserve">
+    <value>Tmavá</value>
+  </data>
+  <data name="Date1_Text" xml:space="preserve">
+    <value>Datum 1:</value>
+  </data>
+  <data name="Date2_Text" xml:space="preserve">
+    <value>Datum 2:</value>
+  </data>
+  <data name="DateDays_Text" xml:space="preserve">
+    <value>dní</value>
+  </data>
+  <data name="DateDay_Text" xml:space="preserve">
+    <value>den</value>
+  </data>
+  <data name="DateDifferenceDays_Text" xml:space="preserve">
+    <value>= dní:</value>
+  </data>
+  <data name="DateDifferenceHours_Text" xml:space="preserve">
+    <value>= hodiny:</value>
+  </data>
+  <data name="DateDifferenceMinutes_Text" xml:space="preserve">
+    <value>= minuty:</value>
+  </data>
+  <data name="DateDifferenceMonths_Text" xml:space="preserve">
+    <value>= měsíce:</value>
+  </data>
+  <data name="DateDifferenceSeconds_Text" xml:space="preserve">
+    <value>= sekundy:</value>
+  </data>
+  <data name="DateDifferenceWeeks_Text" xml:space="preserve">
+    <value>= týdnů:</value>
+  </data>
+  <data name="DateDifferenceYearMonthDay_Text" xml:space="preserve">
+    <value>Rozdíl v datech v letech, měsících a dnech:</value>
+  </data>
+  <data name="DateFirstRepayment_Text" xml:space="preserve">
+    <value>Datum první splátky:</value>
+  </data>
+  <data name="DateFormat_Text" xml:space="preserve">
+    <value>Datový formát:</value>
+  </data>
+  <data name="DateISO8601_Text" xml:space="preserve">
+    <value>ISO 8601</value>
+  </data>
+  <data name="DateMonths_Text" xml:space="preserve">
+    <value>měsíce</value>
+  </data>
+  <data name="DateMonth_Text" xml:space="preserve">
+    <value>měsíc</value>
+  </data>
+  <data name="DateWeeks_Text" xml:space="preserve">
+    <value>týdnů</value>
+  </data>
+  <data name="DateWeek_Text" xml:space="preserve">
+    <value>týden</value>
+  </data>
+  <data name="DateYears_Text" xml:space="preserve">
+    <value>let</value>
+  </data>
+  <data name="DateYear_Text" xml:space="preserve">
+    <value>rok</value>
+  </data>
+  <data name="DayEndMonth_Text" xml:space="preserve">
+    <value>Koncový měsíc:</value>
+  </data>
+  <data name="Default_Text" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="Description_Text" xml:space="preserve">
+    <value>Finanční aplikace</value>
+  </data>
+  <data name="Detail_Text" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="DifferenceDatesForm_Text" xml:space="preserve">
+    <value>Rozdíl mezi daty</value>
+  </data>
+  <data name="DifferenceExplanationDates_Text" xml:space="preserve">
+    <value>Vypočítejte rozdíl mezi dvěma daty.</value>
+  </data>
+  <data name="DifferenceExplanationNumbers_Text" xml:space="preserve">
+    <value>Vypočítejte rozdíl mezi dvěma čísly.</value>
+  </data>
+  <data name="DifferenceNumbersForm_Text" xml:space="preserve">
+    <value>Rozdíl mezi čísly</value>
+  </data>
+  <data name="Disagree_Text" xml:space="preserve">
+    <value>Nesouhlasit</value>
+  </data>
+  <data name="DurationMonths_Text" xml:space="preserve">
+    <value>Délka v měsících:</value>
+  </data>
+  <data name="DurationYears_Text" xml:space="preserve">
+    <value>Doba trvání v letech:</value>
+  </data>
+  <data name="EmailAddressQuestion_Text" xml:space="preserve">
+    <value>Emailová adresa?</value>
+  </data>
+  <data name="EmailBody_Text" xml:space="preserve">
+    <value>Přikládám detail půjčky.</value>
+  </data>
+  <data name="EmailMessage_Text" xml:space="preserve">
+    <value>E-mail zatím není ve Windows plně podporován.
+Vytvořený soubor je nutné ručně připojit k e-mailu.</value>
+  </data>
+  <data name="EmailSendQuestion_Text" xml:space="preserve">
+    <value>Odeslat tento dokument na e-mailovou adresu?</value>
+  </data>
+  <data name="EmailSubject_Text" xml:space="preserve">
+    <value>Finance - Detail úvěru</value>
+  </data>
+  <data name="EmailTitle_Text" xml:space="preserve">
+    <value>E-mailem</value>
+  </data>
+  <data name="Email_Text" xml:space="preserve">
+    <value>E-mailem:</value>
+  </data>
+  <data name="ErrorTitle_Text" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="ExpiryDaysWithDiscount_Text" xml:space="preserve">
+    <value>Expirační dny se slevou:</value>
+  </data>
+  <data name="ExpiryDaysWithoutDiscount_Text" xml:space="preserve">
+    <value>Dny platnosti bez slevy:</value>
+  </data>
+  <data name="ExportFile_Text" xml:space="preserve">
+    <value>Vývozní</value>
+  </data>
+  <data name="FileOpenQuestion_Text" xml:space="preserve">
+    <value>Otevřít tento dokument?</value>
+  </data>
+  <data name="FinanceAmountGrossOfNet_Text" xml:space="preserve">
+    <value>Částka brutto od čisté částky</value>
+  </data>
+  <data name="FinanceDifferenceDates_Text" xml:space="preserve">
+    <value>Rozdíl mezi daty</value>
+  </data>
+  <data name="FinanceDifferenceNumbers_Text" xml:space="preserve">
+    <value>Rozdíl mezi čísly</value>
+  </data>
+  <data name="FinanceForm_Text" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="FinanceInterestAnnual_Text" xml:space="preserve">
+    <value>Počáteční částka ročního úroku</value>
+  </data>
+  <data name="FinanceInterestEffectiveBE_Text" xml:space="preserve">
+    <value>Efektivní počáteční a koncová částka úroku</value>
+  </data>
+  <data name="FinanceInterestEffective_Text" xml:space="preserve">
+    <value>Efektivní úrok</value>
+  </data>
+  <data name="FinanceInterestMonthDay_Text" xml:space="preserve">
+    <value>Úrok za měsíc a den</value>
+  </data>
+  <data name="FinanceInterestPayDiscount_Text" xml:space="preserve">
+    <value>Sleva při platbě úroků</value>
+  </data>
+  <data name="FinanceInvestmentReturn_Text" xml:space="preserve">
+    <value>Návratnost investic</value>
+  </data>
+  <data name="FinanceLoanDetail_Text" xml:space="preserve">
+    <value>Půjčka s tabulkou amortizace</value>
+  </data>
+  <data name="FinanceVATCalculation_Text" xml:space="preserve">
+    <value>Výpočty DPH</value>
+  </data>
+  <data name="InfoExplanation_Text" xml:space="preserve">
+    <value>Formát data lze v nastavení změnit na mezinárodní standardní formát ISO 8601 (RRRR-MM-DD).
+
+Způsob zaokrouhlování může vést k odchylkám od konečného výsledku (například u poslední splátky úvěrů).
+Čísla jsou standardně zaokrouhlena na nejbližší cent (aritmeticky: 1-4 dolů a 5-9 nahoru).
+Lze změnit na sudé číslo (zaokrouhlení bankéře) 1-4 dolů, 6-9 nahoru a 5 na sudé číslo dolů, liché číslo nahoru.
+
+K překladu textu byl použit Google Translate. To nezaručuje, že všechny překlady jsou správné.
+Podporované jazyky jsou: čeština, dánština, holandština, angličtina, finština, francouzština, němčina, maďarština, italština, norština, polština, portugalština, rumunština, španělština a švédština.
+
+Pro případné opravy mě můžete vždy kontaktovat.</value>
+  </data>
+  <data name="Info_Text" xml:space="preserve">
+    <value>Informace</value>
+  </data>
+  <data name="InterestAnnualExplanation_Text" xml:space="preserve">
+    <value>Spočítejte si úrok za rok.
+
+Zadejte počáteční částku, období v měsících a buď částku za období, nebo konečnou částku.</value>
+  </data>
+  <data name="InterestAnnualForm_Text" xml:space="preserve">
+    <value>Roční úrok</value>
+  </data>
+  <data name="InterestDay365_Text" xml:space="preserve">
+    <value>Denní úrok (365 dní/rok):</value>
+  </data>
+  <data name="InterestDay366_Text" xml:space="preserve">
+    <value>Denní úrok (366 dní/rok):</value>
+  </data>
+  <data name="InterestEffectiveBEExplanation_Text" xml:space="preserve">
+    <value>Efektivní úroková sazba se známou počáteční a konečnou částkou.</value>
+  </data>
+  <data name="InterestEffectiveBEForm_Text" xml:space="preserve">
+    <value>Úrok s počáteční a konečnou částkou</value>
+  </data>
+  <data name="InterestEffectiveExplanation_Text" xml:space="preserve">
+    <value>Převod nominální úrokové sazby na efektivní úrokovou sazbu.</value>
+  </data>
+  <data name="InterestEffectiveForm_Text" xml:space="preserve">
+    <value>Efektivní úrok</value>
+  </data>
+  <data name="InterestEffective_Text" xml:space="preserve">
+    <value>Efektivní úrok:</value>
+  </data>
+  <data name="InterestMonthDayExplanation_Text" xml:space="preserve">
+    <value>Spočítejte si fixní úrok za měsíc a den.</value>
+  </data>
+  <data name="InterestMonthDayForm_Text" xml:space="preserve">
+    <value>Úrok za měsíc a den</value>
+  </data>
+  <data name="InterestMonth_Text" xml:space="preserve">
+    <value>Měsíční úrok:</value>
+  </data>
+  <data name="InterestPayDiscountExplanation_Text" xml:space="preserve">
+    <value>Vypočítejte efektivní úrok pro slevu z platby.</value>
+  </data>
+  <data name="InterestPayDiscountForm_Text" xml:space="preserve">
+    <value>Sleva při platbě úroků</value>
+  </data>
+  <data name="InterestRate_Text" xml:space="preserve">
+    <value>Roční úrok:</value>
+  </data>
+  <data name="InterestTotal_Text" xml:space="preserve">
+    <value>Celkový zájem:</value>
+  </data>
+  <data name="InvestmentReturnExplanation_Text" xml:space="preserve">
+    <value>Návratnost investice v procentech za rok: zadejte částku nákupu (+ výši nákladů) a výši výnosu za rok.
+
+Výpočet výše investice: zadejte výši výnosu za rok a požadovaný výnos v procentech.</value>
+  </data>
+  <data name="InvestmentReturnForm_Text" xml:space="preserve">
+    <value>Návratnost investic</value>
+  </data>
+  <data name="Keyboard_Text" xml:space="preserve">
+    <value>Klávesnice:</value>
+  </data>
+  <data name="Language_Text" xml:space="preserve">
+    <value>Jazyk:</value>
+  </data>
+  <data name="LicenseAgreement_Text" xml:space="preserve">
+    <value>Souhlasíte s licenčními podmínkami?</value>
+  </data>
+  <data name="LicenseMit2_Text" xml:space="preserve">
+    <value>Software je poskytován „tak, jak je“, bez záruky jakéhokoli druhu, výslovné nebo předpokládané, včetně, ale bez omezení na záruky prodejnosti, vhodnosti pro konkrétní účel a neporušení práv. V žádném případě nenese autor a/nebo vydavatel odpovědnost za jakýkoli nárok, škody nebo jinou odpovědnost, ať už v případě smluvního jednání, deliktu nebo jinak, vyplývající z, z nebo v souvislosti se softwarem nebo používáním či jinými jednáními v software.</value>
+  </data>
+  <data name="LicenseTitle_Text" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="License_Text" xml:space="preserve">
+    <value>Tuto aplikaci lze volně používat pro nekomerční účely.
+Používejte tento program zcela na vlastní nebezpečí.</value>
+  </data>
+  <data name="Light_Text" xml:space="preserve">
+    <value>Světlo</value>
+  </data>
+  <data name="LoanAnnuity_Text" xml:space="preserve">
+    <value>Úvěrové anuity</value>
+  </data>
+  <data name="LoanDetailColumns_0_Text" xml:space="preserve">
+    <value>Doba</value>
+  </data>
+  <data name="LoanDetailColumns_1_Text" xml:space="preserve">
+    <value>Datum splatnosti</value>
+  </data>
+  <data name="LoanDetailColumns_2_Text" xml:space="preserve">
+    <value>Platit</value>
+  </data>
+  <data name="LoanDetailColumns_3_Text" xml:space="preserve">
+    <value>Kapitál</value>
+  </data>
+  <data name="LoanDetailColumns_4_Text" xml:space="preserve">
+    <value>Zájem</value>
+  </data>
+  <data name="LoanDetailColumns_5_Text" xml:space="preserve">
+    <value>Celkový zájem</value>
+  </data>
+  <data name="LoanDetailColumns_6_Text" xml:space="preserve">
+    <value>Zbývající kapitál</value>
+  </data>
+  <data name="LoanDetailDocTitleAnnuity_Text" xml:space="preserve">
+    <value>Tabulka amortizace anuitní úvěr</value>
+  </data>
+  <data name="LoanDetailDocTitleLinear_Text" xml:space="preserve">
+    <value>Amortizační tabulka lineární úvěr</value>
+  </data>
+  <data name="LoanDetailDocumentName_Text" xml:space="preserve">
+    <value>Finance-AmortizačníTabulka</value>
+  </data>
+  <data name="LoanDetailExplanation_Text" xml:space="preserve">
+    <value>Anuity nebo lineární úvěr s amortizační tabulkou.</value>
+  </data>
+  <data name="LoanDetailFirstLetterPeriod_Text" xml:space="preserve">
+    <value>d</value>
+  </data>
+  <data name="LoanDetailFirstLetterYear_Text" xml:space="preserve">
+    <value>r</value>
+  </data>
+  <data name="LoanDetailForm_Text" xml:space="preserve">
+    <value>Půjčka s tabulkou amortizace</value>
+  </data>
+  <data name="LoanLinear_Text" xml:space="preserve">
+    <value>Lineární půjčka</value>
+  </data>
+  <data name="Loantype_Text" xml:space="preserve">
+    <value>Typ půjčky:</value>
+  </data>
+  <data name="NameProgram_Text" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="No_Text" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="NumDec_Text" xml:space="preserve">
+    <value>Desetinná čísla pro čísla:</value>
+  </data>
+  <data name="Numeric_Text" xml:space="preserve">
+    <value>Numerický</value>
+  </data>
+  <data name="PageA4_Text" xml:space="preserve">
+    <value>A4</value>
+  </data>
+  <data name="PageFormat_Text" xml:space="preserve">
+    <value>Formát stránky:</value>
+  </data>
+  <data name="PageLetter_Text" xml:space="preserve">
+    <value>Letter</value>
+  </data>
+  <data name="PaymentDiscount_Text" xml:space="preserve">
+    <value>Sleva při platbě:</value>
+  </data>
+  <data name="PercDec_Text" xml:space="preserve">
+    <value>Desetinná místa pro procenta:</value>
+  </data>
+  <data name="PercentageReturnYear_Text" xml:space="preserve">
+    <value>Návratnost za rok:</value>
+  </data>
+  <data name="Percentage_Text" xml:space="preserve">
+    <value>Procento:</value>
+  </data>
+  <data name="PeriodsYear_Text" xml:space="preserve">
+    <value>Období za rok:</value>
+  </data>
+  <data name="Print_Text" xml:space="preserve">
+    <value>Tisk</value>
+  </data>
+  <data name="PrivacyPolicyTitle_Text" xml:space="preserve">
+    <value>Zásady ochrany osobních údajů:</value>
+  </data>
+  <data name="PrivacyPolicy_Text" xml:space="preserve">
+    <value>Žádné osobní a jiné údaje nejsou ukládány ani předávány mně a ostatním.</value>
+  </data>
+  <data name="Reset_Text" xml:space="preserve">
+    <value>Resetovat</value>
+  </data>
+  <data name="RoundNumberAwayFromZero_Text" xml:space="preserve">
+    <value>Aritmetický</value>
+  </data>
+  <data name="RoundNumberToEven_Text" xml:space="preserve">
+    <value>Na sudé číslo</value>
+  </data>
+  <data name="RoundNumber_Text" xml:space="preserve">
+    <value>Zaokrouhlení čísla:</value>
+  </data>
+  <data name="Save_Text" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="SettingsSaved_Text" xml:space="preserve">
+    <value>Některá změněná nastavení musí být uložena, aby je bylo možné použít.</value>
+  </data>
+  <data name="Settings_Text" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="ShareQuestion_Text" xml:space="preserve">
+    <value>Sdílet tento dokument?</value>
+  </data>
+  <data name="System_Text" xml:space="preserve">
+    <value>Systém</value>
+  </data>
+  <data name="Text_Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="ThemeSave_Text" xml:space="preserve">
+    <value>Motiv nebude použit, dokud nebude aplikace uzavřena.
+Zavřít nyní?</value>
+  </data>
+  <data name="ThemeTitle_Text" xml:space="preserve">
+    <value>Téma</value>
+  </data>
+  <data name="Theme_Text" xml:space="preserve">
+    <value>Téma:</value>
+  </data>
+  <data name="ToolTipDateFormat_Text" xml:space="preserve">
+    <value>Přepínejte mezi formátem data ISO a formátem systémového data</value>
+  </data>
+  <data name="ToolTipGoBack_Text" xml:space="preserve">
+    <value>Vraťte se</value>
+  </data>
+  <data name="ToolTipGoForward_Text" xml:space="preserve">
+    <value>Jdi dopředu</value>
+  </data>
+  <data name="ToolTipShare_Text" xml:space="preserve">
+    <value>Sdílejte nebo exportujte tabulku amortizace</value>
+  </data>
+  <data name="Value1_Text" xml:space="preserve">
+    <value>Hodnota 1:</value>
+  </data>
+  <data name="Value2_Text" xml:space="preserve">
+    <value>Hodnota 2:</value>
+  </data>
+  <data name="ValueDifference_Text" xml:space="preserve">
+    <value>Hodnotový rozdíl:</value>
+  </data>
+  <data name="ValuePercDifference_Text" xml:space="preserve">
+    <value>Procentuální rozdíl:</value>
+  </data>
+  <data name="ValuePercDiffValue1_Text" xml:space="preserve">
+    <value>Hodnota 1 = % hodnota 2:</value>
+  </data>
+  <data name="ValuePercDiffValue2_Text" xml:space="preserve">
+    <value>Hodnota 2 = % hodnota 1:</value>
+  </data>
+  <data name="VATAmountExclusive_Text" xml:space="preserve">
+    <value>Částka bez DPH:</value>
+  </data>
+  <data name="VATAmountIncluded_Text" xml:space="preserve">
+    <value>Částka včetně DPH:</value>
+  </data>
+  <data name="VATAmount_Text" xml:space="preserve">
+    <value>Částka DPH:</value>
+  </data>
+  <data name="VATCalculationExplanation_Text" xml:space="preserve">
+    <value>Vypočítat DPH: zadejte procento DPH a buď částku bez DPH, nebo částku včetně DPH.
+
+Výpočet procenta DPH: pro procento zadejte 0 a zadejte částku bez DPH a částku včetně DPH.</value>
+  </data>
+  <data name="VATCalculationForm_Text" xml:space="preserve">
+    <value>Výpočty DPH</value>
+  </data>
+  <data name="VATPercentage_Text" xml:space="preserve">
+    <value>Procento DPH:</value>
+  </data>
+  <data name="Version_Text" xml:space="preserve">
+    <value>Verze:</value>
+  </data>
+  <data name="WarningPageDimensions_Text" xml:space="preserve">
+    <value>Rozměry papíru jsou příliš malé!</value>
+  </data>
+  <data name="Website_Text" xml:space="preserve">
+    <value>Webová stránka</value>
+  </data>
+  <data name="Yes_Text" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+</root>

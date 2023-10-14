@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Agree_Text" xml:space="preserve">
+    <value>Zgadzać się</value>
+  </data>
+  <data name="AmountCost_Text" xml:space="preserve">
+    <value>Kwota kosztów:</value>
+  </data>
+  <data name="AmountDifference_Text" xml:space="preserve">
+    <value>Różnica kwotowa:</value>
+  </data>
+  <data name="AmountGrossOfNetExplanation_Text" xml:space="preserve">
+    <value>Oblicz kwotę brutto z kwoty netto i procentu.</value>
+  </data>
+  <data name="AmountGrossOfNetForm_Text" xml:space="preserve">
+    <value>Kwota brutto netto</value>
+  </data>
+  <data name="AmountGross_Text" xml:space="preserve">
+    <value>Kwota brutto:</value>
+  </data>
+  <data name="AmountNet_Text" xml:space="preserve">
+    <value>Kwota netto:</value>
+  </data>
+  <data name="AmountPeriod_Text" xml:space="preserve">
+    <value>Kwota na okres:</value>
+  </data>
+  <data name="AmountPurchase_Text" xml:space="preserve">
+    <value>Kwota zakupu:</value>
+  </data>
+  <data name="AmountRevenueYear_Text" xml:space="preserve">
+    <value>Przychód roczny:</value>
+  </data>
+  <data name="AmountTotal_Text" xml:space="preserve">
+    <value>Całkowita kwota:</value>
+  </data>
+  <data name="ButtonClose_Text" xml:space="preserve">
+    <value>Zamknąć</value>
+  </data>
+  <data name="ButtonShare_Text" xml:space="preserve">
+    <value>Udział</value>
+  </data>
+  <data name="Calculate_Text" xml:space="preserve">
+    <value>Oblicz</value>
+  </data>
+  <data name="CapitalFinal_Text" xml:space="preserve">
+    <value>Kapitał końcowy:</value>
+  </data>
+  <data name="CapitalInitial_Text" xml:space="preserve">
+    <value>Kapitał początkowy:</value>
+  </data>
+  <data name="CapitalInterest_Text" xml:space="preserve">
+    <value>Kapitał + odsetki:</value>
+  </data>
+  <data name="Clear_Text" xml:space="preserve">
+    <value>Usunąć</value>
+  </data>
+  <data name="CloseApplication_Text" xml:space="preserve">
+    <value>Proszę zamknąć aplikację.</value>
+  </data>
+  <data name="Contact_Text" xml:space="preserve">
+    <value>Kontakt:</value>
+  </data>
+  <data name="Copyright_Text" xml:space="preserve">
+    <value>Prawo autorskie</value>
+  </data>
+  <data name="CurrencyCode_Text" xml:space="preserve">
+    <value>Kod waluty:</value>
+  </data>
+  <data name="Dark_Text" xml:space="preserve">
+    <value>Ciemny</value>
+  </data>
+  <data name="Date1_Text" xml:space="preserve">
+    <value>Data 1:</value>
+  </data>
+  <data name="Date2_Text" xml:space="preserve">
+    <value>Data 2:</value>
+  </data>
+  <data name="DateDays_Text" xml:space="preserve">
+    <value>dni</value>
+  </data>
+  <data name="DateDay_Text" xml:space="preserve">
+    <value>dzień</value>
+  </data>
+  <data name="DateDifferenceDays_Text" xml:space="preserve">
+    <value>= dni:</value>
+  </data>
+  <data name="DateDifferenceHours_Text" xml:space="preserve">
+    <value>= godziny:</value>
+  </data>
+  <data name="DateDifferenceMinutes_Text" xml:space="preserve">
+    <value>= minuty:</value>
+  </data>
+  <data name="DateDifferenceMonths_Text" xml:space="preserve">
+    <value>= miesiące:</value>
+  </data>
+  <data name="DateDifferenceSeconds_Text" xml:space="preserve">
+    <value>= sekundy:</value>
+  </data>
+  <data name="DateDifferenceWeeks_Text" xml:space="preserve">
+    <value>= tygodnie:</value>
+  </data>
+  <data name="DateDifferenceYearMonthDay_Text" xml:space="preserve">
+    <value>Różnica dat w latach, miesiącach i dniach:</value>
+  </data>
+  <data name="DateFirstRepayment_Text" xml:space="preserve">
+    <value>Data pierwszej spłaty:</value>
+  </data>
+  <data name="DateFormat_Text" xml:space="preserve">
+    <value>Format daty:</value>
+  </data>
+  <data name="DateISO8601_Text" xml:space="preserve">
+    <value>ISO 8601</value>
+  </data>
+  <data name="DateMonths_Text" xml:space="preserve">
+    <value>miesiące</value>
+  </data>
+  <data name="DateMonth_Text" xml:space="preserve">
+    <value>miesiąc</value>
+  </data>
+  <data name="DateWeeks_Text" xml:space="preserve">
+    <value>tygodnie</value>
+  </data>
+  <data name="DateWeek_Text" xml:space="preserve">
+    <value>tydzień</value>
+  </data>
+  <data name="DateYears_Text" xml:space="preserve">
+    <value>lata</value>
+  </data>
+  <data name="DateYear_Text" xml:space="preserve">
+    <value>rok</value>
+  </data>
+  <data name="DayEndMonth_Text" xml:space="preserve">
+    <value>Miesiąc końcowy:</value>
+  </data>
+  <data name="Default_Text" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Description_Text" xml:space="preserve">
+    <value>Aplikacje finansowe</value>
+  </data>
+  <data name="Detail_Text" xml:space="preserve">
+    <value>Szczegół</value>
+  </data>
+  <data name="DifferenceDatesForm_Text" xml:space="preserve">
+    <value>Różnica między datami</value>
+  </data>
+  <data name="DifferenceExplanationDates_Text" xml:space="preserve">
+    <value>Oblicz różnicę między dwiema datami.</value>
+  </data>
+  <data name="DifferenceExplanationNumbers_Text" xml:space="preserve">
+    <value>Oblicz różnicę między dwiema liczbami.</value>
+  </data>
+  <data name="DifferenceNumbersForm_Text" xml:space="preserve">
+    <value>Różnica między liczbami</value>
+  </data>
+  <data name="Disagree_Text" xml:space="preserve">
+    <value>Nie zgadzać się</value>
+  </data>
+  <data name="DurationMonths_Text" xml:space="preserve">
+    <value>Czas trwania w miesiącach:</value>
+  </data>
+  <data name="DurationYears_Text" xml:space="preserve">
+    <value>Czas trwania w latach:</value>
+  </data>
+  <data name="EmailAddressQuestion_Text" xml:space="preserve">
+    <value>Adres e-mail?</value>
+  </data>
+  <data name="EmailBody_Text" xml:space="preserve">
+    <value>W załączeniu szczegóły pożyczki.</value>
+  </data>
+  <data name="EmailMessage_Text" xml:space="preserve">
+    <value>Poczta e-mail nie jest jeszcze w pełni obsługiwana w systemie Windows.
+Utworzony plik należy ręcznie dołączyć do wiadomości e-mail.</value>
+  </data>
+  <data name="EmailSendQuestion_Text" xml:space="preserve">
+    <value>Wysłać ten dokument na adres e-mail?</value>
+  </data>
+  <data name="EmailSubject_Text" xml:space="preserve">
+    <value>Finanse - Szczegóły pożyczki</value>
+  </data>
+  <data name="EmailTitle_Text" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Email_Text" xml:space="preserve">
+    <value>E-mail:</value>
+  </data>
+  <data name="ErrorTitle_Text" xml:space="preserve">
+    <value>Błąd</value>
+  </data>
+  <data name="ExpiryDaysWithDiscount_Text" xml:space="preserve">
+    <value>Dni wygaśnięcia ze zniżką:</value>
+  </data>
+  <data name="ExpiryDaysWithoutDiscount_Text" xml:space="preserve">
+    <value>Dni wygaśnięcia bez rabatu:</value>
+  </data>
+  <data name="ExportFile_Text" xml:space="preserve">
+    <value>Eksport</value>
+  </data>
+  <data name="FileOpenQuestion_Text" xml:space="preserve">
+    <value>Otworzyć ten dokument?</value>
+  </data>
+  <data name="FinanceAmountGrossOfNet_Text" xml:space="preserve">
+    <value>Kwota brutto netto</value>
+  </data>
+  <data name="FinanceDifferenceDates_Text" xml:space="preserve">
+    <value>Różnica między datami</value>
+  </data>
+  <data name="FinanceDifferenceNumbers_Text" xml:space="preserve">
+    <value>Różnica między liczbami</value>
+  </data>
+  <data name="FinanceForm_Text" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="FinanceInterestAnnual_Text" xml:space="preserve">
+    <value>Kwota początkowa odsetek rocznych</value>
+  </data>
+  <data name="FinanceInterestEffectiveBE_Text" xml:space="preserve">
+    <value>Efektywna kwota początkowa i końcowa odsetek</value>
+  </data>
+  <data name="FinanceInterestEffective_Text" xml:space="preserve">
+    <value>Efektywne zainteresowanie</value>
+  </data>
+  <data name="FinanceInterestMonthDay_Text" xml:space="preserve">
+    <value>Oprocentowanie miesięczne i dzienne</value>
+  </data>
+  <data name="FinanceInterestPayDiscount_Text" xml:space="preserve">
+    <value>Rabat na spłatę odsetek</value>
+  </data>
+  <data name="FinanceInvestmentReturn_Text" xml:space="preserve">
+    <value>Zwrot z inwestycji</value>
+  </data>
+  <data name="FinanceLoanDetail_Text" xml:space="preserve">
+    <value>Pożyczka z tabelą amortyzacji</value>
+  </data>
+  <data name="FinanceVATCalculation_Text" xml:space="preserve">
+    <value>Obliczenia podatku VAT</value>
+  </data>
+  <data name="InfoExplanation_Text" xml:space="preserve">
+    <value>Format daty można zmienić w ustawieniach na międzynarodowy standardowy format ISO 8601 (RRRR-MM-DD).
+
+Sposób zaokrąglania może prowadzić do odchyleń od wyniku końcowego (np. w przypadku ostatniej raty kredytów).
+Liczby są domyślnie zaokrąglane do najbliższego centa (arytmetycznie: 1-4 w dół i 5-9 w górę).
+Można zmienić na liczbę parzystą (zaokrąglenie bankiera) 1-4 w dół, 6-9 w górę i 5 na parzystą liczbę w dół, nieparzystą w górę.
+
+Do tłumaczenia tekstu użyto Tłumacza Google. Nie gwarantuje to, że wszystkie tłumaczenia są poprawne.
+Obsługiwane języki to: czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, węgierski, włoski, norweski, polski, portugalski, rumuński, hiszpański i szwedzki.
+
+Zawsze możesz skontaktować się ze mną w sprawie ewentualnych poprawek.</value>
+  </data>
+  <data name="Info_Text" xml:space="preserve">
+    <value>Informacje</value>
+  </data>
+  <data name="InterestAnnualExplanation_Text" xml:space="preserve">
+    <value>Oblicz odsetki w skali roku.
+
+Wprowadź kwotę początkową, okres w miesiącach oraz kwotę na okres lub kwotę końcową.</value>
+  </data>
+  <data name="InterestAnnualForm_Text" xml:space="preserve">
+    <value>Roczne odsetki</value>
+  </data>
+  <data name="InterestDay365_Text" xml:space="preserve">
+    <value>Odsetki dzienne (365 dni/rok):</value>
+  </data>
+  <data name="InterestDay366_Text" xml:space="preserve">
+    <value>Odsetki dzienne (366 dni/rok):</value>
+  </data>
+  <data name="InterestEffectiveBEExplanation_Text" xml:space="preserve">
+    <value>Efektywna stopa procentowa ze znaną kwotą początkową i końcową.</value>
+  </data>
+  <data name="InterestEffectiveBEForm_Text" xml:space="preserve">
+    <value>Odsetki z kwotą początkową i końcową</value>
+  </data>
+  <data name="InterestEffectiveExplanation_Text" xml:space="preserve">
+    <value>Przeliczenie nominalnej stopy procentowej na efektywną stopę procentową.</value>
+  </data>
+  <data name="InterestEffectiveForm_Text" xml:space="preserve">
+    <value>Efektywne zainteresowanie</value>
+  </data>
+  <data name="InterestEffective_Text" xml:space="preserve">
+    <value>Efektywne odsetki:</value>
+  </data>
+  <data name="InterestMonthDayExplanation_Text" xml:space="preserve">
+    <value>Oblicz stałe odsetki na miesiąc i na dzień.</value>
+  </data>
+  <data name="InterestMonthDayForm_Text" xml:space="preserve">
+    <value>Oprocentowanie miesięczne i dzienne</value>
+  </data>
+  <data name="InterestMonth_Text" xml:space="preserve">
+    <value>Oprocentowanie miesięczne:</value>
+  </data>
+  <data name="InterestPayDiscountExplanation_Text" xml:space="preserve">
+    <value>Oblicz efektywną stopę procentową rabatu płatniczego.</value>
+  </data>
+  <data name="InterestPayDiscountForm_Text" xml:space="preserve">
+    <value>Zniżka na spłatę odsetek</value>
+  </data>
+  <data name="InterestRate_Text" xml:space="preserve">
+    <value>Roczne odsetki:</value>
+  </data>
+  <data name="InterestTotal_Text" xml:space="preserve">
+    <value>Całkowite zainteresowanie:</value>
+  </data>
+  <data name="InvestmentReturnExplanation_Text" xml:space="preserve">
+    <value>Zwrot w procentach w skali roku z inwestycji: wprowadź kwotę zakupu (+ kwota kosztów) oraz kwotę przychodu w skali roku.
+
+Obliczanie kwoty inwestycji: wprowadź wielkość plonu w ciągu roku i żądany plon w procentach.</value>
+  </data>
+  <data name="InvestmentReturnForm_Text" xml:space="preserve">
+    <value>Zwrot z inwestycji</value>
+  </data>
+  <data name="Keyboard_Text" xml:space="preserve">
+    <value>Klawiatura:</value>
+  </data>
+  <data name="Language_Text" xml:space="preserve">
+    <value>Język:</value>
+  </data>
+  <data name="LicenseAgreement_Text" xml:space="preserve">
+    <value>Czy zgadzasz się z warunkami licencji?</value>
+  </data>
+  <data name="LicenseMit2_Text" xml:space="preserve">
+    <value>Oprogramowanie jest dostarczane „takie, jakie jest”, bez jakiejkolwiek gwarancji, wyraźnej lub dorozumianej, w tym między innymi gwarancji przydatności handlowej, przydatności do określonego celu i nienaruszalności. W żadnym wypadku autor i/lub wydawca nie będzie ponosić odpowiedzialności za jakiekolwiek roszczenia, szkody lub inne zobowiązania wynikające z umowy, czynu niedozwolonego lub w inny sposób, wynikające z lub w związku z oprogramowaniem lub użytkowaniem lub innymi działaniami w oprogramowanie.</value>
+  </data>
+  <data name="LicenseTitle_Text" xml:space="preserve">
+    <value>Licencja</value>
+  </data>
+  <data name="License_Text" xml:space="preserve">
+    <value>Z tej aplikacji można swobodnie korzystać w celach niekomercyjnych.
+Korzystaj z tego programu całkowicie na własne ryzyko.</value>
+  </data>
+  <data name="Light_Text" xml:space="preserve">
+    <value>Jasny</value>
+  </data>
+  <data name="LoanAnnuity_Text" xml:space="preserve">
+    <value>Renty pożyczki</value>
+  </data>
+  <data name="LoanDetailColumns_0_Text" xml:space="preserve">
+    <value>Okres</value>
+  </data>
+  <data name="LoanDetailColumns_1_Text" xml:space="preserve">
+    <value>Termin</value>
+  </data>
+  <data name="LoanDetailColumns_2_Text" xml:space="preserve">
+    <value>Płacić</value>
+  </data>
+  <data name="LoanDetailColumns_3_Text" xml:space="preserve">
+    <value>Kapitał</value>
+  </data>
+  <data name="LoanDetailColumns_4_Text" xml:space="preserve">
+    <value>Odsetki</value>
+  </data>
+  <data name="LoanDetailColumns_5_Text" xml:space="preserve">
+    <value>Całkowite zainteresowanie</value>
+  </data>
+  <data name="LoanDetailColumns_6_Text" xml:space="preserve">
+    <value>Pozostały kapitał</value>
+  </data>
+  <data name="LoanDetailDocTitleAnnuity_Text" xml:space="preserve">
+    <value>Pożyczka dożywotnia z tabelą amortyzacji</value>
+  </data>
+  <data name="LoanDetailDocTitleLinear_Text" xml:space="preserve">
+    <value>Pożyczka liniowa z tabelą amortyzacji</value>
+  </data>
+  <data name="LoanDetailDocumentName_Text" xml:space="preserve">
+    <value>Finance-TabelaAmortyzacji</value>
+  </data>
+  <data name="LoanDetailExplanation_Text" xml:space="preserve">
+    <value>Renty lub pożyczka liniowa z tabelą amortyzacji.</value>
+  </data>
+  <data name="LoanDetailFirstLetterPeriod_Text" xml:space="preserve">
+    <value>o</value>
+  </data>
+  <data name="LoanDetailFirstLetterYear_Text" xml:space="preserve">
+    <value>r</value>
+  </data>
+  <data name="LoanDetailForm_Text" xml:space="preserve">
+    <value>Pożyczka z tabelą amortyzacji</value>
+  </data>
+  <data name="LoanLinear_Text" xml:space="preserve">
+    <value>Pożyczka liniowa</value>
+  </data>
+  <data name="Loantype_Text" xml:space="preserve">
+    <value>Rodzaj pożyczki:</value>
+  </data>
+  <data name="NameProgram_Text" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="No_Text" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="NumDec_Text" xml:space="preserve">
+    <value>Ułamki dziesiętne dla liczb:</value>
+  </data>
+  <data name="Numeric_Text" xml:space="preserve">
+    <value>Numeryczne</value>
+  </data>
+  <data name="PageA4_Text" xml:space="preserve">
+    <value>A4</value>
+  </data>
+  <data name="PageFormat_Text" xml:space="preserve">
+    <value>Format strony:</value>
+  </data>
+  <data name="PageLetter_Text" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="PaymentDiscount_Text" xml:space="preserve">
+    <value>Zniżka na płatności:</value>
+  </data>
+  <data name="PercDec_Text" xml:space="preserve">
+    <value>Ułamki dziesiętne dla procentów:</value>
+  </data>
+  <data name="PercentageReturnYear_Text" xml:space="preserve">
+    <value>Zwrot rocznie:</value>
+  </data>
+  <data name="Percentage_Text" xml:space="preserve">
+    <value>Odsetek:</value>
+  </data>
+  <data name="PeriodsYear_Text" xml:space="preserve">
+    <value>Okresy w roku:</value>
+  </data>
+  <data name="Print_Text" xml:space="preserve">
+    <value>Wydrukować</value>
+  </data>
+  <data name="PrivacyPolicyTitle_Text" xml:space="preserve">
+    <value>Polityka prywatności:</value>
+  </data>
+  <data name="PrivacyPolicy_Text" xml:space="preserve">
+    <value>Żadne dane osobowe i inne nie są przechowywane ani przekazywane mnie i innym osobom.</value>
+  </data>
+  <data name="Reset_Text" xml:space="preserve">
+    <value>Resetowanie</value>
+  </data>
+  <data name="RoundNumberAwayFromZero_Text" xml:space="preserve">
+    <value>Arytmetyka</value>
+  </data>
+  <data name="RoundNumberToEven_Text" xml:space="preserve">
+    <value>Do liczby parzystej</value>
+  </data>
+  <data name="RoundNumber_Text" xml:space="preserve">
+    <value>Zaokrąglenie liczby:</value>
+  </data>
+  <data name="Save_Text" xml:space="preserve">
+    <value>Zapisywać</value>
+  </data>
+  <data name="SettingsSaved_Text" xml:space="preserve">
+    <value>Niektóre zmienione ustawienia muszą zostać zapisane, aby można je było zastosować.</value>
+  </data>
+  <data name="Settings_Text" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="ShareQuestion_Text" xml:space="preserve">
+    <value>Udostępnić ten dokument?</value>
+  </data>
+  <data name="System_Text" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Text_Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="ThemeSave_Text" xml:space="preserve">
+    <value>Motyw nie zostanie zastosowany, dopóki aplikacja nie zostanie zamknięta.
+Zamknij teraz?</value>
+  </data>
+  <data name="ThemeTitle_Text" xml:space="preserve">
+    <value>Temat</value>
+  </data>
+  <data name="Theme_Text" xml:space="preserve">
+    <value>Temat:</value>
+  </data>
+  <data name="ToolTipDateFormat_Text" xml:space="preserve">
+    <value>Przełączanie między formatem daty ISO a formatem daty systemowej</value>
+  </data>
+  <data name="ToolTipGoBack_Text" xml:space="preserve">
+    <value>Wróć</value>
+  </data>
+  <data name="ToolTipGoForward_Text" xml:space="preserve">
+    <value>Idź naprzód</value>
+  </data>
+  <data name="ToolTipShare_Text" xml:space="preserve">
+    <value>Udostępnij lub wyeksportuj tabelę amortyzacji</value>
+  </data>
+  <data name="Value1_Text" xml:space="preserve">
+    <value>Wartość 1:</value>
+  </data>
+  <data name="Value2_Text" xml:space="preserve">
+    <value>Wartość 2:</value>
+  </data>
+  <data name="ValueDifference_Text" xml:space="preserve">
+    <value>Różnica wartości:</value>
+  </data>
+  <data name="ValuePercDifference_Text" xml:space="preserve">
+    <value>Różnica procentowa:</value>
+  </data>
+  <data name="ValuePercDiffValue1_Text" xml:space="preserve">
+    <value>Wartość 1 = % wartość 2:</value>
+  </data>
+  <data name="ValuePercDiffValue2_Text" xml:space="preserve">
+    <value>Wartość 2 = % wartość 1:</value>
+  </data>
+  <data name="VATAmountExclusive_Text" xml:space="preserve">
+    <value>Kwota bez VAT:</value>
+  </data>
+  <data name="VATAmountIncluded_Text" xml:space="preserve">
+    <value>Kwota zawiera podatek VAT:</value>
+  </data>
+  <data name="VATAmount_Text" xml:space="preserve">
+    <value>Kwota podatku VAT:</value>
+  </data>
+  <data name="VATCalculationExplanation_Text" xml:space="preserve">
+    <value>Oblicz podatek VAT: wprowadź procent VAT oraz kwotę bez VAT lub kwotę z VAT.
+
+Oblicz procent VAT: wpisz 0 jako procent i wprowadź kwotę bez VAT oraz kwotę z VAT.</value>
+  </data>
+  <data name="VATCalculationForm_Text" xml:space="preserve">
+    <value>Obliczenia podatku VAT</value>
+  </data>
+  <data name="VATPercentage_Text" xml:space="preserve">
+    <value>Procent podatku VAT:</value>
+  </data>
+  <data name="Version_Text" xml:space="preserve">
+    <value>Wersja:</value>
+  </data>
+  <data name="WarningPageDimensions_Text" xml:space="preserve">
+    <value>Wymiary papieru za małe!</value>
+  </data>
+  <data name="Website_Text" xml:space="preserve">
+    <value>Strona internetowa</value>
+  </data>
+  <data name="Yes_Text" xml:space="preserve">
+    <value>Tak</value>
+  </data>
+</root>

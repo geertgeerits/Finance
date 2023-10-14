@@ -1,0 +1,26 @@
+Mohammed Ali Babu				Sameer Saini
+-----------------				------------
+Input:
+1999-2-3
+2000-12-1  
+Output: 1 Year(s), 9 month(s), 26 day(s)	1 y, 9 m, 28 days OK
+
+Input:
+1984-2-14 
+2008-8-20 
+Output: 24 Year(s), 6 month(s), 6 day(s)  
+
+Input: 
+1960-6-14 
+2008-7-14  
+Output: 48 Year(s), 1 month(s), 0 day(s) OK 	48 y, 0 m, 30 days
+
+Input: 
+1960-5-5 
+2008-7-13  
+Output: 48 Year(s), 2 month(s), 8 day(s)
+
+Intput:
+2011-01-06
+2011-03-05
+Output: 0 Years, 1 month, 30 days		0 y, 1 m, 27 days OK

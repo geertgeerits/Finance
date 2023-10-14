@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Agree_Text" xml:space="preserve">
+    <value>De acord</value>
+  </data>
+  <data name="AmountCost_Text" xml:space="preserve">
+    <value>Suma costului:</value>
+  </data>
+  <data name="AmountDifference_Text" xml:space="preserve">
+    <value>Diferența de sumă:</value>
+  </data>
+  <data name="AmountGrossOfNetExplanation_Text" xml:space="preserve">
+    <value>Calculați suma brută din suma netă și procent.</value>
+  </data>
+  <data name="AmountGrossOfNetForm_Text" xml:space="preserve">
+    <value>Suma brută din suma netă</value>
+  </data>
+  <data name="AmountGross_Text" xml:space="preserve">
+    <value>Suma bruta:</value>
+  </data>
+  <data name="AmountNet_Text" xml:space="preserve">
+    <value>Suma neta:</value>
+  </data>
+  <data name="AmountPeriod_Text" xml:space="preserve">
+    <value>Suma pe perioadă:</value>
+  </data>
+  <data name="AmountPurchase_Text" xml:space="preserve">
+    <value>Suma cumpărată:</value>
+  </data>
+  <data name="AmountRevenueYear_Text" xml:space="preserve">
+    <value>Venituri pe an:</value>
+  </data>
+  <data name="AmountTotal_Text" xml:space="preserve">
+    <value>Valoare totală:</value>
+  </data>
+  <data name="ButtonClose_Text" xml:space="preserve">
+    <value>Închide</value>
+  </data>
+  <data name="ButtonShare_Text" xml:space="preserve">
+    <value>Acțiune</value>
+  </data>
+  <data name="Calculate_Text" xml:space="preserve">
+    <value>Calculati</value>
+  </data>
+  <data name="CapitalFinal_Text" xml:space="preserve">
+    <value>Capital final:</value>
+  </data>
+  <data name="CapitalInitial_Text" xml:space="preserve">
+    <value>Capital inițial:</value>
+  </data>
+  <data name="CapitalInterest_Text" xml:space="preserve">
+    <value>Capital + dobândă:</value>
+  </data>
+  <data name="Clear_Text" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="CloseApplication_Text" xml:space="preserve">
+    <value>Vă rugăm să închideți aplicația.</value>
+  </data>
+  <data name="Contact_Text" xml:space="preserve">
+    <value>Contact:</value>
+  </data>
+  <data name="Copyright_Text" xml:space="preserve">
+    <value>Drepturi de autor</value>
+  </data>
+  <data name="CurrencyCode_Text" xml:space="preserve">
+    <value>Cod valutar:</value>
+  </data>
+  <data name="Dark_Text" xml:space="preserve">
+    <value>Întunecat</value>
+  </data>
+  <data name="Date1_Text" xml:space="preserve">
+    <value>Data 1:</value>
+  </data>
+  <data name="Date2_Text" xml:space="preserve">
+    <value>Data 2:</value>
+  </data>
+  <data name="DateDays_Text" xml:space="preserve">
+    <value>zile</value>
+  </data>
+  <data name="DateDay_Text" xml:space="preserve">
+    <value>zi</value>
+  </data>
+  <data name="DateDifferenceDays_Text" xml:space="preserve">
+    <value>= zile:</value>
+  </data>
+  <data name="DateDifferenceHours_Text" xml:space="preserve">
+    <value>= ore:</value>
+  </data>
+  <data name="DateDifferenceMinutes_Text" xml:space="preserve">
+    <value>= minute:</value>
+  </data>
+  <data name="DateDifferenceMonths_Text" xml:space="preserve">
+    <value>= luni:</value>
+  </data>
+  <data name="DateDifferenceSeconds_Text" xml:space="preserve">
+    <value>= secunde:</value>
+  </data>
+  <data name="DateDifferenceWeeks_Text" xml:space="preserve">
+    <value>= saptamani:</value>
+  </data>
+  <data name="DateDifferenceYearMonthDay_Text" xml:space="preserve">
+    <value>Diferența de date în ani, luni și zile:</value>
+  </data>
+  <data name="DateFirstRepayment_Text" xml:space="preserve">
+    <value>Data primei rambursări:</value>
+  </data>
+  <data name="DateFormat_Text" xml:space="preserve">
+    <value>Formatul datei:</value>
+  </data>
+  <data name="DateISO8601_Text" xml:space="preserve">
+    <value>ISO 8601</value>
+  </data>
+  <data name="DateMonths_Text" xml:space="preserve">
+    <value>luni</value>
+  </data>
+  <data name="DateMonth_Text" xml:space="preserve">
+    <value>lună</value>
+  </data>
+  <data name="DateWeeks_Text" xml:space="preserve">
+    <value>saptamani</value>
+  </data>
+  <data name="DateWeek_Text" xml:space="preserve">
+    <value>saptamana</value>
+  </data>
+  <data name="DateYears_Text" xml:space="preserve">
+    <value>ani</value>
+  </data>
+  <data name="DateYear_Text" xml:space="preserve">
+    <value>an</value>
+  </data>
+  <data name="DayEndMonth_Text" xml:space="preserve">
+    <value>Luna de sfârșit:</value>
+  </data>
+  <data name="Default_Text" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Description_Text" xml:space="preserve">
+    <value>Aplicatii financiare</value>
+  </data>
+  <data name="Detail_Text" xml:space="preserve">
+    <value>Detaliu</value>
+  </data>
+  <data name="DifferenceDatesForm_Text" xml:space="preserve">
+    <value>Diferența între date</value>
+  </data>
+  <data name="DifferenceExplanationDates_Text" xml:space="preserve">
+    <value>Calculați diferența dintre două date.</value>
+  </data>
+  <data name="DifferenceExplanationNumbers_Text" xml:space="preserve">
+    <value>Calculați diferența dintre două numere.</value>
+  </data>
+  <data name="DifferenceNumbersForm_Text" xml:space="preserve">
+    <value>Diferența dintre numere</value>
+  </data>
+  <data name="Disagree_Text" xml:space="preserve">
+    <value>Dezacord</value>
+  </data>
+  <data name="DurationMonths_Text" xml:space="preserve">
+    <value>Durata in luni:</value>
+  </data>
+  <data name="DurationYears_Text" xml:space="preserve">
+    <value>Durata in ani:</value>
+  </data>
+  <data name="EmailAddressQuestion_Text" xml:space="preserve">
+    <value>Adresa de e-mail?</value>
+  </data>
+  <data name="EmailBody_Text" xml:space="preserve">
+    <value>Se atașează detaliul împrumutului.</value>
+  </data>
+  <data name="EmailMessage_Text" xml:space="preserve">
+    <value>E-mailul nu este încă pe deplin acceptat în Windows.
+Fișierul creat trebuie atașat manual la e-mail.</value>
+  </data>
+  <data name="EmailSendQuestion_Text" xml:space="preserve">
+    <value>Trimiți acest document la o adresă de e-mail?</value>
+  </data>
+  <data name="EmailSubject_Text" xml:space="preserve">
+    <value>Finanțe - Detaliul împrumutului</value>
+  </data>
+  <data name="EmailTitle_Text" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Email_Text" xml:space="preserve">
+    <value>E-mail:</value>
+  </data>
+  <data name="ErrorTitle_Text" xml:space="preserve">
+    <value>Eroare</value>
+  </data>
+  <data name="ExpiryDaysWithDiscount_Text" xml:space="preserve">
+    <value>Zile de expirare cu reducere:</value>
+  </data>
+  <data name="ExpiryDaysWithoutDiscount_Text" xml:space="preserve">
+    <value>Zile de expirare fără reducere:</value>
+  </data>
+  <data name="ExportFile_Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="FileOpenQuestion_Text" xml:space="preserve">
+    <value>Deschide acest document?</value>
+  </data>
+  <data name="FinanceAmountGrossOfNet_Text" xml:space="preserve">
+    <value>Suma brută din suma netă</value>
+  </data>
+  <data name="FinanceDifferenceDates_Text" xml:space="preserve">
+    <value>Diferența între date</value>
+  </data>
+  <data name="FinanceDifferenceNumbers_Text" xml:space="preserve">
+    <value>Diferența dintre numere</value>
+  </data>
+  <data name="FinanceForm_Text" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="FinanceInterestAnnual_Text" xml:space="preserve">
+    <value>Suma de pornire a dobânzii anuale</value>
+  </data>
+  <data name="FinanceInterestEffectiveBE_Text" xml:space="preserve">
+    <value>Suma efectivă de început și de sfârșit a dobânzii</value>
+  </data>
+  <data name="FinanceInterestEffective_Text" xml:space="preserve">
+    <value>Dobândă efectivă</value>
+  </data>
+  <data name="FinanceInterestMonthDay_Text" xml:space="preserve">
+    <value>Dobândă pe lună și pe zi</value>
+  </data>
+  <data name="FinanceInterestPayDiscount_Text" xml:space="preserve">
+    <value>Reducere la plata dobânzii</value>
+  </data>
+  <data name="FinanceInvestmentReturn_Text" xml:space="preserve">
+    <value>Randamentul investițiilor</value>
+  </data>
+  <data name="FinanceLoanDetail_Text" xml:space="preserve">
+    <value>Credit cu tabel de amortizare</value>
+  </data>
+  <data name="FinanceVATCalculation_Text" xml:space="preserve">
+    <value>Calcule TVA</value>
+  </data>
+  <data name="InfoExplanation_Text" xml:space="preserve">
+    <value>Formatul datei poate fi schimbat în setări la formatul standard internațional ISO 8601 (AAAA-LL-ZZ).
+
+Metoda de rotunjire poate duce la abateri de la rezultatul final (de exemplu în ultima tranșă de împrumuturi).
+Numerele sunt rotunjite la cel mai apropiat cent în mod implicit (aritmetică: 1-4 în jos și 5-9 în sus).
+Poate fi schimbat la număr par (rotunjirea bancherului) 1-4 în jos, 6-9 în sus și 5 la numărul par în jos, numărul impar în sus.
+
+Google Translate a fost folosit pentru traducerea textului. Aceasta nu este o garanție că toate traducerile sunt corecte.
+Limbile suportate sunt: cehă, daneză, olandeză, engleză, finlandeză, franceză, germană, maghiară, italiană, norvegiană, poloneză, portugheză, română, spaniolă și suedeză.
+
+Mă puteți contacta oricând pentru orice corecturi.</value>
+  </data>
+  <data name="Info_Text" xml:space="preserve">
+    <value>Informație</value>
+  </data>
+  <data name="InterestAnnualExplanation_Text" xml:space="preserve">
+    <value>Calculați dobânda pe an.
+
+Introduceți suma de pornire, termenul în luni și fie suma pe termen, fie suma finală.</value>
+  </data>
+  <data name="InterestAnnualForm_Text" xml:space="preserve">
+    <value>Dobândă anuală</value>
+  </data>
+  <data name="InterestDay365_Text" xml:space="preserve">
+    <value>Dobândă zilnică (365 zile/an):</value>
+  </data>
+  <data name="InterestDay366_Text" xml:space="preserve">
+    <value>Dobândă zilnică (366 zile/an):</value>
+  </data>
+  <data name="InterestEffectiveBEExplanation_Text" xml:space="preserve">
+    <value>Rata efectivă a dobânzii cu o sumă de început și finală cunoscută.</value>
+  </data>
+  <data name="InterestEffectiveBEForm_Text" xml:space="preserve">
+    <value>Dobândă cu suma de început și finală</value>
+  </data>
+  <data name="InterestEffectiveExplanation_Text" xml:space="preserve">
+    <value>Conversia ratei dobânzii nominale în rata efectivă a dobânzii.</value>
+  </data>
+  <data name="InterestEffectiveForm_Text" xml:space="preserve">
+    <value>Dobândă efectivă</value>
+  </data>
+  <data name="InterestEffective_Text" xml:space="preserve">
+    <value>Dobândă efectivă:</value>
+  </data>
+  <data name="InterestMonthDayExplanation_Text" xml:space="preserve">
+    <value>Calculați dobânda fixă pe lună și pe zi.</value>
+  </data>
+  <data name="InterestMonthDayForm_Text" xml:space="preserve">
+    <value>Dobândă pe lună și pe zi</value>
+  </data>
+  <data name="InterestMonth_Text" xml:space="preserve">
+    <value>Dobanda lunara:</value>
+  </data>
+  <data name="InterestPayDiscountExplanation_Text" xml:space="preserve">
+    <value>Calculați dobânda efectivă pentru o reducere de plată.</value>
+  </data>
+  <data name="InterestPayDiscountForm_Text" xml:space="preserve">
+    <value>Reducere la plata dobânzii</value>
+  </data>
+  <data name="InterestRate_Text" xml:space="preserve">
+    <value>Dobândă anuală:</value>
+  </data>
+  <data name="InterestTotal_Text" xml:space="preserve">
+    <value>Dobanda totala:</value>
+  </data>
+  <data name="InvestmentReturnExplanation_Text" xml:space="preserve">
+    <value>Rentabilitatea în procente pe an a investiției: introduceți suma achiziției (+ suma costurilor) și suma veniturilor pe an.
+
+Calcularea sumei investiției: introduceți cantitatea de randament pe an și randamentul dorit în procente.</value>
+  </data>
+  <data name="InvestmentReturnForm_Text" xml:space="preserve">
+    <value>Randamentul investițiilor</value>
+  </data>
+  <data name="Keyboard_Text" xml:space="preserve">
+    <value>Tastatură:</value>
+  </data>
+  <data name="Language_Text" xml:space="preserve">
+    <value>Limba:</value>
+  </data>
+  <data name="LicenseAgreement_Text" xml:space="preserve">
+    <value>Sunteți de acord cu condițiile de licență?</value>
+  </data>
+  <data name="LicenseMit2_Text" xml:space="preserve">
+    <value>Software-ul este furnizat „ca atare”, fără garanții de niciun fel, exprese sau implicite, incluzând, dar fără a se limita la garanțiile de vandabilitate, adecvare pentru un anumit scop și neîncălcare. În niciun caz, autorul și/sau editorul nu vor fi răspunzători pentru orice pretenție, daune sau altă răspundere, indiferent dacă este vorba despre o acțiune contractuală, delictuală sau de altă natură, care decurg din, din sau în legătură cu software-ul sau utilizarea sau alte tranzacții în software-ul.</value>
+  </data>
+  <data name="LicenseTitle_Text" xml:space="preserve">
+    <value>Licență</value>
+  </data>
+  <data name="License_Text" xml:space="preserve">
+    <value>Această aplicație poate fi folosită gratuit în scopuri necomerciale.
+Utilizați acest program în întregime pe propriul risc.</value>
+  </data>
+  <data name="Light_Text" xml:space="preserve">
+    <value>Ușoară</value>
+  </data>
+  <data name="LoanAnnuity_Text" xml:space="preserve">
+    <value>Anuități de împrumut</value>
+  </data>
+  <data name="LoanDetailColumns_0_Text" xml:space="preserve">
+    <value>Perioadă</value>
+  </data>
+  <data name="LoanDetailColumns_1_Text" xml:space="preserve">
+    <value>Data scadenței</value>
+  </data>
+  <data name="LoanDetailColumns_2_Text" xml:space="preserve">
+    <value>A plăti</value>
+  </data>
+  <data name="LoanDetailColumns_3_Text" xml:space="preserve">
+    <value>Capital</value>
+  </data>
+  <data name="LoanDetailColumns_4_Text" xml:space="preserve">
+    <value>Dobândă</value>
+  </data>
+  <data name="LoanDetailColumns_5_Text" xml:space="preserve">
+    <value>Dobanda totala</value>
+  </data>
+  <data name="LoanDetailColumns_6_Text" xml:space="preserve">
+    <value>Capitalul rămas</value>
+  </data>
+  <data name="LoanDetailDocTitleAnnuity_Text" xml:space="preserve">
+    <value>Tabel de amortizare împrumut anuitate</value>
+  </data>
+  <data name="LoanDetailDocTitleLinear_Text" xml:space="preserve">
+    <value>Tabel de amortizare împrumut liniar</value>
+  </data>
+  <data name="LoanDetailDocumentName_Text" xml:space="preserve">
+    <value>Finance-TabelDeAmortizare</value>
+  </data>
+  <data name="LoanDetailExplanation_Text" xml:space="preserve">
+    <value>Anuități sau împrumut liniar cu tabel de amortizare.</value>
+  </data>
+  <data name="LoanDetailFirstLetterPeriod_Text" xml:space="preserve">
+    <value>p</value>
+  </data>
+  <data name="LoanDetailFirstLetterYear_Text" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="LoanDetailForm_Text" xml:space="preserve">
+    <value>Credit cu tabel de amortizare</value>
+  </data>
+  <data name="LoanLinear_Text" xml:space="preserve">
+    <value>Împrumut liniar</value>
+  </data>
+  <data name="Loantype_Text" xml:space="preserve">
+    <value>Tipul creditului:</value>
+  </data>
+  <data name="NameProgram_Text" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="No_Text" xml:space="preserve">
+    <value>Nu</value>
+  </data>
+  <data name="NumDec_Text" xml:space="preserve">
+    <value>Decimale pentru numere:</value>
+  </data>
+  <data name="Numeric_Text" xml:space="preserve">
+    <value>Numeric</value>
+  </data>
+  <data name="PageA4_Text" xml:space="preserve">
+    <value>A4</value>
+  </data>
+  <data name="PageFormat_Text" xml:space="preserve">
+    <value>Formatul paginii:</value>
+  </data>
+  <data name="PageLetter_Text" xml:space="preserve">
+    <value>Letter</value>
+  </data>
+  <data name="PaymentDiscount_Text" xml:space="preserve">
+    <value>Reducere de plată:</value>
+  </data>
+  <data name="PercDec_Text" xml:space="preserve">
+    <value>Decimale pentru procente:</value>
+  </data>
+  <data name="PercentageReturnYear_Text" xml:space="preserve">
+    <value>Retur pe an:</value>
+  </data>
+  <data name="Percentage_Text" xml:space="preserve">
+    <value>Procent:</value>
+  </data>
+  <data name="PeriodsYear_Text" xml:space="preserve">
+    <value>Perioade pe an:</value>
+  </data>
+  <data name="Print_Text" xml:space="preserve">
+    <value>Imprimare</value>
+  </data>
+  <data name="PrivacyPolicyTitle_Text" xml:space="preserve">
+    <value>Politica de confidențialitate:</value>
+  </data>
+  <data name="PrivacyPolicy_Text" xml:space="preserve">
+    <value>Nicio dată cu caracter personal sau de altă natură nu este stocată sau transmisă mie și altora.</value>
+  </data>
+  <data name="Reset_Text" xml:space="preserve">
+    <value>Resetați</value>
+  </data>
+  <data name="RoundNumberAwayFromZero_Text" xml:space="preserve">
+    <value>Aritmetic</value>
+  </data>
+  <data name="RoundNumberToEven_Text" xml:space="preserve">
+    <value>La număr par</value>
+  </data>
+  <data name="RoundNumber_Text" xml:space="preserve">
+    <value>Rotunjirea numărului:</value>
+  </data>
+  <data name="Save_Text" xml:space="preserve">
+    <value>Salvați</value>
+  </data>
+  <data name="SettingsSaved_Text" xml:space="preserve">
+    <value>Unele setări modificate trebuie salvate pentru a le aplica.</value>
+  </data>
+  <data name="Settings_Text" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+  <data name="ShareQuestion_Text" xml:space="preserve">
+    <value>Partajați acest document?</value>
+  </data>
+  <data name="System_Text" xml:space="preserve">
+    <value>Sistem</value>
+  </data>
+  <data name="Text_Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="ThemeSave_Text" xml:space="preserve">
+    <value>Tema nu va fi aplicată până când aplicația nu este închisă.
+Închis acum?</value>
+  </data>
+  <data name="ThemeTitle_Text" xml:space="preserve">
+    <value>Temă</value>
+  </data>
+  <data name="Theme_Text" xml:space="preserve">
+    <value>Temă:</value>
+  </data>
+  <data name="ToolTipDateFormat_Text" xml:space="preserve">
+    <value>Comutați între formatul de dată ISO și formatul de dată de sistem</value>
+  </data>
+  <data name="ToolTipGoBack_Text" xml:space="preserve">
+    <value>Întoarce-te</value>
+  </data>
+  <data name="ToolTipGoForward_Text" xml:space="preserve">
+    <value>Mergi inainte</value>
+  </data>
+  <data name="ToolTipShare_Text" xml:space="preserve">
+    <value>Distribuiți sau exportați tabelul de amortizare</value>
+  </data>
+  <data name="Value1_Text" xml:space="preserve">
+    <value>Valoarea 1:</value>
+  </data>
+  <data name="Value2_Text" xml:space="preserve">
+    <value>Valoarea 2:</value>
+  </data>
+  <data name="ValueDifference_Text" xml:space="preserve">
+    <value>Diferența de valoare:</value>
+  </data>
+  <data name="ValuePercDifference_Text" xml:space="preserve">
+    <value>Diferența procentuală:</value>
+  </data>
+  <data name="ValuePercDiffValue1_Text" xml:space="preserve">
+    <value>Valoarea 1 = % valoarea 2:</value>
+  </data>
+  <data name="ValuePercDiffValue2_Text" xml:space="preserve">
+    <value>Valoarea 2 = % valoarea 1:</value>
+  </data>
+  <data name="VATAmountExclusive_Text" xml:space="preserve">
+    <value>Suma fara TVA:</value>
+  </data>
+  <data name="VATAmountIncluded_Text" xml:space="preserve">
+    <value>Suma TVA inclusa:</value>
+  </data>
+  <data name="VATAmount_Text" xml:space="preserve">
+    <value>Suma TVA:</value>
+  </data>
+  <data name="VATCalculationExplanation_Text" xml:space="preserve">
+    <value>Calculați TVA: introduceți procentul de TVA și fie suma fără TVA, fie suma cu TVA.
+
+Calculați procentul de TVA: introduceți 0 pentru procent și introduceți suma fără TVA și suma cu TVA.</value>
+  </data>
+  <data name="VATCalculationForm_Text" xml:space="preserve">
+    <value>Calcule TVA</value>
+  </data>
+  <data name="VATPercentage_Text" xml:space="preserve">
+    <value>Procent TVA:</value>
+  </data>
+  <data name="Version_Text" xml:space="preserve">
+    <value>Versiune:</value>
+  </data>
+  <data name="WarningPageDimensions_Text" xml:space="preserve">
+    <value>Dimensiunile hârtiei sunt prea mici!</value>
+  </data>
+  <data name="Website_Text" xml:space="preserve">
+    <value>Site-ul web</value>
+  </data>
+  <data name="Yes_Text" xml:space="preserve">
+    <value>Da</value>
+  </data>
+</root>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Finance.Resources.Languages"
+             xmlns:local="clr-namespace:Finance"
+             x:Class="Finance.PageInterestEffective"
+             Loaded="OnPageLoaded">
+
+    <NavigationPage.TitleView>
+        <Label
+            Style="{StaticResource labelStyleTitleView}"
+            Text="{x:Static resx:FinLang.InterestEffectiveForm_Text}">
+        </Label>
+    </NavigationPage.TitleView>
+    
+    <ScrollView>
+        <StackLayout>
+            <Grid
+                Style="{StaticResource gridStyleMenuItems}"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3">
+                </BoxView>
+            
+                <Label
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Text="{x:Static resx:FinLang.InterestEffectiveExplanation_Text}">
+                </Label>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0" 
+                    Text="{x:Static resx:FinLang.InterestRate_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdInterestRate"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entInterestRate"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text=""
+                        Placeholder="0 - 100"
+                        MaxLength="10"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdInterestRate"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStylePercent}"
+                    Grid.Row="1"
+                    Grid.Column="2">
+                </Label>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.PeriodsYear_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdPeriodsYear"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entPeriodsYear"
+                        Style="{StaticResource entryStyleNumericDone}"
+                        Text="12"
+                        Placeholder="1 - 12"
+                        MaxLength="2"
+                        Completed="CalculateResult"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="1" MaxValue="12" BorderName="brdPeriodsYear"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.InterestEffective_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtInterestEffective"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStylePercent}"
+                    Grid.Row="3"
+                    Grid.Column="2">
+                </Label>
+
+                <Button
+                    Style="{StaticResource buttonStyleCalculate}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.Calculate_Text}"
+                    ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
+                    Clicked="CalculateResult">
+                </Button>
+
+                <Button
+                    x:Name="btnReset"
+                    Style="{StaticResource buttonStyleReset}"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Text="{x:Static resx:FinLang.Reset_Text}"
+                    ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                    Clicked="ResetEntryFields">
+                </Button>
+            
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

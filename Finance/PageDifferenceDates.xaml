@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="Finance.PageDifferenceDates"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Finance.Resources.Languages">
+
+    <NavigationPage.TitleView>
+        <Label
+            Style="{StaticResource labelStyleTitleView}"
+            Text="{x:Static resx:FinLang.DifferenceDatesForm_Text}">
+        </Label>
+    </NavigationPage.TitleView>
+    
+    <ScrollView>
+        <StackLayout>
+               <Grid
+                   Style="{StaticResource gridStyleMenuItems2}"
+                   RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                </BoxView>
+
+                <Label
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="{x:Static resx:FinLang.DifferenceExplanationDates_Text}">
+                </Label>
+            
+                <Label
+                    x:Name="lblDate1"
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.Date1_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="1">
+
+                    <DatePicker
+                        x:Name="dtpDate1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        Date="{Binding SelectedDate}"
+                        DateSelected="CalculateResult">
+                    </DatePicker>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.Date2_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1">
+
+                    <DatePicker
+                        x:Name="dtpDate2"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        Date="{Binding SelectedDate}"
+                        DateSelected="CalculateResult">
+                    </DatePicker>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    VerticalOptions="End"
+                    Text="{x:Static resx:FinLang.DateDifferenceYearMonthDay_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+
+                    <Label
+                        x:Name="txtDateDifferenceYearMonthDay"
+                        Style="{StaticResource labelStyleResultDate}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.DateDifferenceMonths_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtDateDifferenceMonths"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.DateDifferenceWeeks_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtDateDifferenceWeeks"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.DateDifferenceDays_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="7"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtDateDifferenceDays"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.DateDifferenceHours_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="8"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtDateDifferenceHours"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="9"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.DateDifferenceMinutes_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="9"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtDateDifferenceMinutes"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="10"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.DateDifferenceSeconds_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="10"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtDateDifferenceSeconds"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+
+                <Button
+                    x:Name="btnReset"
+                    Style="{StaticResource buttonStyleReset}"
+                    Grid.Row="11"
+                    Grid.Column="1"
+                    Text="{x:Static resx:FinLang.Reset_Text}"
+                    ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                    Clicked="ResetEntryFields">
+                </Button>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

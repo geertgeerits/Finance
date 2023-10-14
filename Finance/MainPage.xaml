@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Finance"
+             x:Class="Finance.MainPage"
+             NavigationPage.HasBackButton="False"
+             Loaded="OnPageLoad"
+             Appearing="OnPageAppearing">
+
+    <NavigationPage.TitleView>
+        <Grid RowDefinitions="40"
+              ColumnDefinitions="60, 230*, 50"
+              Margin="5"
+              BackgroundColor="#75F94D">
+
+            <ImageButton
+                x:Name="imgbtnAbout"
+                Grid.Row="0"
+                Grid.Column="0"
+                Source="info_32p.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                HeightRequest="32"
+                WidthRequest="32"
+                ToolTipProperties.Text="{local:Translate Info_Text}"
+                Clicked="OnPageAboutClicked">
+            </ImageButton>
+
+            <Label
+                x:Name="lblTitle"
+                Style="{StaticResource labelStyleTitleView}"
+                Grid.Row="0"
+                Grid.Column="1"
+                FontSize="20"
+                Text="Finance">
+            </Label>
+
+            <ImageButton
+                x:Name="imgbtnSettings"
+                Grid.Row="0"
+                Grid.Column="2"
+                Source="settings_32p.png"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="32"
+                WidthRequest="32"
+                ToolTipProperties.Text="{local:Translate Settings_Text}"
+                Clicked="OnPageSettingsClicked">
+            </ImageButton>
+        </Grid>
+    </NavigationPage.TitleView>
+    
+    <ScrollView>
+        <StackLayout>
+            <Grid
+                Style="{StaticResource gridStyleMainMenu}"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+
+                <Button
+                    x:Name="btnInterestEffective"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="{local:Translate FinanceInterestEffective_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceInterestEffective_Text}"
+                    Clicked="OnPageInterestEffectiveClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnInterestEffectiveBE"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="{local:Translate FinanceInterestEffectiveBE_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceInterestEffectiveBE_Text}"
+                    Clicked="OnPageInterestEffectiveBEClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnInterestAnnual"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Text="{local:Translate FinanceInterestAnnual_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceInterestAnnual_Text}"
+                    Clicked="OnPageInterestAnnualClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnInterestMonthDay"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Text="{local:Translate FinanceInterestMonthDay_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceInterestMonthDay_Text}"
+                    Clicked="OnPageInterestMonthDayClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnInterestPayDiscount"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    Text="{local:Translate FinanceInterestPayDiscount_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceInterestPayDiscount_Text}"
+                    Clicked="OnPageInterestPayDiscountClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnLoanDetail"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="5"
+                    Text="{local:Translate FinanceLoanDetail_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceLoanDetail_Text}"
+                    Clicked="OnPageLoanDetailClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnVATCalculation"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="6"
+                    Text="{local:Translate FinanceVATCalculation_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceVATCalculation_Text}"
+                    Clicked="OnPageVATCalculationClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnAmountGrossOfNet"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="7"
+                    Text="{local:Translate FinanceAmountGrossOfNet_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceAmountGrossOfNet_Text}"
+                    Clicked="OnPageAmountGrossOfNetClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnInvestmentReturn"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="8"
+                    Text="{local:Translate FinanceInvestmentReturn_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceInvestmentReturn_Text}"
+                    Clicked="OnPageInvestmentReturnClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnDifferenceNumbers"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="9"
+                    Text="{local:Translate FinanceDifferenceNumbers_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceDifferenceNumbers_Text}"
+                    Clicked="OnPageDifferenceNumbersClicked">
+                </Button>
+
+                <Button
+                    x:Name="btnDifferenceDates"
+                    Style="{StaticResource buttonStyleMenu}"
+                    Grid.Column="0"
+                    Grid.Row="10"
+                    Text="{local:Translate FinanceDifferenceDates_Text}"
+                    ToolTipProperties.Text="{local:Translate FinanceDifferenceDates_Text}"
+                    Clicked="OnPageDifferenceDatesClicked">
+                </Button>
+            </Grid>
+
+            <Image
+                Source="finance_v3_128p.png"
+                HeightRequest="80"
+                WidthRequest="80"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Image>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

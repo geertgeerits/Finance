@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Finance.Resources.Languages"
+             x:Class="Finance.PageLoanDetailHtml">
+
+    <NavigationPage.TitleView>
+        <Grid
+            RowDefinitions="50"
+            ColumnDefinitions="250*"
+            Margin="5"
+            BackgroundColor="#75F94D">
+
+            <Label
+                Style="{StaticResource labelStyleTitleView}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.LoanDetailForm_Text}">
+            </Label>
+        </Grid>
+    </NavigationPage.TitleView>
+
+    <WebView
+        x:Name="wvWebpage"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+    </WebView>
+
+</ContentPage>

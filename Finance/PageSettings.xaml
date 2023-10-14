@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Finance"
+             x:Class="Finance.PageSettings">
+
+    <NavigationPage.TitleView>
+        <Label
+            Style="{StaticResource labelStyleTitleView}"
+            Text="{local:Translate Settings_Text}">
+        </Label>
+    </NavigationPage.TitleView>
+
+    <Grid
+        RowDefinitions="Auto, *, Auto"
+        HorizontalOptions="Center"
+        Margin="5">
+
+        <ScrollView
+            Grid.Row="1"
+            Grid.Column="0"
+            VerticalOptions="FillAndExpand"
+            Orientation="Vertical">
+
+            <Grid
+                Style="{StaticResource gridStyleSettings}"
+                RowDefinitions="Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, Auto, 4, Auto">
+
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                </BoxView>
+                
+                <Label
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="{local:Translate SettingsSaved_Text}">
+                </Label>
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    VerticalTextAlignment="Center"
+                    Text="{local:Translate Language_Text}">
+                </Label>
+                
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1">
+
+                    <Picker
+                        x:Name="pckLanguage"
+                        VerticalOptions="Center"
+                        MinimumWidthRequest="160"
+                        VerticalTextAlignment="Center"
+                        SelectedIndexChanged="OnPickerLanguageChanged"
+                        IsEnabled="True">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Čeština</x:String>
+                                <x:String>Dansk</x:String>
+                                <x:String>Deutsch</x:String>
+                                <x:String>English</x:String>
+                                <x:String>Español</x:String>
+                                <x:String>Français</x:String>
+                                <x:String>Italiano</x:String>
+                                <x:String>Magyar</x:String>
+                                <x:String>Nederlands</x:String>
+                                <x:String>Norsk</x:String>
+                                <x:String>Polski</x:String>
+                                <x:String>Português</x:String>
+                                <x:String>Română</x:String>
+                                <x:String>Suomi</x:String>
+                                <x:String>Svenska</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="{local:Translate Theme_Text}">
+                </Label>
+            
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="1">
+
+                    <Picker
+                        x:Name="pckTheme"
+                        VerticalOptions="Center"
+                        MinimumWidthRequest="160"
+                        VerticalTextAlignment="Center"
+                        SelectedIndexChanged="OnPickerThemeChanged">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>System</x:String>
+                                <x:String>Light</x:String>
+                                <x:String>Dark</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Text="{local:Translate NumDec_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdNumDec"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="6"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entNumDec"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text="2"
+                        Placeholder="0 - 4"
+                        MaxLength="1"
+                        Completed="VerifyNumberDecimals"
+                        Focused="EntryFocused"
+                        TextChanged="VerifyNumberDecimals">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4" BorderName="brdNumDec"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    Text="{local:Translate PercDec_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdPercDec"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="8"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entPercDec"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text="2"
+                        Placeholder="0 - 8"
+                        MaxLength="1"
+                        Completed="VerifyPercentageDecimals"
+                        Focused="EntryFocused"
+                        TextChanged="VerifyPercentageDecimals">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="8" BorderName="brdPercDec"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="10"
+                    Grid.Column="0"
+                    Text="{local:Translate DateFormat_Text}">
+                </Label>
+            
+                <RadioButton
+                    x:Name="rbnDateFormatSystem"
+                    Grid.Row="10"
+                    Grid.Column="1"
+                    GroupName="rbgDateFormat"
+                    Value="rbnDateFormatSystem"
+                    Content="{local:Translate System_Text}"
+                    CheckedChanged="OnDateFormatRadioButtonCheckedChanged">
+                </RadioButton>
+                
+                <RadioButton
+                    x:Name="rbnDateFormatISO8601"
+                    Grid.Row="11"
+                    Grid.Column="1"
+                    GroupName="rbgDateFormat"
+                    Value="rbnDateFormatISO8601"
+                    Content="{local:Translate DateISO8601_Text}"
+                    IsChecked="True"
+                    CheckedChanged="OnDateFormatRadioButtonCheckedChanged">
+                </RadioButton>
+            
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="13"
+                    Grid.Column="0"
+                    Text="{local:Translate PageFormat_Text}">
+                </Label>
+            
+                <RadioButton
+                    x:Name="rbnPageFormatA4"
+                    Grid.Row="13"
+                    Grid.Column="1"
+                    GroupName="rbgPageFormat"
+                    Value="rbnPageFormatA4"
+                    Content="{local:Translate PageA4_Text}"
+                    IsChecked="True"
+                    CheckedChanged="OnPageFormatRadioButtonCheckedChanged">
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="rbnPageFormatLetter"
+                    Grid.Row="14"
+                    Grid.Column="1"
+                    GroupName="rbgPageFormat"
+                    Value="rbnPageFormatLetter"
+                    Content="{local:Translate PageLetter_Text}"
+                    CheckedChanged="OnPageFormatRadioButtonCheckedChanged">
+                </RadioButton>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="16"
+                    Grid.Column="0"
+                    Text="{local:Translate RoundNumber_Text}">
+                </Label>
+            
+                <RadioButton
+                    x:Name="rbnRoundNumberAwayFromZero"
+                    Grid.Row="16"
+                    Grid.Column="1"
+                    GroupName="rbgRoundNumber"
+                    Value="rbnRoundNumberAwayFromZero"
+                    Content="{local:Translate RoundNumberAwayFromZero_Text}"
+                    CheckedChanged="OnRoundNumberRadioButtonCheckedChanged">
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="rbnRoundNumberToEven"
+                    Grid.Row="17"
+                    Grid.Column="1"
+                    GroupName="rbgRoundNumber"
+                    Value="rbnRoundNumberToEven"
+                    Content="{local:Translate RoundNumberToEven_Text}"
+                    IsChecked="True"
+                    CheckedChanged="OnRoundNumberRadioButtonCheckedChanged">
+                </RadioButton>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="19"
+                    Grid.Column="0"
+                    Text="{local:Translate Keyboard_Text}">
+                </Label>
+            
+                <RadioButton
+                    x:Name="rbnKeyboardDefault"
+                    Grid.Row="19"
+                    Grid.Column="1"
+                    GroupName="rbgKeyboard"
+                    Value="rbnKeyboardDefault"
+                    Content="{local:Translate Default_Text}"
+                    CheckedChanged="OnKeyboardRadioButtonCheckedChanged">
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="rbnKeyboardNumeric"
+                    Grid.Row="20"
+                    Grid.Column="1"
+                    GroupName="rbgKeyboard"
+                    Value="rbnKeyboardNumeric"
+                    Content="{local:Translate Numeric_Text}"
+                    IsChecked="True"
+                    CheckedChanged="OnKeyboardRadioButtonCheckedChanged">
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="rbnKeyboardText"
+                    Grid.Row="21"
+                    Grid.Column="1"
+                    GroupName="rbgKeyboard"
+                    Value="rbnKeyboardText"
+                    Content="{local:Translate Text_Text}"
+                    CheckedChanged="OnKeyboardRadioButtonCheckedChanged">
+                </RadioButton>
+
+                <Button
+                    Style="{StaticResource buttonStyleFill}"
+                    IsVisible="{OnPlatform false, iOS=true, Android=false}"
+                    Grid.Row="23"
+                    Grid.Column="0"
+                    Text="{local:Translate Save_Text}"
+                    ToolTipProperties.Text="{local:Translate Save_Text}"
+                    Clicked="OnSettingsSaveClicked">
+                </Button>
+
+                <Button
+                    Style="{StaticResource buttonStyleFill}"
+                    IsVisible="{OnPlatform false, iOS=true, Android=false}"
+                    Grid.Row="23"
+                    Grid.Column="1"
+                    Text="{local:Translate Reset_Text}"
+                    ToolTipProperties.Text="{local:Translate Reset_Text}"
+                    Clicked="OnSettingsResetClicked">
+                </Button>
+
+            </Grid>
+        </ScrollView>
+
+        <!--!!!BUG!!! in IOS. The two buttons do not remain fixed at the bottom of the screen if the screen content is longer than the screen
+        (ie if scrolling is required). The two buttons are then no longer visible.-->
+        <Button
+            Style="{StaticResource buttonStyleFixedStart}"
+            Grid.Row="2"
+            IsVisible="{OnPlatform true, iOS=false, Android=true}"
+            Text="{local:Translate Save_Text}"
+            ToolTipProperties.Text="{local:Translate Save_Text}"
+            Clicked="OnSettingsSaveClicked">
+        </Button>
+
+        <Button
+            Style="{StaticResource buttonStyleFixedEnd}"
+            Grid.Row="2"
+            IsVisible="{OnPlatform true, iOS=false, Android=true}"
+            Text="{local:Translate Reset_Text}"
+            ToolTipProperties.Text="{local:Translate Reset_Text}"
+            Clicked="OnSettingsResetClicked">
+        </Button>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Finance.Resources.Languages"
+             xmlns:local="clr-namespace:Finance"
+             x:Class="Finance.PageAmountGrossOfNet"
+             Loaded="OnPageLoaded">
+
+    <NavigationPage.TitleView>
+        <Label
+            Style="{StaticResource labelStyleTitleView}"
+            Text="{x:Static resx:FinLang.AmountGrossOfNetForm_Text}">
+        </Label>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <StackLayout>
+            <Grid
+                Style="{StaticResource gridStyleMenuItems}"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3">
+                </BoxView>
+
+                <Label
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Text="{x:Static resx:FinLang.AmountGrossOfNetExplanation_Text}">
+                </Label>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0" 
+                    Text="{x:Static resx:FinLang.Percentage_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdPercentage"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entPercentage"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text=""
+                        Placeholder="0 - 100"
+                        MaxLength="10"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdPercentage"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStylePercent}"
+                    Grid.Row="1"
+                    Grid.Column="2">
+                </Label>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0" 
+                    Text="{x:Static resx:FinLang.AmountNet_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdAmountNet"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entAmountNet"
+                        Style="{StaticResource entryStyleNumericDone}"
+                        Text=""
+                        Placeholder="0 - 9999999999"
+                        MaxLength="21"
+                        Completed="CalculateResult"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdAmountNet"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.AmountDifference_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtAmountDifference"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.AmountGross_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtAmountGross"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Button
+                    Style="{StaticResource buttonStyleCalculate}"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.Calculate_Text}"
+                    ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
+                    Clicked="CalculateResult">
+                </Button>
+
+                <Button
+                    x:Name="btnReset"
+                    Style="{StaticResource buttonStyleReset}"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Text="{x:Static resx:FinLang.Reset_Text}"
+                    ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                    Clicked="ResetEntryFields">
+                </Button>
+
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

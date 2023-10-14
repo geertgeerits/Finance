@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Finance.Resources.Languages"
+             xmlns:local="clr-namespace:Finance"
+             x:Class="Finance.PageInterestAnnual"
+             Loaded="OnPageLoaded">
+
+    <NavigationPage.TitleView>
+        <Label
+            Style="{StaticResource labelStyleTitleView}"
+            Text="{x:Static resx:FinLang.InterestAnnualForm_Text}">
+        </Label>
+    </NavigationPage.TitleView>
+    
+    <ScrollView>
+        <StackLayout>
+            <Grid
+                Style="{StaticResource gridStyleMenuItems}"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3">
+                </BoxView>
+            
+                <Label
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleExplanation}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Text="{x:Static resx:FinLang.InterestAnnualExplanation_Text}">
+                </Label>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="0" 
+                    Text="{x:Static resx:FinLang.CapitalInitial_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdCapitalInitial"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="1"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entCapitalInitial"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text=""
+                        Placeholder="0 - 9999999999"
+                        MaxLength="21"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdCapitalInitial"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.DurationMonths_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdDurationMonths"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="2"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entDurationMonths"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text="12"
+                        Placeholder="1 - 1200"
+                        MaxLength="5"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        TextChanged="EntryTextChanged">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="1" MaxValue="1200" BorderName="brdDurationMonths"/>
+                            </EventTrigger>
+                        </Entry.Triggers>                        
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="0" 
+                    Text="{x:Static resx:FinLang.AmountPeriod_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdAmountPeriod"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="3"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entAmountPeriod"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text="0"
+                        Placeholder="0 - 9999999999"
+                        MaxLength="21"
+                        Completed="GoToNextField"
+                        Focused="EntryFocused"
+                        Unfocused="EntryUnfocused"
+                        TextChanged="EntryTextChanged">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdAmountPeriod"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="0" 
+                    Text="{x:Static resx:FinLang.CapitalFinal_Text}">
+                </Label>
+
+                <Border
+                    x:Name="brdCapitalFinal"
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="4"
+                    Grid.Column="1">
+
+                    <Entry
+                        x:Name="entCapitalFinal"
+                        Style="{StaticResource entryStyleNumericDone}"
+                        Text="0"
+                        Placeholder="0 - 9999999999"
+                        MaxLength="21"
+                        Completed="CalculateResult"
+                        Focused="EntryFocused"
+                        Unfocused="EntryUnfocused"
+                        TextChanged="EntryTextChanged">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdCapitalFinal"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.InterestRate_Text}">
+                </Label>
+
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
+                    Grid.Row="5"
+                    Grid.Column="1">
+
+                    <Label
+                        x:Name="txtInterestRate"
+                        Style="{StaticResource labelStyleResult}">
+                    </Label>
+                </Border>
+
+                <Label
+                    Style="{StaticResource labelStylePercent}"
+                    Grid.Row="5"
+                    Grid.Column="2">
+                </Label>
+
+                <Button
+                    Style="{StaticResource buttonStyleCalculate}"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Text="{x:Static resx:FinLang.Calculate_Text}"
+                    ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
+                    Clicked="CalculateResult">
+                </Button>
+
+                <Button
+                    x:Name="btnReset"
+                    Style="{StaticResource buttonStyleReset}"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Text="{x:Static resx:FinLang.Reset_Text}"
+                    ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                    Clicked="ResetEntryFields">
+                </Button>
+            
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
