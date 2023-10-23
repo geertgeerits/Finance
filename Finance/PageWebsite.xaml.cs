@@ -18,10 +18,6 @@ public partial class PageWebsite : ContentPage
         wvWebpage.Source = "https://geertgeerits.wixsite.com/geertgeerits/finance";
         wvWebpage.Navigating += OnNavigating;
         wvWebpage.Navigated += OnNavigated;
-
-        // Solved in .NET 8 - CanGoBack and CanGoForward !!!BUG!!! on Android and iOS !!!
-        btnGoBack.IsEnabled = true;
-        btnGoForward.IsEnabled = true;
     }
 
     // Navigating event that's raised when page navigation starts.
