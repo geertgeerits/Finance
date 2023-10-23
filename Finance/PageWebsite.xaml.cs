@@ -19,7 +19,7 @@ public partial class PageWebsite : ContentPage
         wvWebpage.Navigating += OnNavigating;
         wvWebpage.Navigated += OnNavigated;
 
-        // CanGoBack and CanGoForward !!!BUG!!! on Android and iOS !!!
+        // Solved in .NET 8 - CanGoBack and CanGoForward !!!BUG!!! on Android and iOS !!!
         btnGoBack.IsEnabled = true;
         btnGoForward.IsEnabled = true;
     }

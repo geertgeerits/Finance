@@ -23,9 +23,9 @@ public partial class PageLoanDetail : ContentPage
         }
 
 #if IOS
-        // Workaround for !!!BUG!!! in IOS RadioButton: Add a space before the content text.
-        rbnLoanAnnuity.Content = $" {FinLang.LoanAnnuity_Text}";
-        rbnLoanLinear.Content = $" {FinLang.LoanLinear_Text}";
+        // Solved in .NET 8 - Workaround for !!!BUG!!! in IOS RadioButton: Add a space before the content text.
+        //rbnLoanAnnuity.Content = $" {FinLang.LoanAnnuity_Text}";
+        //rbnLoanLinear.Content = $" {FinLang.LoanLinear_Text}";
 #endif
 
         // Put text in the chosen language in variables.
