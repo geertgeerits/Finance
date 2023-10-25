@@ -177,7 +177,14 @@
                     Grid.Column="0"
                     Text="{local:Translate DateFormat_Text}">
                 </Label>
-            
+
+                <Border
+                    Style="{StaticResource borderStyleGroup}"
+                    Grid.Row="10"
+                    Grid.Column="1"
+                    Grid.RowSpan="2">
+                </Border>
+                
                 <RadioButton
                     x:Name="rbnDateFormatSystem"
                     Grid.Row="10"
@@ -205,7 +212,14 @@
                     Grid.Column="0"
                     Text="{local:Translate PageFormat_Text}">
                 </Label>
-            
+
+                <Border
+                    Style="{StaticResource borderStyleGroup}"
+                    Grid.Row="13"
+                    Grid.Column="1"
+                    Grid.RowSpan="2">
+                </Border>
+                
                 <RadioButton
                     x:Name="rbnPageFormatA4"
                     Grid.Row="13"
@@ -233,7 +247,14 @@
                     Grid.Column="0"
                     Text="{local:Translate RoundNumber_Text}">
                 </Label>
-            
+
+                <Border
+                    Style="{StaticResource borderStyleGroup}"
+                    Grid.Row="16"
+                    Grid.Column="1"
+                    Grid.RowSpan="2">
+                </Border>
+                
                 <RadioButton
                     x:Name="rbnRoundNumberAwayFromZero"
                     Grid.Row="16"
@@ -261,7 +282,14 @@
                     Grid.Column="0"
                     Text="{local:Translate Keyboard_Text}">
                 </Label>
-            
+
+                <Border
+                    Style="{StaticResource borderStyleGroup}"
+                    Grid.Row="19"
+                    Grid.Column="1"
+                    Grid.RowSpan="3">
+                </Border>
+                
                 <RadioButton
                     x:Name="rbnKeyboardDefault"
                     Grid.Row="19"
