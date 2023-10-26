@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 1992-2023
 // Version .....: 3.0.63
-// Date ........: 2023-10-25 (YYYY-MM-DD)
+// Date ........: 2023-10-26 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Financial calculations
 // Thanks to ...: Gerald Versluis
@@ -42,6 +42,7 @@ public partial class MainPage : ContentPage
         // The height of the title bar is lower when an iPhone is in horizontal position.
         imgbtnAbout.VerticalOptions = LayoutOptions.Start;
         lblTitle.VerticalOptions = LayoutOptions.Start;
+        lblTitle.VerticalTextAlignment = TextAlignment.Start;
         imgbtnSettings.VerticalOptions = LayoutOptions.Start;
 #endif
 
