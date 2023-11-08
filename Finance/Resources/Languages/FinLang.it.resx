@@ -592,6 +592,12 @@ Chiudi adesso?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Vai avanti</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Ripristina le impostazioni ai valori predefiniti</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Salva le impostazioni</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Condividi o esporta la tabella di ammortamento</value>
   </data>

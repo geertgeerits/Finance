@@ -592,6 +592,12 @@ Stäng nu?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Gå framåt</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Återställ inställningarna till deras standardvärden</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Spara inställningarna</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Dela eller exportera amorteringstabellen</value>
   </data>

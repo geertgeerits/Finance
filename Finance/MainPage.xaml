@@ -22,6 +22,7 @@
                 VerticalOptions="Center"
                 HeightRequest="32"
                 WidthRequest="32"
+                SemanticProperties.Description="{local:Translate Info_Text}"
                 ToolTipProperties.Text="{local:Translate Info_Text}"
                 Clicked="OnPageAboutClicked">
             </ImageButton>
@@ -44,6 +45,7 @@
                 VerticalOptions="Center"
                 HeightRequest="32"
                 WidthRequest="32"
+                SemanticProperties.Description="{local:Translate Settings_Text}"
                 ToolTipProperties.Text="{local:Translate Settings_Text}"
                 Clicked="OnPageSettingsClicked">
             </ImageButton>

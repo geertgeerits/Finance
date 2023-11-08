@@ -592,6 +592,12 @@ Close now?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Go forward</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Reset the settings to their default values</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Save the settings</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Share or export the amortization table</value>
   </data>

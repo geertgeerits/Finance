@@ -592,6 +592,12 @@ Luk nu?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Gå fremad</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Nulstil indstillingerne til deres standardværdier</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Gem indstillingerne</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Del eller eksporter amortiseringstabellen</value>
   </data>

@@ -592,6 +592,12 @@ Fermer maintenant ?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Aller de l'avant</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Réinitialiser les paramètres à leurs valeurs par défaut</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Enregistrez les paramètres</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Partagez ou exportez le tableau d'amortissement</value>
   </data>

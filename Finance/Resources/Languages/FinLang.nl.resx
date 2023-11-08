@@ -592,6 +592,12 @@ Nu afsluiten?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Ga vooruit</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Reset de instellingen naar hun standaardwaarden</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Sla de instellingen op</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Deel of exporteer de aflossingstabel</value>
   </data>

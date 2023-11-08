@@ -592,6 +592,12 @@ Schließe jetzt?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Vorwärts gehen</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Setzen Sie die Einstellungen auf ihre Standardwerte zurück</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Speichern Sie die Einstellungen</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Teilen oder exportieren Sie die Amortisationstabelle</value>
   </data>

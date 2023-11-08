@@ -592,6 +592,12 @@ Most bezárja?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Menj előre</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Állítsa vissza a beállításokat az alapértelmezett értékekre</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Mentse el a beállításokat</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Ossza meg vagy exportálja az amortizációs táblát</value>
   </data>

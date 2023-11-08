@@ -592,6 +592,12 @@ Utilice este programa bajo su propio riesgo.</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Avanzar</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Restablecer la configuración a sus valores predeterminados</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Guardar la configuración</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Comparte o exporta la tabla de amortización</value>
   </data>

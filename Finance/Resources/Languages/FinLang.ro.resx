@@ -592,6 +592,12 @@ Utilizați acest program în întregime pe propriul risc.</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Mergi inainte</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Resetați setările la valorile implicite</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Salvați setările</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Distribuiți sau exportați tabelul de amortizare</value>
   </data>

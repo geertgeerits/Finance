@@ -592,6 +592,12 @@ Suljetaanko nyt?</value>
   <data name="ToolTipGoForward_Text" xml:space="preserve">
     <value>Mene eteenpäin</value>
   </data>
+  <data name="ToolTipSettingsReset_Text" xml:space="preserve">
+    <value>Palauta asetukset oletusarvoihinsa</value>
+  </data>
+  <data name="ToolTipSettingsSave_Text" xml:space="preserve">
+    <value>Tallenna asetukset</value>
+  </data>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Jaa tai vie poistotaulukko</value>
   </data>
