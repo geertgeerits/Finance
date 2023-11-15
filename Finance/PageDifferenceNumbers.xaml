@@ -106,7 +106,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtValueDifference"
+                        x:Name="lblValueDifference"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -124,7 +124,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtValuePercDifference"
+                        x:Name="lblValuePercDifference"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -148,7 +148,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtValuePercDiffValue1"
+                        x:Name="lblValuePercDiffValue1"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -172,7 +172,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtValuePercDiffValue2"
+                        x:Name="lblValuePercDiffValue2"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>

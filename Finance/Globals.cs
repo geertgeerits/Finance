@@ -106,14 +106,46 @@ static class Globals
         return nNumber.ToString(cNumFormat);
     }
 
-    // Give a different color to negative and positive double number in Entry control. 
-    //public static void SetDoubleNumberEntryColor(Entry entry, double nValue)
-    //{
-    //    entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
-    //}
+    // Set the theme and the number color.
+    public static void SetThemeAndNumberColor()
+    {
+        switch (cTheme)
+        {
+            case "Light":
+                Application.Current.UserAppTheme = AppTheme.Light;
 
-    // Give a different color to negative and positive decimal number in Entry control. 
-    //public static void SetDecimalNumberEntryColor(Entry entry, decimal nValue)
+                cColorNegNumber = bColorNumber ? "#FF0000" : "#000000";
+                cColorPosNumber = bColorNumber ? "#000000" : "#000000";
+                break;
+
+            case "Dark":
+                Application.Current.UserAppTheme = AppTheme.Dark;
+
+                cColorNegNumber = bColorNumber ? "#FF8989" : "#FFFFFF";
+                cColorPosNumber = bColorNumber ? "#FFFFFF" : "#FFFFFF";
+                break;
+
+            default:
+                Application.Current.UserAppTheme = AppTheme.Unspecified;
+
+                // Get the current device theme and set the number color.
+                AppTheme currentTheme = Application.Current.RequestedTheme;
+                if (currentTheme == AppTheme.Light)
+                {
+                    cColorNegNumber = bColorNumber ? "#FF0000" : "#000000";
+                    cColorPosNumber = bColorNumber ? "#000000" : "#000000";
+                }
+                else if (currentTheme == AppTheme.Dark)
+                {
+                    cColorNegNumber = bColorNumber ? "#FF8989" : "#FFFFFF";
+                    cColorPosNumber = bColorNumber ? "#FFFFFF" : "#FFFFFF";
+                }
+                break;
+        }
+    }
+
+    // Give a different color to negative and positive double number in Entry control.
+    //public static void SetDoubleNumberEntryColor(Entry entry, double nValue)
     //{
     //    entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
     //}

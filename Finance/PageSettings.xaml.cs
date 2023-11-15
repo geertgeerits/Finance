@@ -229,6 +229,8 @@ public partial class PageSettings : ContentPage
                 // System.
                 _ => "System",
             };
+
+            Globals.SetThemeAndNumberColor();
         }
     }
 
@@ -375,6 +377,7 @@ public partial class PageSettings : ContentPage
     private void OnSwtColorNumberToggled(object sender, ToggledEventArgs e)
     {
         Globals.bColorNumber = swtColorNumber.IsToggled;
+        Globals.SetThemeAndNumberColor();
     }
 
     // Button save settings clicked event.

@@ -49,10 +49,10 @@ public partial class PageDifferenceNumbers : ContentPage
     // Clear result fields if the text have changed.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtValueDifference.Text = "";
-        txtValuePercDifference.Text = "";
-        txtValuePercDiffValue1.Text = "";
-        txtValuePercDiffValue2.Text = "";
+        lblValueDifference.Text = "";
+        lblValuePercDifference.Text = "";
+        lblValuePercDiffValue1.Text = "";
+        lblValuePercDiffValue2.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -76,8 +76,6 @@ public partial class PageDifferenceNumbers : ContentPage
             entValue1.Focus();
             return;
         }
-        //Globals.SetDecimalNumberColor(entValue1, nValue1);
-        entValue1.TextColor = nValue1 < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
 
         entValue2.Text = Globals.ReplaceDecimalPointComma(entValue2.Text);
         bIsNumber = decimal.TryParse(entValue2.Text, out decimal nValue2);
@@ -87,7 +85,6 @@ public partial class PageDifferenceNumbers : ContentPage
             entValue2.Focus();
             return;
         }
-        entValue2.TextColor = nValue2 < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
 
         // Close the keyboard.
         entValue2.IsEnabled = false;
@@ -107,14 +104,14 @@ public partial class PageDifferenceNumbers : ContentPage
         decimal nValueTemp;
 
         decimal nValueDifference = nValue2 - nValue1;
-        txtValueDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueDifference, nNumDec, "N");
-        txtValueDifference.TextColor = nValueDifference < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+        lblValueDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueDifference, nNumDec, "N");
+        lblValueDifference.TextColor = nValueDifference < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
 
         if (nValue1 == 0 && nValue2 == 0)
         {
-            txtValuePercDifference.Text = "";
-            txtValuePercDiffValue1.Text = "";
-            txtValuePercDiffValue2.Text = "";
+            lblValuePercDifference.Text = "";
+            lblValuePercDiffValue1.Text = "";
+            lblValuePercDiffValue2.Text = "";
 
             btnReset.Focus();
             return;
@@ -122,13 +119,13 @@ public partial class PageDifferenceNumbers : ContentPage
 
         if (nValue1 == 0 && nValue2 != 0)
         {
-            txtValuePercDifference.Text = "";
+            lblValuePercDifference.Text = "";
             
             nValueTemp = 0;
-            txtValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-            txtValuePercDiffValue1.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+            lblValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDiffValue1.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
             
-            txtValuePercDiffValue2.Text = "";
+            lblValuePercDiffValue2.Text = "";
 
             btnReset.Focus();
             return;
@@ -137,14 +134,14 @@ public partial class PageDifferenceNumbers : ContentPage
         if (nValue1 != 0 && nValue2 == 0)
         {
             nValueTemp = -100;
-            txtValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-            txtValuePercDifference.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+            lblValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDifference.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
             
-            txtValuePercDiffValue1.Text = "";
+            lblValuePercDiffValue1.Text = "";
             
             nValueTemp = 0;
-            txtValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-            txtValuePercDiffValue2.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+            lblValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDiffValue2.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
 
             btnReset.Focus();
             return;
@@ -153,27 +150,27 @@ public partial class PageDifferenceNumbers : ContentPage
         if (nValue1 == nValue2)
         {
             nValueTemp = 0;
-            txtValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-            txtValuePercDifference.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+            lblValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDifference.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
             
             nValueTemp = 100;
-            txtValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-            txtValuePercDiffValue1.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+            lblValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDiffValue1.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
             
-            txtValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-            txtValuePercDiffValue2.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+            lblValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDiffValue2.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
 
             btnReset.Focus();
             return;
         }
 
         nValueTemp = nValue1 / nValue2 * 100;
-        txtValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-        txtValuePercDiffValue1.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+        lblValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+        lblValuePercDiffValue1.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
 
         nValueTemp = nValue2 / nValue1 * 100;
-        txtValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-        txtValuePercDiffValue2.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+        lblValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+        lblValuePercDiffValue2.TextColor = nValueTemp < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
 
         try
         {
@@ -185,8 +182,8 @@ public partial class PageDifferenceNumbers : ContentPage
             return;
         }
 
-        txtValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValuePercDifference, nPercDec, "N");
-        txtValuePercDifference.TextColor = nValuePercDifference < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+        lblValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValuePercDifference, nPercDec, "N");
+        lblValuePercDifference.TextColor = nValuePercDifference < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
 
         // Set focus.
         btnReset.Focus();

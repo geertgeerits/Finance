@@ -47,51 +47,8 @@ public partial class MainPage : ContentPage
         imgbtnSettings.VerticalOptions = LayoutOptions.Start;
 #endif
 
-        // Set the theme.
-        switch (Globals.cTheme)
-        {
-            case "Light":
-                Application.Current.UserAppTheme = AppTheme.Light;
-                break;
-            case "Dark":
-                Application.Current.UserAppTheme = AppTheme.Dark;
-                break;
-            default:
-                Application.Current.UserAppTheme = AppTheme.Unspecified;
-                break;
-        }
-
-        // Get the current device theme and set the number color.
-        if (Globals.bColorNumber == true)
-        {
-            AppTheme currentTheme = Application.Current.RequestedTheme;
-            switch (currentTheme)
-            {
-                case AppTheme.Light:
-                    Globals.cColorNegNumber = "#FF0000";
-                    Globals.cColorPosNumber = "#000000";
-                    break;
-                case AppTheme.Dark:
-                    Globals.cColorNegNumber = "#FF8989";
-                    Globals.cColorPosNumber = "#FFFFFF";
-                    break;
-                default:
-                    Globals.cColorNegNumber = "#FF0000";
-                    Globals.cColorPosNumber = "#000000";
-                    break;
-            }
-        }
-        else if (Globals.cTheme == "Light")
-        {
-            Globals.cColorNegNumber = "#000000";
-            Globals.cColorPosNumber = "#000000";
-        }
-        else
-        {
-            Globals.cColorNegNumber = "#FFFFFF";
-            Globals.cColorPosNumber = "#FFFFFF";
-        }
-
+        // Set the theme and the number color.
+        Globals.SetThemeAndNumberColor();
 
         // Get the system date format and set the date format.
         Globals.cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
