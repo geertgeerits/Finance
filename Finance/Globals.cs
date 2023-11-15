@@ -115,14 +115,14 @@ static class Globals
                 Application.Current.UserAppTheme = AppTheme.Light;
 
                 cColorNegNumber = bColorNumber ? "#FF0000" : "#000000";
-                cColorPosNumber = bColorNumber ? "#000000" : "#000000";
+                cColorPosNumber = "#000000";
                 break;
 
             case "Dark":
                 Application.Current.UserAppTheme = AppTheme.Dark;
 
                 cColorNegNumber = bColorNumber ? "#FF8989" : "#FFFFFF";
-                cColorPosNumber = bColorNumber ? "#FFFFFF" : "#FFFFFF";
+                cColorPosNumber = "#FFFFFF";
                 break;
 
             default:
@@ -130,15 +130,15 @@ static class Globals
 
                 // Get the current device theme and set the number color.
                 AppTheme currentTheme = Application.Current.RequestedTheme;
-                if (currentTheme == AppTheme.Light)
-                {
-                    cColorNegNumber = bColorNumber ? "#FF0000" : "#000000";
-                    cColorPosNumber = bColorNumber ? "#000000" : "#000000";
-                }
-                else if (currentTheme == AppTheme.Dark)
+                if (currentTheme == AppTheme.Dark)
                 {
                     cColorNegNumber = bColorNumber ? "#FF8989" : "#FFFFFF";
-                    cColorPosNumber = bColorNumber ? "#FFFFFF" : "#FFFFFF";
+                    cColorPosNumber = "#FFFFFF";
+                }
+                else
+                {
+                    cColorNegNumber = bColorNumber ? "#FF0000" : "#000000";
+                    cColorPosNumber = "#000000";
                 }
                 break;
         }

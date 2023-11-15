@@ -1180,6 +1180,15 @@ namespace Finance.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Negative number in red:.
+        /// </summary>
+        internal static string NegativeNumberRed_Text {
+            get {
+                return ResourceManager.GetString("NegativeNumberRed_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string No_Text {

@@ -325,7 +325,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="23"
                     Grid.Column="0"
-                    Text="{local:Translate Keyboard_Text}">
+                    Text="{local:Translate NegativeNumberRed_Text}">
                 </Label>
 
                 <Switch
