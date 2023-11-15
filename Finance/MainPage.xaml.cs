@@ -34,6 +34,7 @@ public partial class MainPage : ContentPage
         Globals.cNumDecimalDigits = Preferences.Default.Get("SettingNumDecimalDigits", "");
         Globals.cPercDecimalDigits = Preferences.Default.Get("SettingPercDecimalDigits", "2");
         Globals.cRoundNumber = Preferences.Default.Get("SettingRoundNumber", "AwayFromZero");
+        Globals.bColorNumber = Preferences.Default.Get("SettingColorNumber", false);
         Globals.cKeyboard = Preferences.Default.Get("SettingKeyboard", "Numeric");
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
         Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
@@ -47,18 +48,50 @@ public partial class MainPage : ContentPage
 #endif
 
         // Set the theme.
-        if (Globals.cTheme == "Light")
+        switch (Globals.cTheme)
         {
-            Application.Current.UserAppTheme = AppTheme.Light;
+            case "Light":
+                Application.Current.UserAppTheme = AppTheme.Light;
+                break;
+            case "Dark":
+                Application.Current.UserAppTheme = AppTheme.Dark;
+                break;
+            default:
+                Application.Current.UserAppTheme = AppTheme.Unspecified;
+                break;
         }
-        else if (Globals.cTheme == "Dark")
+
+        // Get the current device theme and set the number color.
+        if (Globals.bColorNumber == true)
         {
-            Application.Current.UserAppTheme = AppTheme.Dark;
+            AppTheme currentTheme = Application.Current.RequestedTheme;
+            switch (currentTheme)
+            {
+                case AppTheme.Light:
+                    Globals.cColorNegNumber = "#FF0000";
+                    Globals.cColorPosNumber = "#000000";
+                    break;
+                case AppTheme.Dark:
+                    Globals.cColorNegNumber = "#FF8989";
+                    Globals.cColorPosNumber = "#FFFFFF";
+                    break;
+                default:
+                    Globals.cColorNegNumber = "#FF0000";
+                    Globals.cColorPosNumber = "#000000";
+                    break;
+            }
+        }
+        else if (Globals.cTheme == "Light")
+        {
+            Globals.cColorNegNumber = "#000000";
+            Globals.cColorPosNumber = "#000000";
         }
         else
         {
-            Application.Current.UserAppTheme = AppTheme.Unspecified;
+            Globals.cColorNegNumber = "#FFFFFF";
+            Globals.cColorPosNumber = "#FFFFFF";
         }
+
 
         // Get the system date format and set the date format.
         Globals.cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;

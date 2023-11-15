@@ -16,6 +16,9 @@ static class Globals
     public static string cNumDecimalDigits;
     public static string cPercDecimalDigits;
     public static string cRoundNumber;
+    public static bool bColorNumber;
+    public static string cColorNegNumber;
+    public static string cColorPosNumber;
     public static string cISOCurrencyCode;
     public static string cKeyboard;
     public static string cLanguage;
@@ -103,14 +106,27 @@ static class Globals
         return nNumber.ToString(cNumFormat);
     }
 
+    // Give a different color to negative and positive double number in Entry control. 
+    //public static void SetDoubleNumberEntryColor(Entry entry, double nValue)
+    //{
+    //    entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
+    //}
+
+    // Give a different color to negative and positive decimal number in Entry control. 
+    //public static void SetDecimalNumberEntryColor(Entry entry, decimal nValue)
+    //{
+    //    entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
+    //}
+
     // Close the keyboard.
-    //public static void CloseKeyboard(object sender, EventArgs e)
+    //public async void CloseKeyboard(object sender, EventArgs e)
     //{
     //    try
     //    {
     //        var entry = (Entry)sender;
     //        entry.IsEnabled = false;
     //        entry.IsEnabled = true;
+    //        //await entry.HideSoftInputAsync(default);
     //    }
     //    catch (Exception)
     //    {

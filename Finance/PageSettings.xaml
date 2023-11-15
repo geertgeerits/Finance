@@ -24,7 +24,7 @@
 
             <Grid
                 Style="{StaticResource gridStyleSettings}"
-                RowDefinitions="Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, Auto, 4, Auto">
+                RowDefinitions="Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, Auto, 4, Auto, 4, Auto">
 
                 <BoxView
                     Grid.Row="0"
@@ -320,6 +320,22 @@
                     Content="{local:Translate Text_Text}"
                     CheckedChanged="OnKeyboardRadioButtonCheckedChanged">
                 </RadioButton>
+
+                <Label
+                    Style="{StaticResource labelStyleDefault}"
+                    Grid.Row="23"
+                    Grid.Column="0"
+                    Text="{local:Translate Keyboard_Text}">
+                </Label>
+
+                <Switch
+                    x:Name="swtColorNumber"
+                    Grid.Row="23"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Toggled="OnSwtColorNumberToggled">
+                </Switch>
+
 
             </Grid>
         </ScrollView>

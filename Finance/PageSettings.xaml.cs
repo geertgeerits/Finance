@@ -132,6 +132,9 @@ public partial class PageSettings : ContentPage
             rbnKeyboardText.IsChecked = true;
         }
 
+        // Set the color of number to false or true.
+        swtColorNumber.IsToggled = Globals.bColorNumber;
+
         // Start the stopWatch for resetting all the settings.
         stopWatch.Start();
     }
@@ -368,6 +371,12 @@ public partial class PageSettings : ContentPage
         }
     }
 
+    // Switch color number toggled.
+    private void OnSwtColorNumberToggled(object sender, ToggledEventArgs e)
+    {
+        Globals.bColorNumber = swtColorNumber.IsToggled;
+    }
+
     // Button save settings clicked event.
     private static void OnSettingsSaveClicked(object sender, EventArgs e)
     {
@@ -377,6 +386,7 @@ public partial class PageSettings : ContentPage
         Preferences.Default.Set("SettingNumDecimalDigits", Globals.cNumDecimalDigits);
         Preferences.Default.Set("SettingPercDecimalDigits", Globals.cPercDecimalDigits);
         Preferences.Default.Set("SettingRoundNumber", Globals.cRoundNumber);
+        Preferences.Default.Set("SettingColorNumber", Globals.bColorNumber);
         Preferences.Default.Set("SettingKeyboard", Globals.cKeyboard);
         Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
 
@@ -408,6 +418,7 @@ public partial class PageSettings : ContentPage
             Preferences.Default.Remove("SettingNumDecimalDigits");
             Preferences.Default.Remove("SettingPercDecimalDigits");
             Preferences.Default.Remove("SettingRoundNumber");
+            Preferences.Default.Remove("SettingColorNumber");
             Preferences.Default.Remove("SettingKeyboard");
             Preferences.Default.Remove("SettingLanguage");
         }
