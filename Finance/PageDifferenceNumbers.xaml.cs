@@ -68,10 +68,9 @@ public partial class PageDifferenceNumbers : ContentPage
     private void CalculateResult(object sender, EventArgs e)
     {
         // Validate input values.
-        // The M tells the compiler that 0.01 is a decimal.  
         entValue1.Text = Globals.ReplaceDecimalPointComma(entValue1.Text);
         bool bIsNumber = decimal.TryParse(entValue1.Text, out decimal nValue1);
-        if (bIsNumber == false || nValue1 < 0.01M || nValue1 > 9_999_999_999)
+        if (bIsNumber == false || nValue1 < -9_999_999_999 || nValue1 > 9_999_999_999)
         {
             entValue1.Text = "";
             entValue1.Focus();
@@ -80,7 +79,7 @@ public partial class PageDifferenceNumbers : ContentPage
 
         entValue2.Text = Globals.ReplaceDecimalPointComma(entValue2.Text);
         bIsNumber = decimal.TryParse(entValue2.Text, out decimal nValue2);
-        if (bIsNumber == false || nValue2 < 0.01M || nValue2 > 9_999_999_999)
+        if (bIsNumber == false || nValue2 < -9_999_999_999 || nValue2 > 9_999_999_999)
         {
             entValue2.Text = "";
             entValue2.Focus();
@@ -102,13 +101,55 @@ public partial class PageDifferenceNumbers : ContentPage
         // Calculate the difference.
         decimal nValuePercDifference;
         decimal nValueTemp;
+        decimal nValueDifference = nValue2 - nValue1;
+
+        if (nValue1 == 0 && nValue2 == 0)
+        {
+            txtValueDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueDifference, nNumDec, "N");
+            txtValuePercDifference.Text = "";
+            txtValuePercDiffValue1.Text = "";
+            txtValuePercDiffValue2.Text = "";
+
+            // Set focus.
+            btnReset.Focus();
+
+            return;
+        }
+
+        if (nValue1 == 0 && nValue2 != 0)
+        {
+            txtValueDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueDifference, nNumDec, "N");
+            txtValuePercDifference.Text = "";
+            nValueTemp = 0;
+            txtValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            txtValuePercDiffValue2.Text = "";
+
+            // Set focus.
+            btnReset.Focus();
+
+            return;
+        }
+
+        if (nValue1 != 0 && nValue2 == 0)
+        {
+            txtValueDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueDifference, nNumDec, "N");
+            nValueTemp = -100;
+            txtValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            txtValuePercDiffValue1.Text = "";
+            nValueTemp = 0;
+            txtValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+
+            // Set focus.
+            btnReset.Focus();
+
+            return;
+        }
 
         if (nValue1 == nValue2)
         {
+            txtValueDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueDifference, nNumDec, "N");
             nValueTemp = 0;
-            txtValueDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nNumDec, "N");
             txtValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-
             nValueTemp = 100;
             txtValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
             txtValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
@@ -118,16 +159,12 @@ public partial class PageDifferenceNumbers : ContentPage
 
             return;
         }
-        else
-        {
-            nValueTemp = nValue1 / nValue2 * 100;
-            txtValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
 
-            nValueTemp = nValue2 / nValue1 * 100;
-            txtValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
-        }
+        nValueTemp = nValue1 / nValue2 * 100;
+        txtValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
 
-        decimal nValueDifference = nValue2 - nValue1;
+        nValueTemp = nValue2 / nValue1 * 100;
+        txtValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
 
         try
         {
