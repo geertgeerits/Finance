@@ -90,7 +90,7 @@
                     Grid.ColumnSpan="2">
 
                     <Label
-                        x:Name="txtDateDifferenceYearMonthDay"
+                        x:Name="lblDateDifferenceYearMonthDay"
                         Style="{StaticResource labelStyleResultDate}">
                     </Label>
                 </Border>
@@ -108,7 +108,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtDateDifferenceMonths"
+                        x:Name="lblDateDifferenceMonths"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -126,7 +126,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtDateDifferenceWeeks"
+                        x:Name="lblDateDifferenceWeeks"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -144,7 +144,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtDateDifferenceDays"
+                        x:Name="lblDateDifferenceDays"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -162,7 +162,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtDateDifferenceHours"
+                        x:Name="lblDateDifferenceHours"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -180,7 +180,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtDateDifferenceMinutes"
+                        x:Name="lblDateDifferenceMinutes"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -198,7 +198,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtDateDifferenceSeconds"
+                        x:Name="lblDateDifferenceSeconds"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>

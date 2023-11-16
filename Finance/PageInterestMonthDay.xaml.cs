@@ -48,9 +48,9 @@ public partial class PageInterestMonthDay : ContentPage
     // Clear result fields.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtInterestMonth.Text = "";
-        txtInterestDay365.Text = "";
-        txtInterestDay366.Text = "";
+        lblInterestMonth.Text = "";
+        lblInterestDay365.Text = "";
+        lblInterestDay366.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -110,9 +110,9 @@ public partial class PageInterestMonthDay : ContentPage
         }
 
         // Rounding result.
-        txtInterestMonth.Text = Globals.RoundDoubleToNumDecimals(ref nInterestMonth, nPercDec, "N");
-        txtInterestDay365.Text = Globals.RoundDoubleToNumDecimals(ref nInterestDay365, nPercDec, "N");
-        txtInterestDay366.Text = Globals.RoundDoubleToNumDecimals(ref nInterestDay366, nPercDec, "N");
+        lblInterestMonth.Text = Globals.RoundDoubleToNumDecimals(ref nInterestMonth, nPercDec, "N");
+        lblInterestDay365.Text = Globals.RoundDoubleToNumDecimals(ref nInterestDay365, nPercDec, "N");
+        lblInterestDay366.Text = Globals.RoundDoubleToNumDecimals(ref nInterestDay366, nPercDec, "N");
 
         // Set focus.
         btnReset.Focus();
@@ -123,9 +123,9 @@ public partial class PageInterestMonthDay : ContentPage
     {
         entPercDec.Text = "6";
         entInterestRate.Text = "";
-        txtInterestMonth.Text = "";
-        txtInterestDay365.Text = "";
-        txtInterestDay366.Text = "";
+        lblInterestMonth.Text = "";
+        lblInterestDay365.Text = "";
+        lblInterestDay366.Text = "";
 
         entPercDec.Focus();
     }

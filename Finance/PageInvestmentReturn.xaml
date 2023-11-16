@@ -109,7 +109,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtAmountTotal"
+                        x:Name="lblAmountTotal"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>

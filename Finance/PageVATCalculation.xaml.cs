@@ -52,7 +52,7 @@ public partial class PageVATCalculation : ContentPage
     // Clear result fields if the text have changed.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtVATAmount.Text = "";
+        lblVATAmount.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -80,7 +80,7 @@ public partial class PageVATCalculation : ContentPage
 
         if (sender == entVATPercentage && nVATPercentage == 0)
         {
-            txtVATAmount.Text = "0";
+            lblVATAmount.Text = "0";
         }
         else if (sender == entVATAmountExclusive && entVATAmountExclusive.Text != "0" && nVATPercentage != 0)
         {
@@ -199,7 +199,7 @@ public partial class PageVATCalculation : ContentPage
         }
 
         // Rounding result.
-        txtVATAmount.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmount, nNumDec, "N");
+        lblVATAmount.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmount, nNumDec, "N");
 
         // Set focus.
         btnReset.Focus();
@@ -210,7 +210,7 @@ public partial class PageVATCalculation : ContentPage
     {
         entVATPercentage.Text = "";
         entVATAmountExclusive.Text = "0";
-        txtVATAmount.Text = "";
+        lblVATAmount.Text = "";
         entVATAmountIncluded.Text = "0";
 
         entVATPercentage.Focus();

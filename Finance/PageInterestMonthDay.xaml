@@ -112,7 +112,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtInterestMonth"
+                        x:Name="lblInterestMonth"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -136,7 +136,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtInterestDay365"
+                        x:Name="lblInterestDay365"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -160,7 +160,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtInterestDay366"
+                        x:Name="lblInterestDay366"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>

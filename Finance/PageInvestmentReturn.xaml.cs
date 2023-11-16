@@ -54,7 +54,7 @@ public partial class PageInvestmentReturn : ContentPage
     // Clear result fields if the text have changed.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtAmountTotal.Text = "";
+        lblAmountTotal.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -165,7 +165,7 @@ public partial class PageInvestmentReturn : ContentPage
 
         if (nAmountTotal == 0)
         {
-            txtAmountTotal.Text = Globals.RoundDecimalToNumDecimals(ref nAmountTotal, nNumDec, "N");
+            lblAmountTotal.Text = Globals.RoundDecimalToNumDecimals(ref nAmountTotal, nNumDec, "N");
         }
 
         if (nAmountRevenueYear == 0)
@@ -190,7 +190,7 @@ public partial class PageInvestmentReturn : ContentPage
                 return;
             }
 
-            txtAmountTotal.Text = Globals.RoundDecimalToNumDecimals(ref nAmountTotal, nNumDec, "N");
+            lblAmountTotal.Text = Globals.RoundDecimalToNumDecimals(ref nAmountTotal, nNumDec, "N");
         }
         catch (Exception ex)
         {
@@ -207,7 +207,7 @@ public partial class PageInvestmentReturn : ContentPage
     {
         entAmountPurchase.Text = "0";
         entAmountCost.Text = "0";
-        txtAmountTotal.Text = "";
+        lblAmountTotal.Text = "";
         entAmountRevenueYear.Text = "0";
         entPercentageReturnYear.Text = "0";
 

@@ -50,8 +50,8 @@ public partial class PageAmountGrossOfNet : ContentPage
     // Clear result fields if the text have changed.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtAmountDifference.Text = "";
-        txtAmountGross.Text = "";
+        lblAmountDifference.Text = "";
+        lblAmountGross.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -109,9 +109,9 @@ public partial class PageAmountGrossOfNet : ContentPage
             try
             {
                 decimal nAmountGross = nAmountNet / ((100 - nPercentage) / 100);
-                txtAmountGross.Text = Globals.RoundDecimalToNumDecimals(ref nAmountGross, nNumDec, "N");
+                lblAmountGross.Text = Globals.RoundDecimalToNumDecimals(ref nAmountGross, nNumDec, "N");
                 decimal nAmountDifference = nAmountGross - nAmountNet;
-                txtAmountDifference.Text = Globals.RoundDecimalToNumDecimals(ref nAmountDifference, nNumDec, "N");
+                lblAmountDifference.Text = Globals.RoundDecimalToNumDecimals(ref nAmountDifference, nNumDec, "N");
             }
             catch (Exception ex)
             {

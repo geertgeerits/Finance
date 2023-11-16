@@ -60,16 +60,16 @@ public partial class PageDifferenceDates : ContentPage
 
         // Calculate the date difference in days, hours, minutes and seconds.
         long nDateDifference = (toDate - fromDate).Days;
-        txtDateDifferenceDays.Text = nDateDifference.ToString("N0");
+        lblDateDifferenceDays.Text = nDateDifference.ToString("N0");
 
         nDateDifference *= 24;
-        txtDateDifferenceHours.Text = nDateDifference.ToString("N0");
+        lblDateDifferenceHours.Text = nDateDifference.ToString("N0");
 
         nDateDifference *= 60;
-        txtDateDifferenceMinutes.Text = nDateDifference.ToString("N0");
+        lblDateDifferenceMinutes.Text = nDateDifference.ToString("N0");
 
         nDateDifference *= 60;
-        txtDateDifferenceSeconds.Text = nDateDifference.ToString("N0");
+        lblDateDifferenceSeconds.Text = nDateDifference.ToString("N0");
 
         // Set focus.
         btnReset.Focus();
@@ -115,9 +115,9 @@ public partial class PageDifferenceDates : ContentPage
         string cMonth = months == 1 ? FinLang.DateMonth_Text : FinLang.DateMonths_Text;
         string cDay = days == 1 ? FinLang.DateDay_Text : FinLang.DateDays_Text;
 
-        txtDateDifferenceYearMonthDay.Text = $"{years:N0} {cYear}, {months} {cMonth}, {days} {cDay}";
-        txtDateDifferenceMonths.Text = $"{(years * 12) + months:N0}";
-        txtDateDifferenceWeeks.Text = $"{(EndDate - StartDate).Days / 7:N0}";
+        lblDateDifferenceYearMonthDay.Text = $"{years:N0} {cYear}, {months} {cMonth}, {days} {cDay}";
+        lblDateDifferenceMonths.Text = $"{(years * 12) + months:N0}";
+        lblDateDifferenceWeeks.Text = $"{(EndDate - StartDate).Days / 7:N0}";
     }
 
     // Reset the entry and result fields.

@@ -48,7 +48,7 @@ public partial class PageInterestPayDiscount : ContentPage
     // Clear result fields.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtInterestEffective.Text = "";
+        lblInterestEffective.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -124,7 +124,7 @@ public partial class PageInterestPayDiscount : ContentPage
         }
 
         // Rounding result.
-        txtInterestEffective.Text = Globals.RoundDecimalToNumDecimals(ref nInterestEffective, nPercDec, "N");
+        lblInterestEffective.Text = Globals.RoundDecimalToNumDecimals(ref nInterestEffective, nPercDec, "N");
 
         // Set focus.
         btnReset.Focus();
@@ -136,7 +136,7 @@ public partial class PageInterestPayDiscount : ContentPage
         entPaymentDiscount.Text = "";
         entExpiryDaysWithDiscount.Text = "7";
         entExpiryDaysWithoutDiscount.Text = "30";
-        txtInterestEffective.Text = "";
+        lblInterestEffective.Text = "";
 
         entExpiryDaysWithoutDiscount.Placeholder = "0 - 999";
 
