@@ -66,8 +66,27 @@ public partial class PageAbout : ContentPage
     }
 
     // Open the page 'PageWebsite' to open the website in the WebView control.
+    // !!!BUG!!! in Android: the WebView control gives an error when opening a link to the Google Play Console.
     private async void OnbtnWebsiteLinkClicked(object sender, EventArgs e)
     {
+#if ANDROID
+        try
+        {
+            Uri uri = new Uri("https://geertgeerits.wixsite.com/geertgeerits/finance");
+            BrowserLaunchOptions options = new BrowserLaunchOptions()
+            {
+                LaunchMode = BrowserLaunchMode.SystemPreferred,
+                TitleMode = BrowserTitleMode.Show
+            };
+
+            await Browser.Default.OpenAsync(uri, options);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+        }
+#else
         await Navigation.PushAsync(new PageWebsite());
+#endif
     }
 }
