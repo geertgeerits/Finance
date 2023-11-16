@@ -136,7 +136,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtAmountDifference"
+                        x:Name="lblAmountDifference"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>
@@ -154,7 +154,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtInterestEffective"
+                        x:Name="lblInterestEffective"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>

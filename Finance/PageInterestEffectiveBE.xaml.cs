@@ -50,8 +50,8 @@ public partial class PageInterestEffectiveBE : ContentPage
     // Clear result fields if the text have changed.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtAmountDifference.Text = "";
-        txtInterestEffective.Text = "";
+        lblAmountDifference.Text = "";
+        lblInterestEffective.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -107,7 +107,7 @@ public partial class PageInterestEffectiveBE : ContentPage
 
         // Set decimal places for the Entry controls and values passed by reference.
         entCapitalInitial.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "F");
-        entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalFinal, nNumDec, "F");        
+        entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalFinal, nNumDec, "F");
 
         // Calculating the effective interest.
         double nAmountDifference;
@@ -133,8 +133,10 @@ public partial class PageInterestEffectiveBE : ContentPage
         }
 
         // Rounding result.
-        txtAmountDifference.Text = Globals.RoundDoubleToNumDecimals(ref nAmountDifference, nNumDec, "N");
-        txtInterestEffective.Text = Globals.RoundDoubleToNumDecimals(ref nInterestEffective, nPercDec, "N");
+        lblAmountDifference.Text = Globals.RoundDoubleToNumDecimals(ref nAmountDifference, nNumDec, "N");
+        Globals.SetLabelTextColorForNumber(lblAmountDifference);
+        lblInterestEffective.Text = Globals.RoundDoubleToNumDecimals(ref nInterestEffective, nPercDec, "N");
+        Globals.SetLabelTextColorForNumber(lblInterestEffective);
 
         // Set focus.
         btnReset.Focus();
@@ -146,7 +148,7 @@ public partial class PageInterestEffectiveBE : ContentPage
         entCapitalInitial.Text = "";
         entCapitalFinal.Text = "";
         entDurationYears.Text = "1";
-        txtInterestEffective.Text = "";
+        lblInterestEffective.Text = "";
 
         entCapitalInitial.Focus();
     }

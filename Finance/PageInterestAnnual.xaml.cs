@@ -52,7 +52,7 @@ public partial class PageInterestAnnual : ContentPage
     // Clear result fields if the text have changed.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtInterestRate.Text = "";
+        lblInterestRate.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -191,7 +191,8 @@ public partial class PageInterestAnnual : ContentPage
         }
 
         // Rounding interest.
-        txtInterestRate.Text = Globals.RoundDoubleToNumDecimals(ref nInterestRate, nPercDec, "N");
+        lblInterestRate.Text = Globals.RoundDoubleToNumDecimals(ref nInterestRate, nPercDec, "N");
+        Globals.SetLabelTextColorForNumber(lblInterestRate);
 
         // Set focus.
         btnReset.Focus();
@@ -204,7 +205,7 @@ public partial class PageInterestAnnual : ContentPage
         entDurationMonths.Text = "12";
         entAmountPeriod.Text = "0";
         entCapitalFinal.Text = "0";
-        txtInterestRate.Text = "";
+        lblInterestRate.Text = "";
 
         entCapitalInitial.Focus();
     }

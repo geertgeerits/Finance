@@ -112,7 +112,7 @@
                     Grid.Column="1">
 
                     <Label
-                        x:Name="txtInterestEffective"
+                        x:Name="lblInterestEffective"
                         Style="{StaticResource labelStyleResult}">
                     </Label>
                 </Border>

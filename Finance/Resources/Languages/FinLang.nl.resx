@@ -501,6 +501,9 @@ Gebruik dit programma geheel op eigen risico.</value>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Finance</value>
   </data>
+  <data name="NegativeNumberRed_Text" xml:space="preserve">
+    <value>Negatief getal in rood:</value>
+  </data>
   <data name="No_Text" xml:space="preserve">
     <value>Neen</value>
   </data>

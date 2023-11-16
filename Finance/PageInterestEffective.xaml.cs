@@ -48,7 +48,7 @@ public partial class PageInterestEffective : ContentPage
     // Clear result fields if the text have changed.
     private void EntryTextChanged(object sender, EventArgs e)
     {
-        txtInterestEffective.Text = "";
+        lblInterestEffective.Text = "";
     }
 
     // Go to the next field when the return key have been pressed.
@@ -104,7 +104,7 @@ public partial class PageInterestEffective : ContentPage
         }
 
         // Rounding result.
-        txtInterestEffective.Text = Globals.RoundDoubleToNumDecimals(ref nInterestEffective, nPercDec, "N");
+        lblInterestEffective.Text = Globals.RoundDoubleToNumDecimals(ref nInterestEffective, nPercDec, "N");
 
         // Set focus.
         btnReset.Focus();
@@ -115,7 +115,7 @@ public partial class PageInterestEffective : ContentPage
     {
         entInterestRate.Text = "";
         entPeriodsYear.Text = "12";
-        txtInterestEffective.Text = "";
+        lblInterestEffective.Text = "";
 
         entInterestRate.Focus();
     }

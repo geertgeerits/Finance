@@ -501,6 +501,9 @@ Utilisez ce programme entièrement à vos propres risques.</value>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Finance</value>
   </data>
+  <data name="NegativeNumberRed_Text" xml:space="preserve">
+    <value>Nombre négatif en rouge :</value>
+  </data>
   <data name="No_Text" xml:space="preserve">
     <value>Non</value>
   </data>

@@ -26,7 +26,51 @@ static class Globals
     public static string cPageFormat;
     public static bool bLicense;
 
+    // Local variables.
+    private static readonly string cColorNegNumberLight = "#FF0000";
+    private static readonly string cColorPosNumberLight = "#000000";
+    private static readonly string cColorNegNumberDark = "#FFB0B0";
+    private static readonly string cColorPosNumberDark = "#FFFFFF";
+
     // Global methods.
+    // Set the theme and the number text color.
+    public static void SetThemeAndNumberColor()
+    {
+        switch (cTheme)
+        {
+            case "Light":
+                Application.Current.UserAppTheme = AppTheme.Light;
+
+                cColorNegNumber = bColorNumber ? cColorNegNumberLight : cColorPosNumberLight;
+                cColorPosNumber = cColorPosNumberLight;
+                break;
+
+            case "Dark":
+                Application.Current.UserAppTheme = AppTheme.Dark;
+
+                cColorNegNumber = bColorNumber ? cColorNegNumberDark : cColorPosNumberDark;
+                cColorPosNumber = cColorPosNumberDark;
+                break;
+
+            default:
+                Application.Current.UserAppTheme = AppTheme.Unspecified;
+
+                // Get the current device theme and set the number color.
+                AppTheme currentTheme = Application.Current.RequestedTheme;
+                if (currentTheme == AppTheme.Dark)
+                {
+                    cColorNegNumber = bColorNumber ? cColorNegNumberDark : cColorPosNumberDark;
+                    cColorPosNumber = cColorPosNumberDark;
+                }
+                else
+                {
+                    cColorNegNumber = bColorNumber ? cColorNegNumberLight : cColorPosNumberLight;
+                    cColorPosNumber = cColorPosNumberLight;
+                }
+                break;
+        }
+    }
+
     // Set the current UI culture of the selected language.
     public static void SetCultureSelectedLanguage()
     {
@@ -106,56 +150,20 @@ static class Globals
         return nNumber.ToString(cNumFormat);
     }
 
-    // Set the theme and the number color.
-    public static void SetThemeAndNumberColor()
+    // Set the label text color to a different color for a negative and a positive number.
+    public static void SetLabelTextColorForNumber(Label label)
     {
-        switch (cTheme)
+        if (decimal.TryParse(label.Text, out decimal nValue))
         {
-            case "Light":
-                Application.Current.UserAppTheme = AppTheme.Light;
-
-                cColorNegNumber = bColorNumber ? "#FF0000" : "#000000";
-                cColorPosNumber = "#000000";
-                break;
-
-            case "Dark":
-                Application.Current.UserAppTheme = AppTheme.Dark;
-
-                cColorNegNumber = bColorNumber ? "#FF8989" : "#FFFFFF";
-                cColorPosNumber = "#FFFFFF";
-                break;
-
-            default:
-                Application.Current.UserAppTheme = AppTheme.Unspecified;
-
-                // Get the current device theme and set the number color.
-                AppTheme currentTheme = Application.Current.RequestedTheme;
-                if (currentTheme == AppTheme.Dark)
-                {
-                    cColorNegNumber = bColorNumber ? "#FF8989" : "#FFFFFF";
-                    cColorPosNumber = "#FFFFFF";
-                }
-                else
-                {
-                    cColorNegNumber = bColorNumber ? "#FF0000" : "#000000";
-                    cColorPosNumber = "#000000";
-                }
-                break;
+            label.TextColor = nValue < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
         }
     }
 
-    // Give a different color to negative and positive double number in Entry control.
-    //public static void SetDoubleNumberEntryColor(Entry entry, double nValue)
-    //{
-    //    entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
-    //}
-
     // Close the keyboard.
-    //public async void CloseKeyboard(object sender, EventArgs e)
+    //public static void CloseKeyboard(Entry entry, EventArgs e)
     //{
     //    try
     //    {
-    //        var entry = (Entry)sender;
     //        entry.IsEnabled = false;
     //        entry.IsEnabled = true;
     //        //await entry.HideSoftInputAsync(default);

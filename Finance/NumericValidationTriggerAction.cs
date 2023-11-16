@@ -8,13 +8,16 @@
 
         protected override void Invoke(Entry entry)
         {
+            // Validate the numbers.
             bool isValid = decimal.TryParse(entry.Text, out decimal result);
             isValid = isValid && result >= MinValue && result <= MaxValue;
 
-            entry.TextColor = result < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
-
+            // Set the border color if the input is invalid.
             Border border = (Border)entry.Parent.FindByName(BorderName);
             border.Stroke = isValid ? Color.FromArgb("969696") : Colors.OrangeRed;
+
+            // Set the text color.
+            entry.TextColor = result < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
         }
     }
 }

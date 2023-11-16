@@ -501,6 +501,9 @@ Používejte tento program zcela na vlastní nebezpečí.</value>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Finance</value>
   </data>
+  <data name="NegativeNumberRed_Text" xml:space="preserve">
+    <value>Záporné číslo červeně:</value>
+  </data>
   <data name="No_Text" xml:space="preserve">
     <value>Ne</value>
   </data>

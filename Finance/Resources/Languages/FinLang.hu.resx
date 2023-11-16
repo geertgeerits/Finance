@@ -501,6 +501,9 @@ Ezt a programot kizárólag saját felelősségére használja.</value>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Finance</value>
   </data>
+  <data name="NegativeNumberRed_Text" xml:space="preserve">
+    <value>Negatív szám pirossal:</value>
+  </data>
   <data name="No_Text" xml:space="preserve">
     <value>Nem</value>
   </data>

@@ -501,6 +501,9 @@ Utilizați acest program în întregime pe propriul risc.</value>
   <data name="NameProgram_Text" xml:space="preserve">
     <value>Finance</value>
   </data>
+  <data name="NegativeNumberRed_Text" xml:space="preserve">
+    <value>Număr negativ în roșu:</value>
+  </data>
   <data name="No_Text" xml:space="preserve">
     <value>Nu</value>
   </data>
