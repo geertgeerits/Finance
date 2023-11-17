@@ -419,10 +419,10 @@ public partial class PageLoanDetail : ContentPage
         }
 
         // Open the document file.
-        await OpenDocumentFile(cFileName);
+        await OpenDocumentFileAsync(cFileName);
 
         // Open the share interface to share the document file.
-        await OpenShareInterface(cFileName);
+        await OpenShareInterfaceAsync(cFileName);
 
         activityIndicator.IsRunning = false;
     }
@@ -1194,7 +1194,7 @@ public partial class PageLoanDetail : ContentPage
     }
 
     // Open the document file.
-    private async Task OpenDocumentFile(string cFile)
+    private async Task OpenDocumentFileAsync(string cFile)
     {
         bool answer = await DisplayAlert("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.FileOpenQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
         if (answer == false)
@@ -1223,7 +1223,7 @@ public partial class PageLoanDetail : ContentPage
     }
 
     // Open the share interface.
-    private async Task OpenShareInterface(string cFile)
+    private async Task OpenShareInterfaceAsync(string cFile)
     {
         bool answer = await DisplayAlert("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.ShareQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
         if (answer == false)
