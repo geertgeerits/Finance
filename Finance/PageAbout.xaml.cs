@@ -43,7 +43,7 @@ public partial class PageAbout : ContentPage
         {
             string subject = "Finance";
             string body = "";
-            string[] recipients = new[] { "geertgeerits@gmail.com" };
+            string[] recipients = ["geertgeerits@gmail.com"];
 
             var message = new EmailMessage
             {
@@ -72,8 +72,8 @@ public partial class PageAbout : ContentPage
 #if ANDROID
         try
         {
-            Uri uri = new Uri("https://geertgeerits.wixsite.com/geertgeerits/finance");
-            BrowserLaunchOptions options = new BrowserLaunchOptions()
+            Uri uri = new("https://geertgeerits.wixsite.com/geertgeerits/finance");
+            BrowserLaunchOptions options = new()
             {
                 LaunchMode = BrowserLaunchMode.SystemPreferred,
                 TitleMode = BrowserTitleMode.Show

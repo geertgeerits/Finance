@@ -1162,7 +1162,7 @@ public partial class PageLoanDetail : ContentPage
     {
         try
         {
-            int nPos = cText.LastIndexOf(" ");
+            int nPos = cText.LastIndexOf(' ');
 
             if (nPos > 0 && cText.Length > nMaxTextLength - 1)  // Decrease the maximum length by 1 so that the text of 2 columns is not connected.
             {
