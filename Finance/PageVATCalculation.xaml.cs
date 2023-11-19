@@ -27,12 +27,9 @@ public partial class PageVATCalculation : ContentPage
             entVATAmountExclusive.Keyboard = Keyboard.Text;
             entVATAmountIncluded.Keyboard = Keyboard.Text;
         }
-
-        // Set focus to the first entry field.
-        //entVATPercentage.Focus();
     }
 
-    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+    // Set focus to the first entry field.
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {

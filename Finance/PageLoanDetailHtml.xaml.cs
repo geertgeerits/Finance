@@ -13,6 +13,7 @@ public partial class PageLoanDetailHtml : ContentPage
             DisplayAlert("InitializeComponent: PageWebsite", ex.Message, "OK");
             return;
         }
+        
         // Set the WebView Source.
         wvWebpage.Source = cDocumentUrl;
     }

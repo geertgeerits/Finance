@@ -23,12 +23,9 @@ public partial class PageInterestPayDiscount : ContentPage
         {
             entPaymentDiscount.Keyboard = Keyboard.Text;
         }
-
-        // Set focus to the first entry field.
-        //entPaymentDiscount.Focus();
     }
 
-    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+    // Set focus to the first entry field.
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {

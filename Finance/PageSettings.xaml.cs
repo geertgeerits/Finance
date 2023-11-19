@@ -300,19 +300,6 @@ public partial class PageSettings : ContentPage
             // System.
             _ => 0,
         };
-
-#if IOS
-        // Solved in .NET 8 - Workaround for !!!BUG!!! in IOS RadioButton: Add a space before the content text.
-        //rbnDateFormatSystem.Content = $" {FinLang.System_Text}";
-        //rbnDateFormatISO8601.Content = $" {FinLang.DateISO8601_Text}";
-        //rbnPageFormatA4.Content = $" {FinLang.PageA4_Text}";
-        //rbnPageFormatLetter.Content = $" {FinLang.PageLetter_Text}";
-        //rbnRoundNumberAwayFromZero.Content = $" {FinLang.RoundNumberAwayFromZero_Text}";
-        //rbnRoundNumberToEven.Content = $" {FinLang.RoundNumberToEven_Text}";
-        //rbnKeyboardDefault.Content = $" {FinLang.Default_Text}";
-        //rbnKeyboardNumeric.Content = $" {FinLang.Numeric_Text}";
-        //rbnKeyboardText.Content = $" {FinLang.Text_Text}";
-#endif
     }
 
     // Radio button date format clicked event.

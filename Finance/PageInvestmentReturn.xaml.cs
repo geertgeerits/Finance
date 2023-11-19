@@ -29,12 +29,9 @@ public partial class PageInvestmentReturn : ContentPage
             entAmountRevenueYear.Keyboard = Keyboard.Text;
             entPercentageReturnYear.Keyboard = Keyboard.Text;
         }
-
-        // Set focus to the first entry field.
-        //entAmountPurchase.Focus();
     }
 
-    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+    // Set focus to the first entry field.
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {

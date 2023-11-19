@@ -25,12 +25,9 @@ public partial class PageAmountGrossOfNet : ContentPage
             entPercentage.Keyboard = Keyboard.Text;
             entAmountNet.Keyboard = Keyboard.Text;
         }
-
-        // Set focus to the first entry field.
-        //entPercentage.Focus();
     }
 
-    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+    // Set focus to the first entry field.
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {

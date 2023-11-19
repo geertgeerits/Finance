@@ -24,12 +24,9 @@ public partial class PageDifferenceNumbers : ContentPage
             entValue1.Keyboard = Keyboard.Text;
             entValue2.Keyboard = Keyboard.Text;
         }
-
-        // Set focus to the first entry field.
-        //entValue1.Focus();
     }
 
-    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+    // Set focus to the first entry field.
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {

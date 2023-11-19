@@ -23,9 +23,6 @@ public partial class PageDifferenceDates : ContentPage
         dtpDate2.Format = Globals.cDateFormat;
 
         CalculateResult(null, null);
-
-        // Set focus to the first entry field.
-        dtpDate1.Focus();
     }
 
     // Go to the next field when the return key have been pressed.

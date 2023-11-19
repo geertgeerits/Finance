@@ -60,12 +60,9 @@ public partial class PageLoanDetail : ContentPage
 
         // Test variable to recalculate the loan.
         bReCalculateResult = true;
-
-        // Set focus to the first entry field.
-        //entInterestRate.Focus();
     }
 
-    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+    // Set focus to the first entry field.
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {
@@ -1204,8 +1201,7 @@ public partial class PageLoanDetail : ContentPage
 
         try
         {
-            // Workaround for !!!BUG!!! on Android !!!
-            // Webpage not available.
+            // Workaround for !!!BUG!!! on Android !!! - Webpage not available.
             // The webpage at file:///data/user/0/com.companyname.finance/cache/FinanceDocument.html could not be loaded becauce:
             // net::ERR_ACCESS_DENIED
 #if ANDROID

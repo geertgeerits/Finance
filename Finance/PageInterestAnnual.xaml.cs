@@ -27,12 +27,9 @@ public partial class PageInterestAnnual : ContentPage
             entAmountPeriod.Keyboard = Keyboard.Text;
             entCapitalFinal.Keyboard = Keyboard.Text;
         }
-
-        // Set focus to the first entry field.
-        //entCapitalInitial.Focus();
     }
 
-    // Set focus to the first entry field (workaround for !!!BUG!!! ?).
+    // Set focus to the first entry field.
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {
