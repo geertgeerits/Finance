@@ -22,12 +22,6 @@ public partial class PageLoanDetail : ContentPage
             return;
         }
 
-#if IOS
-        // Solved in .NET 8 - Workaround for !!!BUG!!! in IOS RadioButton: Add a space before the content text.
-        //rbnLoanAnnuity.Content = $" {FinLang.LoanAnnuity_Text}";
-        //rbnLoanLinear.Content = $" {FinLang.LoanLinear_Text}";
-#endif
-
         // Put text in the chosen language in variables.
         aColHeader[0] = FinLang.LoanDetailColumns_0_Text;
         aColHeader[1] = FinLang.LoanDetailColumns_1_Text;
@@ -965,10 +959,6 @@ public partial class PageLoanDetail : ContentPage
                         cTextLines[nTextLine] = $"{cNoObject} 0 obj";
                         nTextLine++;
                         nNumObjects++;
-
-                        //cText = "<</Length 0000>>";
-                        //cTextLines[nTextLine] = cText;
-                        //nTextLine++;
 
                         cText = $"<</Length 0000{cFilter}>>";
                         cTextLines[nTextLine] = cText;

@@ -88,11 +88,11 @@ static class Globals
     // Replace decimal point with decimal comma.
     public static string ReplaceDecimalPointComma(string cNumber)
     {
-        if (Globals.cNumDecimalSeparator == "," && cNumber.Contains('.'))
+        if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
         {
             cNumber = cNumber.Replace(".", ",");
         }
-        else if (Globals.cNumDecimalSeparator == "." && cNumber.Contains(','))
+        else if (cNumDecimalSeparator == "." && cNumber.Contains(','))
         {
             cNumber = cNumber.Replace(",", ".");
         }
@@ -121,11 +121,11 @@ static class Globals
     // Rounding and formatting double number to # decimals returning number as value and as string.
     public static string RoundDoubleToNumDecimals(ref double nNumber, int nNumDec, string cFormatSpecifier)
     {
-        if (Globals.cRoundNumber == "AwayFromZero")
+        if (cRoundNumber == "AwayFromZero")
         {
             nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.AwayFromZero);
         }
-        else if (Globals.cRoundNumber == "ToEven")
+        else if (cRoundNumber == "ToEven")
         {
             nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.ToEven);
         }
@@ -137,11 +137,11 @@ static class Globals
     // Rounding and formatting decimal number to # decimals returning number as value and as string.
     public static string RoundDecimalToNumDecimals(ref decimal nNumber, int nNumDec, string cFormatSpecifier)
     {
-        if (Globals.cRoundNumber == "AwayFromZero")
+        if (cRoundNumber == "AwayFromZero")
         {
             nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.AwayFromZero);
         }
-        else if (Globals.cRoundNumber == "ToEven")
+        else if (cRoundNumber == "ToEven")
         {
             nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.ToEven);
         }
@@ -155,7 +155,7 @@ static class Globals
     {
         if (decimal.TryParse(label.Text, out decimal nValue))
         {
-            label.TextColor = nValue < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+            label.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
         }
     }
 
