@@ -380,8 +380,8 @@ public partial class PageSettings : ContentPage
         Preferences.Default.Set("SettingKeyboard", Globals.cKeyboard);
         Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
 
-        // Wait 500 milliseconds otherwise the settings are not saved in Android.
-        Task.Delay(500).Wait();
+        // Give it some time to save the settings.
+        Task.Delay(400).Wait();
 
         // Restart the application.
         //Application.Current.MainPage = new AppShell();
@@ -413,8 +413,8 @@ public partial class PageSettings : ContentPage
             Preferences.Default.Remove("SettingLanguage");
         }
 
-        // Wait 500 milliseconds otherwise the settings are not saved in Android.
-        Task.Delay(500).Wait();
+        // Give it some time to remove the settings.
+        Task.Delay(400).Wait();
 
         // Restart the application.
         //Application.Current.MainPage = new AppShell();
