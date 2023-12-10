@@ -15,7 +15,7 @@ public partial class PageAbout : ContentPage
         }
 
         // Put text in the chosen language in the controls.
-        lblVersion.Text = $"{FinLang.Version_Text} 3.0.64";
+        lblVersion.Text = $"{FinLang.Version_Text} 3.0.65";
         lblCopyright.Text = $"{FinLang.Copyright_Text} © 1992-2023 Geert Geerits";
         lblEmail.Text = $"{FinLang.Email_Text} geertgeerits@gmail.com";
         lblWebsite.Text = $"{FinLang.Website_Text}: ../finance";
