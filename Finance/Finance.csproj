@@ -174,9 +174,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
-		<ProvisioningType>manual</ProvisioningType>
-		<CodesignKey>iPhone Distribution</CodesignKey>
-		<CodesignProvision>provisioningprofile04iOSFinance</CodesignProvision>
+		<ProvisioningType>automatic</ProvisioningType>
+		<CodesignKey>Apple Development: Created via API (KL96X68Q72)</CodesignKey>
+		<CodesignProvision>VS: com.geertgeerits.finance Development</CodesignProvision>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
