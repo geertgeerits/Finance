@@ -19,19 +19,17 @@
                 Style="{StaticResource gridStyleMenuItems}"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
 
-                <BoxView
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="3">
-                </BoxView>
 
-                <Label
-                    Style="{StaticResource labelStyleExplanation}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    Text="{x:Static resx:FinLang.AmountGrossOfNetExplanation_Text}">
-                </Label>
+                    <Label
+                        Style="{StaticResource labelStyleExplanation}"
+                        Text="{x:Static resx:FinLang.AmountGrossOfNetExplanation_Text}">
+                    </Label>
+                </Border>
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"

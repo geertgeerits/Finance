@@ -17,20 +17,18 @@
                    Style="{StaticResource gridStyleMenuItems2}"
                    RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 
-                <BoxView
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="2">
-                </BoxView>
 
-                <Label
-                    Style="{StaticResource labelStyleExplanation}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Text="{x:Static resx:FinLang.DifferenceExplanationDates_Text}">
-                </Label>
-            
+                    <Label
+                        Style="{StaticResource labelStyleExplanation}"
+                        Text="{x:Static resx:FinLang.DifferenceExplanationDates_Text}">
+                    </Label>
+                </Border>
+          
                 <Label
                     x:Name="lblDate1"
                     Style="{StaticResource labelStyleDefault}"

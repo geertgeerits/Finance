@@ -19,21 +19,19 @@
                 Style="{StaticResource gridStyleMenuItems}"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 
-                <BoxView
+                <Border
+                    Style="{StaticResource borderStyleDefault}"
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="3">
-                </BoxView>
-            
-                <Label
-                    x:Name="lblExplanation"
-                    Style="{StaticResource labelStyleExplanation}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    Text="{x:Static resx:FinLang.InterestAnnualExplanation_Text}">
-                </Label>
 
+                    <Label
+                        x:Name="lblExplanation"
+                        Style="{StaticResource labelStyleExplanation}"
+                        Text="{x:Static resx:FinLang.InterestAnnualExplanation_Text}">
+                    </Label>
+                </Border>
+            
                 <Label
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="1"
