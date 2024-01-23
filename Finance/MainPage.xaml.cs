@@ -1,8 +1,8 @@
 ﻿// Program .....: Finance.sln
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
-// Copyright ...: (C) 1992-2023
+// Copyright ...: (C) 1992-2024
 // Version .....: 3.0.65
-// Date ........: 2023-12-31 (YYYY-MM-DD)
+// Date ........: 2024-01-23 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Financial calculations
 // Thanks to ...: Gerald Versluis
@@ -182,7 +182,7 @@ public partial class MainPage : ContentPage
 
         Globals.SetCultureSelectedLanguage();
 
-        cCopyright = $"{FinLang.Copyright_Text} © 1992-2023 Geert Geerits";
+        cCopyright = $"{FinLang.Copyright_Text} © 1992-2024 Geert Geerits";
         cLicenseText = $"{FinLang.License_Text}\n\n{FinLang.LicenseMit2_Text}";
 
         //App.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing.
