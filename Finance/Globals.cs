@@ -5,7 +5,7 @@ global using System.Globalization;
 namespace Finance;
 
 // Global variables and methods.
-static class Globals
+internal static class Globals
 {
     // Global variables.
     public static string cTheme;
