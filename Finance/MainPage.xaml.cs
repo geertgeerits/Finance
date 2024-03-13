@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 1992-2024
 // Version .....: 3.0.65
-// Date ........: 2024-01-24 (YYYY-MM-DD)
+// Date ........: 2024-03-13 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Financial calculations
 // Thanks to ...: Gerald Versluis
