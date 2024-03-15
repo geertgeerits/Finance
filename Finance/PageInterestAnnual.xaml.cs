@@ -154,30 +154,30 @@ public partial class PageInterestAnnual : ContentPage
         double nRenteTemp;
 
         // Calculate annual interest.
-        if (nCapitalInitial == 0)
-        {
-            _ = entCapitalInitial.Focus();
-            return;
-        }
-        else if (nAmountPeriod > 0)
-        {
-            nInterestAmount = nDurationMonths * nAmountPeriod - nCapitalInitial;
-            nInterimCalculation = nAmountPeriod * nDurationMonths;
-            entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nInterimCalculation, nNumDec, "F");
-        }
-        else if (nCapitalFinal != 0)
-        {
-            nInterestAmount = nCapitalFinal - nCapitalInitial;
-            nInterimCalculation = nCapitalFinal / nDurationMonths;
-            entAmountPeriod.Text = Globals.RoundDoubleToNumDecimals(ref nInterimCalculation, nNumDec, "F");
-        }
-        else
-        {
-            return;
-        }
-
         try
         {
+            if (nCapitalInitial == 0)
+            {
+                _ = entCapitalInitial.Focus();
+                return;
+            }
+            else if (nAmountPeriod > 0)
+            {
+                nInterestAmount = nDurationMonths * nAmountPeriod - nCapitalInitial;
+                nInterimCalculation = nAmountPeriod * nDurationMonths;
+                entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nInterimCalculation, nNumDec, "F");
+            }
+            else if (nCapitalFinal != 0)
+            {
+                nInterestAmount = nCapitalFinal - nCapitalInitial;
+                nInterimCalculation = nCapitalFinal / nDurationMonths;
+                entAmountPeriod.Text = Globals.RoundDoubleToNumDecimals(ref nInterimCalculation, nNumDec, "F");
+            }
+            else
+            {
+                return;
+            }
+
             nRenteTemp = (Math.Pow((nInterestAmount + nCapitalInitial) / nCapitalInitial, (double)1 / (nDurationMonths / 12)) - 1) * 100;
             nInterestRate = nRenteTemp;
         }
