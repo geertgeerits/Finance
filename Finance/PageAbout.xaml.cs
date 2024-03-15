@@ -56,9 +56,9 @@ public partial class PageAbout : ContentPage
     // !!!BUG!!! in Android: the WebView control gives an error when opening a link to the Google Play Console.
     private async void OnBtnWebsiteLinkClicked(object sender, EventArgs e)
     {
-#if ANDROID
         try
         {
+#if ANDROID
             Uri uri = new("https://geertgeerits.wixsite.com/geertgeerits/finance");
             BrowserLaunchOptions options = new()
             {
@@ -67,13 +67,13 @@ public partial class PageAbout : ContentPage
             };
 
             await Browser.Default.OpenAsync(uri, options);
+#else
+            await Navigation.PushAsync(new PageWebsite());
+#endif
         }
         catch (Exception ex)
         {
             await DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
         }
-#else
-        await Navigation.PushAsync(new PageWebsite());
-#endif
     }
 }

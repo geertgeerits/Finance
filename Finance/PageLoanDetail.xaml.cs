@@ -3,8 +3,16 @@
 public partial class PageLoanDetail : ContentPage
 {
     // Variables for loan detail.
-    private readonly string[] aColHeader = new string[7];
-    private readonly string[,] aLoanDetail = new string[1201, 7];
+    public static readonly string[] aColHeader = new string[7];
+    public static readonly string[,] aLoanDetail = new string[1201, 7];
+    public static string lblInterestRateText;
+    public static string lblCapitalInitialText;
+    public static string lblDurationYearsText;
+    public static string lblPeriodsYearText;
+    public static string entInterestRateText;
+    public static string entCapitalInitialText;
+    public static string entDurationYearsText;
+    public static string entPeriodsYearText;
 
     // Variables for export / e-mail.
     private string cExportType;
@@ -390,23 +398,33 @@ public partial class PageLoanDetail : ContentPage
         //string cFileName = Path.Combine(FileSystem.Current.AppDataDirectory, FinLang.LoanDetailDocumentName_Text);
         string cFileName = Path.Combine(FileSystem.Current.CacheDirectory, FinLang.LoanDetailDocumentName_Text);
 
+        // Initialize variables from labels and entry fields.
+        lblInterestRateText = lblInterestRate.Text;
+        lblCapitalInitialText = lblCapitalInitial.Text;
+        lblDurationYearsText = lblDurationYears.Text;
+        lblPeriodsYearText = lblPeriodsYear.Text;
+        entInterestRateText = entInterestRate.Text;
+        entCapitalInitialText = entCapitalInitial.Text;
+        entDurationYearsText = entDurationYears.Text;
+        entPeriodsYearText = entPeriodsYear.Text;
+
         // Export.
         activityIndicator.IsRunning = true;
 
         if (cExportType == "CSV ;")
         {
             cFileName += ".csv";
-            ExportDetailLoanCSV(nNumberPeriods, cCurrency, cDocTitle, cFileName);
+            ClassPageLoanDetailExport.ExportDetailLoanCSV(nNumberPeriods, cCurrency, cDocTitle, cFileName);
         }
         else if (cExportType == "HTML")
         {
             cFileName += ".html";
-            ExportDetailLoanHTML(nNumberPeriods, cCurrency, cDocTitle, cFileName);
+            ClassPageLoanDetailExport.ExportDetailLoanHTML(nNumberPeriods, cCurrency, cDocTitle, cFileName);
         }
         else if (cExportType == "PDF")
         {
             cFileName += ".pdf";
-            ExportDetailLoanPDF(nNumberPeriods, cCurrency, cDocTitle, cFileName);
+            ClassPageLoanDetailExport.ExportDetailLoanPDF(nNumberPeriods, cCurrency, cDocTitle, cFileName);
         }
 
         // Open the document file.

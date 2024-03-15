@@ -26,8 +26,15 @@ public partial class PageWebsite : ContentPage
         // If 'mailto' link in webpage then open the e-mail app.
         if (e.Url.StartsWith("mailto"))
         {
-            await Launcher.TryOpenAsync(e.Url);
-            e.Cancel = true;
+            try
+            {
+                _ = await Launcher.TryOpenAsync(e.Url);
+                e.Cancel = true;
+            }
+            catch (Exception ex)
+            {
+                _ = DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+            }
         }
     }
 
