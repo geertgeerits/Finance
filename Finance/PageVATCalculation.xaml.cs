@@ -14,7 +14,7 @@ public partial class PageVATCalculation : ContentPage
             return;
         }
 
-        // Set the type of keyboard.
+        // Set the type of keyboard
         if (Globals.cKeyboard == "Default")
         {
             entVATPercentage.Keyboard = Keyboard.Default;
@@ -29,14 +29,14 @@ public partial class PageVATCalculation : ContentPage
         }
     }
 
-    // Set focus to the first entry field.
+    // Set focus to the first entry field
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {
         entVATPercentage.Focus();
     }
 
-    // Select all the text in the entry field.
+    // Select all the text in the entry field
     private void EntryFocused(object sender, EventArgs e)
     {
         Entry entry = (Entry)sender;
@@ -46,13 +46,13 @@ public partial class PageVATCalculation : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Clear result fields if the text have changed.
+    // Clear result fields if the text have changed
     private void EntryTextChanged(object sender, EventArgs e)
     {
         lblVATAmount.Text = "";
     }
 
-    // Go to the next field when the return key have been pressed.
+    // Go to the next field when the return key have been pressed
     private void GoToNextField(object sender, EventArgs e)
     {
         if (sender == entVATPercentage)
@@ -65,7 +65,7 @@ public partial class PageVATCalculation : ContentPage
         }
     }
 
-    // Set the value of a another field to '0' if the current field is unfocused.
+    // Set the value of a another field to '0' if the current field is unfocused
     private void EntryUnfocused(object sender, EventArgs e)
     {
         entVATPercentage.Text = Globals.ReplaceDecimalPointComma(entVATPercentage.Text);
@@ -89,7 +89,7 @@ public partial class PageVATCalculation : ContentPage
         }
     }
 
-    // Calculate the result.
+    // Calculate the result
     private void CalculateResult(object sender, EventArgs e)
     {
         entVATPercentage.Text = Globals.ReplaceDecimalPointComma(entVATPercentage.Text);
@@ -119,27 +119,27 @@ public partial class PageVATCalculation : ContentPage
             return;
         }
 
-        // Close the keyboard.
+        // Close the keyboard
         entVATAmountExclusive.IsEnabled = false;
         entVATAmountExclusive.IsEnabled = true;
         entVATAmountIncluded.IsEnabled = false;
         entVATAmountIncluded.IsEnabled = true;
 
-        // Convert string to int for number of decimal digits after decimal point.
+        // Convert string to int for number of decimal digits after decimal point
         int nNumDec = int.Parse(Globals.cNumDecimalDigits);
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
-        // Set decimal places for the Entry controls and values passed by reference.
+        // Set decimal places for the Entry controls and values passed by reference
         entVATPercentage.Text = Globals.RoundDecimalToNumDecimals(ref nVATPercentage, nPercDec, "F");
         entVATAmountExclusive.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
         entVATAmountIncluded.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
 
-        // Calculate the VAT.
+        // Calculate the VAT
         decimal nVATAmount;
 
         try
         {
-            // Calculate the VAT percentage.
+            // Calculate the VAT percentage
             if (nVATPercentage == 0 && nVATAmountExclusive > 0 && nVATAmountIncluded > nVATAmountExclusive)
             {
                 nVATAmount = nVATAmountIncluded - nVATAmountExclusive;
@@ -148,7 +148,7 @@ public partial class PageVATCalculation : ContentPage
                 entVATPercentage.Text = Globals.RoundDecimalToNumDecimals(ref nVATPercentage, nPercDec, "F");
             }
             
-            // Calculate the amount VAT exclusieve.
+            // Calculate the amount VAT exclusieve
             else if (nVATAmountIncluded > 0)
             {
                 nVATAmount = nVATAmountIncluded * nVATPercentage / (100 + nVATPercentage);
@@ -166,7 +166,7 @@ public partial class PageVATCalculation : ContentPage
                 entVATAmountExclusive.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
             }
             
-            // Calculate the amount VAT included.
+            // Calculate the amount VAT included
             else if (nVATAmountExclusive > 0)
             {
                 nVATAmount = nVATAmountExclusive * nVATPercentage / 100;
@@ -195,14 +195,14 @@ public partial class PageVATCalculation : ContentPage
             return;
         }
 
-        // Rounding result.
+        // Rounding result
         lblVATAmount.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmount, nNumDec, "N");
 
-        // Set focus.
+        // Set focus
         btnReset.Focus();
     }
 
-    // Reset the entry fields.
+    // Reset the entry fields
     private void ResetEntryFields(object sender, EventArgs e)
     {
         entVATPercentage.Text = "";

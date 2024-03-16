@@ -13,7 +13,7 @@ public partial class PageDifferenceDates : ContentPage
             return;
         }
 
-        // Set the date properties for the DatePicker.
+        // Set the date properties for the DatePicker
         dtpDate1.MinimumDate = new DateTime(1583, 1, 1);
         dtpDate1.MaximumDate = new DateTime(5000, 1, 1);
         dtpDate2.MinimumDate = new DateTime(1583, 1, 1);
@@ -25,7 +25,7 @@ public partial class PageDifferenceDates : ContentPage
         CalculateResult(null, null);
     }
 
-    // Go to the next field when the return key have been pressed.
+    // Go to the next field when the return key have been pressed
     private void GoToNextField(object sender, EventArgs e)
     {
         if (sender == dtpDate1)
@@ -34,10 +34,10 @@ public partial class PageDifferenceDates : ContentPage
         }
     }
 
-    // Calculate the result.
+    // Calculate the result
     private void CalculateResult(object sender, EventArgs e)
     {
-        // Set the smallest date to the first date.
+        // Set the smallest date to the first date
         DateTime fromDate;
         DateTime toDate;
 
@@ -52,10 +52,10 @@ public partial class PageDifferenceDates : ContentPage
             toDate = dtpDate2.Date;
         }
 
-        // Calculate age from start date (date of birth) to end date in years, months, weeks and days (Viorel).
+        // Calculate age from start date (date of birth) to end date in years, months, weeks and days (Viorel)
         DateAgeInYearsMonthsWeeksDays(fromDate, toDate);
 
-        // Calculate the date difference in days, hours, minutes and seconds.
+        // Calculate the date difference in days, hours, minutes and seconds
         long nDateDifference = (toDate - fromDate).Days;
         lblDateDifferenceDays.Text = nDateDifference.ToString("N0");
 
@@ -72,7 +72,7 @@ public partial class PageDifferenceDates : ContentPage
         btnReset.Focus();
     }
 
-    // Calculate age from start date (date of birth) to end date in years, months, weeks and days.
+    // Calculate age from start date (date of birth) to end date in years, months, weeks and days
     // by: Viorel
     // https://learn.microsoft.com/en-us/answers/questions/608004/find-difference-between-dates-c
     private void DateAgeInYearsMonthsWeeksDays(DateTime StartDate, DateTime EndDate)
@@ -117,7 +117,7 @@ public partial class PageDifferenceDates : ContentPage
         lblDateDifferenceWeeks.Text = $"{(EndDate - StartDate).Days / 7:N0}";
     }
 
-    // Reset the entry and result fields.
+    // Reset the entry and result fields
     private void ResetEntryFields(object sender, EventArgs e)
     {
         dtpDate1.Date = DateTime.Today;

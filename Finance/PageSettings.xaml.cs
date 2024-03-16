@@ -19,76 +19,76 @@ public partial class PageSettings : ContentPage
             return;
         }
 
-        // Put text in the chosen language in the controls and variables.
+        // Put text in the chosen language in the controls and variables
         SetLanguage();
         
-        // Set the current language in the picker.
+        // Set the current language in the picker
         pckLanguage.SelectedIndex = Globals.cLanguage switch
         {
-            // Čeština - Czech.
+            // Čeština - Czech
             "cs" => 0,
 
-            // Dansk - Danish.
+            // Dansk - Danish
             "da" => 1,
 
-            // Deutsch - German.
+            // Deutsch - German
             "de" => 2,
 
-            // Español - Spanish.
+            // Español - Spanish
             "es" => 4,
 
-            // Français - French.
+            // Français - French
             "fr" => 5,
 
-            // Italiano - Italian.
+            // Italiano - Italian
             "it" => 6,
 
-            // Magyar - Hungarian.
+            // Magyar - Hungarian
             "hu" => 7,
 
-            // Nederlands - Dutch.
+            // Nederlands - Dutch
             "nl" => 8,
 
-            // Norsk Bokmål - Norwegian Bokmål.
+            // Norsk Bokmål - Norwegian Bokmål
             "nb" => 9,
 
-            // Polski - Polish.
+            // Polski - Polish
             "pl" => 10,
 
-            // Português - Portuguese.
+            // Português - Portuguese
             "pt" => 11,
 
-            // Română - Romanian.
+            // Română - Romanian
             "ro" => 12,
 
-            // Suomi - Finnish.
+            // Suomi - Finnish
             "fi" => 13,
 
-            // Svenska - Swedish.
+            // Svenska - Swedish
             "sv" => 14,
 
-            // English.
+            // English
             _ => 3,
         };
 
-        // Set the current theme in the picker.
+        // Set the current theme in the picker
         pckTheme.SelectedIndex = Globals.cTheme switch
         {
-            // Light.
+            // Light
             "Light" => 1,
 
-            // Dark.
+            // Dark
             "Dark" => 2,
 
-            // System.
+            // System
             _ => 0,
         };
 
-        // Set the number of decimal digits after the decimal point.
+        // Set the number of decimal digits after the decimal point
         entNumDec.Text = Globals.cNumDecimalDigits;
         entPercDec.Text = Globals.cPercDecimalDigits;
 
-        // Set radiobutton to the date format.
+        // Set radiobutton to the date format
         if (Globals.bDateFormatSystem == true)
         {
             rbnDateFormatSystem.IsChecked = true;
@@ -98,7 +98,7 @@ public partial class PageSettings : ContentPage
             rbnDateFormatISO8601.IsChecked = true;
         }
 
-        // Set radiobutton to the page format.
+        // Set radiobutton to the page format
         if (Globals.cPageFormat == "A4")
         {
             rbnPageFormatA4.IsChecked = true;
@@ -108,7 +108,7 @@ public partial class PageSettings : ContentPage
             rbnPageFormatLetter.IsChecked = true;
         }
 
-        // Set radiobutton to the rounding numbers method.
+        // Set radiobutton to the rounding numbers method
         if (Globals.cRoundNumber == "AwayFromZero")
         {
             rbnRoundNumberAwayFromZero.IsChecked = true;
@@ -118,7 +118,7 @@ public partial class PageSettings : ContentPage
             rbnRoundNumberToEven.IsChecked = true;
         }
 
-        // Set radiobutton to the used keyboard.
+        // Set radiobutton to the used keyboard
         if (Globals.cKeyboard == "Default")
         {
             rbnKeyboardDefault.IsChecked = true;
@@ -132,14 +132,14 @@ public partial class PageSettings : ContentPage
             rbnKeyboardText.IsChecked = true;
         }
 
-        // Set the color of number to false or true.
+        // Set the color of number to false or true
         swtColorNumber.IsToggled = Globals.bColorNumber;
 
-        // Start the stopWatch for resetting all the settings.
+        // Start the stopWatch for resetting all the settings
         stopWatch.Start();
     }
 
-    // Picker language clicked event.
+    // Picker language clicked event
     private void OnPickerLanguageChanged(object sender, EventArgs e)
     {
         string cLanguageOld = Globals.cLanguage;
@@ -151,49 +151,49 @@ public partial class PageSettings : ContentPage
         {
             Globals.cLanguage = selectedIndex switch
             {
-                // Čeština - Czech.
+                // Čeština - Czech
                 0 => "cs",
 
-                // Dansk - Danish.
+                // Dansk - Danish
                 1 => "da",
 
-                // Deutsch - German.
+                // Deutsch - German
                 2 => "de",
 
-                // Español - Spanish.
+                // Español - Spanish
                 4 => "es",
 
-                // Français - French.
+                // Français - French
                 5 => "fr",
 
-                // Italiano - Italian.
+                // Italiano - Italian
                 6 => "it",
 
-                // Magyar - Hungarian.
+                // Magyar - Hungarian
                 7 => "hu",
 
-                // Nederlands - Dutch.
+                // Nederlands - Dutch
                 8 => "nl",
 
-                // Norsk Bokmål - Norwegian Bokmål.
+                // Norsk Bokmål - Norwegian Bokmål
                 9 => "nb",
 
-                // Polski - Polish.
+                // Polski - Polish
                 10 => "pl",
 
-                // Português - Portuguese.
+                // Português - Portuguese
                 11 => "pt",
 
-                // Română - Romanian.
+                // Română - Romanian
                 12 => "ro",
 
-                // Suomi - Finnish.
+                // Suomi - Finnish
                 13 => "fi",
 
-                // Svenska - Swedish.
+                // Svenska - Swedish
                 14 => "sv",
 
-                // English.
+                // English
                 _ => "en",
             };
         }
@@ -202,15 +202,15 @@ public partial class PageSettings : ContentPage
         {
             Globals.bLanguageChanged = true;
 
-            // Set the current UI culture of the selected language.
+            // Set the current UI culture of the selected language
             Globals.SetCultureSelectedLanguage();
 
-            // Put text in the chosen language in the controls and variables.
+            // Put text in the chosen language in the controls and variables
             SetLanguage();
         }
     }
 
-    // Picker theme clicked event.
+    // Picker theme clicked event
     private void OnPickerThemeChanged(object sender, EventArgs e)
     {
         var picker = (Picker)sender;
@@ -220,13 +220,13 @@ public partial class PageSettings : ContentPage
         {
             Globals.cTheme = selectedIndex switch
             {
-                // Light.
+                // Light
                 1 => "Light",
 
-                // Dark.
+                // Dark
                 2 => "Dark",
 
-                // System.
+                // System
                 _ => "System",
             };
 
@@ -234,7 +234,7 @@ public partial class PageSettings : ContentPage
         }
     }
 
-    // Select all the text in the entry field.
+    // Select all the text in the entry field
     private void EntryFocused(object sender, EventArgs e)
     {
         var entry = (Entry)sender;
@@ -244,10 +244,10 @@ public partial class PageSettings : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Verify the number of decimal digits for numbers after the decimal point.
+    // Verify the number of decimal digits for numbers after the decimal point
     private void VerifyNumberDecimals(object sender, EventArgs e)
     {
-        // Validate input values.
+        // Validate input values
         bool bIsNumber = int.TryParse(entNumDec.Text, out int nNumDec);
         if (bIsNumber == false || nNumDec < 0 || nNumDec > 4 || entNumDec.Text == "")
         {
@@ -259,7 +259,7 @@ public partial class PageSettings : ContentPage
         Globals.cNumDecimalDigits = Convert.ToString(nNumDec);
     }
 
-    // Verify the number of decimal digits for percentages after the decimal point.
+    // Verify the number of decimal digits for percentages after the decimal point
     private void VerifyPercentageDecimals(object sender, EventArgs e)
     {
         bool bIsNumber = int.TryParse(entPercDec.Text, out int nPercDec);
@@ -272,12 +272,12 @@ public partial class PageSettings : ContentPage
 
         Globals.cPercDecimalDigits = Convert.ToString(nPercDec);
 
-        // Close the keyboard.
+        // Close the keyboard
         entPercDec.IsEnabled = false;
         entPercDec.IsEnabled = true;
     }
 
-    // Put text in the chosen language in the controls and variables.
+    // Put text in the chosen language in the controls and variables
     private void SetLanguage()
     {
         var ThemeList = new List<string>
@@ -288,21 +288,21 @@ public partial class PageSettings : ContentPage
         };
         pckTheme.ItemsSource = ThemeList;
 
-        // Set the current theme in the picker.
+        // Set the current theme in the picker
         pckTheme.SelectedIndex = Globals.cTheme switch
         {
-            // Light.
+            // Light
             "Light" => 1,
 
-            // Dark.
+            // Dark
             "Dark" => 2,
 
-            // System.
+            // System
             _ => 0,
         };
     }
 
-    // Radio button date format clicked event.
+    // Radio button date format clicked event
     private void OnDateFormatRadioButtonCheckedChanged(object sender, EventArgs e)
     {
         if (rbnDateFormatSystem.IsChecked)
@@ -317,7 +317,7 @@ public partial class PageSettings : ContentPage
         }
     }
 
-    // Radio button page format clicked event.
+    // Radio button page format clicked event
     private void OnPageFormatRadioButtonCheckedChanged(object sender, EventArgs e)
     {
         if (rbnPageFormatA4.IsChecked)
@@ -330,7 +330,7 @@ public partial class PageSettings : ContentPage
         }
     }
 
-    // Radio button roundig numbers method clicked event.
+    // Radio button roundig numbers method clicked event
     private void OnRoundNumberRadioButtonCheckedChanged(object sender, EventArgs e)
     {
         if (rbnRoundNumberAwayFromZero.IsChecked)
@@ -343,7 +343,7 @@ public partial class PageSettings : ContentPage
         }
     }
 
-    // Radio button keyboard clicked event.
+    // Radio button keyboard clicked event
     private void OnKeyboardRadioButtonCheckedChanged(object sender, EventArgs e)
     {
         if (rbnKeyboardDefault.IsChecked)
@@ -360,14 +360,14 @@ public partial class PageSettings : ContentPage
         }
     }
 
-    // Switch color number toggled.
+    // Switch color number toggled
     private void OnSwtColorNumberToggled(object sender, ToggledEventArgs e)
     {
         Globals.bColorNumber = swtColorNumber.IsToggled;
         Globals.SetThemeAndNumberColor();
     }
 
-    // Button save settings clicked event.
+    // Button save settings clicked event
     private static void OnSettingsSaveClicked(object sender, EventArgs e)
     {
         Preferences.Default.Set("SettingTheme", Globals.cTheme);
@@ -380,18 +380,18 @@ public partial class PageSettings : ContentPage
         Preferences.Default.Set("SettingKeyboard", Globals.cKeyboard);
         Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
 
-        // Give it some time to save the settings.
+        // Give it some time to save the settings
         Task.Delay(400).Wait();
 
-        // Restart the application.
+        // Restart the application
         //Application.Current.MainPage = new AppShell();
         Application.Current.MainPage = new NavigationPage(new MainPage());
     }
 
-    // Button reset settings clicked event.
+    // Button reset settings clicked event
     private void OnSettingsResetClicked(object sender, EventArgs e)
     {
-        // Get the elapsed time in milli seconds.
+        // Get the elapsed time in milli seconds
         stopWatch.Stop();
 
         if (stopWatch.ElapsedMilliseconds < 2001)
@@ -401,7 +401,7 @@ public partial class PageSettings : ContentPage
         }
         else
         {
-            // Reset some settings.
+            // Reset some settings
             Preferences.Default.Remove("SettingTheme");
             Preferences.Default.Remove("SettingDateFormatSystem");
             Preferences.Default.Remove("SettingPageFormat");
@@ -413,10 +413,10 @@ public partial class PageSettings : ContentPage
             Preferences.Default.Remove("SettingLanguage");
         }
 
-        // Give it some time to remove the settings.
+        // Give it some time to remove the settings
         Task.Delay(400).Wait();
 
-        // Restart the application.
+        // Restart the application
         //Application.Current.MainPage = new AppShell();
         Application.Current.MainPage = new NavigationPage(new MainPage());
     }

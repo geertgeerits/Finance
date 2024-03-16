@@ -2,7 +2,7 @@
 // Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
 // Copyright ...: (C) 1992-2024
 // Version .....: 3.0.65
-// Date ........: 2024-03-15 (YYYY-MM-DD)
+// Date ........: 2024-03-16 (YYYY-MM-DD)
 // Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
 // Description .: Financial calculations
 // Thanks to ...: Gerald Versluis
@@ -11,7 +11,7 @@ namespace Finance;
 
 public partial class MainPage : ContentPage
 {
-    // Local variables.
+    // Local variables
     private string cCopyright;
     private string cLicenseText;
 
@@ -39,7 +39,7 @@ public partial class MainPage : ContentPage
         Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
         Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
 
-        // The height of the title bar is lower when an iPhone is in horizontal position.
+        // The height of the title bar is lower when an iPhone is in horizontal position
         if (DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Phone)
         {
             imgbtnAbout.VerticalOptions = LayoutOptions.Start;
@@ -48,10 +48,10 @@ public partial class MainPage : ContentPage
             imgbtnSettings.VerticalOptions = LayoutOptions.Start;
         }
 
-        // Set the theme and the number color.
+        // Set the theme and the number color
         Globals.SetThemeAndNumberColor();
 
-        // Get the system date format and set the date format.
+        // Get the system date format and set the date format
         Globals.cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         
         if (Globals.bDateFormatSystem == true)
@@ -62,36 +62,36 @@ public partial class MainPage : ContentPage
         {
             Globals.cDateFormat = "yyyy-MM-dd";
         }
-        //App.Current.MainPage.DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");  // For testing.
+        //App.Current.MainPage.DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");  // For testing
 
-        // Get the number decimal separator.
+        // Get the number decimal separator
         Globals.cNumDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
 
-        // Get the number of decimal digits after the decimal point.
+        // Get the number of decimal digits after the decimal point
         if (string.IsNullOrEmpty(Globals.cNumDecimalDigits))
         {
             Globals.cNumDecimalDigits = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalDigits);
         }
 
-        // Get the system ISO currency code.
+        // Get the system ISO currency code
         string cCountry = Thread.CurrentThread.CurrentCulture.Name.Substring(3, 2);       
         
         RegionInfo myRegInfo = new(cCountry);
         Globals.cISOCurrencyCode = myRegInfo.ISOCurrencySymbol;
 
-        // Set the page format.
+        // Set the page format
         if (string.IsNullOrEmpty(Globals.cPageFormat))
         {
             Globals.cPageFormat = "CA;CL;CO;CR;DO;GT;MX;PA;PH;US".Contains(cCountry) ? "Letter" : "A4";
         }
 
-        // Set the rounding system of numbers.
+        // Set the rounding system of numbers
         if (string.IsNullOrEmpty(Globals.cRoundNumber))
         {
             Globals.cRoundNumber = "AwayFromZero";
         }
 
-        // Get and set the system OS user language.
+        // Get and set the system OS user language
         try
         {
             if (string.IsNullOrEmpty(Globals.cLanguage))
@@ -107,7 +107,7 @@ public partial class MainPage : ContentPage
         SetTextLanguage();
     }
 
-    // Buttons clicked events.
+    // Buttons clicked events
     private async void OnPageInterestEffectiveClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new PageInterestEffective());
@@ -173,22 +173,22 @@ public partial class MainPage : ContentPage
         await Navigation.PushAsync(new PageAbout());
     }
     
-    // Put text in the chosen language in the controls.
+    // Put text in the chosen language in the controls
     private void SetTextLanguage()
     {
-        // Set the CurrentUICulture.
-        //Globals.cLanguage = "es";  // For testing.
-        //App.Current.MainPage.DisplayAlert("Globals.cLanguage", Globals.cLanguage, "OK");  // For testing.
+        // Set the CurrentUICulture
+        //Globals.cLanguage = "es";  // For testing
+        //App.Current.MainPage.DisplayAlert("Globals.cLanguage", Globals.cLanguage, "OK");  // For testing
 
         Globals.SetCultureSelectedLanguage();
 
         cCopyright = $"{FinLang.Copyright_Text} © 1992-2024 Geert Geerits";
         cLicenseText = $"{FinLang.License_Text}\n\n{FinLang.LicenseMit2_Text}";
 
-        //App.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing.
+        //App.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing
     }
 
-    // Show license using the Loaded event of the MainPage.xaml.
+    // Show license using the Loaded event of the MainPage.xaml
     private async void OnPageLoad(object sender, EventArgs e)
     {
         if (Globals.bLicense == false)
@@ -202,7 +202,7 @@ public partial class MainPage : ContentPage
             else
             {
 #if IOS
-                //Thread.CurrentThread.Abort();  // Not allowed in iOS.
+                //Thread.CurrentThread.Abort();  // Not allowed in iOS
                 imgbtnAbout.IsEnabled = false;
                 imgbtnSettings.IsEnabled= false;
                 btnInterestEffective.IsEnabled = false;
@@ -225,7 +225,7 @@ public partial class MainPage : ContentPage
         }
     }
 
-    // Set language using the Appearing event of the MainPage.xaml.
+    // Set language using the Appearing event of the MainPage.xaml
     private void OnPageAppearing(object sender, EventArgs e)
     {
         if (Globals.bLanguageChanged)
@@ -233,7 +233,7 @@ public partial class MainPage : ContentPage
             SetTextLanguage();
             Globals.bLanguageChanged = false;
 
-            //DisplayAlert("Globals.bLanguageChanged", "true", "OK");  // For testing.
+            //DisplayAlert("Globals.bLanguageChanged", "true", "OK");  // For testing
         }
     }
 }

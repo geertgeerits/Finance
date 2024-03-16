@@ -2,19 +2,11 @@
 
 public partial class PageLoanDetail : ContentPage
 {
-    // Variables for loan detail.
+    // Variables for loan detail
     public static readonly string[] aColHeader = new string[7];
     public static readonly string[,] aLoanDetail = new string[1201, 7];
-    public static string lblInterestRateText;
-    public static string lblCapitalInitialText;
-    public static string lblDurationYearsText;
-    public static string lblPeriodsYearText;
-    public static string entInterestRateText;
-    public static string entCapitalInitialText;
-    public static string entDurationYearsText;
-    public static string entPeriodsYearText;
 
-    // Variables for export / e-mail.
+    // Variables for export / e-mail
     private string cExportType;
     private bool bReCalculateResult;
 
@@ -30,7 +22,7 @@ public partial class PageLoanDetail : ContentPage
             return;
         }
 
-        // Put text in the chosen language in variables.
+        // Put text for the column headers in the chosen language in the array
         aColHeader[0] = FinLang.LoanDetailColumns_0_Text;
         aColHeader[1] = FinLang.LoanDetailColumns_1_Text;
         aColHeader[2] = FinLang.LoanDetailColumns_2_Text;
@@ -39,7 +31,7 @@ public partial class PageLoanDetail : ContentPage
         aColHeader[5] = FinLang.LoanDetailColumns_5_Text;
         aColHeader[6] = FinLang.LoanDetailColumns_6_Text;
 
-        // Set the type of keyboard.
+        // Set the type of keyboard
         if (Globals.cKeyboard == "Default")
         {
             entInterestRate.Keyboard = Keyboard.Default;
@@ -51,27 +43,27 @@ public partial class PageLoanDetail : ContentPage
             entCapitalInitial.Keyboard = Keyboard.Text;
         }
 
-        // Set the current date format and date for the DatePicker.
+        // Set the current date format and date for the DatePicker
         dtpExpirationDate.Format = Globals.cDateFormat;
 
-        // Set the currency code.
+        // Set the currency code
         entCurrencyCode.Text = Globals.cISOCurrencyCode;
 
-        // Set the default export format.
+        // Set the default export format
         pickerExportType.SelectedIndex = 1;
 
-        // Test variable to recalculate the loan.
+        // Test variable to recalculate the loan
         bReCalculateResult = true;
     }
 
-    // Set focus to the first entry field.
+    // Set focus to the first entry field
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {
         entInterestRate.Focus();
     }
 
-    // Select all the text in the entry field.
+    // Select all the text in the entry field
     private void EntryFocused(object sender, EventArgs e)
     {
         var entry = (Entry)sender;
@@ -81,7 +73,7 @@ public partial class PageLoanDetail : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Clear result fields if the text have changed.
+    // Clear result fields if the text have changed
     private void EntryTextChanged(object sender, EventArgs e)
     {
         lblAmountPeriod.Text = "";
@@ -91,7 +83,7 @@ public partial class PageLoanDetail : ContentPage
         bReCalculateResult = true;
     }
 
-    // Go to the next field when the return key have been pressed.
+    // Go to the next field when the return key have been pressed
     private void GoToNextField(object sender, EventArgs e)
     {
         if (sender == entInterestRate)
@@ -108,7 +100,7 @@ public partial class PageLoanDetail : ContentPage
         }
         else if (sender == entCurrencyCode)
         {
-            // Close the keyboard.
+            // Close the keyboard
             entCurrencyCode.IsEnabled = false;
             entCurrencyCode.IsEnabled = true;
 
@@ -116,10 +108,10 @@ public partial class PageLoanDetail : ContentPage
         }
     }
 
-    // Calculate the result with detail per period.
+    // Calculate the result with detail per period
     private void CalculateResult(object sender, EventArgs e)
     {
-        // Validate input values.
+        // Validate input values
         entInterestRate.Text = Globals.ReplaceDecimalPointComma(entInterestRate.Text);
         bool bIsNumber = double.TryParse(entInterestRate.Text, out double nInterestRate);
         if (bIsNumber == false || nInterestRate < 0 || nInterestRate > 100)
@@ -161,27 +153,27 @@ public partial class PageLoanDetail : ContentPage
             return;
         }
 
-        // Close the keyboard.
+        // Close the keyboard
         entPeriodsYear.IsEnabled = false;
         entPeriodsYear.IsEnabled = true;
 
-        // Convert string to int for number of decimal digits after decimal point.
+        // Convert string to int for number of decimal digits after decimal point
         int nNumDec = int.Parse(Globals.cNumDecimalDigits);
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
-        // Set decimal places for the entry controls and values passed by reference.
+        // Set decimal places for the entry controls and values passed by reference
         entInterestRate.Text = Globals.RoundDoubleToNumDecimals(ref nInterestRate, nPercDec, "F");
         entCapitalInitial.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "F");
 
-        // Clear result fields.
+        // Clear result fields
         lblAmountPeriod.Text = "";
         lblInterestTotal.Text = "";
         lblCapitalInterest.Text = "";
 
-        // Clear the array.
+        // Clear the array
         Array.Clear(aLoanDetail);
 
-        // Setup variables.
+        // Setup variables
         double nCapitalRemainder;
         double nCapitalPeriod = 0;
         double nInterestPeriod = 0;
@@ -190,14 +182,14 @@ public partial class PageLoanDetail : ContentPage
         double nPaymentPeriod = 0;
         int nRow;
 
-        // Set up the loan calculations.
+        // Set up the loan calculations
         DateTime dExpirationDate = dtpExpirationDate.Date;              // Expiration date
 
         int nNumberMonthsAdd = 12 / nPeriodsYear;                       // Number of months to add
         int nNumberMonthsAddCumul = nNumberMonthsAdd;                   // Cumul of number of months to add
         int nNumberPeriods = nDurationYears * nPeriodsYear;             // Number of periods
 
-        // Calculate the interest per month.
+        // Calculate the interest per month
         try
         {
             nInterestRatePeriod = Math.Pow(1 + (nInterestRate / 100), (double)1 / nPeriodsYear) - 1;  // Interest rate per period
@@ -220,7 +212,7 @@ public partial class PageLoanDetail : ContentPage
 
         //DisplayAlert("nInterestRatePeriod", nInterestRatePeriod.ToString(), FinLang.ButtonClose_Text);  // For testing
 
-        // Calculate annuity loan per period.
+        // Calculate annuity loan per period
         if (rbnLoanAnnuity.IsChecked)
         {
             nInterestTotal += nInterestPeriod;                          // Interest total
@@ -238,7 +230,7 @@ public partial class PageLoanDetail : ContentPage
             lblAmountPeriod.Text = Globals.RoundDoubleToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
         }
 
-        // Calculate linear loan per period.
+        // Calculate linear loan per period
         else
         {                      
             // Amount of capital per period
@@ -254,10 +246,10 @@ public partial class PageLoanDetail : ContentPage
             nCapitalRemainder = nCapitalInitial;                        // Remainder of capital
         }
 
-        // Add the data in elements of the array.
+        // Add the data in elements of the array
         for (nRow = 0; nRow < nNumberPeriods; nRow++)
         {
-            // Calculate loan annuity per period.
+            // Calculate loan annuity per period
             if (rbnLoanAnnuity.IsChecked)
             {
                 if (Globals.cRoundNumber == "AwayFromZero")
@@ -273,7 +265,7 @@ public partial class PageLoanDetail : ContentPage
                 nCapitalPeriod = nPaymentPeriod - nInterestPeriod;
                 nCapitalRemainder -= nCapitalPeriod;
             }
-            // Calculate loan linear per period.
+            // Calculate loan linear per period
             else
             {
                 if (Globals.cRoundNumber == "AwayFromZero")
@@ -290,30 +282,30 @@ public partial class PageLoanDetail : ContentPage
                 nCapitalRemainder -= nCapitalPeriod;
             }
 
-            // Correction rounding differences interest and capital last period.
+            // Correction rounding differences interest and capital last period
             if (nRow == nNumberPeriods - 1)
             {
-                // Correction rounding differences interest last period.
+                // Correction rounding differences interest last period
                 if (nInterestPeriod < 0)
                 {
                     nInterestPeriod = 0;
                 }
 
-                // Correction rounding differences capital last period.
+                // Correction rounding differences capital last period
                 //DisplayAlert("nCapitalRemainder", Convert.ToString(nCapitalRemainder), "OK");  //For testing
                 nCapitalPeriod += nCapitalRemainder;
                 nPaymentPeriod += nCapitalRemainder;
                 nCapitalRemainder = 0;
             }
 
-            // If selected set last day of month.
+            // If selected set last day of month
             if (ckbDayEndMonth.IsChecked)
             {
                 DateTime dDateLastDayMonth = new(dExpirationDate.Year, dExpirationDate.Month, DateTime.DaysInMonth(dExpirationDate.Year, dExpirationDate.Month));
                 dExpirationDate = dDateLastDayMonth;
             }
 
-            // Fill the array with data.
+            // Fill the array with data
             aLoanDetail[nRow, 0] = Convert.ToString(nRow + 1);
             aLoanDetail[nRow, 1] = dExpirationDate.ToString(Globals.cDateFormat);
             aLoanDetail[nRow, 2] = Globals.RoundDoubleToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
@@ -329,33 +321,33 @@ public partial class PageLoanDetail : ContentPage
         }
         //DisplayAlert("Row number", nRow.ToString(), "OK");  // For testing
         
-        // Rounding and formatting result.
+        // Rounding and formatting result
         lblInterestTotal.Text = Globals.RoundDoubleToNumDecimals(ref nInterestTotal, nNumDec, "N");
         double nCapitalInterest = nCapitalInitial + nInterestTotal;
         lblCapitalInterest.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalInterest, nNumDec, "N");
 
-        // Store totals in row of array aLoanDetail (ex. nNumberPeriods = 12 -> nRow in for loop = 0-11 -> nRow after for loop = 12).
+        // Store totals in row of array aLoanDetail (ex. nNumberPeriods = 12 -> nRow in for loop = 0-11 -> nRow after for loop = 12)
         aLoanDetail[nRow, 2] = lblCapitalInterest.Text;
         aLoanDetail[nRow, 3] = Globals.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "N");
         aLoanDetail[nRow, 4] = lblInterestTotal.Text;
 
-        // Test variable te recalculate the loan.
+        // Test variable te recalculate the loan
         bReCalculateResult = false;
 
-        // Set focus.
+        // Set focus
         btnReset.Focus();
     }
 
-    // Export loan with detail per period.
+    // Export loan with detail per period
     private async void ExportDetailLoan(object sender, EventArgs e)
     {
-        // Recalculate the loan if needed.
+        // Recalculate the loan if needed
         if (bReCalculateResult)
         {
             CalculateResult(sender, e);
         }
 
-        // Number of periods.
+        // Number of periods
         bool bIsNumber = int.TryParse(entDurationYears.Text, out int nDurationYears);
         if (bIsNumber == false)
         {
@@ -370,7 +362,7 @@ public partial class PageLoanDetail : ContentPage
 
         int nNumberPeriods = nDurationYears * nPeriodsYear;
 
-        // Currency.
+        // Currency
         string cCurrency = entCurrencyCode.Text.Trim();
         
         if (cCurrency.Length < 3)
@@ -381,7 +373,7 @@ public partial class PageLoanDetail : ContentPage
 
         cCurrency = cCurrency.ToUpper();
 
-        // Document title: loan annuity or linear.
+        // Document title: loan annuity or linear
         string cDocTitle;
 
         if (rbnLoanAnnuity.IsChecked)
@@ -393,50 +385,46 @@ public partial class PageLoanDetail : ContentPage
             cDocTitle = FinLang.LoanDetailDocTitleLinear_Text;
         }
 
-        // File name.
+        // File name
         //string cFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), FinLang.LoanDetailDocumentName_Text);
         //string cFileName = Path.Combine(FileSystem.Current.AppDataDirectory, FinLang.LoanDetailDocumentName_Text);
         string cFileName = Path.Combine(FileSystem.Current.CacheDirectory, FinLang.LoanDetailDocumentName_Text);
 
-        // Initialize variables from labels and entry fields.
-        lblInterestRateText = lblInterestRate.Text;
-        lblCapitalInitialText = lblCapitalInitial.Text;
-        lblDurationYearsText = lblDurationYears.Text;
-        lblPeriodsYearText = lblPeriodsYear.Text;
-        entInterestRateText = entInterestRate.Text;
-        entCapitalInitialText = entCapitalInitial.Text;
-        entDurationYearsText = entDurationYears.Text;
-        entPeriodsYearText = entPeriodsYear.Text;
+        // Initialize named tuple from labels and entry fields
+        (string lblInterestRateText, string entInterestRateText, string lblCapitalInitialText, string entCapitalInitialText,
+            string lblDurationYearsText, string entDurationYearsText, string lblPeriodsYearText, string entPeriodsYear) tLblEnt
+            = (lblInterestRate.Text, entInterestRate.Text, lblCapitalInitial.Text, entCapitalInitial.Text,
+            lblDurationYears.Text, entDurationYears.Text, lblPeriodsYear.Text, entPeriodsYear.Text);
 
-        // Export.
+        // Export
         activityIndicator.IsRunning = true;
 
         if (cExportType == "CSV ;")
         {
             cFileName += ".csv";
-            ClassPageLoanDetailExport.ExportDetailLoanCSV(nNumberPeriods, cCurrency, cDocTitle, cFileName);
+            ClassPageLoanDetailExport.ExportDetailLoanCSV(nNumberPeriods, cCurrency, cDocTitle, cFileName, tLblEnt);
         }
         else if (cExportType == "HTML")
         {
             cFileName += ".html";
-            ClassPageLoanDetailExport.ExportDetailLoanHTML(nNumberPeriods, cCurrency, cDocTitle, cFileName);
+            ClassPageLoanDetailExport.ExportDetailLoanHTML(nNumberPeriods, cCurrency, cDocTitle, cFileName, tLblEnt);
         }
         else if (cExportType == "PDF")
         {
             cFileName += ".pdf";
-            ClassPageLoanDetailExport.ExportDetailLoanPDF(nNumberPeriods, cCurrency, cDocTitle, cFileName);
+            ClassPageLoanDetailExport.ExportDetailLoanPDF(nNumberPeriods, cCurrency, cDocTitle, cFileName, tLblEnt);
         }
 
-        // Open the document file.
+        // Open the document file
         await OpenDocumentFileAsync(cFileName);
 
-        // Open the share interface to share the document file.
+        // Open the share interface to share the document file
         await OpenShareInterfaceAsync(cFileName);
 
         activityIndicator.IsRunning = false;
     }
 
-    // Open the document file.
+    // Open the document file
     private async Task OpenDocumentFileAsync(string cFile)
     {
         bool answer = await DisplayAlert("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.FileOpenQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
@@ -447,7 +435,7 @@ public partial class PageLoanDetail : ContentPage
 
         try
         {
-            // Workaround for !!!BUG!!! on Android !!! - Webpage not available.
+            // Workaround for !!!BUG!!! on Android !!! - Webpage not available
             // The webpage at file:///data/user/0/com.companyname.finance/cache/FinanceDocument.html could not be loaded becauce:
             // net::ERR_ACCESS_DENIED
 #if ANDROID
@@ -455,7 +443,7 @@ public partial class PageLoanDetail : ContentPage
 #else
             await Navigation.PushAsync(new PageLoanDetailHtml(cFile));
 #endif
-            // Wait 1 second before opening the share interface.
+            // Wait 1 second before opening the share interface
             Task.Delay(1000).Wait();
         }
         catch (Exception ex)
@@ -464,7 +452,7 @@ public partial class PageLoanDetail : ContentPage
         }
     }
 
-    // Open the share interface.
+    // Open the share interface
     private async Task OpenShareInterfaceAsync(string cFile)
     {
         bool answer = await DisplayAlert("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.ShareQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
@@ -487,7 +475,7 @@ public partial class PageLoanDetail : ContentPage
         }
     }
 
-    // Reset the entry fields.
+    // Reset the entry fields
     private void ResetEntryFields(object sender, EventArgs e)
     {
         entInterestRate.Text = "";
@@ -507,19 +495,19 @@ public partial class PageLoanDetail : ContentPage
         entInterestRate.Focus();
     }
 
-    // Radio button checked changed event.
+    // Radio button checked changed event
     private void OnRbnLoanCheckedChanged(object sender, EventArgs e)
     {
         CalculateResult(sender, e);
     }
 
-    // DatePicker and CheckBox event.
+    // DatePicker and CheckBox event
     private void OnDateDataChanged(object sender, EventArgs e)
     {
         bReCalculateResult = true;
     }
 
-    // Picker and export type SelectedIndexChanged event.
+    // Picker and export type SelectedIndexChanged event
     private void OnPickerExportTypeChanged(object sender, EventArgs e)
     {
         var picker = (Picker)sender;

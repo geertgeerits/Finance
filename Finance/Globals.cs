@@ -1,13 +1,13 @@
-﻿// Global usings.
+﻿// Global usings
 global using Finance.Resources.Languages;
 global using System.Globalization;
 
 namespace Finance;
 
-// Global variables and methods.
+// Global variables and methods
 internal static class Globals
 {
-    // Global variables.
+    // Global variables
     public static string cTheme;
     public static bool bDateFormatSystem;
     public static string cSysDateFormat;
@@ -26,14 +26,14 @@ internal static class Globals
     public static string cPageFormat;
     public static bool bLicense;
 
-    // Local variables.
+    // Local variables
     private static readonly string cColorNegNumberLight = "#FF0000";
     private static readonly string cColorPosNumberLight = "#000000";
     private static readonly string cColorNegNumberDark = "#FFB0B0";
     private static readonly string cColorPosNumberDark = "#FFFFFF";
 
-    // Global methods.
-    // Set the theme and the number text color.
+    // Global methods
+    // Set the theme and the number text color
     public static void SetThemeAndNumberColor()
     {
         switch (cTheme)
@@ -55,7 +55,7 @@ internal static class Globals
             default:
                 Application.Current.UserAppTheme = AppTheme.Unspecified;
 
-                // Get the current device theme and set the number color.
+                // Get the current device theme and set the number color
                 AppTheme currentTheme = Application.Current.RequestedTheme;
                 if (currentTheme == AppTheme.Dark)
                 {
@@ -71,7 +71,7 @@ internal static class Globals
         }
     }
 
-    // Set the current UI culture of the selected language.
+    // Set the current UI culture of the selected language
     public static void SetCultureSelectedLanguage()
     {
         try
@@ -81,11 +81,11 @@ internal static class Globals
         }
         catch
         {
-            // Do nothing.
+            // Do nothing
         }
     }
 
-    // Replace decimal point with decimal comma.
+    // Replace decimal point with decimal comma
     public static string ReplaceDecimalPointComma(string cNumber)
     {
         if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
@@ -100,7 +100,7 @@ internal static class Globals
         return cNumber;
     }
 
-    // Rounding numbers.
+    // Rounding numbers
     // Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
     // Round half to even or banker's rounding: MidpointRounding.ToEven
     //       Value      Default    ToEven     AwayFromZero    ToZero
@@ -116,9 +116,9 @@ internal static class Globals
     //       12.9       13         13         13              12
     //       13.0       13         13         13              13
 
-    // Format specifier: "F" = 1234.56 or 1234,56 ; "N" = 1,234.56 or 1.234,56.
+    // Format specifier: "F" = 1234.56 or 1234,56 ; "N" = 1,234.56 or 1.234,56
 
-    // Rounding and formatting double number to # decimals returning number as value and as string.
+    // Rounding and formatting double number to # decimals returning number as value and as string
     public static string RoundDoubleToNumDecimals(ref double nNumber, int nNumDec, string cFormatSpecifier)
     {
         if (cRoundNumber == "AwayFromZero")
@@ -134,7 +134,7 @@ internal static class Globals
         return nNumber.ToString(cNumFormat);
     }
 
-    // Rounding and formatting decimal number to # decimals returning number as value and as string.
+    // Rounding and formatting decimal number to # decimals returning number as value and as string
     public static string RoundDecimalToNumDecimals(ref decimal nNumber, int nNumDec, string cFormatSpecifier)
     {
         if (cRoundNumber == "AwayFromZero")
@@ -150,7 +150,7 @@ internal static class Globals
         return nNumber.ToString(cNumFormat);
     }
 
-    // Set the label text color to a different color for a negative and a positive number.
+    // Set the label text color to a different color for a negative and a positive number
     public static void SetLabelTextColorForNumber(Label label)
     {
         if (decimal.TryParse(label.Text, out decimal nValue))
@@ -159,7 +159,7 @@ internal static class Globals
         }
     }
 
-    // Close the keyboard.
+    // Close the keyboard
     //public static void CloseKeyboard(Entry entry, EventArgs e)
     //{
     //    try

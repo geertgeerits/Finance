@@ -14,7 +14,7 @@ public partial class PageInterestPayDiscount : ContentPage
             return;
         }
 
-        // Set the type of keyboard.
+        // Set the type of keyboard
         if (Globals.cKeyboard == "Default")
         {
             entPaymentDiscount.Keyboard = Keyboard.Default;
@@ -25,14 +25,14 @@ public partial class PageInterestPayDiscount : ContentPage
         }
     }
 
-    // Set focus to the first entry field.
+    // Set focus to the first entry field
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {
         entPaymentDiscount.Focus();
     }
 
-    // Select all the text in the entry field.
+    // Select all the text in the entry field
     private void EntryFocused(object sender, EventArgs e)
     {
         var entry = (Entry)sender;
@@ -42,13 +42,13 @@ public partial class PageInterestPayDiscount : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Clear result fields.
+    // Clear result fields
     private void EntryTextChanged(object sender, EventArgs e)
     {
         lblInterestEffective.Text = "";
     }
 
-    // Go to the next field when the return key have been pressed.
+    // Go to the next field when the return key have been pressed
     private void GoToNextField(object sender, EventArgs e)
     {
         if (sender == entPaymentDiscount)
@@ -61,10 +61,10 @@ public partial class PageInterestPayDiscount : ContentPage
         }
     }
 
-    // Calculate the result.
+    // Calculate the result
     private void CalculateResult(object sender, EventArgs e)
     {
-        // Validate input values.
+        // Validate input values
         entPaymentDiscount.Text = Globals.ReplaceDecimalPointComma(entPaymentDiscount.Text);
         bool bIsNumber = decimal.TryParse(entPaymentDiscount.Text, out decimal nPaymentDiscount);
         if (bIsNumber == false || nPaymentDiscount < 0 || nPaymentDiscount > 100)
@@ -91,14 +91,14 @@ public partial class PageInterestPayDiscount : ContentPage
             return;
         }
 
-        // Close the keyboard.
+        // Close the keyboard
         entExpiryDaysWithoutDiscount.IsEnabled = false;
         entExpiryDaysWithoutDiscount.IsEnabled = true;
 
-        // Convert string to int for number of decimal digits after decimal point.
+        // Convert string to int for number of decimal digits after decimal point
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
-        // Set decimal places for the Entry controls and values passed by reference.
+        // Set decimal places for the Entry controls and values passed by reference
         entPaymentDiscount.Text = Globals.RoundDecimalToNumDecimals(ref nPaymentDiscount, nPercDec, "F");
 
         decimal nInterestEffective;
@@ -120,14 +120,14 @@ public partial class PageInterestPayDiscount : ContentPage
             nInterestEffective = 0;
         }
 
-        // Rounding result.
+        // Rounding result
         lblInterestEffective.Text = Globals.RoundDecimalToNumDecimals(ref nInterestEffective, nPercDec, "N");
 
-        // Set focus.
+        // Set focus
         btnReset.Focus();
     }
 
-    // Reset the entry fields.
+    // Reset the entry fields
     private void ResetEntryFields(object sender, EventArgs e)
     {
         entPaymentDiscount.Text = "";

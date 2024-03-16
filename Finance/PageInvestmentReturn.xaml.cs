@@ -14,7 +14,7 @@ public partial class PageInvestmentReturn : ContentPage
             return;
         }
 
-        // Set the type of keyboard.
+        // Set the type of keyboard
         if (Globals.cKeyboard == "Default")
         {
             entAmountPurchase.Keyboard = Keyboard.Default;
@@ -31,14 +31,14 @@ public partial class PageInvestmentReturn : ContentPage
         }
     }
 
-    // Set focus to the first entry field.
+    // Set focus to the first entry field
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {
         entAmountPurchase.Focus();
     }
 
-    // Select all the text in the entry field.
+    // Select all the text in the entry field
     private void EntryFocused(object sender, EventArgs e)
     {
         var entry = (Entry)sender;
@@ -48,13 +48,13 @@ public partial class PageInvestmentReturn : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Clear result fields if the text have changed.
+    // Clear result fields if the text have changed
     private void EntryTextChanged(object sender, EventArgs e)
     {
         lblAmountTotal.Text = "";
     }
 
-    // Go to the next field when the return key have been pressed.
+    // Go to the next field when the return key have been pressed
     private void GoToNextField(object sender, EventArgs e)
     {
         if (sender == entAmountPurchase)
@@ -71,7 +71,7 @@ public partial class PageInvestmentReturn : ContentPage
         }
     }
 
-    // Set the value of a another field to '0' if the current field is unfocused.
+    // Set the value of a another field to '0' if the current field is unfocused
     private void EntryUnfocused(object sender, EventArgs e)
     {
         if (sender == entAmountPurchase && entAmountPurchase.Text != "0")
@@ -89,10 +89,10 @@ public partial class PageInvestmentReturn : ContentPage
         }
     }
 
-    // Calculate the result.
+    // Calculate the result
     private void CalculateResult(object sender, EventArgs e)
     {
-        // Validate input values.
+        // Validate input values
         entAmountPurchase.Text = Globals.ReplaceDecimalPointComma(entAmountPurchase.Text);
         bool bIsNumber = decimal.TryParse(entAmountPurchase.Text, out decimal nAmountPurchase);
         if (bIsNumber == false || nAmountPurchase < 0 || nAmountPurchase > 9_999_999_999)
@@ -129,17 +129,17 @@ public partial class PageInvestmentReturn : ContentPage
             return;
         }
 
-        // Close the keyboard.
+        // Close the keyboard
         entAmountRevenueYear.IsEnabled = false;
         entAmountRevenueYear.IsEnabled = true;
         entPercentageReturnYear.IsEnabled = false;
         entPercentageReturnYear.IsEnabled = true;
 
-        // Convert string to int for number of decimal digits after decimal point.
+        // Convert string to int for number of decimal digits after decimal point
         int nNumDec = int.Parse(Globals.cNumDecimalDigits);
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
-        // Check what needs to be calculated first.
+        // Check what needs to be calculated first
         if (nPercentageReturnYear > 0)
         {
             nAmountPurchase = 0;
@@ -151,13 +151,13 @@ public partial class PageInvestmentReturn : ContentPage
             nPercentageReturnYear = 0;
         }
         
-        // Set decimal places for the Entry controls and values passed by reference.
+        // Set decimal places for the Entry controls and values passed by reference
         entAmountPurchase.Text = Globals.RoundDecimalToNumDecimals(ref nAmountPurchase, nNumDec, "F");
         entAmountCost.Text = Globals.RoundDecimalToNumDecimals(ref nAmountCost, nNumDec, "F");
         entAmountRevenueYear.Text = Globals.RoundDecimalToNumDecimals(ref nAmountRevenueYear, nNumDec, "F");
         entPercentageReturnYear.Text = Globals.RoundDecimalToNumDecimals(ref nPercentageReturnYear, nPercDec, "F");
 
-        // Calculate the results.
+        // Calculate the results
         decimal nAmountTotal = nAmountPurchase + nAmountCost;
 
         if (nAmountTotal == 0)
@@ -195,11 +195,11 @@ public partial class PageInvestmentReturn : ContentPage
             return;
         }
 
-        // Set focus.
+        // Set focus
         btnReset.Focus();
     }
 
-    // Reset the entry fields.
+    // Reset the entry fields
     private void ResetEntryFields(object sender, EventArgs e)
     {
         entAmountPurchase.Text = "0";

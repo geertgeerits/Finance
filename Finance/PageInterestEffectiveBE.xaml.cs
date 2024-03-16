@@ -14,7 +14,7 @@ public partial class PageInterestEffectiveBE : ContentPage
             return;
         }
 
-        // Set the type of keyboard.
+        // Set the type of keyboard
         if (Globals.cKeyboard == "Default")
         {
             entCapitalInitial.Keyboard = Keyboard.Default;
@@ -27,14 +27,14 @@ public partial class PageInterestEffectiveBE : ContentPage
         }
     }
 
-    // Set focus to the first entry field.
+    // Set focus to the first entry field
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {
         entCapitalInitial.Focus();
     }
 
-    // Select all the text in the entry field.
+    // Select all the text in the entry field
     private void EntryFocused(object sender, EventArgs e)
     {
         var entry = (Entry)sender;
@@ -44,14 +44,14 @@ public partial class PageInterestEffectiveBE : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Clear result fields if the text have changed.
+    // Clear result fields if the text have changed
     private void EntryTextChanged(object sender, EventArgs e)
     {
         lblAmountDifference.Text = "";
         lblInterestEffective.Text = "";
     }
 
-    // Go to the next field when the return key have been pressed.
+    // Go to the next field when the return key have been pressed
     private void GoToNextField(object sender, EventArgs e)
     {
         if (sender == entCapitalInitial)
@@ -64,10 +64,10 @@ public partial class PageInterestEffectiveBE : ContentPage
         }
     }
 
-    // Calculate the result.
+    // Calculate the result
     private void CalculateResult(object sender, EventArgs e)
     {
-        // Validate input values.
+        // Validate input values
         entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
         bool bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
         if (bIsNumber == false || nCapitalInitial < 0 || nCapitalInitial > 9_999_999_999)
@@ -94,19 +94,19 @@ public partial class PageInterestEffectiveBE : ContentPage
             return;
         }
 
-        // Close the keyboard.
+        // Close the keyboard
         entDurationYears.IsEnabled = false;
         entDurationYears.IsEnabled = true;
 
-        // Convert string to int for number of decimal digits after decimal point.
+        // Convert string to int for number of decimal digits after decimal point
         int nNumDec = int.Parse(Globals.cNumDecimalDigits);
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
-        // Set decimal places for the Entry controls and values passed by reference.
+        // Set decimal places for the Entry controls and values passed by reference
         entCapitalInitial.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "F");
         entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalFinal, nNumDec, "F");
 
-        // Calculating the effective interest.
+        // Calculating the effective interest
         double nAmountDifference;
         double nInterestEffective;
 
@@ -129,17 +129,17 @@ public partial class PageInterestEffectiveBE : ContentPage
             nInterestEffective = 0;
         }
 
-        // Rounding result.
+        // Rounding result
         lblAmountDifference.Text = Globals.RoundDoubleToNumDecimals(ref nAmountDifference, nNumDec, "N");
         Globals.SetLabelTextColorForNumber(lblAmountDifference);
         lblInterestEffective.Text = Globals.RoundDoubleToNumDecimals(ref nInterestEffective, nPercDec, "N");
         Globals.SetLabelTextColorForNumber(lblInterestEffective);
 
-        // Set focus.
+        // Set focus
         btnReset.Focus();
     }
 
-    // Reset the entry fields.
+    // Reset the entry fields
     private void ResetEntryFields(object sender, EventArgs e)
     {
         entCapitalInitial.Text = "";

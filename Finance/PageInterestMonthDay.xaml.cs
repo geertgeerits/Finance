@@ -14,7 +14,7 @@ public partial class PageInterestMonthDay : ContentPage
             return;
         }
 
-        // Set the type of keyboard.
+        // Set the type of keyboard
         if (Globals.cKeyboard == "Default")
         {
             entInterestRate.Keyboard = Keyboard.Default;
@@ -25,14 +25,14 @@ public partial class PageInterestMonthDay : ContentPage
         }
     }
 
-    // Set focus to the first entry field.
+    // Set focus to the first entry field
     // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
     private void OnPageLoaded(object sender, EventArgs e)
     {
         entPercDec.Focus();
     }
 
-    // Select all the text in the entry field.
+    // Select all the text in the entry field
     private void EntryFocused(object sender, EventArgs e)
     {
         var entry = (Entry)sender;
@@ -42,7 +42,7 @@ public partial class PageInterestMonthDay : ContentPage
         entry.SelectionLength = entry.Text.Length;
     }
 
-    // Clear result fields.
+    // Clear result fields
     private void EntryTextChanged(object sender, EventArgs e)
     {
         lblInterestMonth.Text = "";
@@ -50,7 +50,7 @@ public partial class PageInterestMonthDay : ContentPage
         lblInterestDay366.Text = "";
     }
 
-    // Go to the next field when the return key have been pressed.
+    // Go to the next field when the return key have been pressed
     private void GoToNextField(object sender, EventArgs e)
     {
         if (sender == entPercDec)
@@ -59,10 +59,10 @@ public partial class PageInterestMonthDay : ContentPage
         }
     }
 
-    // Calculate the result.
+    // Calculate the result
     private void CalculateResult(object sender, EventArgs e)
     {
-        // Validate input values.
+        // Validate input values
         bool bIsNumber = int.TryParse(entPercDec.Text, out int nPercDec);
         if (bIsNumber == false || nPercDec < 0 || nPercDec > 8)
         {
@@ -80,11 +80,11 @@ public partial class PageInterestMonthDay : ContentPage
             return;
         }
 
-        // Close the keyboard.
+        // Close the keyboard
         entInterestRate.IsEnabled = false;
         entInterestRate.IsEnabled = true;
 
-        // Set decimal places for the Entry controls and values passed by reference.
+        // Set decimal places for the Entry controls and values passed by reference
         entInterestRate.Text = Globals.RoundDoubleToNumDecimals(ref nInterestRate, nPercDec, "F");
 
         double nInterestMonth = 0;
@@ -106,16 +106,16 @@ public partial class PageInterestMonthDay : ContentPage
             }
         }
 
-        // Rounding result.
+        // Rounding result
         lblInterestMonth.Text = Globals.RoundDoubleToNumDecimals(ref nInterestMonth, nPercDec, "N");
         lblInterestDay365.Text = Globals.RoundDoubleToNumDecimals(ref nInterestDay365, nPercDec, "N");
         lblInterestDay366.Text = Globals.RoundDoubleToNumDecimals(ref nInterestDay366, nPercDec, "N");
 
-        // Set focus.
+        // Set focus
         btnReset.Focus();
     }
 
-    // Reset the entry fields.
+    // Reset the entry fields
     private void ResetEntryFields(object sender, EventArgs e)
     {
         entPercDec.Text = "6";

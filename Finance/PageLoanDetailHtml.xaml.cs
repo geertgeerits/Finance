@@ -14,7 +14,7 @@ public partial class PageLoanDetailHtml : ContentPage
             return;
         }
         
-        // Set the WebView Source.
+        // Set the WebView Source
         wvWebpage.Source = cDocumentUrl;
     }
 }
