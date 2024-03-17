@@ -370,7 +370,7 @@ Mă puteți contacta oricând pentru orice corecturi.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Calculați dobânda pe an.
 
-Introduceți suma de pornire, termenul în luni și fie suma pe termen, fie suma finală.</value>
+Introduceți suma de pornire, termenul în ani și fie suma pe termen, fie suma finală.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Dobândă anuală</value>

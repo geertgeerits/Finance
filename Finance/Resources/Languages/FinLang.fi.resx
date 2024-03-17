@@ -370,7 +370,7 @@ Voit aina ottaa minuun yhteyttä korjauksista.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Laske korko vuodessa.
 
-Syötä aloitussumma, aika kuukausina ja joko summa per jakso tai loppusumma.</value>
+Syötä aloitussumma, termi vuosina ja joko määrä jaksoa kohti tai loppusumma.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Vuotuinen korko</value>

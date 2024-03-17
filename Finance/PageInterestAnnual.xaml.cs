@@ -57,9 +57,9 @@ public partial class PageInterestAnnual : ContentPage
     {
         if (sender == entCapitalInitial)
         {
-            entDurationMonths.Focus();
+            entDurationYears.Focus();
         }
-        else if (sender == entDurationMonths)
+        else if (sender == entDurationYears)
         {
             entAmountPeriod.Focus();
         }
@@ -95,11 +95,11 @@ public partial class PageInterestAnnual : ContentPage
             return;
         }
 
-        bIsNumber = int.TryParse(entDurationMonths.Text, out int nDurationMonths);
-        if (bIsNumber == false || nDurationMonths < 1 || nDurationMonths > 1_200)
+        bIsNumber = int.TryParse(entDurationYears.Text, out int nDurationYears);
+        if (bIsNumber == false || nDurationYears < 1 || nDurationYears > 100)
         {
-            entDurationMonths.Text = "";
-            entDurationMonths.Focus();
+            entDurationYears.Text = "";
+            entDurationYears.Focus();
             return;
         }
 
@@ -163,14 +163,14 @@ public partial class PageInterestAnnual : ContentPage
             }
             else if (nAmountPeriod > 0)
             {
-                nInterestAmount = nDurationMonths * nAmountPeriod - nCapitalInitial;
-                nInterimCalculation = nAmountPeriod * nDurationMonths;
+                nInterestAmount = nDurationYears * nAmountPeriod - nCapitalInitial;
+                nInterimCalculation = nAmountPeriod * nDurationYears;
                 entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nInterimCalculation, nNumDec, "F");
             }
             else if (nCapitalFinal != 0)
             {
                 nInterestAmount = nCapitalFinal - nCapitalInitial;
-                nInterimCalculation = nCapitalFinal / nDurationMonths;
+                nInterimCalculation = nCapitalFinal / nDurationYears;
                 entAmountPeriod.Text = Globals.RoundDoubleToNumDecimals(ref nInterimCalculation, nNumDec, "F");
             }
             else
@@ -178,7 +178,7 @@ public partial class PageInterestAnnual : ContentPage
                 return;
             }
 
-            nRenteTemp = (Math.Pow((nInterestAmount + nCapitalInitial) / nCapitalInitial, (double)1 / (nDurationMonths / 12)) - 1) * 100;
+            nRenteTemp = (Math.Pow((nInterestAmount + nCapitalInitial) / nCapitalInitial, (double)1 / nDurationYears) - 1) * 100;
             nInterestRate = nRenteTemp;
         }
         catch (Exception ex)
@@ -199,7 +199,7 @@ public partial class PageInterestAnnual : ContentPage
     private void ResetEntryFields(object sender, EventArgs e)
     {
         entCapitalInitial.Text = "";
-        entDurationMonths.Text = "12";
+        entDurationYears.Text = "1";
         entAmountPeriod.Text = "0";
         entCapitalFinal.Text = "0";
         lblInterestRate.Text = "";

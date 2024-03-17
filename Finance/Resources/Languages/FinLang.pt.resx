@@ -370,7 +370,7 @@ Você sempre pode entrar em contato comigo para quaisquer correções.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Calcule os juros por ano.
 
-Insira o valor inicial, o prazo em meses e o valor por prazo ou o valor final.</value>
+Insira o valor inicial, o prazo em anos e o valor por período ou o valor final.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Juros anuais</value>

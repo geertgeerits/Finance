@@ -370,7 +370,7 @@ Du kan alltid kontakta mig för eventuella korrigeringar.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Beräkna räntan per år.
 
-Ange startbelopp, löptid i månader och antingen belopp per termin eller slutbelopp.</value>
+Ange startbelopp, löptid i år och antingen belopp per termin eller slutbelopp.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Årsränta</value>

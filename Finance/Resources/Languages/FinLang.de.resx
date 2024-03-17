@@ -370,7 +370,7 @@ Sie können mich jederzeit für Korrekturen kontaktieren.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Berechnen Sie die Zinsen pro Jahr.
 
-Geben Sie den Startbetrag, die Laufzeit in Monaten und entweder den Betrag pro Laufzeit oder den Endbetrag ein.</value>
+Geben Sie den Startbetrag, die Laufzeit in Jahren und entweder den Betrag pro Laufzeit oder den Endbetrag ein.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Jahreszins</value>

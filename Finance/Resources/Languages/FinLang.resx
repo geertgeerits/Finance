@@ -370,7 +370,7 @@ You can always contact me for any corrections.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Calculate the interest per year.
 
-Enter the starting amount, the term in months, and either the amount per term or the final amount.</value>
+Enter the starting amount, the term in years, and either the amount per term or the final amount.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Annual interest</value>

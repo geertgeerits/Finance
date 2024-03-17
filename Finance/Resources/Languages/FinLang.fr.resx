@@ -370,7 +370,7 @@ Vous pouvez toujours me contacter pour toute correction.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Calculez les intérêts par an.
 
-Entrez le montant de départ, le terme en mois et soit le montant par terme, soit le montant final.</value>
+Entrez le montant de départ, la durée en années et soit le montant par durée, soit le montant final.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Intérêt annuel</value>

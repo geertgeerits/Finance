@@ -370,7 +370,7 @@ Du kan alltid kontakte meg for eventuelle rettelser.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Beregn renten per år.
 
-Angi startbeløp, termin i måneder, og enten beløp per termin eller sluttbeløp.</value>
+Angi startbeløp, løpetid i år, og enten beløp per termin eller sluttbeløp.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Årlig rente</value>

@@ -790,7 +790,7 @@ namespace Finance.Resources.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Calculate the interest per year.
         ///
-        ///Enter the starting amount, the term in months, and either the amount per term or the final amount..
+        ///Enter the starting amount, the term in years, and either the amount per term or the final amount..
         /// </summary>
         internal static string InterestAnnualExplanation_Text {
             get {

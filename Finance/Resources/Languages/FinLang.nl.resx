@@ -370,7 +370,7 @@ Voor eventuele correcties kunt u altijd contact met mij opnemen.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Berekenen van de rente per jaar.
 
-Geef het beginbedrag in, de looptijd in maanden, en ofwel het bedrag per periode ofwel het eindbedrag.</value>
+Geef het beginbedrag in, de looptijd in jaren, en ofwel het bedrag per periode ofwel het eindbedrag.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Jaarrente</value>

@@ -85,7 +85,7 @@
                     Grid.Row="2"
                     Text="{local:Translate FinanceInterestAnnual_Text}"
                     ToolTipProperties.Text="{local:Translate FinanceInterestAnnual_Text}"
-                    IsVisible="False"
+                    IsVisible="True"
                     Clicked="OnPageInterestAnnualClicked">
                 </Button>
 

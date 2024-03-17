@@ -368,9 +368,9 @@ Siempre puedes contactarme para cualquier corrección.</value>
     <value>Información</value>
   </data>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
-    <value>Calcular el interés por año.
+    <value>Calcule el interés por año.
 
-Ingrese el monto inicial, el término en meses y el monto por término o el monto final.</value>
+Ingrese el monto inicial, el plazo en años y el monto por plazo o el monto final.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Interés anual</value>

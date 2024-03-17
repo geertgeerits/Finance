@@ -370,7 +370,7 @@ Bármilyen javításért bármikor fordulhat hozzám.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Számítsa ki az éves kamatot.
 
-Adja meg a kezdő összeget, a futamidőt hónapokban, valamint a futamidőnkénti összeget vagy a végösszeget.</value>
+Adja meg a kezdő összeget, a futamidőt években, és vagy a futamidőnkénti összeget, vagy a végösszeget.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Éves kamat</value>

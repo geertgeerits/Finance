@@ -370,7 +370,7 @@ Zawsze możesz skontaktować się ze mną w sprawie ewentualnych poprawek.</valu
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Oblicz odsetki w skali roku.
 
-Wprowadź kwotę początkową, okres w miesiącach oraz kwotę na okres lub kwotę końcową.</value>
+Wprowadź kwotę początkową, okres w latach oraz kwotę za okres lub kwotę ostateczną.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Roczne odsetki</value>

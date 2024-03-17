@@ -370,7 +370,7 @@ Pro případné opravy mě můžete vždy kontaktovat.</value>
   <data name="InterestAnnualExplanation_Text" xml:space="preserve">
     <value>Spočítejte si úrok za rok.
 
-Zadejte počáteční částku, období v měsících a buď částku za období, nebo konečnou částku.</value>
+Zadejte počáteční částku, období v letech a buď částku za období, nebo konečnou částku.</value>
   </data>
   <data name="InterestAnnualForm_Text" xml:space="preserve">
     <value>Roční úrok</value>
