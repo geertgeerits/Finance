@@ -33,9 +33,9 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.65</string>
+	<string>3.0.66</string>
 	<key>CFBundleVersion</key>
-	<string>65</string>
+	<string>66</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.geertgeerits.finance</string>
 
