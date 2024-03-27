@@ -3,7 +3,7 @@ ________________________________
 
 The program is partly based on Finance that I wrote in Visual Basic 5.00 (year 1992).
 
-Supporting languages: Dutch, English, French, German, Italian, Portuguese and Spanish.
+Supporting languages: Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Norwegian, Polish, Portuguese, Romanian, Spanish and Swedish.
 
 The program was tested on a Samsung Galaxy A3 and S21 phone, iPhone 7 and 14, iPad 8th generation.
 
