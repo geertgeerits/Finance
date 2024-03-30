@@ -91,8 +91,8 @@ public partial class PageAmountGrossOfNet : ContentPage
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
         // Set decimal places for the Entry controls and values passed by reference
-        entPercentage.Text = Globals.RoundDecimalToNumDecimals(ref nPercentage, nPercDec, "F");
-        entAmountNet.Text = Globals.RoundDecimalToNumDecimals(ref nAmountNet, nNumDec, "F");
+        entPercentage.Text = Globals.RoundToNumDecimals(ref nPercentage, nPercDec, "F");
+        entAmountNet.Text = Globals.RoundToNumDecimals(ref nAmountNet, nNumDec, "F");
 
         // Calculate the net amount
         if (nPercentage == 0 || nPercentage == 100)
@@ -106,9 +106,9 @@ public partial class PageAmountGrossOfNet : ContentPage
             try
             {
                 decimal nAmountGross = nAmountNet / ((100 - nPercentage) / 100);
-                lblAmountGross.Text = Globals.RoundDecimalToNumDecimals(ref nAmountGross, nNumDec, "N");
+                lblAmountGross.Text = Globals.RoundToNumDecimals(ref nAmountGross, nNumDec, "N");
                 decimal nAmountDifference = nAmountGross - nAmountNet;
-                lblAmountDifference.Text = Globals.RoundDecimalToNumDecimals(ref nAmountDifference, nNumDec, "N");
+                lblAmountDifference.Text = Globals.RoundToNumDecimals(ref nAmountDifference, nNumDec, "N");
             }
             catch (Exception ex)
             {

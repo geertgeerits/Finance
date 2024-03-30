@@ -130,9 +130,9 @@ public partial class PageVATCalculation : ContentPage
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
         // Set decimal places for the Entry controls and values passed by reference
-        entVATPercentage.Text = Globals.RoundDecimalToNumDecimals(ref nVATPercentage, nPercDec, "F");
-        entVATAmountExclusive.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
-        entVATAmountIncluded.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
+        entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "F");
+        entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
+        entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
 
         // Calculate the VAT
         decimal nVATAmount;
@@ -145,7 +145,7 @@ public partial class PageVATCalculation : ContentPage
                 nVATAmount = nVATAmountIncluded - nVATAmountExclusive;
                 nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
 
-                entVATPercentage.Text = Globals.RoundDecimalToNumDecimals(ref nVATPercentage, nPercDec, "F");
+                entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "F");
             }
             
             // Calculate the amount VAT exclusieve
@@ -163,7 +163,7 @@ public partial class PageVATCalculation : ContentPage
                 }
 
                 nVATAmountExclusive = nVATAmountIncluded - nVATAmount;
-                entVATAmountExclusive.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
+                entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
             }
             
             // Calculate the amount VAT included
@@ -181,7 +181,7 @@ public partial class PageVATCalculation : ContentPage
                 }
 
                 nVATAmountIncluded = nVATAmountExclusive + nVATAmount;
-                entVATAmountIncluded.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
+                entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
             }
             
             else
@@ -196,7 +196,7 @@ public partial class PageVATCalculation : ContentPage
         }
 
         // Rounding result
-        lblVATAmount.Text = Globals.RoundDecimalToNumDecimals(ref nVATAmount, nNumDec, "N");
+        lblVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "N");
 
         // Set focus
         btnReset.Focus();

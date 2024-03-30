@@ -152,23 +152,23 @@ public partial class PageInvestmentReturn : ContentPage
         }
         
         // Set decimal places for the Entry controls and values passed by reference
-        entAmountPurchase.Text = Globals.RoundDecimalToNumDecimals(ref nAmountPurchase, nNumDec, "F");
-        entAmountCost.Text = Globals.RoundDecimalToNumDecimals(ref nAmountCost, nNumDec, "F");
-        entAmountRevenueYear.Text = Globals.RoundDecimalToNumDecimals(ref nAmountRevenueYear, nNumDec, "F");
-        entPercentageReturnYear.Text = Globals.RoundDecimalToNumDecimals(ref nPercentageReturnYear, nPercDec, "F");
+        entAmountPurchase.Text = Globals.RoundToNumDecimals(ref nAmountPurchase, nNumDec, "F");
+        entAmountCost.Text = Globals.RoundToNumDecimals(ref nAmountCost, nNumDec, "F");
+        entAmountRevenueYear.Text = Globals.RoundToNumDecimals(ref nAmountRevenueYear, nNumDec, "F");
+        entPercentageReturnYear.Text = Globals.RoundToNumDecimals(ref nPercentageReturnYear, nPercDec, "F");
 
         // Calculate the results
         decimal nAmountTotal = nAmountPurchase + nAmountCost;
 
         if (nAmountTotal == 0)
         {
-            lblAmountTotal.Text = Globals.RoundDecimalToNumDecimals(ref nAmountTotal, nNumDec, "N");
+            lblAmountTotal.Text = Globals.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
         }
 
         if (nAmountRevenueYear == 0)
         {
             decimal nNumberTemp = 0;
-            entPercentageReturnYear.Text = Globals.RoundDecimalToNumDecimals(ref nNumberTemp, nPercDec, "F");
+            entPercentageReturnYear.Text = Globals.RoundToNumDecimals(ref nNumberTemp, nPercDec, "F");
         }
 
         try
@@ -176,7 +176,7 @@ public partial class PageInvestmentReturn : ContentPage
             if (nAmountPurchase + nAmountCost > 0)
             {
                 nPercentageReturnYear = nAmountRevenueYear / nAmountTotal * 100;
-                entPercentageReturnYear.Text = Globals.RoundDecimalToNumDecimals(ref nPercentageReturnYear, nPercDec, "F");
+                entPercentageReturnYear.Text = Globals.RoundToNumDecimals(ref nPercentageReturnYear, nPercDec, "F");
             }
             else if (nPercentageReturnYear > 0)
             {
@@ -187,7 +187,7 @@ public partial class PageInvestmentReturn : ContentPage
                 return;
             }
 
-            lblAmountTotal.Text = Globals.RoundDecimalToNumDecimals(ref nAmountTotal, nNumDec, "N");
+            lblAmountTotal.Text = Globals.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
         }
         catch (Exception ex)
         {

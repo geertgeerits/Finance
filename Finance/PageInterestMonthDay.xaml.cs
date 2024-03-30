@@ -85,7 +85,7 @@ public partial class PageInterestMonthDay : ContentPage
         entInterestRate.IsEnabled = true;
 
         // Set decimal places for the Entry controls and values passed by reference
-        entInterestRate.Text = Globals.RoundDoubleToNumDecimals(ref nInterestRate, nPercDec, "F");
+        entInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "F");
 
         double nInterestMonth = 0;
         double nInterestDay365 = 0;
@@ -107,9 +107,9 @@ public partial class PageInterestMonthDay : ContentPage
         }
 
         // Rounding result
-        lblInterestMonth.Text = Globals.RoundDoubleToNumDecimals(ref nInterestMonth, nPercDec, "N");
-        lblInterestDay365.Text = Globals.RoundDoubleToNumDecimals(ref nInterestDay365, nPercDec, "N");
-        lblInterestDay366.Text = Globals.RoundDoubleToNumDecimals(ref nInterestDay366, nPercDec, "N");
+        lblInterestMonth.Text = Globals.RoundToNumDecimals(ref nInterestMonth, nPercDec, "N");
+        lblInterestDay365.Text = Globals.RoundToNumDecimals(ref nInterestDay365, nPercDec, "N");
+        lblInterestDay366.Text = Globals.RoundToNumDecimals(ref nInterestDay366, nPercDec, "N");
 
         // Set focus
         btnReset.Focus();

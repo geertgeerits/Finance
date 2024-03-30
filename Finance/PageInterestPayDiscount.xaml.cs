@@ -99,7 +99,7 @@ public partial class PageInterestPayDiscount : ContentPage
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
         // Set decimal places for the Entry controls and values passed by reference
-        entPaymentDiscount.Text = Globals.RoundDecimalToNumDecimals(ref nPaymentDiscount, nPercDec, "F");
+        entPaymentDiscount.Text = Globals.RoundToNumDecimals(ref nPaymentDiscount, nPercDec, "F");
 
         decimal nInterestEffective;
 
@@ -121,7 +121,7 @@ public partial class PageInterestPayDiscount : ContentPage
         }
 
         // Rounding result
-        lblInterestEffective.Text = Globals.RoundDecimalToNumDecimals(ref nInterestEffective, nPercDec, "N");
+        lblInterestEffective.Text = Globals.RoundToNumDecimals(ref nInterestEffective, nPercDec, "N");
 
         // Set focus
         btnReset.Focus();

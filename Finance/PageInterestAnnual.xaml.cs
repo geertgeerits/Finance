@@ -143,9 +143,9 @@ public partial class PageInterestAnnual : ContentPage
         }
 
         // Set decimal places for the Entry controls and values passed by reference
-        entCapitalInitial.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "F");
-        entAmountPeriod.Text = Globals.RoundDoubleToNumDecimals(ref nAmountPeriod, nNumDec, "F");
-        entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalFinal, nNumDec, "F");
+        entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "F");
+        entAmountPeriod.Text = Globals.RoundToNumDecimals(ref nAmountPeriod, nNumDec, "F");
+        entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nCapitalFinal, nNumDec, "F");
 
         // Initialize variables
         double nInterestAmount;
@@ -165,13 +165,13 @@ public partial class PageInterestAnnual : ContentPage
             {
                 nInterestAmount = nDurationYears * nAmountPeriod - nCapitalInitial;
                 nInterimCalculation = nAmountPeriod * nDurationYears;
-                entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nInterimCalculation, nNumDec, "F");
+                entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "F");
             }
             else if (nCapitalFinal != 0)
             {
                 nInterestAmount = nCapitalFinal - nCapitalInitial;
                 nInterimCalculation = nCapitalFinal / nDurationYears;
-                entAmountPeriod.Text = Globals.RoundDoubleToNumDecimals(ref nInterimCalculation, nNumDec, "F");
+                entAmountPeriod.Text = Globals.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "F");
             }
             else
             {
@@ -188,7 +188,7 @@ public partial class PageInterestAnnual : ContentPage
         }
 
         // Rounding interest
-        lblInterestRate.Text = Globals.RoundDoubleToNumDecimals(ref nInterestRate, nPercDec, "N");
+        lblInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "N");
         Globals.SetLabelTextColorForNumber(lblInterestRate);
 
         // Set focus

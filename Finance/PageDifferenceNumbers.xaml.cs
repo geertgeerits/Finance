@@ -93,15 +93,15 @@ public partial class PageDifferenceNumbers : ContentPage
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
         // Set decimal places for the Entry controls and values passed by reference
-        entValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValue1, nNumDec, "F");
-        entValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValue2, nNumDec, "F");
+        entValue1.Text = Globals.RoundToNumDecimals(ref nValue1, nNumDec, "F");
+        entValue2.Text = Globals.RoundToNumDecimals(ref nValue2, nNumDec, "F");
 
         // Calculate the difference
         decimal nValuePercDifference;
         decimal nValueTemp;
 
         decimal nValueDifference = nValue2 - nValue1;
-        lblValueDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueDifference, nNumDec, "N");
+        lblValueDifference.Text = Globals.RoundToNumDecimals(ref nValueDifference, nNumDec, "N");
         Globals.SetLabelTextColorForNumber(lblValueDifference);
 
         if (nValue1 == 0 && nValue2 == 0)
@@ -119,7 +119,7 @@ public partial class PageDifferenceNumbers : ContentPage
             lblValuePercDifference.Text = "";
             
             nValueTemp = 0;
-            lblValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDiffValue1.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
             Globals.SetLabelTextColorForNumber(lblValuePercDiffValue1);
             
             lblValuePercDiffValue2.Text = "";
@@ -131,13 +131,13 @@ public partial class PageDifferenceNumbers : ContentPage
         if (nValue1 != 0 && nValue2 == 0)
         {
             nValueTemp = -100;
-            lblValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDifference.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
             Globals.SetLabelTextColorForNumber(lblValuePercDifference);
             
             lblValuePercDiffValue1.Text = "";
             
             nValueTemp = 0;
-            lblValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDiffValue2.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
             Globals.SetLabelTextColorForNumber(lblValuePercDiffValue2);
 
             btnReset.Focus();
@@ -147,14 +147,14 @@ public partial class PageDifferenceNumbers : ContentPage
         if (nValue1 == nValue2)
         {
             nValueTemp = 0;
-            lblValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDifference.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
             Globals.SetLabelTextColorForNumber(lblValuePercDifference);
             
             nValueTemp = 100;
-            lblValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDiffValue1.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
             Globals.SetLabelTextColorForNumber(lblValuePercDiffValue1);
             
-            lblValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+            lblValuePercDiffValue2.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
             Globals.SetLabelTextColorForNumber(lblValuePercDiffValue2);
 
             btnReset.Focus();
@@ -162,11 +162,11 @@ public partial class PageDifferenceNumbers : ContentPage
         }
 
         nValueTemp = nValue1 / nValue2 * 100;
-        lblValuePercDiffValue1.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+        lblValuePercDiffValue1.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
         Globals.SetLabelTextColorForNumber(lblValuePercDiffValue1);
 
         nValueTemp = nValue2 / nValue1 * 100;
-        lblValuePercDiffValue2.Text = Globals.RoundDecimalToNumDecimals(ref nValueTemp, nPercDec, "N");
+        lblValuePercDiffValue2.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
         Globals.SetLabelTextColorForNumber(lblValuePercDiffValue2);
 
         try
@@ -179,7 +179,7 @@ public partial class PageDifferenceNumbers : ContentPage
             return;
         }
 
-        lblValuePercDifference.Text = Globals.RoundDecimalToNumDecimals(ref nValuePercDifference, nPercDec, "N");
+        lblValuePercDifference.Text = Globals.RoundToNumDecimals(ref nValuePercDifference, nPercDec, "N");
         Globals.SetLabelTextColorForNumber(lblValuePercDifference);
 
         // Set focus

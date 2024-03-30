@@ -103,8 +103,8 @@ public partial class PageInterestEffectiveBE : ContentPage
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
         // Set decimal places for the Entry controls and values passed by reference
-        entCapitalInitial.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "F");
-        entCapitalFinal.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalFinal, nNumDec, "F");
+        entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "F");
+        entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nCapitalFinal, nNumDec, "F");
 
         // Calculating the effective interest
         double nAmountDifference;
@@ -130,9 +130,9 @@ public partial class PageInterestEffectiveBE : ContentPage
         }
 
         // Rounding result
-        lblAmountDifference.Text = Globals.RoundDoubleToNumDecimals(ref nAmountDifference, nNumDec, "N");
+        lblAmountDifference.Text = Globals.RoundToNumDecimals(ref nAmountDifference, nNumDec, "N");
         Globals.SetLabelTextColorForNumber(lblAmountDifference);
-        lblInterestEffective.Text = Globals.RoundDoubleToNumDecimals(ref nInterestEffective, nPercDec, "N");
+        lblInterestEffective.Text = Globals.RoundToNumDecimals(ref nInterestEffective, nPercDec, "N");
         Globals.SetLabelTextColorForNumber(lblInterestEffective);
 
         // Set focus

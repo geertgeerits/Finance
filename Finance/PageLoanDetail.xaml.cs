@@ -162,8 +162,8 @@ public partial class PageLoanDetail : ContentPage
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
         // Set decimal places for the entry controls and values passed by reference
-        entInterestRate.Text = Globals.RoundDoubleToNumDecimals(ref nInterestRate, nPercDec, "F");
-        entCapitalInitial.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "F");
+        entInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "F");
+        entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "F");
 
         // Clear result fields
         lblAmountPeriod.Text = "";
@@ -227,7 +227,7 @@ public partial class PageLoanDetail : ContentPage
             }
 
             nCapitalRemainder = nCapitalInitial;                        // Remainder of capital
-            lblAmountPeriod.Text = Globals.RoundDoubleToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
+            lblAmountPeriod.Text = Globals.RoundToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
         }
 
         // Calculate linear loan per period
@@ -308,11 +308,11 @@ public partial class PageLoanDetail : ContentPage
             // Fill the array with data
             aLoanDetail[nRow, 0] = Convert.ToString(nRow + 1);
             aLoanDetail[nRow, 1] = dExpirationDate.ToString(Globals.cDateFormat);
-            aLoanDetail[nRow, 2] = Globals.RoundDoubleToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
-            aLoanDetail[nRow, 3] = Globals.RoundDoubleToNumDecimals(ref nCapitalPeriod, nNumDec, "N");
-            aLoanDetail[nRow, 4] = Globals.RoundDoubleToNumDecimals(ref nInterestPeriod, nNumDec, "N");
-            aLoanDetail[nRow, 5] = Globals.RoundDoubleToNumDecimals(ref nInterestTotal, nNumDec, "N");
-            aLoanDetail[nRow, 6] = Globals.RoundDoubleToNumDecimals(ref nCapitalRemainder, nNumDec, "N");
+            aLoanDetail[nRow, 2] = Globals.RoundToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
+            aLoanDetail[nRow, 3] = Globals.RoundToNumDecimals(ref nCapitalPeriod, nNumDec, "N");
+            aLoanDetail[nRow, 4] = Globals.RoundToNumDecimals(ref nInterestPeriod, nNumDec, "N");
+            aLoanDetail[nRow, 5] = Globals.RoundToNumDecimals(ref nInterestTotal, nNumDec, "N");
+            aLoanDetail[nRow, 6] = Globals.RoundToNumDecimals(ref nCapitalRemainder, nNumDec, "N");
 
             dExpirationDate = dtpExpirationDate.Date.AddMonths(nNumberMonthsAddCumul);
             nNumberMonthsAddCumul += nNumberMonthsAdd;
@@ -322,13 +322,13 @@ public partial class PageLoanDetail : ContentPage
         //DisplayAlert("Row number", nRow.ToString(), "OK");  // For testing
         
         // Rounding and formatting result
-        lblInterestTotal.Text = Globals.RoundDoubleToNumDecimals(ref nInterestTotal, nNumDec, "N");
+        lblInterestTotal.Text = Globals.RoundToNumDecimals(ref nInterestTotal, nNumDec, "N");
         double nCapitalInterest = nCapitalInitial + nInterestTotal;
-        lblCapitalInterest.Text = Globals.RoundDoubleToNumDecimals(ref nCapitalInterest, nNumDec, "N");
+        lblCapitalInterest.Text = Globals.RoundToNumDecimals(ref nCapitalInterest, nNumDec, "N");
 
         // Store totals in row of array aLoanDetail (ex. nNumberPeriods = 12 -> nRow in for loop = 0-11 -> nRow after for loop = 12)
         aLoanDetail[nRow, 2] = lblCapitalInterest.Text;
-        aLoanDetail[nRow, 3] = Globals.RoundDoubleToNumDecimals(ref nCapitalInitial, nNumDec, "N");
+        aLoanDetail[nRow, 3] = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N");
         aLoanDetail[nRow, 4] = lblInterestTotal.Text;
 
         // Test variable te recalculate the loan

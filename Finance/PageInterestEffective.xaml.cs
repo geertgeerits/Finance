@@ -86,7 +86,7 @@ public partial class PageInterestEffective : ContentPage
         int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
         // Set decimal places for the Entry controls and values passed by reference
-        entInterestRate.Text = Globals.RoundDoubleToNumDecimals(ref nInterestRate, nPercDec, "F");
+        entInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "F");
 
         // Calculating the effective interest
         double nInterestEffective;
@@ -101,7 +101,7 @@ public partial class PageInterestEffective : ContentPage
         }
 
         // Rounding result
-        lblInterestEffective.Text = Globals.RoundDoubleToNumDecimals(ref nInterestEffective, nPercDec, "N");
+        lblInterestEffective.Text = Globals.RoundToNumDecimals(ref nInterestEffective, nPercDec, "N");
 
         // Set focus
         btnReset.Focus();

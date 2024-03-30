@@ -119,7 +119,7 @@ internal static class Globals
     // Format specifier: "F" = 1234.56 or 1234,56 ; "N" = 1,234.56 or 1.234,56
 
     // Rounding and formatting double number to # decimals returning number as value and as string
-    public static string RoundDoubleToNumDecimals(ref double nNumber, int nNumDec, string cFormatSpecifier)
+    public static string RoundToNumDecimals(ref double nNumber, int nNumDec, string cFormatSpecifier)
     {
         if (cRoundNumber == "AwayFromZero")
         {
@@ -135,7 +135,7 @@ internal static class Globals
     }
 
     // Rounding and formatting decimal number to # decimals returning number as value and as string
-    public static string RoundDecimalToNumDecimals(ref decimal nNumber, int nNumDec, string cFormatSpecifier)
+    public static string RoundToNumDecimals(ref decimal nNumber, int nNumDec, string cFormatSpecifier)
     {
         if (cRoundNumber == "AwayFromZero")
         {
