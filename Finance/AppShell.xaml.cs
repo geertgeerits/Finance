@@ -1,9 +1,10 @@
-﻿namespace Finance;
-
-public partial class AppShell : Shell
+﻿namespace Finance
 {
-    public AppShell()
+    public sealed partial class AppShell : Shell
     {
-        InitializeComponent();
+        public AppShell()
+        {
+            InitializeComponent();
+        }
     }
 }

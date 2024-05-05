@@ -2,7 +2,7 @@
 
 namespace Finance
 {
-    internal class ClassPageLoanDetailExport
+    internal sealed class ClassPageLoanDetailExport
     {
         // Export loan with detail per period as a CSV file with a semicolon delimiter
         public static void ExportDetailLoanCSV(int nNumberPeriods, string cCurrency, string cDocTitle, string cFileName,

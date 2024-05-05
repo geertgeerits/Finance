@@ -2,7 +2,7 @@
 
 namespace Finance
 {
-    public class LocalizationResourceManager : INotifyPropertyChanged {
+    public sealed class LocalizationResourceManager : INotifyPropertyChanged {
         private LocalizationResourceManager() {
             FinLang.Culture = CultureInfo.CurrentCulture;
         }

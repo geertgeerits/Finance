@@ -1,20 +1,21 @@
-namespace Finance;
-
-public partial class PageLoanDetailHtml : ContentPage
+namespace Finance
 {
-    public PageLoanDetailHtml(string cDocumentUrl)
+    public sealed partial class PageLoanDetailHtml : ContentPage
     {
-        try
+        public PageLoanDetailHtml(string cDocumentUrl)
         {
-            InitializeComponent();
-        }
-        catch (Exception ex)
-        {
-            DisplayAlert("InitializeComponent: PageWebsite", ex.Message, "OK");
-            return;
-        }
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("InitializeComponent: PageWebsite", ex.Message, "OK");
+                return;
+            }
         
-        // Set the WebView Source
-        wvWebpage.Source = cDocumentUrl;
+            // Set the WebView Source
+            wvWebpage.Source = cDocumentUrl;
+        }
     }
 }
