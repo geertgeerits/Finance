@@ -14,7 +14,7 @@
                 return;
             }
 
-            // Set the type of keyboard
+            //// Set the type of keyboard
             if (Globals.cKeyboard == "Default")
             {
                 entValue1.Keyboard = Keyboard.Default;
@@ -27,14 +27,22 @@
             }
         }
 
-        // Set focus to the first entry field
-        // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
+        /// <summary>
+        /// Set focus to the first entry field 
+        /// Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
             entValue1.Focus();
         }
 
-        // Select all the text in the entry field
+        /// <summary>
+        /// Select all the text in the entry field 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryFocused(object sender, EventArgs e)
         {
             var entry = (Entry)sender;
@@ -44,7 +52,11 @@
             entry.SelectionLength = entry.Text.Length;
         }
 
-        // Clear result fields if the text have changed
+        /// <summary>
+        /// Clear result fields if the text have changed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryTextChanged(object sender, EventArgs e)
         {
             lblValueDifference.Text = "";
@@ -53,7 +65,11 @@
             lblValuePercDiffValue2.Text = "";
         }
 
-        // Go to the next field when the return key have been pressed
+        /// <summary>
+        /// Go to the next field when the return key have been pressed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs e)
         {
             if (sender == entValue1)
@@ -62,7 +78,11 @@
             }
         }
 
-        // Calculate the result
+        /// <summary>
+        /// Calculate the result 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
@@ -187,7 +207,11 @@
             btnReset.Focus();
         }
 
-        // Reset the entry fields
+        /// <summary>
+        /// Reset the entry fields 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetEntryFields(object sender, EventArgs e)
         {
             entValue1.Text = "";

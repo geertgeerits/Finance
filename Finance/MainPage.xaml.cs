@@ -1,17 +1,17 @@
-﻿// Program .....: Finance.sln
-// Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
-// Copyright ...: (C) 1992-2024
-// Version .....: 3.0.66
-// Date ........: 2024-05-05 (YYYY-MM-DD)
-// Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
-// Description .: Financial calculations
-// Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI
+﻿/* Program .....: Finance.sln
+ * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
+ * Copyright ...: (C) 1992-2024
+ * Version .....: 3.0.66
+ * Date ........: 2024-05-28 (YYYY-MM-DD)
+ * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
+ * Description .: Financial calculations
+ * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
 namespace Finance
 {
     public sealed partial class MainPage : ContentPage
     {
-        // Local variables
+        //// Local variables
         private string cCopyright;
         private string cLicenseText;
 
@@ -107,7 +107,7 @@ namespace Finance
             SetTextLanguage();
         }
 
-        // Buttons clicked events
+        //// Buttons clicked events
         private async void OnPageInterestEffectiveClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PageInterestEffective());
@@ -172,8 +172,10 @@ namespace Finance
         {
             await Navigation.PushAsync(new PageAbout());
         }
-    
-        // Put text in the chosen language in the controls
+
+        /// <summary>
+        /// Put text in the chosen language in the controls 
+        /// </summary>
         private void SetTextLanguage()
         {
             // Set the CurrentUICulture
@@ -188,7 +190,11 @@ namespace Finance
             //App.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing
         }
 
-        // Show license using the Loaded event of the MainPage.xaml
+        /// <summary>
+        /// Show license using the Loaded event of the MainPage.xaml 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnPageLoad(object sender, EventArgs e)
         {
             if (Globals.bLicense == false)
@@ -225,7 +231,11 @@ namespace Finance
             }
         }
 
-        // Set language using the Appearing event of the MainPage.xaml
+        /// <summary>
+        /// Set language using the Appearing event of the MainPage.xaml 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPageAppearing(object sender, EventArgs e)
         {
             if (Globals.bLanguageChanged)

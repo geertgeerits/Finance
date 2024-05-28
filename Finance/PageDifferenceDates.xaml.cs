@@ -14,7 +14,7 @@
                 return;
             }
 
-            // Set the date properties for the DatePicker
+            //// Set the date properties for the DatePicker
             dtpDate1.MinimumDate = new DateTime(1583, 1, 1);
             dtpDate1.MaximumDate = new DateTime(5000, 1, 1);
             dtpDate2.MinimumDate = new DateTime(1583, 1, 1);
@@ -26,7 +26,11 @@
             CalculateResult(null, null);
         }
 
-        // Go to the next field when the return key have been pressed
+        /// <summary>
+        /// Go to the next field when the return key have been pressed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs e)
         {
             if (sender == dtpDate1)
@@ -35,7 +39,11 @@
             }
         }
 
-        // Calculate the result
+        /// <summary>
+        /// Calculate the result 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CalculateResult(object sender, EventArgs e)
         {
             // Set the smallest date to the first date
@@ -73,9 +81,13 @@
             btnReset.Focus();
         }
 
-        // Calculate age from start date (date of birth) to end date in years, months, weeks and days
-        // by: Viorel
-        // https://learn.microsoft.com/en-us/answers/questions/608004/find-difference-between-dates-c
+        /// <summary>
+        /// Calculate age from start date (date of birth) to end date in years, months, weeks and days 
+        /// by: Viorel 
+        /// https://learn.microsoft.com/en-us/answers/questions/608004/find-difference-between-dates-c 
+        /// </summary>
+        /// <param name="StartDate"></param>
+        /// <param name="EndDate"></param>
         private void DateAgeInYearsMonthsWeeksDays(DateTime StartDate, DateTime EndDate)
         {
             int years;
@@ -118,7 +130,11 @@
             lblDateDifferenceWeeks.Text = $"{(EndDate - StartDate).Days / 7:N0}";
         }
 
-        // Reset the entry and result fields
+        /// <summary>
+        /// Reset the entry and result fields 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetEntryFields(object sender, EventArgs e)
         {
             dtpDate1.Date = DateTime.Today;

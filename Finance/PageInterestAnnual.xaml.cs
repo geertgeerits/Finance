@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 
-            // Set the type of keyboard
+            //// Set the type of keyboard
             if (Globals.cKeyboard == "Default")
             {
                 entCapitalInitial.Keyboard = Keyboard.Default;
@@ -29,14 +29,22 @@ namespace Finance
             }
         }
 
-        // Set focus to the first entry field
-        // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
+        /// <summary>
+        /// Set focus to the first entry field 
+        /// Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
             entCapitalInitial.Focus();
         }
 
-        // Select all the text in the entry field
+        /// <summary>
+        /// Select all the text in the entry field 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryFocused(object sender, EventArgs e)
         {
             var entry = (Entry)sender;
@@ -46,13 +54,21 @@ namespace Finance
             entry.SelectionLength = entry.Text.Length;
         }
 
-        // Clear result fields if the text have changed
+        /// <summary>
+        /// Clear result fields if the text have changed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryTextChanged(object sender, EventArgs e)
         {
             lblInterestRate.Text = "";
         }
 
-        // Go to the next field when the return key have been pressed
+        /// <summary>
+        /// Go to the next field when the return key have been pressed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs e)
         {
             if (sender == entCapitalInitial)
@@ -69,7 +85,11 @@ namespace Finance
             }
         }
 
-        // Set the value of a another field to '0' if the current field is unfocused
+        /// <summary>
+        /// Set the value of a another field to '0' if the current field is unfocused 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryUnfocused(object sender, EventArgs e)
         {
             if (sender == entAmountPeriod && entAmountPeriod.Text != "0")
@@ -82,7 +102,11 @@ namespace Finance
             }
         }
 
-        // Calculate the result
+        /// <summary>
+        /// Calculate the result 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
@@ -195,7 +219,11 @@ namespace Finance
             btnReset.Focus();
         }
 
-        // Reset the entry fields
+        /// <summary>
+        /// Reset the entry fields 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetEntryFields(object sender, EventArgs e)
         {
             entCapitalInitial.Text = "";

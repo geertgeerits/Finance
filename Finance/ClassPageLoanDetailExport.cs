@@ -4,7 +4,14 @@ namespace Finance
 {
     internal sealed class ClassPageLoanDetailExport
     {
-        // Export loan with detail per period as a CSV file with a semicolon delimiter
+        /// <summary>
+        /// Export loan with detail per period as a CSV file with a semicolon delimiter 
+        /// </summary>
+        /// <param name="nNumberPeriods"></param>
+        /// <param name="cCurrency"></param>
+        /// <param name="cDocTitle"></param>
+        /// <param name="cFileName"></param>
+        /// <param name="tLblEnt"></param>
         public static void ExportDetailLoanCSV(int nNumberPeriods, string cCurrency, string cDocTitle, string cFileName,
             (string lblInterestRateText, string entInterestRateText, string lblCapitalInitialText, string entCapitalInitialText,
             string lblDurationYearsText, string entDurationYearsText, string lblPeriodsYearText, string entPeriodsYearText) tLblEnt)
@@ -54,7 +61,14 @@ namespace Finance
             }
         }
 
-        // Export loan with detail per period as a HTML file
+        /// <summary>
+        /// Export loan with detail per period as a HTML file 
+        /// </summary>
+        /// <param name="nNumberPeriods"></param>
+        /// <param name="cCurrency"></param>
+        /// <param name="cDocTitle"></param>
+        /// <param name="cFileName"></param>
+        /// <param name="tLblEnt"></param>
         public static void ExportDetailLoanHTML(int nNumberPeriods, string cCurrency, string cDocTitle, string cFileName,
             (string lblInterestRateText, string entInterestRateText, string lblCapitalInitialText, string entCapitalInitialText,
             string lblDurationYearsText, string entDurationYearsText, string lblPeriodsYearText, string entPeriodsYearText) tLblEnt)
@@ -155,7 +169,14 @@ namespace Finance
             }
         }
 
-        // Export loan with detail per period as a PDF file
+        /// <summary>
+        /// Export loan with detail per period as a PDF file 
+        /// </summary>
+        /// <param name="nNumberPeriods"></param>
+        /// <param name="cCurrency"></param>
+        /// <param name="cDocTitle"></param>
+        /// <param name="cFileName"></param>
+        /// <param name="tLblEnt"></param>
         public static void ExportDetailLoanPDF(int nNumberPeriods, string cCurrency, string cDocTitle, string cFileName,
             (string lblInterestRateText, string entInterestRateText, string lblCapitalInitialText, string entCapitalInitialText,
             string lblDurationYearsText, string entDurationYearsText, string lblPeriodsYearText, string entPeriodsYearText) tLblEnt)
@@ -694,7 +715,11 @@ namespace Finance
             }
         }
 
-        // Replace special characters in strings for output PDF
+        /// <summary>
+        /// Replace special characters in strings for output PDF 
+        /// </summary>
+        /// <param name="cText"></param>
+        /// <returns></returns>
         private static string ReplaceCharacters(string cText)
         {
             // Convert characters from UTF-8 to characters that are supported for a PDF document
@@ -736,7 +761,13 @@ namespace Finance
             return cText;
         }
 
-        // Split string in two parts
+        /// <summary>
+        /// Split string in two parts 
+        /// </summary>
+        /// <param name="cText"></param>
+        /// <param name="cTextPart2"></param>
+        /// <param name="nMaxTextLength"></param>
+        /// <returns></returns>
         private static string SplitStringInTwo(string cText, ref string cTextPart2, int nMaxTextLength)
         {
             try

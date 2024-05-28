@@ -1,10 +1,10 @@
-﻿// Global usings
+﻿//// Global usings
 global using Finance.Resources.Languages;
 global using System.Globalization;
 
 namespace Finance
 {
-    // Global variables and methods
+    //// Global variables and methods
     internal static class Globals
     {
         // Global variables
@@ -32,8 +32,10 @@ namespace Finance
         private static readonly string cColorNegNumberDark = "#FFB0B0";
         private static readonly string cColorPosNumberDark = "#FFFFFF";
 
-        // Global methods
-        // Set the theme and the number text color
+        /// Global methods
+        /// <summary>
+        /// Set the theme and the number text color 
+        /// </summary>
         public static void SetThemeAndNumberColor()
         {
             switch (cTheme)
@@ -71,7 +73,9 @@ namespace Finance
             }
         }
 
-        // Set the current UI culture of the selected language
+        /// <summary>
+        /// Set the current UI culture of the selected language 
+        /// </summary>
         public static void SetCultureSelectedLanguage()
         {
             try
@@ -85,7 +89,11 @@ namespace Finance
             }
         }
 
-        // Replace decimal point with decimal comma
+        /// <summary>
+        /// Replace decimal point with decimal comma 
+        /// </summary>
+        /// <param name="cNumber"></param>
+        /// <returns></returns>
         public static string ReplaceDecimalPointComma(string cNumber)
         {
             if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
@@ -100,25 +108,32 @@ namespace Finance
             return cNumber;
         }
 
-        // Rounding numbers
-        // Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
-        // Round half to even or banker's rounding: MidpointRounding.ToEven
-        //       Value      Default    ToEven     AwayFromZero    ToZero
-        //       12.0       12         12         12              12
-        //       12.1       12         12         12              12
-        //       12.2       12         12         12              12
-        //       12.3       12         12         12              12
-        //       12.4       12         12         12              12
-        //       12.5       12         12         13              12
-        //       12.6       13         13         13              12
-        //       12.7       13         13         13              12
-        //       12.8       13         13         13              12
-        //       12.9       13         13         13              12
-        //       13.0       13         13         13              13
+        /* Rounding numbers
+         * Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
+         * Round half to even or banker's rounding: MidpointRounding.ToEven
+         *
+         *  Value      Default    ToEven     AwayFromZero    ToZero
+         *   12.0       12         12         12              12
+         *   12.1       12         12         12              12
+         *   12.2       12         12         12              12
+         *   12.3       12         12         12              12
+         *   12.4       12         12         12              12
+         *   12.5       12         12         13              12
+         *   12.6       13         13         13              12
+         *   12.7       13         13         13              12
+         *   12.8       13         13         13              12
+         *   12.9       13         13         13              12
+         *   13.0       13         13         13              13
+         *
+         * Format specifier: "F" = 1234.56 or 1234,56 ; "N" = 1,234.56 or 1.234,56 */
 
-        // Format specifier: "F" = 1234.56 or 1234,56 ; "N" = 1,234.56 or 1.234,56
-
-        // Rounding and formatting double number to # decimals returning number as value and as string
+        /// <summary>
+        /// Rounding and formatting double number to # decimals returning number as value and as string 
+        /// </summary>
+        /// <param name="nNumber"></param>
+        /// <param name="nNumDec"></param>
+        /// <param name="cFormatSpecifier"></param>
+        /// <returns></returns>
         public static string RoundToNumDecimals(ref double nNumber, int nNumDec, string cFormatSpecifier)
         {
             if (cRoundNumber == "AwayFromZero")
@@ -134,7 +149,13 @@ namespace Finance
             return nNumber.ToString(cNumFormat);
         }
 
-        // Rounding and formatting decimal number to # decimals returning number as value and as string
+        /// <summary>
+        /// Rounding and formatting decimal number to # decimals returning number as value and as string 
+        /// </summary>
+        /// <param name="nNumber"></param>
+        /// <param name="nNumDec"></param>
+        /// <param name="cFormatSpecifier"></param>
+        /// <returns></returns>
         public static string RoundToNumDecimals(ref decimal nNumber, int nNumDec, string cFormatSpecifier)
         {
             if (cRoundNumber == "AwayFromZero")
@@ -150,7 +171,10 @@ namespace Finance
             return nNumber.ToString(cNumFormat);
         }
 
-        // Set the label text color to a different color for a negative and a positive number
+        /// <summary>
+        /// Set the label text color to a different color for a negative and a positive number 
+        /// </summary>
+        /// <param name="label"></param>
         public static void SetLabelTextColorForNumber(Label label)
         {
             if (decimal.TryParse(label.Text, out decimal nValue))
@@ -159,7 +183,11 @@ namespace Finance
             }
         }
 
-        // Close the keyboard
+        /// <summary>
+        /// Close the keyboard 
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <param name="e"></param>
         //public static void CloseKeyboard(Entry entry, EventArgs e)
         //{
         //    try

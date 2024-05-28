@@ -2,11 +2,11 @@
 {
     public sealed partial class PageLoanDetail : ContentPage
     {
-        // Variables for loan detail
+        //// Variables for loan detail
         public static readonly string[] aColHeader = new string[7];
         public static readonly string[,] aLoanDetail = new string[1201, 7];
 
-        // Variables for export / e-mail
+        //// Variables for export / e-mail
         private string cExportType;
         private bool bReCalculateResult;
 
@@ -22,7 +22,7 @@
                 return;
             }
 
-            // Put text for the column headers in the chosen language in the array
+            //// Put text for the column headers in the chosen language in the array
             aColHeader[0] = FinLang.LoanDetailColumns_0_Text;
             aColHeader[1] = FinLang.LoanDetailColumns_1_Text;
             aColHeader[2] = FinLang.LoanDetailColumns_2_Text;
@@ -31,7 +31,7 @@
             aColHeader[5] = FinLang.LoanDetailColumns_5_Text;
             aColHeader[6] = FinLang.LoanDetailColumns_6_Text;
 
-            // Set the type of keyboard
+            //// Set the type of keyboard
             if (Globals.cKeyboard == "Default")
             {
                 entInterestRate.Keyboard = Keyboard.Default;
@@ -43,27 +43,35 @@
                 entCapitalInitial.Keyboard = Keyboard.Text;
             }
 
-            // Set the current date format and date for the DatePicker
+            //// Set the current date format and date for the DatePicker
             dtpExpirationDate.Format = Globals.cDateFormat;
 
-            // Set the currency code
+            //// Set the currency code
             entCurrencyCode.Text = Globals.cISOCurrencyCode;
 
-            // Set the default export format
+            //// Set the default export format
             pickerExportType.SelectedIndex = 1;
 
-            // Test variable to recalculate the loan
+            //// Test variable to recalculate the loan
             bReCalculateResult = true;
         }
 
-        // Set focus to the first entry field
-        // Add in the header of the xaml page: 'Loaded="OnPageLoaded"'
+        /// <summary>
+        /// Set focus to the first entry field 
+        /// Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
             entInterestRate.Focus();
         }
 
-        // Select all the text in the entry field
+        /// <summary>
+        /// Select all the text in the entry field 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryFocused(object sender, EventArgs e)
         {
             var entry = (Entry)sender;
@@ -73,7 +81,11 @@
             entry.SelectionLength = entry.Text.Length;
         }
 
-        // Clear result fields if the text have changed
+        /// <summary>
+        /// Clear result fields if the text have changed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryTextChanged(object sender, EventArgs e)
         {
             lblAmountPeriod.Text = "";
@@ -83,7 +95,11 @@
             bReCalculateResult = true;
         }
 
-        // Go to the next field when the return key have been pressed
+        /// <summary>
+        /// Go to the next field when the return key have been pressed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs e)
         {
             if (sender == entInterestRate)
@@ -108,7 +124,11 @@
             }
         }
 
-        // Calculate the result with detail per period
+        /// <summary>
+        /// Calculate the result with detail per period 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
@@ -338,7 +358,11 @@
             btnReset.Focus();
         }
 
-        // Export loan with detail per period
+        /// <summary>
+        /// Export loan with detail per period 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void ExportDetailLoan(object sender, EventArgs e)
         {
             // Recalculate the loan if needed
@@ -424,7 +448,11 @@
             activityIndicator.IsRunning = false;
         }
 
-        // Open the document file
+        /// <summary>
+        /// Open the document file 
+        /// </summary>
+        /// <param name="cFile"></param>
+        /// <returns></returns>
         private async Task OpenDocumentFileAsync(string cFile)
         {
             bool answer = await DisplayAlert("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.FileOpenQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
@@ -452,7 +480,11 @@
             }
         }
 
-        // Open the share interface
+        /// <summary>
+        /// Open the share interface 
+        /// </summary>
+        /// <param name="cFile"></param>
+        /// <returns></returns>
         private async Task OpenShareInterfaceAsync(string cFile)
         {
             bool answer = await DisplayAlert("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.ShareQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
@@ -475,7 +507,11 @@
             }
         }
 
-        // Reset the entry fields
+        /// <summary>
+        /// Reset the entry fields 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetEntryFields(object sender, EventArgs e)
         {
             entInterestRate.Text = "";
@@ -495,19 +531,31 @@
             entInterestRate.Focus();
         }
 
-        // Radio button checked changed event
+        /// <summary>
+        /// Radio button checked changed event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnRbnLoanCheckedChanged(object sender, EventArgs e)
         {
             CalculateResult(sender, e);
         }
 
-        // DatePicker and CheckBox event
+        /// <summary>
+        /// DatePicker and CheckBox event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnDateDataChanged(object sender, EventArgs e)
         {
             bReCalculateResult = true;
         }
 
-        // Picker and export type SelectedIndexChanged event
+        /// <summary>
+        /// Picker and export type SelectedIndexChanged event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPickerExportTypeChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;

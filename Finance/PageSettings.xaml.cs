@@ -4,7 +4,7 @@ namespace Finance
 {
     public sealed partial class PageSettings : ContentPage
     {
-        // Local variables.
+        //// Local variables.
         private readonly Stopwatch stopWatch = new();
 
         public PageSettings()
@@ -19,10 +19,10 @@ namespace Finance
                 return;
             }
 
-            // Put text in the chosen language in the controls and variables
+            //// Put text in the chosen language in the controls and variables
             SetLanguage();
         
-            // Set the current language in the picker
+            //// Set the current language in the picker
             pckLanguage.SelectedIndex = Globals.cLanguage switch
             {
                 // Čeština - Czech
@@ -71,7 +71,7 @@ namespace Finance
                 _ => 3,
             };
 
-            // Set the current theme in the picker
+            //// Set the current theme in the picker
             pckTheme.SelectedIndex = Globals.cTheme switch
             {
                 // Light
@@ -84,11 +84,11 @@ namespace Finance
                 _ => 0,
             };
 
-            // Set the number of decimal digits after the decimal point
+            //// Set the number of decimal digits after the decimal point
             entNumDec.Text = Globals.cNumDecimalDigits;
             entPercDec.Text = Globals.cPercDecimalDigits;
 
-            // Set radiobutton to the date format
+            //// Set radiobutton to the date format
             if (Globals.bDateFormatSystem == true)
             {
                 rbnDateFormatSystem.IsChecked = true;
@@ -98,7 +98,7 @@ namespace Finance
                 rbnDateFormatISO8601.IsChecked = true;
             }
 
-            // Set radiobutton to the page format
+            //// Set radiobutton to the page format
             if (Globals.cPageFormat == "A4")
             {
                 rbnPageFormatA4.IsChecked = true;
@@ -108,7 +108,7 @@ namespace Finance
                 rbnPageFormatLetter.IsChecked = true;
             }
 
-            // Set radiobutton to the rounding numbers method
+            //// Set radiobutton to the rounding numbers method
             if (Globals.cRoundNumber == "AwayFromZero")
             {
                 rbnRoundNumberAwayFromZero.IsChecked = true;
@@ -118,7 +118,7 @@ namespace Finance
                 rbnRoundNumberToEven.IsChecked = true;
             }
 
-            // Set radiobutton to the used keyboard
+            //// Set radiobutton to the used keyboard
             if (Globals.cKeyboard == "Default")
             {
                 rbnKeyboardDefault.IsChecked = true;
@@ -132,14 +132,18 @@ namespace Finance
                 rbnKeyboardText.IsChecked = true;
             }
 
-            // Set the color of number to false or true
+            //// Set the color of number to false or true
             swtColorNumber.IsToggled = Globals.bColorNumber;
 
-            // Start the stopWatch for resetting all the settings
+            //// Start the stopWatch for resetting all the settings
             stopWatch.Start();
         }
 
-        // Picker language clicked event
+        /// <summary>
+        /// Picker language clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPickerLanguageChanged(object sender, EventArgs e)
         {
             string cLanguageOld = Globals.cLanguage;
@@ -210,7 +214,11 @@ namespace Finance
             }
         }
 
-        // Picker theme clicked event
+        /// <summary>
+        /// Picker theme clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPickerThemeChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
@@ -234,7 +242,11 @@ namespace Finance
             }
         }
 
-        // Select all the text in the entry field
+        /// <summary>
+        /// Select all the text in the entry field 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EntryFocused(object sender, EventArgs e)
         {
             var entry = (Entry)sender;
@@ -244,7 +256,11 @@ namespace Finance
             entry.SelectionLength = entry.Text.Length;
         }
 
-        // Verify the number of decimal digits for numbers after the decimal point
+        /// <summary>
+        /// Verify the number of decimal digits for numbers after the decimal point 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VerifyNumberDecimals(object sender, EventArgs e)
         {
             // Validate input values
@@ -259,7 +275,11 @@ namespace Finance
             Globals.cNumDecimalDigits = Convert.ToString(nNumDec);
         }
 
-        // Verify the number of decimal digits for percentages after the decimal point
+        /// <summary>
+        /// Verify the number of decimal digits for percentages after the decimal point 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VerifyPercentageDecimals(object sender, EventArgs e)
         {
             bool bIsNumber = int.TryParse(entPercDec.Text, out int nPercDec);
@@ -277,7 +297,9 @@ namespace Finance
             entPercDec.IsEnabled = true;
         }
 
-        // Put text in the chosen language in the controls and variables
+        /// <summary>
+        /// Put text in the chosen language in the controls and variables 
+        /// </summary>
         private void SetLanguage()
         {
             var ThemeList = new List<string>
@@ -302,7 +324,11 @@ namespace Finance
             };
         }
 
-        // Radio button date format clicked event
+        /// <summary>
+        /// Radio button date format clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnDateFormatRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             if (rbnDateFormatSystem.IsChecked)
@@ -317,7 +343,11 @@ namespace Finance
             }
         }
 
-        // Radio button page format clicked event
+        /// <summary>
+        /// Radio button page format clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPageFormatRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             if (rbnPageFormatA4.IsChecked)
@@ -330,7 +360,11 @@ namespace Finance
             }
         }
 
-        // Radio button roundig numbers method clicked event
+        /// <summary>
+        /// Radio button roundig numbers method clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnRoundNumberRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             if (rbnRoundNumberAwayFromZero.IsChecked)
@@ -343,7 +377,11 @@ namespace Finance
             }
         }
 
-        // Radio button keyboard clicked event
+        /// <summary>
+        /// Radio button keyboard clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnKeyboardRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             if (rbnKeyboardDefault.IsChecked)
@@ -360,14 +398,22 @@ namespace Finance
             }
         }
 
-        // Switch color number toggled
+        /// <summary>
+        /// Switch color number toggled 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSwtColorNumberToggled(object sender, ToggledEventArgs e)
         {
             Globals.bColorNumber = swtColorNumber.IsToggled;
             Globals.SetThemeAndNumberColor();
         }
 
-        // Button save settings clicked event
+        /// <summary>
+        /// Button save settings clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void OnSettingsSaveClicked(object sender, EventArgs e)
         {
             Preferences.Default.Set("SettingTheme", Globals.cTheme);
@@ -388,7 +434,11 @@ namespace Finance
             Application.Current.MainPage = new NavigationPage(new MainPage());
         }
 
-        // Button reset settings clicked event
+        /// <summary>
+        /// Button reset settings clicked event 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSettingsResetClicked(object sender, EventArgs e)
         {
             // Get the elapsed time in milli seconds

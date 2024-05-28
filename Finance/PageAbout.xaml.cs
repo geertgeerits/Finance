@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 
-            // Put text in the chosen language in the controls
+            //// Put text in the chosen language in the controls
             lblVersion.Text = $"{FinLang.Version_Text} 3.0.66";
             lblCopyright.Text = $"{FinLang.Copyright_Text} © 1992-2024 Geert Geerits";
             lblEmail.Text = $"{FinLang.Email_Text} geertgeerits@gmail.com";
@@ -24,7 +24,11 @@ namespace Finance
             lblExplanation.Text = $"\n{FinLang.InfoExplanation_Text}";
         }
 
-        // Open the e-mail program
+        /// <summary>
+        /// Open the e-mail program 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnBtnEmailLinkClicked(object sender, EventArgs e)
         {
             if (Email.Default.IsComposeSupported)
@@ -52,7 +56,11 @@ namespace Finance
             }
         }
 
-        // Open the website link in the default browser
+        /// <summary>
+        /// Open the website link in the default browser 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnBtnWebsiteLinkClicked(object sender, EventArgs e)
         {
             try
