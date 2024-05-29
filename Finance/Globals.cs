@@ -188,13 +188,15 @@ namespace Finance
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="e"></param>
-        //public static void CloseKeyboard(Entry entry, EventArgs e)
+        //public async static void CloseKeyboard(Entry entry, EventArgs e)
         //{
         //    try
         //    {
         //        entry.IsEnabled = false;
         //        entry.IsEnabled = true;
-        //        //await entry.HideSoftInputAsync(default);
+        //        // or
+        //        await entry.HideSoftInputAsync(default);
+        //        await entry.ShowSoftInputAsync(default);
         //    }
         //    catch (Exception)
         //    {
