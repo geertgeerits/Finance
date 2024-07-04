@@ -14,6 +14,6 @@ Link to the Apple App Store:
 https://apps.apple.com/app/financial-applications/id1658515642
 
 Link to the Microsoft Store:
-https://apps.microsoft.com/detail/xxxxxxxxxxxx
-ms-windows-store://pdp/?ProductId=xxxxxxxxxxxx
+https://www.microsoft.com/store/apps/9NJ02GGVH4N0
+ms-windows-store://pdp/?productid=9NJ02GGVH4N0
 
