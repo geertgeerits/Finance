@@ -7,7 +7,6 @@
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
-
 namespace Finance
 {
     public sealed partial class MainPage : ContentPage
