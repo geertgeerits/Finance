@@ -37,7 +37,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 
-		<Authors>Geert Geerits</Authors>
+		<!--<Authors>Geert Geerits</Authors>
 		<PackageIcon>appiconfg.png</PackageIcon>
 		<Description>Financial applications</Description>
 		<Copyright>Geert Geerits</Copyright>
@@ -45,7 +45,8 @@
 		<FileVersion>3.0.66</FileVersion>
 		<AssemblyVersion>3.0.66</AssemblyVersion>
 		<PackageCertificateThumbprint>3258A94BC8069F3911EA6D4619347375B5F4824A</PackageCertificateThumbprint>
-		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>-->
+		<DefaultLanguage>en</DefaultLanguage>
 	</PropertyGroup>
 
 	<ItemGroup>
