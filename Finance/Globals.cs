@@ -8,22 +8,22 @@ namespace Finance
     internal static class Globals
     {
         // Global variables
-        public static string cTheme;
+        public static string cTheme = "";
         public static bool bDateFormatSystem;
-        public static string cSysDateFormat;
-        public static string cDateFormat;
-        public static string cNumDecimalSeparator;
-        public static string cNumDecimalDigits;
-        public static string cPercDecimalDigits;
-        public static string cRoundNumber;
+        public static string cSysDateFormat = "";
+        public static string cDateFormat = "";
+        public static string cNumDecimalSeparator = "";
+        public static string cNumDecimalDigits = "";
+        public static string cPercDecimalDigits = "";
+        public static string cRoundNumber = "";
         public static bool bColorNumber;
-        public static string cColorNegNumber;
-        public static string cColorPosNumber;
-        public static string cISOCurrencyCode;
-        public static string cKeyboard;
-        public static string cLanguage;
-        public static bool bLanguageChanged = false;
-        public static string cPageFormat;
+        public static string cColorNegNumber = "";
+        public static string cColorPosNumber = "";
+        public static string cISOCurrencyCode = "";
+        public static string cKeyboard = "";
+        public static string cLanguage = "";
+        public static bool bLanguageChanged;
+        public static string cPageFormat = "";
         public static bool bLicense;
 
         // Local variables
@@ -41,21 +41,21 @@ namespace Finance
             switch (cTheme)
             {
                 case "Light":
-                    Application.Current.UserAppTheme = AppTheme.Light;
+                    Application.Current!.UserAppTheme = AppTheme.Light;
 
                     cColorNegNumber = bColorNumber ? cColorNegNumberLight : cColorPosNumberLight;
                     cColorPosNumber = cColorPosNumberLight;
                     break;
 
                 case "Dark":
-                    Application.Current.UserAppTheme = AppTheme.Dark;
+                    Application.Current!.UserAppTheme = AppTheme.Dark;
 
                     cColorNegNumber = bColorNumber ? cColorNegNumberDark : cColorPosNumberDark;
                     cColorPosNumber = cColorPosNumberDark;
                     break;
 
                 default:
-                    Application.Current.UserAppTheme = AppTheme.Unspecified;
+                    Application.Current!.UserAppTheme = AppTheme.Unspecified;
 
                     // Get the current device theme and set the number color
                     AppTheme currentTheme = Application.Current.RequestedTheme;
@@ -183,11 +183,11 @@ namespace Finance
             }
         }
 
-        /// <summary>
-        /// Close the keyboard 
-        /// </summary>
-        /// <param name="entry"></param>
-        /// <param name="e"></param>
+        ///// <summary>
+        ///// Close the keyboard 
+        ///// </summary>
+        ///// <param name="entry"></param>
+        ///// <param name="e"></param>
         //public async static void CloseKeyboard(Entry entry, EventArgs e)
         //{
         //    try

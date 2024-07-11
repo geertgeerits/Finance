@@ -7,7 +7,7 @@
         public static readonly string[,] aLoanDetail = new string[1201, 7];
 
         //// Variables for export / e-mail
-        private string cExportType;
+        private string cExportType = "";
         private bool bReCalculateResult;
 
         public PageLoanDetail()

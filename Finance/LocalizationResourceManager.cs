@@ -12,7 +12,7 @@ namespace Finance
         public object this[string resourceKey]
             => FinLang.ResourceManager.GetObject(resourceKey, FinLang.Culture) ?? Array.Empty<byte>();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public void SetCulture(CultureInfo culture) {
             FinLang.Culture = culture;

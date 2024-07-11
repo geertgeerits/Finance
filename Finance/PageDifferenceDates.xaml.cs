@@ -44,7 +44,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CalculateResult(object sender, EventArgs e)
+        private void CalculateResult(object? sender, EventArgs? e)
         {
             // Set the smallest date to the first date
             DateTime fromDate;

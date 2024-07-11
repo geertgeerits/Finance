@@ -47,6 +47,7 @@
 		<PackageCertificateThumbprint>3258A94BC8069F3911EA6D4619347375B5F4824A</PackageCertificateThumbprint>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>-->
 		<DefaultLanguage>en</DefaultLanguage>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>

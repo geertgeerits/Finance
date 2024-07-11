@@ -56,7 +56,7 @@ namespace Finance
             }
             catch (Exception ex)
             {
-                _ = Application.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                _ = Application.Current!.MainPage!.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
                 return;
             }
         }
@@ -164,7 +164,7 @@ namespace Finance
             }
             catch (Exception ex)
             {
-                _ = Application.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                _ = Application.Current!.MainPage!.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
                 return;
             }
         }
@@ -710,7 +710,7 @@ namespace Finance
 
             catch (Exception ex)
             {
-                _ = Application.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                _ = Application.Current!.MainPage!.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
                 return;
             }
         }
@@ -798,7 +798,7 @@ namespace Finance
 
             catch (Exception ex)
             {
-                _ = Application.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                _ = Application.Current!.MainPage!.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
                 return cText;
             }
         }

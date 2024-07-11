@@ -431,7 +431,7 @@ namespace Finance
 
             // Restart the application
             //Application.Current.MainPage = new AppShell();
-            Application.Current.MainPage = new NavigationPage(new MainPage());
+            Application.Current!.MainPage = new NavigationPage(new MainPage());
         }
 
         /// <summary>
@@ -468,7 +468,7 @@ namespace Finance
 
             // Restart the application
             //Application.Current.MainPage = new AppShell();
-            Application.Current.MainPage = new NavigationPage(new MainPage());
+            Application.Current!.MainPage = new NavigationPage(new MainPage());
         }
     }
 }

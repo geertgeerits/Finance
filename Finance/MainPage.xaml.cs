@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2024
  * Version .....: 3.0.66
- * Date ........: 2024-07-04 (YYYY-MM-DD)
+ * Date ........: 2024-07-11 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -12,8 +12,8 @@ namespace Finance
     public sealed partial class MainPage : ContentPage
     {
         //// Local variables
-        private string cCopyright;
-        private string cLicenseText;
+        private string cCopyright = "";
+        private string cLicenseText = "";
 
         public MainPage()
         {
@@ -199,7 +199,7 @@ namespace Finance
         {
             if (Globals.bLicense == false)
             {
-                Globals.bLicense = await Application.Current.MainPage.DisplayAlert(FinLang.LicenseTitle_Text, $"Finance\n{cCopyright}\n\n{cLicenseText}", FinLang.Agree_Text, FinLang.Disagree_Text);
+                Globals.bLicense = await Application.Current!.MainPage!.DisplayAlert(FinLang.LicenseTitle_Text, $"Finance\n{cCopyright}\n\n{cLicenseText}", FinLang.Agree_Text, FinLang.Disagree_Text);
 
                 if (Globals.bLicense)
                 {
