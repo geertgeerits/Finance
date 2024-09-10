@@ -1,8 +1,8 @@
 ﻿/* Program .....: Finance.sln
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2024
- * Version .....: 3.0.67
- * Date ........: 2024-07-25 (YYYY-MM-DD)
+ * Version .....: 3.0.68
+ * Date ........: 2024-09-10 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -26,7 +26,15 @@ namespace Finance
                 DisplayAlert("InitializeComponent", ex.Message, "OK");
                 return;
             }
+#if WINDOWS
+            // !!!BUG!!! in Windows - Set the ColumnDefinitions for the TitleView because XAML 140* does not work in Windows
+            grdTitleView.ColumnDefinitions.Clear();
+            grdTitleView.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(60) });
+            grdTitleView.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(726) });
+            grdTitleView.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(50) });
 
+            imgbtnAbout.HorizontalOptions = LayoutOptions.Center;
+#endif
             // Get the saved settings.License
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
             Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);

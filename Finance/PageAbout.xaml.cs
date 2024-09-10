@@ -13,9 +13,12 @@ namespace Finance
                 DisplayAlert("InitializeComponent", ex.Message, "OK");
                 return;
             }
-
+#if WINDOWS
+            // Set the left margin of the title for windows
+            lblTitlePage.Margin = new Thickness(40, 0, 0, 0);
+#endif
             //// Put text in the chosen language in the controls
-            lblVersion.Text = $"{FinLang.Version_Text} 3.0.67";
+            lblVersion.Text = $"{FinLang.Version_Text} 3.0.68";
             lblCopyright.Text = $"{FinLang.Copyright_Text} © 1992-2024 Geert Geerits";
             lblEmail.Text = $"{FinLang.Email_Text} geertgeerits@gmail.com";
             lblWebsite.Text = $"{FinLang.Website_Text}: ../finance";

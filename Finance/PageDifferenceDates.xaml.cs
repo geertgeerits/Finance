@@ -13,7 +13,10 @@
                 DisplayAlert("InitializeComponent", ex.Message, "OK");
                 return;
             }
-
+#if WINDOWS
+            // Set the left margin of the title for windows
+            lblTitlePage.Margin = new Thickness(40, 0, 0, 0);
+#endif
             //// Set the date properties for the DatePicker
             dtpDate1.MinimumDate = new DateTime(1583, 1, 1);
             dtpDate1.MaximumDate = new DateTime(5000, 1, 1);

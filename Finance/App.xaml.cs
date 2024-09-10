@@ -29,6 +29,8 @@
 
             window.MinimumHeight = 800;
             window.MinimumWidth = 900;
+            window.MaximumHeight = newHeight;
+            window.MaximumWidth = newWidth;
 
             return window;
         }

@@ -8,10 +8,12 @@
              Appearing="OnPageAppearing">
 
     <NavigationPage.TitleView>
-        <Grid RowDefinitions="Auto"
-              ColumnDefinitions="60, 230*, 50"
-              Margin="5"
-              BackgroundColor="#75F94D">
+        <Grid 
+            x:Name="grdTitleView"
+            RowDefinitions="Auto"
+            ColumnDefinitions="60, 230*, 50"
+            Margin="5"
+            BackgroundColor="#75F94D">
 
             <ImageButton
                 x:Name="imgbtnAbout"
