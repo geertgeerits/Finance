@@ -28,8 +28,8 @@
             window.Width = newWidth;
 
             window.MinimumHeight = 800;
-            window.MinimumWidth = 900;
-            window.MaximumHeight = newHeight;
+            window.MinimumWidth = newWidth;
+            window.MaximumHeight = 1000;
             window.MaximumWidth = newWidth;
 
             return window;

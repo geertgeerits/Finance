@@ -20,7 +20,7 @@ namespace Finance
             }
 #if WINDOWS
             // Set the left margin of the title for windows
-            lblTitlePage.Margin = new Thickness(40, 0, 0, 0);
+            lblTitlePage.Margin = new Thickness(67, 10, 0, 0);
 #endif
             //// Put text in the chosen language in the controls and variables
             SetLanguage();

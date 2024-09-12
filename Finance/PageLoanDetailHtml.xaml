@@ -12,6 +12,7 @@
             BackgroundColor="#75F94D">
 
             <Label
+                x:Name="lblTitlePage"
                 Style="{StaticResource labelStyleTitleView}"
                 Grid.Row="0"
                 Grid.Column="0"
