@@ -1,8 +1,8 @@
 ﻿/* Program .....: Finance.sln
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2024
- * Version .....: 3.0.68
- * Date ........: 2024-09-12 (YYYY-MM-DD)
+ * Version .....: 3.0.69
+ * Date ........: 2024-09-25 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -20,6 +20,9 @@ namespace Finance
             try
             {
                 InitializeComponent();
+
+                // Select all the text in the entry field - works for all pages in the app
+                Globals.ModifyEntrySelectAllText();
             }
             catch (Exception ex)
             {

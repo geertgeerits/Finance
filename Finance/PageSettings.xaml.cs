@@ -246,20 +246,6 @@ namespace Finance
         }
 
         /// <summary>
-        /// Select all the text in the entry field 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryFocused(object sender, EventArgs e)
-        {
-            var entry = (Entry)sender;
-
-            entry.CursorPosition = entry.Text.Length;
-            entry.CursorPosition = 0;
-            entry.SelectionLength = entry.Text.Length;
-        }
-
-        /// <summary>
         /// Verify the number of decimal digits for numbers after the decimal point 
         /// </summary>
         /// <param name="sender"></param>

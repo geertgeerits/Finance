@@ -40,20 +40,6 @@ namespace Finance
         }
 
         /// <summary>
-        /// Select all the text in the entry field 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryFocused(object sender, EventArgs e)
-        {
-            var entry = (Entry)sender;
-
-            entry.CursorPosition = entry.Text.Length;
-            entry.CursorPosition = 0;
-            entry.SelectionLength = entry.Text.Length;
-        }
-
-        /// <summary>
         /// Clear result fields if the text have changed 
         /// </summary>
         /// <param name="sender"></param>

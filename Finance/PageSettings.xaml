@@ -130,7 +130,6 @@
                         Placeholder="0 - 4"
                         MaxLength="1"
                         Completed="VerifyNumberDecimals"
-                        Focused="EntryFocused"
                         TextChanged="VerifyNumberDecimals">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
@@ -160,7 +159,6 @@
                         Placeholder="0 - 8"
                         MaxLength="1"
                         Completed="VerifyPercentageDecimals"
-                        Focused="EntryFocused"
                         TextChanged="VerifyPercentageDecimals">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">

@@ -52,7 +52,6 @@
                         Placeholder="0 - 8"
                         MaxLength="1"
                         Completed="GoToNextField"
-                        Focused="EntryFocused"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
@@ -82,7 +81,6 @@
                         Placeholder="0 - 100"
                         MaxLength="12"
                         Completed="CalculateResult"
-                        Focused="EntryFocused"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
