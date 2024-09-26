@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -36,7 +36,7 @@ namespace Finance
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entPercDec.Focus();
+            _ = entPercDec.Focus();
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Finance
         {
             if (sender == entPercDec)
             {
-                entInterestRate.Focus();
+                _ = entInterestRate.Focus();
             }
         }
 
@@ -76,7 +76,7 @@ namespace Finance
             if (bIsNumber == false || nPercDec < 0 || nPercDec > 8)
             {
                 entPercDec.Text = "";
-                entPercDec.Focus();
+                _ = entPercDec.Focus();
                 return;
             }
 
@@ -85,7 +85,7 @@ namespace Finance
             if (bIsNumber == false || nInterestRate < 0 || nInterestRate > 100)
             {
                 entInterestRate.Text = "";
-                entInterestRate.Focus();
+                _ = entInterestRate.Focus();
                 return;
             }
 
@@ -121,7 +121,7 @@ namespace Finance
             lblInterestDay366.Text = Globals.RoundToNumDecimals(ref nInterestDay366, nPercDec, "N");
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Finance
             lblInterestDay365.Text = "";
             lblInterestDay366.Text = "";
 
-            entPercDec.Focus();
+            _ = entPercDec.Focus();
         }
     }
 }

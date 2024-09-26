@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(50, 0, 0, 0);
 #endif
             // Set the WebView Source

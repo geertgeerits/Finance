@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -36,7 +36,7 @@ namespace Finance
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entPaymentDiscount.Focus();
+            _ = entPaymentDiscount.Focus();
         }
 
         /// <summary>
@@ -58,11 +58,11 @@ namespace Finance
         {
             if (sender == entPaymentDiscount)
             {
-                entExpiryDaysWithDiscount.Focus();
+                _ = entExpiryDaysWithDiscount.Focus();
             }
             else if (sender == entExpiryDaysWithDiscount)
             {
-                entExpiryDaysWithoutDiscount.Focus();
+                _ = entExpiryDaysWithoutDiscount.Focus();
             }
         }
 
@@ -79,7 +79,7 @@ namespace Finance
             if (bIsNumber == false || nPaymentDiscount < 0 || nPaymentDiscount > 100)
             {
                 entPaymentDiscount.Text = "";
-                entPaymentDiscount.Focus();
+                _ = entPaymentDiscount.Focus();
                 return;
             }
 
@@ -87,7 +87,7 @@ namespace Finance
             if (bIsNumber == false || nExpiryDaysWithDiscount < 0 || nExpiryDaysWithDiscount > 999)
             {
                 entExpiryDaysWithDiscount.Text = "";
-                entExpiryDaysWithDiscount.Focus();
+                _ = entExpiryDaysWithDiscount.Focus();
                 return;
             }
 
@@ -96,7 +96,7 @@ namespace Finance
             {
                 entExpiryDaysWithoutDiscount.Text = "";
                 entExpiryDaysWithoutDiscount.Placeholder = $"{Convert.ToString(nExpiryDaysWithDiscount)} - 999";
-                entExpiryDaysWithoutDiscount.Focus();
+                _ = entExpiryDaysWithoutDiscount.Focus();
                 return;
             }
 
@@ -133,7 +133,7 @@ namespace Finance
             lblInterestEffective.Text = Globals.RoundToNumDecimals(ref nInterestEffective, nPercDec, "N");
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Finance
 
             entExpiryDaysWithoutDiscount.Placeholder = "0 - 999";
 
-            entPaymentDiscount.Focus();
+            _ = entPaymentDiscount.Focus();
         }
     }
 }

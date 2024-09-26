@@ -14,7 +14,7 @@
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(64, 10, 0, 0);
 #endif
             //// Set the date properties for the DatePicker
@@ -38,7 +38,7 @@
         {
             if (sender == dtpDate1)
             {
-                dtpDate2.Focus();
+                _ = dtpDate2.Focus();
             }
         }
 
@@ -81,7 +81,7 @@
             lblDateDifferenceSeconds.Text = nDateDifference.ToString("N0");
 
             // Set focus.
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>

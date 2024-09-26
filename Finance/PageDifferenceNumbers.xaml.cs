@@ -14,7 +14,7 @@
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -38,7 +38,7 @@
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entValue1.Focus();
+            _ = entValue1.Focus();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@
         {
             if (sender == entValue1)
             {
-                entValue2.Focus();
+                _ = entValue2.Focus();
             }
         }
 
@@ -80,7 +80,7 @@
             if (bIsNumber == false || nValue1 < -9_999_999_999 || nValue1 > 9_999_999_999)
             {
                 entValue1.Text = "";
-                entValue1.Focus();
+                _ = entValue1.Focus();
                 return;
             }
 
@@ -89,7 +89,7 @@
             if (bIsNumber == false || nValue2 < -9_999_999_999 || nValue2 > 9_999_999_999)
             {
                 entValue2.Text = "";
-                entValue2.Focus();
+                _ = entValue2.Focus();
                 return;
             }
 
@@ -120,7 +120,7 @@
                 lblValuePercDiffValue1.Text = "";
                 lblValuePercDiffValue2.Text = "";
 
-                btnReset.Focus();
+                _ = btnReset.Focus();
                 return;
             }
 
@@ -134,7 +134,7 @@
             
                 lblValuePercDiffValue2.Text = "";
 
-                btnReset.Focus();
+                _ = btnReset.Focus();
                 return;
             }
 
@@ -150,7 +150,7 @@
                 lblValuePercDiffValue2.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
                 Globals.SetLabelTextColorForNumber(lblValuePercDiffValue2);
 
-                btnReset.Focus();
+                _ = btnReset.Focus();
                 return;
             }
 
@@ -167,7 +167,7 @@
                 lblValuePercDiffValue2.Text = Globals.RoundToNumDecimals(ref nValueTemp, nPercDec, "N");
                 Globals.SetLabelTextColorForNumber(lblValuePercDiffValue2);
 
-                btnReset.Focus();
+                _ = btnReset.Focus();
                 return;
             }
 
@@ -193,7 +193,7 @@
             Globals.SetLabelTextColorForNumber(lblValuePercDifference);
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -206,7 +206,7 @@
             entValue1.Text = "";
             entValue2.Text = "";
 
-            entValue1.Focus();
+            _ = entValue1.Focus();
         }
     }
 }

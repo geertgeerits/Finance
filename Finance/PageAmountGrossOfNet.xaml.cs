@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -38,7 +38,12 @@ namespace Finance
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entPercentage.Focus();
+            _ = entPercentage.Focus();
+
+            //Dispatcher.Dispatch(() =>
+            //{
+            //    _ = entPercentage.Focus();
+            //});
         }
 
         /// <summary>
@@ -61,7 +66,7 @@ namespace Finance
         {
             if (sender == entPercentage)
             {
-                entAmountNet.Focus();
+                _ = entAmountNet.Focus();
             }
         }
 
@@ -78,7 +83,7 @@ namespace Finance
             if (bIsNumber == false || nPercentage < 0 || nPercentage > 100)
             {
                 entPercentage.Text = "";
-                entPercentage.Focus();
+                _ = entPercentage.Focus();
                 return;
             }
 
@@ -87,7 +92,7 @@ namespace Finance
             if (bIsNumber == false || nAmountNet < 0 || nAmountNet > 9_999_999_999)
             {
                 entAmountNet.Text = "";
-                entAmountNet.Focus();
+                _ = entAmountNet.Focus();
                 return;
             }
 
@@ -107,7 +112,7 @@ namespace Finance
             if (nPercentage == 0 || nPercentage == 100)
             {
                 entPercentage.Text = "";
-                entPercentage.Focus();
+                _ = entPercentage.Focus();
                 return;
             }
             else if (nAmountNet > 0)
@@ -131,7 +136,7 @@ namespace Finance
             }
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -144,7 +149,7 @@ namespace Finance
             entPercentage.Text = "";
             entAmountNet.Text = "";
 
-            entPercentage.Focus();
+            _ = entPercentage.Focus();
         }
     }
 }

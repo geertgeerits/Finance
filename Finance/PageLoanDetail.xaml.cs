@@ -22,7 +22,7 @@
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Put text for the column headers in the chosen language in the array
@@ -67,7 +67,7 @@
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entInterestRate.Focus();
+            _ = entInterestRate.Focus();
         }
 
         /// <summary>
@@ -93,15 +93,15 @@
         {
             if (sender == entInterestRate)
             {
-                entCapitalInitial.Focus();
+                _ = entCapitalInitial.Focus();
             }
             else if (sender == entCapitalInitial)
             {
-                entDurationYears.Focus();
+                _ = entDurationYears.Focus();
             }
             else if (sender == entDurationYears)
             {
-                entPeriodsYear.Focus();
+                _ = entPeriodsYear.Focus();
             }
             else if (sender == entCurrencyCode)
             {
@@ -109,7 +109,7 @@
                 entCurrencyCode.IsEnabled = false;
                 entCurrencyCode.IsEnabled = true;
 
-                btnExport.Focus();
+                _ = btnExport.Focus();
             }
         }
 
@@ -126,7 +126,7 @@
             if (bIsNumber == false || nInterestRate < 0 || nInterestRate > 100)
             {
                 entInterestRate.Text = "";
-                entInterestRate.Focus();
+                _ = entInterestRate.Focus();
                 return;
             }
 
@@ -135,7 +135,7 @@
             if (bIsNumber == false || nCapitalInitial < 1 || nCapitalInitial > 9_999_999_999)
             {
                 entCapitalInitial.Text = "";
-                entCapitalInitial.Focus();
+                _ = entCapitalInitial.Focus();
                 return;
             }
 
@@ -143,7 +143,7 @@
             if (bIsNumber == false || nDurationYears < 1 || nDurationYears > 100)
             {
                 entDurationYears.Text = "";
-                entDurationYears.Focus();
+                _ = entDurationYears.Focus();
                 return;
             }
 
@@ -151,14 +151,14 @@
             if (bIsNumber == false || nPeriodsYear < 1 || nPeriodsYear > 12)
             {
                 entPeriodsYear.Text = "";
-                entPeriodsYear.Focus();
+                _ = entPeriodsYear.Focus();
                 return;
             }
 
             if ((12 % nPeriodsYear) != 0)
             {
                 entPeriodsYear.Text = "";
-                entPeriodsYear.Focus();
+                _ = entPeriodsYear.Focus();
                 return;
             }
 
@@ -344,7 +344,7 @@
             bReCalculateResult = false;
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -517,7 +517,7 @@
 
             bReCalculateResult = true;
 
-            entInterestRate.Focus();
+            _ = entInterestRate.Focus();
         }
 
         /// <summary>

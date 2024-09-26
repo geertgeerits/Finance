@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -40,7 +40,7 @@ namespace Finance
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entVATPercentage.Focus();
+            _ = entVATPercentage.Focus();
         }
 
         /// <summary>
@@ -62,16 +62,16 @@ namespace Finance
         {
             if (sender == entVATPercentage)
             {
-                entVATAmountExclusive.Focus();
+                _ = entVATAmountExclusive.Focus();
             }
             else if (sender == entVATAmountExclusive)
             {
-                entVATAmountIncluded.Focus();
+                _ = entVATAmountIncluded.Focus();
             }
         }
 
         /// <summary>
-        /// Set the value of a another field to '0' if the current field is unfocused 
+        /// Set the value of an another field to '0' if the current field is unfocused 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -110,7 +110,7 @@ namespace Finance
             if (bIsNumber == false || nVATPercentage < 0 || nVATPercentage > 100)
             {
                 entVATPercentage.Text = "";
-                entVATPercentage.Focus();
+                _ = entVATPercentage.Focus();
                 return;
             }
 
@@ -119,7 +119,7 @@ namespace Finance
             if (bIsNumber == false || nVATAmountExclusive < 0 || nVATAmountExclusive > 9_999_999_999)
             {
                 entVATAmountExclusive.Text = "";
-                entVATAmountExclusive.Focus();
+                _ = entVATAmountExclusive.Focus();
                 return;
             }
 
@@ -128,7 +128,7 @@ namespace Finance
             if (bIsNumber == false || nVATAmountIncluded < 0 || nVATAmountIncluded > 9_999_999_999)
             {
                 entVATAmountIncluded.Text = "";
-                entVATAmountIncluded.Focus();
+                _ = entVATAmountIncluded.Focus();
                 return;
             }
 
@@ -212,7 +212,7 @@ namespace Finance
             lblVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "N");
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Finance
             lblVATAmount.Text = "";
             entVATAmountIncluded.Text = "0";
 
-            entVATPercentage.Focus();
+            _ = entVATPercentage.Focus();
         }
     }
 }

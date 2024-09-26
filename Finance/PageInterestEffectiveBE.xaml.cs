@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -38,7 +38,7 @@ namespace Finance
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entCapitalInitial.Focus();
+            _ = entCapitalInitial.Focus();
         }
 
         /// <summary>
@@ -61,11 +61,11 @@ namespace Finance
         {
             if (sender == entCapitalInitial)
             {
-                entCapitalFinal.Focus();
+                _ = entCapitalFinal.Focus();
             }
             else if (sender == entCapitalFinal)
             {
-                entDurationYears.Focus();
+                _ = entDurationYears.Focus();
             }
         }
 
@@ -82,7 +82,7 @@ namespace Finance
             if (bIsNumber == false || nCapitalInitial < 0 || nCapitalInitial > 9_999_999_999)
             {
                 entCapitalInitial.Text = "";
-                entCapitalInitial.Focus();
+                _ = entCapitalInitial.Focus();
                 return;
             }
 
@@ -91,7 +91,7 @@ namespace Finance
             if (bIsNumber == false || nCapitalFinal < 0 || nCapitalFinal > 9_999_999_999)
             {
                 entCapitalFinal.Text = "";
-                entCapitalFinal.Focus();
+                _ = entCapitalFinal.Focus();
                 return;
             }
 
@@ -99,7 +99,7 @@ namespace Finance
             if (bIsNumber == false || nDurationYears < 1 || nDurationYears > 100)
             {
                 entDurationYears.Text = "";
-                entDurationYears.Focus();
+                _ = entDurationYears.Focus();
                 return;
             }
 
@@ -145,7 +145,7 @@ namespace Finance
             Globals.SetLabelTextColorForNumber(lblInterestEffective);
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Finance
             entDurationYears.Text = "1";
             lblInterestEffective.Text = "";
 
-            entCapitalInitial.Focus();
+            _ = entCapitalInitial.Focus();
         }
     }
 }

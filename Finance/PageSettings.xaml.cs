@@ -19,7 +19,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(67, 10, 0, 0);
 #endif
             //// Put text in the chosen language in the controls and variables
@@ -257,7 +257,7 @@ namespace Finance
             if (bIsNumber == false || nNumDec < 0 || nNumDec > 4 || entNumDec.Text == "")
             {
                 entNumDec.Text = "";
-                entNumDec.Focus();
+                _ = entNumDec.Focus();
                 return;
             }
 
@@ -275,7 +275,7 @@ namespace Finance
             if (bIsNumber == false || nPercDec < 0 || nPercDec > 8 || entPercDec.Text == "")
             {
                 entPercDec.Text = "";
-                entPercDec.Focus();
+                _ = entPercDec.Focus();
                 return;
             }
 

@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -42,7 +42,7 @@ namespace Finance
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entAmountPurchase.Focus();
+            _ = entAmountPurchase.Focus();
         }
 
         /// <summary>
@@ -64,15 +64,15 @@ namespace Finance
         {
             if (sender == entAmountPurchase)
             {
-                entAmountCost.Focus();
+                _ = entAmountCost.Focus();
             }
             else if (sender == entAmountCost)
             {
-                entAmountRevenueYear.Focus();
+                _ = entAmountRevenueYear.Focus();
             }
             else if (sender == entAmountRevenueYear)
             {
-                entPercentageReturnYear.Focus();
+                _ = entPercentageReturnYear.Focus();
             }
         }
 
@@ -111,7 +111,7 @@ namespace Finance
             if (bIsNumber == false || nAmountPurchase < 0 || nAmountPurchase > 9_999_999_999)
             {
                 entAmountPurchase.Text = "";
-                entAmountPurchase.Focus();
+                _ = entAmountPurchase.Focus();
                 return;
             }
 
@@ -120,7 +120,7 @@ namespace Finance
             if (bIsNumber == false || nAmountCost < 0 || nAmountCost > 9_999_999_999)
             {
                 entAmountCost.Text = "";
-                entAmountCost.Focus();
+                _ = entAmountCost.Focus();
                 return;
             }
 
@@ -129,7 +129,7 @@ namespace Finance
             if (bIsNumber == false || nAmountRevenueYear < 0 || nAmountRevenueYear > 9_999_999_999)
             {
                 entAmountRevenueYear.Text = "";
-                entAmountRevenueYear.Focus();
+                _ = entAmountRevenueYear.Focus();
                 return;
             }
 
@@ -138,7 +138,7 @@ namespace Finance
             if (bIsNumber == false || nPercentageReturnYear < 0 || nPercentageReturnYear > 9_999)
             {
                 entPercentageReturnYear.Text = "";
-                entPercentageReturnYear.Focus();
+                _ = entPercentageReturnYear.Focus();
                 return;
             }
 
@@ -209,7 +209,7 @@ namespace Finance
             }
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Finance
             entAmountRevenueYear.Text = "0";
             entPercentageReturnYear.Text = "0";
 
-            entAmountPurchase.Focus();
+            _ = entAmountPurchase.Focus();
         }
     }
 }

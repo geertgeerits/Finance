@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the left margin of the title for windows
+            /// Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -36,7 +36,7 @@ namespace Finance
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            entInterestRate.Focus();
+            _ = entInterestRate.Focus();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Finance
         {
             if (sender == entInterestRate)
             {
-                entPeriodsYear.Focus();
+                _ = entPeriodsYear.Focus();
             }
         }
 
@@ -75,7 +75,7 @@ namespace Finance
             if (bIsNumber == false || nInterestRate < 0 || nInterestRate > 100)
             {
                 entInterestRate.Text = "";
-                entInterestRate.Focus();
+                _ = entInterestRate.Focus();
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace Finance
             if (bIsNumber == false || nPeriodsYear < 1 || nPeriodsYear > 12)
             {
                 entPeriodsYear.Text = "";
-                entPeriodsYear.Focus();
+                _ = entPeriodsYear.Focus();
                 return;
             }
 
@@ -113,7 +113,7 @@ namespace Finance
             lblInterestEffective.Text = Globals.RoundToNumDecimals(ref nInterestEffective, nPercDec, "N");
 
             // Set focus
-            btnReset.Focus();
+            _ = btnReset.Focus();
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Finance
             entPeriodsYear.Text = "12";
             lblInterestEffective.Text = "";
 
-            entInterestRate.Focus();
+            _ = entInterestRate.Focus();
         }
     }
 }
