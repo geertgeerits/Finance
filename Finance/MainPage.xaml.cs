@@ -2,8 +2,8 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2024
  * Version .....: 3.0.69
- * Date ........: 2024-09-26 (YYYY-MM-DD)
- * Language ....: Microsoft Visual Studio 2022: .NET 8.0 MAUI C# 12.0
+ * Date ........: 2024-11-05 (YYYY-MM-DD)
+ * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
@@ -210,7 +210,7 @@ namespace Finance
         {
             if (Globals.bLicense == false)
             {
-                Globals.bLicense = await Application.Current!.MainPage!.DisplayAlert(FinLang.LicenseTitle_Text, $"Finance\n{cCopyright}\n\n{cLicenseText}", FinLang.Agree_Text, FinLang.Disagree_Text);
+                Globals.bLicense = await Application.Current!.Windows[0].Page!.DisplayAlert(FinLang.LicenseTitle_Text, $"Finance\n{cCopyright}\n\n{cLicenseText}", FinLang.Agree_Text, FinLang.Disagree_Text);
 
                 if (Globals.bLicense)
                 {

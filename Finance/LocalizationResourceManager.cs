@@ -2,8 +2,10 @@
 
 namespace Finance
 {
-    public sealed class LocalizationResourceManager : INotifyPropertyChanged {
-        private LocalizationResourceManager() {
+    public sealed partial class LocalizationResourceManager : INotifyPropertyChanged
+    {
+        private LocalizationResourceManager()
+        {
             FinLang.Culture = CultureInfo.CurrentCulture;
         }
 
@@ -14,7 +16,8 @@ namespace Finance
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public void SetCulture(CultureInfo culture) {
+        public void SetCulture(CultureInfo culture)
+        {
             FinLang.Culture = culture;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
         }
