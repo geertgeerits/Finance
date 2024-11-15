@@ -6,13 +6,13 @@
              x:Class="Finance.PageInterestEffectiveBE"
              Loaded="OnPageLoaded">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
             Text="{x:Static resx:FinLang.InterestEffectiveBEForm_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
     
     <ScrollView>
         <StackLayout>

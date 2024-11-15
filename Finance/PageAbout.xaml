@@ -4,13 +4,13 @@
              xmlns:resx="clr-namespace:Finance.Resources.Languages"
              x:Class="Finance.PageAbout">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
             Text="{x:Static resx:FinLang.Info_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
 
     <ScrollView>    
         <StackLayout>

@@ -6,13 +6,13 @@
              x:Class="Finance.PageInterestMonthDay"
              Loaded="OnPageLoaded">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
             Text="{x:Static resx:FinLang.InterestMonthDayForm_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
     
     <ScrollView>
         <StackLayout>

@@ -7,7 +7,7 @@
              Loaded="OnPageLoad"
              Appearing="OnPageAppearing">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Grid 
             x:Name="grdTitleView"
             RowDefinitions="Auto"
@@ -17,7 +17,6 @@
 
             <ImageButton
                 x:Name="imgbtnAbout"
-                Grid.Row="0"
                 Grid.Column="0"
                 Source="info_32p.png"
                 HorizontalOptions="Start"
@@ -32,7 +31,6 @@
             <Label
                 x:Name="lblTitle"
                 Style="{StaticResource labelStyleTitleView}"
-                Grid.Row="0"
                 Grid.Column="1"
                 FontSize="20"
                 Text="Finance">
@@ -40,7 +38,6 @@
 
             <ImageButton
                 x:Name="imgbtnSettings"
-                Grid.Row="0"
                 Grid.Column="2"
                 Source="settings_32p.png"
                 HorizontalOptions="Center"
@@ -52,7 +49,7 @@
                 Clicked="OnPageSettingsClicked">
             </ImageButton>
         </Grid>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
     
     <ScrollView>
         <StackLayout>
