@@ -3,10 +3,6 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resx="clr-namespace:Finance.Resources.Languages">
-
-    <!--<Shell.BackButtonBehavior>
-        <BackButtonBehavior IconOverride="back_button_black_24p.png" />
-    </Shell.BackButtonBehavior>-->
     
     <Shell.TitleView>
         <Label

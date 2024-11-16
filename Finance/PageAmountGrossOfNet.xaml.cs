@@ -151,16 +151,5 @@ namespace Finance
 
             _ = entPercentage.Focus();
         }
-
-        /// <summary>
-        /// Go back to the previous page
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void OnBackButtonClicked(object sender, EventArgs e)
-        {
-            // Allow the default back button action
-            await Navigation.PopAsync();
-        }
     }
 }
