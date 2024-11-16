@@ -5,13 +5,27 @@
              xmlns:local="clr-namespace:Finance"
              x:Class="Finance.PageAmountGrossOfNet"
              Loaded="OnPageLoaded">
+    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False"/>
+    </Shell.BackButtonBehavior>
 
     <Shell.TitleView>
-        <Label
-            x:Name="lblTitlePage"
-            Style="{StaticResource labelStyleTitleView}"
-            Text="{x:Static resx:FinLang.AmountGrossOfNetForm_Text}">
-        </Label>
+        <HorizontalStackLayout>
+            <ImageButton
+                Source="back_button_black_24p.png"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="0,0,32,0"
+                Clicked="OnBackButtonClicked">
+            </ImageButton>
+
+            <Label
+                x:Name="lblTitlePage"
+                Style="{StaticResource labelStyleTitleView}"
+                Text="{x:Static resx:FinLang.AmountGrossOfNetForm_Text}">
+            </Label>
+        </HorizontalStackLayout>
     </Shell.TitleView>
 
     <ScrollView>
