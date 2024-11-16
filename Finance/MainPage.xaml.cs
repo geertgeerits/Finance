@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2024
  * Version .....: 3.0.69
- * Date ........: 2024-11-15 (YYYY-MM-DD)
+ * Date ........: 2024-11-16 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -20,15 +20,15 @@ namespace Finance
             try
             {
                 InitializeComponent();
-
-                // Select all the text in the entry field - works for all pages in the app
-                Globals.ModifyEntrySelectAllText();
             }
             catch (Exception ex)
             {
                 DisplayAlert("InitializeComponent", ex.Message, "OK");
                 return;
             }
+
+            // Select all the text in the entry field - works for all pages in the app
+            Globals.ModifyEntrySelectAllText();
 
             // Get the saved settings.License
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
