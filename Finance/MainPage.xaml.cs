@@ -26,7 +26,11 @@ namespace Finance
                 DisplayAlert("InitializeComponent", ex.Message, "OK");
                 return;
             }
-
+#if WINDOWS
+            //// Set the margins for the controls in the title bar for Windows
+            imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
+            lblTitle.Margin = new Thickness(20, 10, 0, 0);
+#endif
             // Select all the text in the entry field - works for all pages in the app
             Globals.ModifyEntrySelectAllText();
 

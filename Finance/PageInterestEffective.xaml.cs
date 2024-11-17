@@ -14,8 +14,8 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            /// Set the margin of the title for windows
-            lblTitlePage.Margin = new Thickness(55, 10, 0, 0);
+            // Set the margin of the title for windows
+            lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
             //// Set the type of keyboard
             if (Globals.cKeyboard == "Default")

@@ -15,7 +15,7 @@
             }
 #if WINDOWS
             // Set the margin of the title for windows
-            lblTitlePage.Margin = new Thickness(64, 10, 0, 0);
+            lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
             //// Set the date properties for the DatePicker
             dtpDate1.MinimumDate = new DateTime(1583, 1, 1);
