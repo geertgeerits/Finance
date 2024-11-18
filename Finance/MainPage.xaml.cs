@@ -2,10 +2,16 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2024
  * Version .....: 3.0.69
- * Date ........: 2024-11-17 (YYYY-MM-DD)
+ * Date ........: 2024-11-18 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
+
+using System.Diagnostics;
+using System.Globalization;
+#if IOS
+using Foundation;
+#endif
 
 namespace Finance
 {
@@ -29,12 +35,12 @@ namespace Finance
 #if WINDOWS
             //// Set the margins for the controls in the title bar for Windows
             imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
-            lblTitle.Margin = new Thickness(20, 10, 0, 0);
+            lblTitle.Margin = new Thickness(20, 8, 0, 0);
 #endif
-            // Select all the text in the entry field - works for all pages in the app
+            //// Select all the text in the entry field - works for all pages in the app
             Globals.ModifyEntrySelectAllText();
 
-            // Get the saved settings.License
+            //// Get the saved settings
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
             Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
             Globals.cPageFormat = Preferences.Default.Get("SettingPageFormat", "");
@@ -46,7 +52,7 @@ namespace Finance
             Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
 
-            // The height of the title bar is lower when an iPhone is in horizontal position
+            //// The height of the title bar is lower when an iPhone is in horizontal position
             if (DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Phone)
             {
                 imgbtnAbout.VerticalOptions = LayoutOptions.Start;
@@ -55,10 +61,10 @@ namespace Finance
                 imgbtnSettings.VerticalOptions = LayoutOptions.Start;
             }
 
-            // Set the theme and the number color
+            //// Set the theme and the number color
             Globals.SetThemeAndNumberColor();
 
-            // Get the system date format and set the date format
+            //// Get the system date format and set the date format
             Globals.cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         
             if (Globals.bDateFormatSystem == true)
@@ -71,40 +77,64 @@ namespace Finance
             }
             //App.Current.MainPage.DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");  // For testing
 
-            // Get the number decimal separator
+            //// Get the number decimal separator
             Globals.cNumDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+            Debug.WriteLine($"Number Decimal Separator: {Globals.cNumDecimalSeparator}");
 
-            // Get the number of decimal digits after the decimal point
+            //// Get the number of decimal digits after the decimal point
             if (string.IsNullOrEmpty(Globals.cNumDecimalDigits))
             {
                 Globals.cNumDecimalDigits = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalDigits);
             }
+            Debug.WriteLine($"Number Decimal Digits: {Globals.cNumDecimalDigits}");
 
-            // Get the system ISO currency code
-            string cCountry = Thread.CurrentThread.CurrentCulture.Name.Substring(3, 2);
+            //// Get the system culture and country codes
+            // Get the installed UI culture and country code
+            string cCountry;
+            try
+            {
+                var culture = CultureInfo.CurrentCulture;               // "en-US" for United States
+                Debug.WriteLine($"Culture: {culture.Name}");
+#if IOS
+                var locale = NSLocale.CurrentLocale.LocaleIdentifier;   // "en_US" for United States
+                Debug.WriteLine($"Locale: {locale}");
+                cCountry = locale.Split('_')[1];                        // "US" for United States
+#else
+                cCountry = culture.Name.Split('-')[1];                  // "US" for United States
+#endif
+                Debug.WriteLine($"Country: {cCountry}");
+            }
+            catch (Exception Ex)
+            {
+                Debug.WriteLine("CultureInfo.CurrentCulture failed.  " + Ex.Message);
+                cCountry = "US";
+            }
 
+            //// Get the system ISO currency code
             RegionInfo myRegInfo = new(cCountry);
             Globals.cISOCurrencyCode = myRegInfo.ISOCurrencySymbol;
+            Debug.WriteLine($"ISO Currency Code: {Globals.cISOCurrencyCode}");
 
-            // Set the page format
+            //// Set the page format
             if (string.IsNullOrEmpty(Globals.cPageFormat))
             {
                 Globals.cPageFormat = "CA;CL;CO;CR;DO;GT;MX;PA;PH;US".Contains(cCountry) ? "Letter" : "A4";
             }
 
-            // Set the rounding system of numbers
+            //// Set the rounding system of numbers
             if (string.IsNullOrEmpty(Globals.cRoundNumber))
             {
                 Globals.cRoundNumber = "AwayFromZero";
             }
 
-            // Get and set the system OS user language
+            //// Get and set the system OS user language
             try
             {
                 if (string.IsNullOrEmpty(Globals.cLanguage))
                 {
                     Globals.cLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
                 }
+                Debug.WriteLine($"Language: {Globals.cLanguage}");
             }
             catch (Exception)
             {
@@ -255,3 +285,28 @@ namespace Finance
         }
     }
 }
+/* Codes
+Android
+[0:] Number Decimal Separator: .
+[0:] Number Decimal Digits: 2
+[0:] Culture: en-US
+[0:] Country: US
+[0:] ISO Currency Code: USD
+[0:] Language: en
+
+iOS
+[0:] Number Decimal Separator: .
+[0:] Number Decimal Digits: 2
+[0:] Culture: en
+[0:] Locale: en_BE
+[0:] Country: BE
+[0:] ISO Currency Code: EUR
+[0:] Language: en
+
+Windows
+Number Decimal Separator: ,
+Number Decimal Digits: 2
+Culture: en-BE
+Country: BE
+ISO Currency Code: EUR
+Language: en */
