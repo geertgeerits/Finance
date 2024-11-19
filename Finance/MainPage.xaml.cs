@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2024
  * Version .....: 3.0.69
- * Date ........: 2024-11-18 (YYYY-MM-DD)
+ * Date ........: 2024-11-19 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -10,7 +10,7 @@
 using System.Diagnostics;
 using System.Globalization;
 #if IOS
-using Foundation;
+//using Foundation;
 #endif
 
 namespace Finance
@@ -90,35 +90,40 @@ namespace Finance
 
             //// Get the system culture and country codes
             // Get the installed UI culture and country code
-            string cCountry;
+            //Debug.WriteLine($"CultureInfo.CurrentCulture.Name: {CultureInfo.CurrentCulture.Name}");
+            
+            string cCountry2LetterISO;
             try
             {
-                var culture = CultureInfo.CurrentCulture;               // "en-US" for United States
+                var culture = CultureInfo.CurrentCulture;
                 Debug.WriteLine($"Culture: {culture.Name}");
 #if IOS
-                var locale = NSLocale.CurrentLocale.LocaleIdentifier;   // "en_US" for United States
-                Debug.WriteLine($"Locale: {locale}");
-                cCountry = locale.Split('_')[1];                        // "US" for United States
+                // !!!BUG!!! In iOS is the result of the CurrentCulture wrong since .NET 9, so we use the CurrentLocale
+                // Works in iPhone 16 iOS 18.1 simulator but not on a real device - An error occurred while writing to the debug stream. Details: ObjectDisposed_Generic
+                //var locale = NSLocale.CurrentLocale.LocaleIdentifier;       // "en_US" for United States
+                //Debug.WriteLine($"Locale: {locale}");
+                //cCountry2LetterISO = locale.Split('_')[1];                  // "US" for United States
+                cCountry2LetterISO = "US";                                  // Temporary solution
 #else
-                cCountry = culture.Name.Split('-')[1];                  // "US" for United States
+                cCountry2LetterISO = culture.Name.Split('-')[1];            // "US" for United States
 #endif
-                Debug.WriteLine($"Country: {cCountry}");
+                Debug.WriteLine($"cCountry2LetterISO: {cCountry2LetterISO}");
             }
             catch (Exception Ex)
             {
                 Debug.WriteLine("CultureInfo.CurrentCulture failed.  " + Ex.Message);
-                cCountry = "US";
+                cCountry2LetterISO = "US";
             }
 
             //// Get the system ISO currency code
-            RegionInfo myRegInfo = new(cCountry);
+            RegionInfo myRegInfo = new(cCountry2LetterISO);
             Globals.cISOCurrencyCode = myRegInfo.ISOCurrencySymbol;
             Debug.WriteLine($"ISO Currency Code: {Globals.cISOCurrencyCode}");
 
             //// Set the page format
             if (string.IsNullOrEmpty(Globals.cPageFormat))
             {
-                Globals.cPageFormat = "CA;CL;CO;CR;DO;GT;MX;PA;PH;US".Contains(cCountry) ? "Letter" : "A4";
+                Globals.cPageFormat = "CA;CL;CO;CR;DO;GT;MX;PA;PH;US".Contains(cCountry2LetterISO) ? "Letter" : "A4";
             }
 
             //// Set the rounding system of numbers
@@ -285,8 +290,12 @@ namespace Finance
         }
     }
 }
-/* Codes
-Android
+/* CultureInfo.CurrentCulture Property
+   https://learn.microsoft.com/en-us/dotnet/api/system.globalization.cultureinfo.currentculture?view=net-8.0
+   CultureInfo.CurrentCulture.Name); Display the name of the current culture - returns en-US
+   CultureInfo.CurrentUICulture.Name); Display the name of the current UI culture - returns en-US
+
+Android:
 [0:] Number Decimal Separator: .
 [0:] Number Decimal Digits: 2
 [0:] Culture: en-US

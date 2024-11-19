@@ -1,4 +1,6 @@
-﻿namespace Finance
+﻿using System.Diagnostics;
+
+namespace Finance
 {
     public sealed partial class PageLoanDetail : ContentPage
     {
@@ -205,7 +207,7 @@
             }
             catch (Exception ex)
             {
-                DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                _ = DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
                 return;
             }
 
@@ -219,7 +221,7 @@
                 nInterestRatePeriod = Math.Round(nInterestRatePeriod, 6, MidpointRounding.ToEven);  // Rounding to 6 digits after decimal point
             }
 
-            //DisplayAlert("nInterestRatePeriod", nInterestRatePeriod.ToString(), FinLang.ButtonClose_Text);  // For testing
+            //Debug.WriteLine("nInterestRatePeriod: " + nInterestRatePeriod);  // For testing
 
             // Calculate annuity loan per period
             if (rbnLoanAnnuity.IsChecked)
@@ -301,7 +303,7 @@
                     }
 
                     // Correction rounding differences capital last period
-                    //DisplayAlert("nCapitalRemainder", Convert.ToString(nCapitalRemainder), "OK");  //For testing
+                    //Debug.WriteLine("nCapitalRemainder: " + nCapitalRemainder);  // For testing
                     nCapitalPeriod += nCapitalRemainder;
                     nPaymentPeriod += nCapitalRemainder;
                     nCapitalRemainder = 0;
@@ -326,10 +328,10 @@
                 dExpirationDate = dtpExpirationDate.Date.AddMonths(nNumberMonthsAddCumul);
                 nNumberMonthsAddCumul += nNumberMonthsAdd;
 
-                //DisplayAlert("Row number", nRow.ToString(), "OK");  // For testing
+                //Debug.WriteLine("Row number: " + nRow);  // For testing
             }
-            //DisplayAlert("Row number", nRow.ToString(), "OK");  // For testing
-        
+            //Debug.WriteLine("Row number: " + nRow);  // For testing
+
             // Rounding and formatting result
             lblInterestTotal.Text = Globals.RoundToNumDecimals(ref nInterestTotal, nNumDec, "N");
             double nCapitalInterest = nCapitalInitial + nInterestTotal;
@@ -553,7 +555,7 @@
             if (selectedIndex != -1)
             {
                 cExportType = picker.Items[selectedIndex];
-                //DisplayAlert("cExportType", cExportType, "OK");  // For testing
+                //Debug.WriteLine("cExportType: " + cExportType);  // For testing
             }
         }
     }

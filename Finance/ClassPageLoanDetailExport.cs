@@ -1,4 +1,5 @@
-﻿using static Finance.PageLoanDetail;
+﻿using System.Diagnostics;
+using static Finance.PageLoanDetail;
 
 namespace Finance
 {
@@ -271,7 +272,7 @@ namespace Finance
             }
 
             cPageObj = $"{cPageObj}] /Count {Convert.ToString(nNumPages)}";
-            //DisplayAlert("cPageObj", cPageObj, "OK");
+            //Debug.WriteLine($"cPageObj {cPageObj}");
 
             // Format settings portrait
             if (bPageLandscape == false)
@@ -556,7 +557,7 @@ namespace Finance
 
                             nRowStart = nRow + 1;
 
-                            //DisplayAlert("nNumObjects", Convert.ToString(nNumObjects), "OK");
+                            //Debug.WriteLine($"nNumObjects {nNumObjects}");
 
                             cNoObject = Convert.ToString(nNumObjects);
                             cNoContents = Convert.ToString(nNumObjects + 1);
