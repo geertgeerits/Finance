@@ -23,8 +23,8 @@
 
     <WebView
         x:Name="wvWebpage"
-        HorizontalOptions="FillAndExpand"
-        VerticalOptions="FillAndExpand">
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill">
     </WebView>
 
 </ContentPage>
