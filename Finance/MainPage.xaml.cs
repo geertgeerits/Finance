@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2024
  * Version .....: 3.0.69
- * Date ........: 2024-11-29 (YYYY-MM-DD)
+ * Date ........: 2024-12-03 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -10,7 +10,7 @@
 using System.Diagnostics;
 using System.Globalization;
 #if IOS
-//using Foundation;
+using Foundation;
 #endif
 
 namespace Finance
@@ -88,22 +88,20 @@ namespace Finance
             }
             Debug.WriteLine($"Number Decimal Digits: {Globals.cNumDecimalDigits}");
 
-            //// Get the system culture and country codes
+            //// Get the system culture and country code
             // Get the installed UI culture and country code
-            //Debug.WriteLine($"CultureInfo.CurrentCulture.Name: {CultureInfo.CurrentCulture.Name}");
-            
+
             string cCountry2LetterISO;
             try
             {
-                var culture = CultureInfo.CurrentCulture;
-                Debug.WriteLine($"Culture: {culture.Name}");
+                CultureInfo culture = CultureInfo.CurrentCulture;
+                Debug.WriteLine($"culture.Name: {culture.Name}");
 #if IOS
-                // !!!BUG!!! In iOS is the result of the CurrentCulture wrong since .NET 9, so we use the CurrentLocale
-                // Works in iPhone 16 iOS 18.1 simulator but not on a real device - An error occurred while writing to the debug stream. Details: ObjectDisposed_Generic
-                //var locale = NSLocale.CurrentLocale.LocaleIdentifier;       // "en_US" for United States
-                //Debug.WriteLine($"Locale: {locale}");
-                //cCountry2LetterISO = locale.Split('_')[1];                  // "US" for United States
-                cCountry2LetterISO = "US";                                  // Temporary solution
+                // !!!BUG!!! In iOS is the result of the CurrentCulture wrong (shows only the language: en) since .NET 9,
+                // so we use the CurrentLocale
+                string cLocale = NSLocale.CurrentLocale.LocaleIdentifier;   // "en_US@rg=bezzzz" for United States, region Belgium
+                Debug.WriteLine($"cLocale: {cLocale}");
+                cCountry2LetterISO = cLocale.Substring(3, 2);               // "US" for United States
 #else
                 cCountry2LetterISO = culture.Name.Split('-')[1];            // "US" for United States
 #endif
