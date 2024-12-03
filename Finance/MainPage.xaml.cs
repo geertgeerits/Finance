@@ -89,27 +89,28 @@ namespace Finance
             Debug.WriteLine($"Number Decimal Digits: {Globals.cNumDecimalDigits}");
 
             //// Get the system culture and country code
-            // Get the installed UI culture and country code
-
             string cCountry2LetterISO;
+
             try
             {
-                CultureInfo culture = CultureInfo.CurrentCulture;
-                Debug.WriteLine($"culture.Name: {culture.Name}");
 #if IOS
-                // !!!BUG!!! In iOS is the result of the CurrentCulture wrong (shows only the language: en) since .NET 9,
-                // so we use the CurrentLocale
-                string cLocale = NSLocale.CurrentLocale.LocaleIdentifier;   // "en_US@rg=bezzzz" for United States, region Belgium
+                // iOS                
+                // !!!BUG!!! in iOS: The result of the CurrentCulture is wrong (shows only the language: en)
+                // since .NET 9, so we use the CurrentLocale
+                string cLocale = NSLocale.CurrentLocale.LocaleIdentifier;   // "en_US@rg=bezzzz" for United States @ region Belgium
                 Debug.WriteLine($"cLocale: {cLocale}");
                 cCountry2LetterISO = cLocale.Substring(3, 2);               // "US" for United States
 #else
-                cCountry2LetterISO = culture.Name.Split('-')[1];            // "US" for United States
+                //Android and Windows
+                CultureInfo cCulture = CultureInfo.CurrentCulture;
+                Debug.WriteLine($"cCulture.Name: {cCulture.Name}");         // "en_US" for United States
+                cCountry2LetterISO = cCulture.Name.Split('-')[1];           // "US" for United States
 #endif
                 Debug.WriteLine($"cCountry2LetterISO: {cCountry2LetterISO}");
             }
             catch (Exception Ex)
             {
-                Debug.WriteLine("CultureInfo.CurrentCulture failed.  " + Ex.Message);
+                Debug.WriteLine("CurrentCulture or CurrentLocale failed.  " + Ex.Message);
                 cCountry2LetterISO = "US";
             }
 
