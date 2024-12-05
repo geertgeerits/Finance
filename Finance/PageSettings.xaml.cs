@@ -346,7 +346,8 @@ namespace Finance
             Task.Delay(400).Wait();
 
             // Restart the application
-            Application.Current!.Windows[0].Page = new AppShell();
+            //Application.Current!.Windows[0].Page = new AppShell();
+            Application.Current!.Windows[0].Page = new NavigationPage(new MainPage());
         }
 
         /// <summary>
@@ -382,7 +383,8 @@ namespace Finance
             Task.Delay(400).Wait();
 
             // Restart the application
-            Application.Current!.Windows[0].Page = new AppShell();
+            //Application.Current!.Windows[0].Page = new AppShell();
+            Application.Current!.Windows[0].Page = new NavigationPage(new MainPage());
         }
     }
 }

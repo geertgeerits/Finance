@@ -6,13 +6,13 @@
              xmlns:resx="clr-namespace:Finance.Resources.Languages"
              Loaded="OnPageLoaded">
 
-    <Shell.TitleView>
+    <NavigationPage.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
             Text="{x:Static resx:FinLang.DifferenceNumbersForm_Text}">
         </Label>
-    </Shell.TitleView>
+    </NavigationPage.TitleView>
     
     <ScrollView>
         <StackLayout>

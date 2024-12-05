@@ -4,7 +4,7 @@
              xmlns:resx="clr-namespace:Finance.Resources.Languages"
              x:Class="Finance.PageLoanDetailHtml">
 
-    <Shell.TitleView>
+    <NavigationPage.TitleView>
         <Grid
             RowDefinitions="50"
             ColumnDefinitions="250*"
@@ -19,7 +19,7 @@
                 Text="{x:Static resx:FinLang.LoanDetailForm_Text}">
             </Label>
         </Grid>
-    </Shell.TitleView>
+    </NavigationPage.TitleView>
 
     <WebView
         x:Name="wvWebpage"

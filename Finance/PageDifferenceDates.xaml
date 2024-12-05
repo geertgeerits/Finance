@@ -4,13 +4,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resx="clr-namespace:Finance.Resources.Languages">
     
-    <Shell.TitleView>
+    <NavigationPage.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
             Text="{x:Static resx:FinLang.DifferenceDatesForm_Text}">
         </Label>
-    </Shell.TitleView>
+    </NavigationPage.TitleView>
     
     <ScrollView>
         <StackLayout>

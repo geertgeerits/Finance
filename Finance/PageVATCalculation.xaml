@@ -6,13 +6,13 @@
              x:Class="Finance.PageVATCalculation"
              Loaded="OnPageLoaded">
 
-    <Shell.TitleView>
+    <NavigationPage.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
             Text="{x:Static resx:FinLang.VATCalculationForm_Text}">
         </Label>
-    </Shell.TitleView>
+    </NavigationPage.TitleView>
 
     <ScrollView>
         <StackLayout>
