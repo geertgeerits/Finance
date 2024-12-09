@@ -1,8 +1,8 @@
 ﻿/* Program .....: Finance.sln
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
- * Copyright ...: (C) 1992-2024
+ * Copyright ...: (C) 1992-2025
  * Version .....: 3.0.69
- * Date ........: 2024-12-05 (YYYY-MM-DD)
+ * Date ........: 2024-12-09 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -234,7 +234,7 @@ namespace Finance
 
             Globals.SetCultureSelectedLanguage();
 
-            cCopyright = $"{FinLang.Copyright_Text} © 1992-2024 Geert Geerits";
+            cCopyright = $"{FinLang.Copyright_Text} © 1992-2025 Geert Geerits";
             cLicenseText = $"{FinLang.License_Text}\n\n{FinLang.LicenseMit2_Text}";
 
             //App.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing
