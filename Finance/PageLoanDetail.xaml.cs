@@ -24,8 +24,12 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the margin of the title for windows
+            //// Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
+#endif
+#if IOS
+            //// Set the scale of the activity indicator for iOS
+            activityIndicator.Scale = 2;
 #endif
             //// Put text for the column headers in the chosen language in the array
             aColHeader[0] = FinLang.LoanDetailColumns_0_Text;
