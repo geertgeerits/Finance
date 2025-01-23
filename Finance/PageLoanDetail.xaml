@@ -39,8 +39,10 @@
                     Grid.ColumnSpan="3"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    IsRunning="False"
-                    Color="#75F94D">
+                    BackgroundColor="Transparent"
+                    Color="#75F94D"
+                    Scale="{OnPlatform Default='1', Android='1', iOS='2', WinUI='1'}"
+                    IsRunning="False">
                 </ActivityIndicator>
 
                 <Label
