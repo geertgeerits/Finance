@@ -39,7 +39,6 @@
                     Grid.ColumnSpan="3"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    BackgroundColor="Transparent"
                     Color="#75F94D"
                     IsRunning="False">
                 </ActivityIndicator>
