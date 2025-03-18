@@ -13,8 +13,8 @@
         </Label>
     </NavigationPage.TitleView>
 
-    <ScrollView>    
-        <StackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
             <Grid
                 Style="{StaticResource gridStyleInfo}"
                 RowDefinitions="Auto">
@@ -69,25 +69,23 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <VerticalStackLayout>
-                        <Label
-                            x:Name="lblPrivacyPolicy"
-                            Style="{StaticResource labelStyleInfo}">
-                        </Label>
-            
-                        <Label
-                            x:Name="lblLicense"
-                            Style="{StaticResource labelStyleInfo}">
-                        </Label>
-            
-                        <Label
-                            x:Name="lblExplanation"
-                            Style="{StaticResource labelStyleInfo}">
-                        </Label>
-                    </VerticalStackLayout>
+                    <Label
+                        x:Name="lblPrivacyPolicy"
+                        Style="{StaticResource labelStyleInfo}">
+                    </Label>
+
+                    <Label
+                        x:Name="lblLicense"
+                        Style="{StaticResource labelStyleInfo}">
+                    </Label>
+
+                    <Label
+                        x:Name="lblExplanation"
+                        Style="{StaticResource labelStyleInfo}">
+                    </Label>
                 </VerticalStackLayout>
 
             </Grid>
-        </StackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
