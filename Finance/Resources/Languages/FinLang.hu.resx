@@ -299,7 +299,7 @@ A létrehozott fájlt manuálisan kell csatolni az e-mailhez.</value>
     <value>Email</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>Email:</value>
+    <value>Email: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Hiba</value>
@@ -655,7 +655,7 @@ Számítsa ki az áfa százalékot: adja meg a 0 százalékot, és adja meg az �
     <value>A papír mérete túl kicsi!</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Weboldal</value>
+    <value>Weboldal: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Igen</value>

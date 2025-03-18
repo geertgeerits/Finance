@@ -299,7 +299,7 @@ Vytvořený soubor je nutné ručně připojit k e-mailu.</value>
     <value>E-mailem</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mailem:</value>
+    <value>E-mailem: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Chyba</value>
@@ -655,7 +655,7 @@ Výpočet procenta DPH: pro procento zadejte 0 a zadejte částku bez DPH a čá
     <value>Rozměry papíru jsou příliš malé!</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Webová stránka</value>
+    <value>Webová stránka: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Ano</value>

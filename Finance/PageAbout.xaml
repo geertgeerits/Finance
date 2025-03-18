@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resx="clr-namespace:Finance.Resources.Languages"
+             xmlns:link="clr-namespace:Finance"
              x:Class="Finance.PageAbout">
 
     <NavigationPage.TitleView>
@@ -39,42 +40,34 @@
                         x:Name="lblCopyright"
                         Style="{StaticResource labelStyleInfo}">
                     </Label>
-            
-                    <HorizontalStackLayout>
-                        <Label
-                            x:Name="lblEmail"
-                            Style="{StaticResource labelStyleInfo}">
-                        </Label>
-            
-                        <ImageButton
-                            Source="envelope_48x24p.png"                         
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            HeightRequest="24"
-                            WidthRequest="48"
-                            SemanticProperties.Description="{x:Static resx:FinLang.ToolTipAppEmail_Text}"
-                            ToolTipProperties.Text="{x:Static resx:FinLang.ToolTipAppEmail_Text}"
-                            Clicked="OnBtnEmailLinkClicked">
-                        </ImageButton>
-                    </HorizontalStackLayout>
 
-                    <HorizontalStackLayout>
-                        <Label
-                            x:Name="lblWebsite"
-                            Style="{StaticResource labelStyleInfo}">
-                        </Label>
+                    <Label
+                        Style="{StaticResource labelStyleInfo}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static resx:FinLang.Email_Text}"
+                                      FontFamily="OpenSansRegular"
+                                      FontAttributes="Bold"
+                                      FontSize="16" />
+                                <link:HyperlinkSpan Text="geertgeerits@gmail.com"
+                                                    Url="mailto:geertgeerits@gmail.com" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
-                        <ImageButton
-                            Source="internet_48x24p.png"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            HeightRequest="24"
-                            WidthRequest="48"
-                            SemanticProperties.Description="{x:Static resx:FinLang.ToolTipAppWebsite_Text}"
-                            ToolTipProperties.Text="{x:Static resx:FinLang.ToolTipAppWebsite_Text}"
-                            Clicked="OnBtnWebsiteLinkClicked">
-                        </ImageButton>
-                    </HorizontalStackLayout>
+                    <Label
+                        Style="{StaticResource labelStyleInfo}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static resx:FinLang.Website_Text}"
+                                      FontFamily="OpenSansRegular"
+                                      FontAttributes="Bold"
+                                      FontSize="16" />
+                                <link:HyperlinkSpan Text="../finance"
+                                                    Url="https://geertgeerits.wixsite.com/geertgeerits/finance" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
                     <VerticalStackLayout>
                         <Label

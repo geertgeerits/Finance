@@ -299,7 +299,7 @@ Le fichier créé doit être joint manuellement à l'e-mail.</value>
     <value>E-mail</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Erreur</value>
@@ -655,7 +655,7 @@ Calculez le pourcentage de TVA: entrez 0 pour le pourcentage et entrez le montan
     <value>Dimensions du papier trop petites !</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Site Internet</value>
+    <value>Site Internet: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Oui</value>

@@ -299,7 +299,7 @@ Fișierul creat trebuie atașat manual la e-mail.</value>
     <value>E-mail</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Eroare</value>
@@ -655,7 +655,7 @@ Calculați procentul de TVA: introduceți 0 pentru procent și introduceți suma
     <value>Dimensiunile hârtiei sunt prea mici!</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Site-ul web</value>
+    <value>Site-ul web: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Da</value>

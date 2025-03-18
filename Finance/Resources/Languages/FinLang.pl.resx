@@ -299,7 +299,7 @@ Utworzony plik należy ręcznie dołączyć do wiadomości e-mail.</value>
     <value>E-mail</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Błąd</value>
@@ -655,7 +655,7 @@ Oblicz procent VAT: wpisz 0 jako procent i wprowadź kwotę bez VAT oraz kwotę 
     <value>Wymiary papieru za małe!</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Strona internetowa</value>
+    <value>Strona internetowa: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Tak</value>

@@ -299,7 +299,7 @@ Den oprettede fil skal manuelt vedhæftes e-mailen.</value>
     <value>E-mail</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Fejl</value>
@@ -655,7 +655,7 @@ Beregn momsprocenten: Indtast 0 for procenten og indtast beløbet eksklusive mom
     <value>Papirdimensioner for små!</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Internet side</value>
+    <value>Internet side: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Ja</value>

@@ -299,7 +299,7 @@ El archivo creado debe adjuntarse manualmente al correo electrónico.</value>
     <value>Correo electrónico</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>Correo electrónico:</value>
+    <value>Correo electrónico: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Error</value>
@@ -655,7 +655,7 @@ Calcule el porcentaje de IVA: ingrese 0 para el porcentaje e ingrese el monto si
     <value>¡Las dimensiones del papel son demasiado pequeñas!</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Sitio web</value>
+    <value>Sitio web: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Sí</value>

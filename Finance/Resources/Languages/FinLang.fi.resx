@@ -299,7 +299,7 @@ Luotu tiedosto on liitettävä sähköpostiin manuaalisesti.</value>
     <value>Sähköposti</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>Sähköposti:</value>
+    <value>Sähköposti: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Virhe</value>
@@ -655,7 +655,7 @@ Laske arvonlisäveroprosentti: syötä prosenttiosuudeksi 0 ja syötä summa ilm
     <value>Paperin mitat liian pienet!</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Verkkosivusto</value>
+    <value>Verkkosivusto: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Joo</value>

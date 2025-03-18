@@ -299,7 +299,7 @@ Den opprettede filen må legges ved e-post.</value>
     <value>E-post</value>
   </data>
   <data name="Email_Text" xml:space="preserve">
-    <value>E-post:</value>
+    <value>E-post: </value>
   </data>
   <data name="ErrorTitle_Text" xml:space="preserve">
     <value>Feil</value>
@@ -655,7 +655,7 @@ Beregn mva-prosenten: skriv inn 0 for prosenten og skriv inn beløpet eksklusive
     <value>Papirdimensjonene er for små!</value>
   </data>
   <data name="Website_Text" xml:space="preserve">
-    <value>Nettsted</value>
+    <value>Nettsted: </value>
   </data>
   <data name="Yes_Text" xml:space="preserve">
     <value>Ja</value>
