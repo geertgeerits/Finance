@@ -6,7 +6,7 @@ namespace Finance
     {
         private LocalizationResourceManager()
         {
-            FinLang.Culture = CultureInfo.CurrentCulture;
+            FinLang.Culture = CultureInfo.CurrentUICulture;
         }
 
         public static LocalizationResourceManager Instance { get; } = new();
