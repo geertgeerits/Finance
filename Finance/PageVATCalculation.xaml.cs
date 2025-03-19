@@ -22,12 +22,14 @@ namespace Finance
             {
                 entVATPercentage.Keyboard = Keyboard.Default;
                 entVATAmountExclusive.Keyboard = Keyboard.Default;
+                entVATAmount.Keyboard = Keyboard.Default;
                 entVATAmountIncluded.Keyboard = Keyboard.Default;
             }
             else if (Globals.cKeyboard == "Text")
             {
                 entVATPercentage.Keyboard = Keyboard.Text;
                 entVATAmountExclusive.Keyboard = Keyboard.Text;
+                entVATAmount.Keyboard = Keyboard.Text;
                 entVATAmountIncluded.Keyboard = Keyboard.Text;
             }
         }
@@ -44,16 +46,6 @@ namespace Finance
         }
 
         /// <summary>
-        /// Clear result fields if the text have changed 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryTextChanged(object sender, EventArgs e)
-        {
-            lblVATAmount.Text = "";
-        }
-
-        /// <summary>
         /// Go to the next field when the return key have been pressed 
         /// </summary>
         /// <param name="sender"></param>
@@ -66,35 +58,11 @@ namespace Finance
             }
             else if (sender == entVATAmountExclusive)
             {
+                _ = entVATAmount.Focus();
+            }
+            else if (sender == entVATAmount)
+            {
                 _ = entVATAmountIncluded.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Set the value of an another field to '0' if the current field is unfocused 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryUnfocused(object sender, EventArgs e)
-        {
-            entVATPercentage.Text = Globals.ReplaceDecimalPointComma(entVATPercentage.Text);
-            bool bIsNumber = decimal.TryParse(entVATPercentage.Text, out decimal nVATPercentage);
-            if (!bIsNumber)
-            {
-                return;
-            }
-
-            if (sender == entVATPercentage && nVATPercentage == 0)
-            {
-                lblVATAmount.Text = "0";
-            }
-            else if (sender == entVATAmountExclusive && entVATAmountExclusive.Text != "0" && nVATPercentage != 0)
-            {
-                entVATAmountIncluded.Text = "0";
-            }
-            else if (sender == entVATAmountIncluded && entVATAmountIncluded.Text != "0" && nVATPercentage != 0)
-            {
-                entVATAmountExclusive.Text = "0";
             }
         }
 
@@ -123,6 +91,15 @@ namespace Finance
                 return;
             }
 
+            entVATAmount.Text = Globals.ReplaceDecimalPointComma(entVATAmount.Text);
+            bIsNumber = decimal.TryParse(entVATAmount.Text, out decimal nVATAmount);
+            if (bIsNumber == false || nVATAmount < 0 || nVATAmount > 9_999_999_999)
+            {
+                entVATAmount.Text = "";
+                _ = entVATAmount.Focus();
+                return;
+            }
+
             entVATAmountIncluded.Text = Globals.ReplaceDecimalPointComma(entVATAmountIncluded.Text);
             bIsNumber = decimal.TryParse(entVATAmountIncluded.Text, out decimal nVATAmountIncluded);
             if (bIsNumber == false || nVATAmountIncluded < 0 || nVATAmountIncluded > 9_999_999_999)
@@ -145,61 +122,83 @@ namespace Finance
             // Set decimal places for the Entry controls and values passed by reference
             entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "F");
             entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
+            entVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "F");
             entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
 
-            // Calculate the VAT
-            decimal nVATAmount;
+            /* Possible combinations
+               1+2.         1+3..           1+4...
+               (2+1.)       2+3....         2+4.....
+               (3+1..)      (3+2....)       3+4......
+               (4+1...)     (4+2.....)      (4+3......)
 
+               1+2 VAT percentage + amount VAT exclusive
+               1+3 VAT percentage + amount VAT
+               1+4 VAT percentage + amount VAT included
+               2+3 Amount VAT exclusive + amount VAT
+               2+4 Amount VAT exclusive + amount VAT included
+               3+4 Amount VAT + amount VAT included */
+
+            // Calculate the VAT fields
             try
             {
-                // Calculate the VAT percentage
-                if (nVATPercentage == 0 && nVATAmountExclusive > 0 && nVATAmountIncluded > nVATAmountExclusive)
+                // 1+2 VAT percentage + amount VAT exclusive - Calculate VAT amount and VAT amount included
+                if (nVATPercentage > 0 && nVATAmountExclusive > 0 && nVATAmount == 0 && nVATAmountIncluded == 0)
+                {
+                    nVATAmount = nVATAmountExclusive * nVATPercentage / 100;
+                    nVATAmountIncluded = nVATAmountExclusive + nVATAmount;
+
+                    entVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "F");
+                    entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
+                }
+
+                // 1+3 VAT percentage + amount VAT - Calculate VAT amaount exclusive and VAT amount included
+                if (nVATPercentage > 0 && nVATAmountExclusive == 0 && nVATAmount > 0 && nVATAmountIncluded == 0)
+                {
+                    nVATAmountExclusive = nVATAmount / nVATPercentage * 100;
+                    nVATAmountIncluded = nVATAmountExclusive + nVATAmount;
+
+                    entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
+                    entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
+                }
+
+                // 1+4 VAT percentage + amount VAT included - Calculate VAT amount exclusive and VAT amount
+                if (nVATPercentage > 0 && nVATAmountExclusive == 0 && nVATAmount == 0 && nVATAmountIncluded > 0)
+                {
+                    nVATAmountExclusive = nVATAmountIncluded / (1 + nVATPercentage / 100);
+                    nVATAmount = nVATAmountIncluded - nVATAmountExclusive;
+
+                    entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
+                    entVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "F");
+                }
+
+                // 2+3 Amount VAT exclusive + amount VAT - Calculate VAT percentage and VAT amount included
+                if (nVATPercentage == 0 && nVATAmount > 0 && nVATAmountExclusive > nVATAmount && nVATAmountIncluded == 0)
+                {
+                    nVATAmountIncluded = nVATAmountExclusive + nVATAmount;
+                    nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
+
+                    entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "F");
+                    entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
+                }
+
+                // 2+4 Amount VAT exclusive + amount VAT included - Calculate VAT percentage and VAT amount
+                if (nVATPercentage == 0 && nVATAmountExclusive > 0 && nVATAmount == 0 && nVATAmountIncluded > nVATAmountExclusive)
                 {
                     nVATAmount = nVATAmountIncluded - nVATAmountExclusive;
                     nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
 
                     entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "F");
+                    entVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nPercDec, "F");
                 }
-            
-                // Calculate the amount VAT exclusieve
-                else if (nVATAmountIncluded > 0)
+
+                // 3+4 Amount VAT +amount VAT included - Calculate VAT percentage and VAT amount exclusive
+                if (nVATPercentage == 0 && nVATAmountExclusive == 0 && nVATAmount > 0 && nVATAmountIncluded > nVATAmount)
                 {
-                    nVATAmount = nVATAmountIncluded * nVATPercentage / (100 + nVATPercentage);
-
-                    if (Globals.cRoundNumber == "AwayFromZero")
-                    {
-                        nVATAmount = Math.Round(nVATAmount, nNumDec, MidpointRounding.AwayFromZero);
-                    }
-                    else if (Globals.cRoundNumber == "ToEven")
-                    {
-                        nVATAmount = Math.Round(nVATAmount, nNumDec, MidpointRounding.ToEven);
-                    }
-
                     nVATAmountExclusive = nVATAmountIncluded - nVATAmount;
-                    entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
-                }
-            
-                // Calculate the amount VAT included
-                else if (nVATAmountExclusive > 0)
-                {
-                    nVATAmount = nVATAmountExclusive * nVATPercentage / 100;
-                
-                    if (Globals.cRoundNumber == "AwayFromZero")
-                    {
-                        nVATAmount = Math.Round(nVATAmount, nNumDec, MidpointRounding.AwayFromZero);
-                    }
-                    else if (Globals.cRoundNumber == "ToEven")
-                    {
-                        nVATAmount = Math.Round(nVATAmount, nNumDec, MidpointRounding.ToEven);
-                    }
+                    nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
 
-                    nVATAmountIncluded = nVATAmountExclusive + nVATAmount;
-                    entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
-                }
-            
-                else
-                {
-                    return;
+                    entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "F");
+                    entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
                 }
             }
             catch (Exception ex)
@@ -207,9 +206,6 @@ namespace Finance
                 DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
                 return;
             }
-
-            // Rounding result
-            lblVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "N");
 
             // Set focus
             _ = btnReset.Focus();
@@ -222,9 +218,9 @@ namespace Finance
         /// <param name="e"></param>
         private void ResetEntryFields(object sender, EventArgs e)
         {
-            entVATPercentage.Text = "";
+            entVATPercentage.Text = "0";
             entVATAmountExclusive.Text = "0";
-            lblVATAmount.Text = "";
+            entVATAmount.Text = "0";
             entVATAmountIncluded.Text = "0";
 
             _ = entVATPercentage.Focus();

@@ -48,12 +48,10 @@
                     <Entry
                         x:Name="entVATPercentage"
                         Style="{StaticResource entryStyleNumericNext}"
-                        Text=""
+                        Text="0"
                         Placeholder="0 - 100"
                         MaxLength="10"
-                        Completed="GoToNextField"
-                        Unfocused="EntryUnfocused"
-                        TextChanged="EntryTextChanged">
+                        Completed="GoToNextField">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdVATPercentage"/>
@@ -87,9 +85,7 @@
                         Text="0"
                         Placeholder="0 - 9999999999"
                         MaxLength="21"
-                        Completed="GoToNextField"
-                        Unfocused="EntryUnfocused"
-                        TextChanged="EntryTextChanged">
+                        Completed="GoToNextField">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdVATAmountExclusive"/>
@@ -106,14 +102,24 @@
                 </Label>
 
                 <Border
+                    x:Name="brdVATAmount"
                     Style="{StaticResource borderStyleDefault}"
                     Grid.Row="3"
                     Grid.Column="1">
 
-                    <Label
-                        x:Name="lblVATAmount"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
+                    <Entry
+                        x:Name="entVATAmount"
+                        Style="{StaticResource entryStyleNumericNext}"
+                        Text="0"
+                        Placeholder="0 - 9999999999"
+                        MaxLength="21"
+                        Completed="GoToNextField">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdVATAmountExclusive"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
                 </Border>
 
                 <Label
@@ -135,9 +141,7 @@
                         Text="0"
                         Placeholder="0 - 9999999999"
                         MaxLength="21"
-                        Completed="CalculateResult"
-                        Unfocused="EntryUnfocused"
-                        TextChanged="EntryTextChanged">
+                        Completed="CalculateResult">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdVATAmountIncluded"/>
