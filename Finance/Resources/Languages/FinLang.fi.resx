@@ -638,9 +638,7 @@ Suljetaanko nyt?</value>
     <value>ALV:n määrä:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Laske arvonlisävero: syötä ALV-prosentti ja joko arvonlisäveroton määrä tai arvonlisäverollinen summa.
-
-Laske arvonlisäveroprosentti: syötä prosenttiosuudeksi 0 ja syötä summa ilman arvonlisäveroa ja arvonlisäverollinen määrä.</value>
+    <value>Syötä nollaa suuremmat arvot kahteen kenttään laskeaksesi jäljellä olevat kentät.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>ALV-laskelmat</value>

@@ -638,9 +638,7 @@ Utilizați acest program în întregime pe propriul risc.</value>
     <value>Suma TVA:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Calculați TVA: introduceți procentul de TVA și fie suma fără TVA, fie suma cu TVA.
-
-Calculați procentul de TVA: introduceți 0 pentru procent și introduceți suma fără TVA și suma cu TVA.</value>
+    <value>Introduceți valori mai mari decât zero în două câmpuri pentru a calcula câmpurile rămase.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Calcule TVA</value>

@@ -638,9 +638,7 @@ Schließe jetzt?</value>
     <value>Betrag Mehrwertsteuer:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Berechnen Sie die Mehrwertsteuer: Geben Sie den Mehrwertsteuersatz und entweder den Betrag ohne Mehrwertsteuer oder den Betrag inklusive Mehrwertsteuer ein.
-
-Berechnen Sie den Mehrwertsteuersatz: Geben Sie als Prozentsatz 0 ein und geben Sie den Betrag ohne Mehrwertsteuer und den Betrag inklusive Mehrwertsteuer ein.</value>
+    <value>Geben Sie in zwei Felder Werte größer Null ein, um die restlichen Felder zu berechnen.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Mehrwertsteuerberechnungen</value>

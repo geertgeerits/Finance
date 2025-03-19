@@ -152,7 +152,7 @@ namespace Finance
                 }
 
                 // 1+3 VAT percentage + amount VAT - Calculate VAT amaount exclusive and VAT amount included
-                if (nVATPercentage > 0 && nVATAmountExclusive == 0 && nVATAmount > 0 && nVATAmountIncluded == 0)
+                else if (nVATPercentage > 0 && nVATAmountExclusive == 0 && nVATAmount > 0 && nVATAmountIncluded == 0)
                 {
                     nVATAmountExclusive = nVATAmount / nVATPercentage * 100;
                     nVATAmountIncluded = nVATAmountExclusive + nVATAmount;
@@ -162,7 +162,7 @@ namespace Finance
                 }
 
                 // 1+4 VAT percentage + amount VAT included - Calculate VAT amount exclusive and VAT amount
-                if (nVATPercentage > 0 && nVATAmountExclusive == 0 && nVATAmount == 0 && nVATAmountIncluded > 0)
+                else if (nVATPercentage > 0 && nVATAmountExclusive == 0 && nVATAmount == 0 && nVATAmountIncluded > 0)
                 {
                     nVATAmountExclusive = nVATAmountIncluded / (1 + nVATPercentage / 100);
                     nVATAmount = nVATAmountIncluded - nVATAmountExclusive;
@@ -172,7 +172,7 @@ namespace Finance
                 }
 
                 // 2+3 Amount VAT exclusive + amount VAT - Calculate VAT percentage and VAT amount included
-                if (nVATPercentage == 0 && nVATAmount > 0 && nVATAmountExclusive > nVATAmount && nVATAmountIncluded == 0)
+                else if (nVATPercentage == 0 && nVATAmount > 0 && nVATAmountExclusive > nVATAmount && nVATAmountIncluded == 0)
                 {
                     nVATAmountIncluded = nVATAmountExclusive + nVATAmount;
                     nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
@@ -182,7 +182,7 @@ namespace Finance
                 }
 
                 // 2+4 Amount VAT exclusive + amount VAT included - Calculate VAT percentage and VAT amount
-                if (nVATPercentage == 0 && nVATAmountExclusive > 0 && nVATAmount == 0 && nVATAmountIncluded > nVATAmountExclusive)
+                else if (nVATPercentage == 0 && nVATAmountExclusive > 0 && nVATAmount == 0 && nVATAmountIncluded > nVATAmountExclusive)
                 {
                     nVATAmount = nVATAmountIncluded - nVATAmountExclusive;
                     nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
@@ -192,13 +192,19 @@ namespace Finance
                 }
 
                 // 3+4 Amount VAT +amount VAT included - Calculate VAT percentage and VAT amount exclusive
-                if (nVATPercentage == 0 && nVATAmountExclusive == 0 && nVATAmount > 0 && nVATAmountIncluded > nVATAmount)
+                else if (nVATPercentage == 0 && nVATAmountExclusive == 0 && nVATAmount > 0 && nVATAmountIncluded > nVATAmount)
                 {
                     nVATAmountExclusive = nVATAmountIncluded - nVATAmount;
                     nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
 
                     entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "F");
                     entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
+                }
+
+                // Invalid combination of values
+                else
+                {
+                    ResetEntryFields(null, null);
                 }
             }
             catch (Exception ex)
@@ -216,7 +222,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResetEntryFields(object sender, EventArgs e)
+        private void ResetEntryFields(object? sender, EventArgs? e)
         {
             entVATPercentage.Text = "0";
             entVATAmountExclusive.Text = "0";

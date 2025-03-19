@@ -1586,9 +1586,7 @@ namespace Finance.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calculate the VAT: enter the VAT percentage, and either the amount excluding VAT or the amount including VAT.
-        ///
-        ///Calculate the VAT percentage: enter 0 for the percentage and enter the amount excluding VAT and the amount including VAT..
+        ///   Looks up a localized string similar to Enter values greater than zero into two fields to calculate the remaining fields..
         /// </summary>
         internal static string VATCalculationExplanation_Text {
             get {

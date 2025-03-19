@@ -638,9 +638,7 @@ Most bezárja?</value>
     <value>ÁFA összege:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Számítsa ki az áfát: adja meg az áfa százalékát, és vagy az áfa nélküli összeget, vagy az áfát tartalmazó összeget.
-
-Számítsa ki az áfa százalékot: adja meg a 0 százalékot, és adja meg az áfa nélküli összeget és az áfát tartalmazó összeget.</value>
+    <value>Írjon be nullánál nagyobb értékeket két mezőbe a fennmaradó mezők kiszámításához.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>ÁFA számítások</value>

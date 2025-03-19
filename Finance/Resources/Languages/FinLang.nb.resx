@@ -638,9 +638,7 @@ Lukke nå?</value>
     <value>Beløp mva:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Beregn mva: skriv inn mva-prosenten, og enten beløpet eksklusiv mva eller beløpet inkludert mva.
-
-Beregn mva-prosenten: skriv inn 0 for prosenten og skriv inn beløpet eksklusive mva og beløpet inkludert mva.</value>
+    <value>Skriv inn verdier større enn null i to felt for å beregne de gjenværende feltene.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Momsberegninger</value>

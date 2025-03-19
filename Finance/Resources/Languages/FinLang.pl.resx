@@ -638,9 +638,7 @@ Zamknij teraz?</value>
     <value>Kwota podatku VAT:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Oblicz podatek VAT: wprowadź procent VAT oraz kwotę bez VAT lub kwotę z VAT.
-
-Oblicz procent VAT: wpisz 0 jako procent i wprowadź kwotę bez VAT oraz kwotę z VAT.</value>
+    <value>Wprowadź wartości większe od zera do dwóch pól, aby obliczyć wartość w pozostałych polach.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Obliczenia podatku VAT</value>

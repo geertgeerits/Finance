@@ -638,9 +638,7 @@ Luk nu?</value>
     <value>Momsbeløb:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Beregn momsen: Indtast momsprocenten og enten beløbet eksklusiv moms eller beløbet inklusive moms.
-
-Beregn momsprocenten: Indtast 0 for procenten og indtast beløbet eksklusive moms og beløbet inklusive moms.</value>
+    <value>Indtast værdier større end nul i to felter for at beregne de resterende felter.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Momsberegninger</value>

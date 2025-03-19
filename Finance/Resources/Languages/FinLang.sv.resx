@@ -638,9 +638,7 @@ Stäng nu?</value>
     <value>Belopp moms:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Beräkna momsen: ange momsprocenten och antingen beloppet exklusive moms eller beloppet inklusive moms.
-
-Beräkna momsprocenten: ange 0 för procentsatsen och ange beloppet exklusive moms och beloppet inklusive moms.</value>
+    <value>Ange värden större än noll i två fält för att beräkna de återstående fälten.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Momsberäkningar</value>

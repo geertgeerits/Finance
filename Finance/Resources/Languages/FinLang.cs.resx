@@ -638,9 +638,7 @@ Zavřít nyní?</value>
     <value>Částka DPH:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Vypočítat DPH: zadejte procento DPH a buď částku bez DPH, nebo částku včetně DPH.
-
-Výpočet procenta DPH: pro procento zadejte 0 a zadejte částku bez DPH a částku včetně DPH.</value>
+    <value>Zadejte hodnoty větší než nula do dvou polí pro výpočet zbývajících polí.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Výpočty DPH</value>

@@ -638,9 +638,7 @@ Nu afsluiten?</value>
     <value>Bedrag BTW:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Bereken de BTW: geef het BTW-percentage in, en ofwel het bedrag exclusief BTW ofwel het bedrag inclusief BTW.
-
-Bereken het BTW-percentage: geef 0 in voor het percentage en geef het bedrag exclusief BTW en het bedrag inclusief BTW in.</value>
+    <value>Voer waarden groter dan nul in twee velden in om de overige velden te berekenen.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>BTW berekeningen</value>

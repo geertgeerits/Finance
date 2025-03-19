@@ -638,9 +638,7 @@ Fechar agora?</value>
     <value>Valor do IVA:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Calcular o IVA: introduza a percentagem de IVA e o valor sem IVA ou com IVA.
-
-Calcular a percentagem de IVA: introduza 0 para a percentagem e introduza o valor sem IVA e o valor com IVA.</value>
+    <value>Insira valores maiores que zero em dois campos para calcular os campos restantes.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Cálculos de IVA</value>

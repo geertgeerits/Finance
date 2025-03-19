@@ -638,9 +638,7 @@ Chiudi adesso?</value>
     <value>Importo IVA:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Calcola l'IVA: inserisci la percentuale IVA e l'importo IVA esclusa o l'importo IVA inclusa.
-
-Calcola la percentuale IVA: inserisci 0 per la percentuale e inserisci l'importo IVA esclusa e l'importo IVA inclusa.</value>
+    <value>Inserisci valori maggiori di zero in due campi per calcolare i campi rimanenti.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>Calcoli IVA</value>
