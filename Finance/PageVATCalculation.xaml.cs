@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the margin of the title for windows
+            //// Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -125,6 +125,7 @@ namespace Finance
             entVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "F");
             entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "F");
 
+            // Calculate the VAT fields
             /* Possible combinations
                1+2.         1+3..           1+4...
                (2+1.)       2+3....         2+4.....
@@ -138,7 +139,6 @@ namespace Finance
                2+4 Amount VAT exclusive + amount VAT included
                3+4 Amount VAT + amount VAT included */
 
-            // Calculate the VAT fields
             try
             {
                 // 1+2 VAT percentage + amount VAT exclusive - Calculate VAT amount and VAT amount included
