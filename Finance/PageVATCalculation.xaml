@@ -49,12 +49,12 @@
                         x:Name="entVATPercentage"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="0"
-                        Placeholder="0 - 100"
-                        MaxLength="10"
+                        Placeholder="0 - 99999"
+                        MaxLength="12"
                         Completed="GoToNextField">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdVATPercentage"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="99999" BorderName="brdVATPercentage"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

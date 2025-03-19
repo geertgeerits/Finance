@@ -137,8 +137,8 @@ namespace Finance
                1+4 VAT percentage + amount VAT included
                2+3 Amount VAT exclusive + amount VAT
                2+4 Amount VAT exclusive + amount VAT included
-               3+4 Amount VAT + amount VAT included */
-
+               3+4 Amount VAT + amount VAT included
+            */
             try
             {
                 // 1+2 VAT percentage + amount VAT exclusive - Calculate VAT amount and VAT amount included
@@ -201,7 +201,7 @@ namespace Finance
                     entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "F");
                 }
 
-                // Invalid combination of values
+                // Invalid values or combination of values
                 else
                 {
                     ResetEntryFields(null, null);

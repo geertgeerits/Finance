@@ -47,7 +47,6 @@
                         x:Name="dtpDate1"
                         VerticalOptions="Center"
                         HorizontalOptions="Fill"
-                        Date="{Binding SelectedDate}"
                         DateSelected="CalculateResult">
                     </DatePicker>
                 </Border>
@@ -68,7 +67,6 @@
                         x:Name="dtpDate2"
                         VerticalOptions="Center"
                         HorizontalOptions="Fill"
-                        Date="{Binding SelectedDate}"
                         DateSelected="CalculateResult">
                     </DatePicker>
                 </Border>

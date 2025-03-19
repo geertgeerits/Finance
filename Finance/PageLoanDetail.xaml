@@ -278,9 +278,6 @@
                         x:Name="dtpExpirationDate"
                         VerticalOptions="Center"
                         HorizontalOptions="Fill"
-                        MinimumDate="{Binding MinDate}"
-                        MaximumDate="{Binding MaxDate}"
-                        Date="{Binding SelectedDate}"
                         DateSelected="OnDateDataChanged">
                     </DatePicker>
                 </Border>

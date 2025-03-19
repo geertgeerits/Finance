@@ -81,7 +81,7 @@ namespace Finance
         {
             if (Email.Default.IsComposeSupported)
             {
-                string subject = "Barcode generator and scanner";
+                string subject = "Finance";
                 string body = "";
                 string[] recipients = [url];
 

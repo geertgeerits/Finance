@@ -31,6 +31,10 @@ namespace Finance
             //// Set the scale of the activity indicator for iOS
             activityIndicator.Scale = 2;
 #endif
+            //// Set the date properties for the DatePicker
+            dtpExpirationDate.MinimumDate = new DateTime(1583, 1, 1);
+            dtpExpirationDate.MaximumDate = new DateTime(5000, 1, 1);
+
             //// Put text for the column headers in the chosen language in the array
             aColHeader[0] = FinLang.LoanDetailColumns_0_Text;
             aColHeader[1] = FinLang.LoanDetailColumns_1_Text;
