@@ -75,7 +75,7 @@ namespace Finance
         {
             entVATPercentage.Text = Globals.ReplaceDecimalPointComma(entVATPercentage.Text);
             bool bIsNumber = decimal.TryParse(entVATPercentage.Text, out decimal nVATPercentage);
-            if (bIsNumber == false || nVATPercentage < 0 || nVATPercentage > 100)
+            if (bIsNumber == false || nVATPercentage < 0 || nVATPercentage > 99_999)
             {
                 entVATPercentage.Text = "";
                 _ = entVATPercentage.Focus();
