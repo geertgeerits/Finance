@@ -172,7 +172,7 @@ namespace Finance
                 }
 
                 // 2+3 Amount VAT exclusive + amount VAT - Calculate VAT percentage and VAT amount included
-                else if (nVATPercentage == 0 && nVATAmount > 0 && nVATAmountExclusive > nVATAmount && nVATAmountIncluded == 0)
+                else if (nVATPercentage == 0 && nVATAmountExclusive > 0 && nVATAmount > 0 && nVATAmountIncluded == 0)
                 {
                     nVATAmountIncluded = nVATAmountExclusive + nVATAmount;
                     nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
@@ -182,7 +182,7 @@ namespace Finance
                 }
 
                 // 2+4 Amount VAT exclusive + amount VAT included - Calculate VAT percentage and VAT amount
-                else if (nVATPercentage == 0 && nVATAmountExclusive > 0 && nVATAmount == 0 && nVATAmountIncluded > nVATAmountExclusive)
+                else if (nVATPercentage == 0 && nVATAmountExclusive > 0 && nVATAmount == 0 && nVATAmountIncluded >= nVATAmountExclusive)
                 {
                     nVATAmount = nVATAmountIncluded - nVATAmountExclusive;
                     nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
@@ -210,6 +210,8 @@ namespace Finance
             catch (Exception ex)
             {
                 DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                
+                ResetEntryFields(null, null);
                 return;
             }
 
