@@ -638,7 +638,7 @@ Nu afsluiten?</value>
     <value>Bedrag BTW:</value>
   </data>
   <data name="VATCalculationExplanation_Text" xml:space="preserve">
-    <value>Voer waarden groter dan nul in twee velden in om de overige velden te berekenen.</value>
+    <value>Vul in twee velden waarden groter dan nul in om de overige velden te berekenen.</value>
   </data>
   <data name="VATCalculationForm_Text" xml:space="preserve">
     <value>BTW berekeningen</value>
