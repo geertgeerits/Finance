@@ -215,7 +215,10 @@ namespace Finance
             }
             catch (Exception ex)
             {
+#if DEBUG                
                 _ = DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+#endif
+                ResetEntryFields(null, null);
                 return;
             }
 
@@ -475,7 +478,9 @@ namespace Finance
             }
             catch (Exception ex)
             {
+#if DEBUG                
                 await DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+#endif
             }
         }
 
@@ -502,7 +507,9 @@ namespace Finance
             }
             catch (Exception ex)
             {
+#if DEBUG                
                 await DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+#endif
             }
         }
 
@@ -511,7 +518,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResetEntryFields(object sender, EventArgs e)
+        private void ResetEntryFields(object? sender, EventArgs? e)
         {
             entInterestRate.Text = "";
             entCapitalInitial.Text = "";

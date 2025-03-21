@@ -105,7 +105,10 @@ namespace Finance
             }
             catch (Exception ex)
             {
+#if DEBUG                
                 DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+#endif
+                ResetEntryFields(null, null);
                 return;
             }
 
@@ -121,7 +124,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ResetEntryFields(object sender, EventArgs e)
+        private void ResetEntryFields(object? sender, EventArgs? e)
         {
             entInterestRate.Text = "";
             entPeriodsYear.Text = "12";
