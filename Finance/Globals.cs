@@ -96,6 +96,12 @@ namespace Finance
         /// <returns></returns>
         public static string ReplaceDecimalPointComma(string cNumber)
         {
+            // Check if the string cNumber is a number
+            if (string.IsNullOrEmpty(cNumber) || !double.TryParse(cNumber, out _))
+            {
+                return cNumber;
+            }
+
             if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
             {
                 cNumber = cNumber.Replace(".", ",");

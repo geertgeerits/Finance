@@ -67,32 +67,25 @@ namespace Finance
         }
 
         /// <summary>
+        /// Set the entry field to 0 if the field is empty when it lose focus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
+            {
+                entry.Text = "0";
+            }
+        }
+
+        /// <summary>
         /// Calculate the result 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CalculateResult(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(entVATPercentage.Text))
-            {
-                entVATPercentage.Text = "0";
-            }
-
-            if (string.IsNullOrEmpty(entVATAmountExclusive.Text))
-            {
-                entVATAmountExclusive.Text = "0";
-            }
-
-            if (string.IsNullOrEmpty(entVATAmount.Text))
-            {
-                entVATAmount.Text = "0";
-            }
-
-            if (string.IsNullOrEmpty(entVATAmountIncluded.Text))
-            {
-                entVATAmountIncluded.Text = "0";
-            }
-
             entVATPercentage.Text = Globals.ReplaceDecimalPointComma(entVATPercentage.Text);
             bool bIsNumber = decimal.TryParse(entVATPercentage.Text, out decimal nVATPercentage);
             if (bIsNumber == false || nVATPercentage < 0 || nVATPercentage > 99_999)
