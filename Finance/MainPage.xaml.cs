@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2025
  * Version .....: 3.0.69
- * Date ........: 2025-03-21 (YYYY-MM-DD)
+ * Date ........: 2025-04-11 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -73,6 +73,34 @@ namespace Finance
             //// Set the theme and the number color
             Globals.SetThemeAndNumberColor();
 
+            //// Get and set the user interface language after a first start or reset of the application
+            try
+            {
+                if (string.IsNullOrEmpty(Globals.cLanguage))
+                {
+                    Globals.cLanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+
+                    // Chinese needs the language code as zh-CN and zh-TW
+                    if (Globals.cLanguage == "zh")
+                    {
+                        Globals.cLanguage = Thread.CurrentThread.CurrentUICulture.Name;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Globals.cLanguage = "en";
+            }
+            finally
+            {
+                // Save the UI language
+                Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
+                Debug.WriteLine("MainPage - Globals.cLanguage: " + Globals.cLanguage);
+            }
+
+            //// Set the text language
+            SetTextLanguage();
+
             //// Get the system date format and set the date format
             Globals.cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         
@@ -139,22 +167,6 @@ namespace Finance
             {
                 Globals.cRoundNumber = "AwayFromZero";
             }
-
-            //// Get and set the system OS user language
-            try
-            {
-                if (string.IsNullOrEmpty(Globals.cLanguage))
-                {
-                    Globals.cLanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
-                }
-                Debug.WriteLine($"Language: {Globals.cLanguage}");
-            }
-            catch (Exception)
-            {
-                Globals.cLanguage = "en";
-            }
-
-            SetTextLanguage();
         }
 
         //// Buttons clicked events
