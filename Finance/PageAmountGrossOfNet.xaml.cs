@@ -4,8 +4,6 @@ namespace Finance
 {
     public sealed partial class PageAmountGrossOfNet : ContentPage
     {
-        private readonly decimal nMaxPercentage;
-
         public PageAmountGrossOfNet()
     	{
             try
@@ -33,20 +31,8 @@ namespace Finance
                 entAmountNet.Keyboard = Keyboard.Text;
             }
 
-            //// Set the maximum value for the percentage and the placeholder for the entry field 'entPercentage'
-            int nPercDecimalDigits = int.Parse(Globals.cPercDecimalDigits);
-
-            if (nPercDecimalDigits > 6)
-            {
-                nPercDecimalDigits = 6;
-            }
-
-            string cMaxPercentage = $"99{Globals.cNumDecimalSeparator}{string.Concat(Enumerable.Repeat('9', nPercDecimalDigits))}";
-            nMaxPercentage = Convert.ToDecimal(cMaxPercentage);
-            entPercentage.Placeholder = $"0 - {cMaxPercentage}";
-
-            Debug.WriteLine($"cMaxPercentage: {cMaxPercentage}");
-            Debug.WriteLine($"nMaxPercentage: {nMaxPercentage}");
+            //// Set the  Placeholder and MaxLength for the entry field
+            Globals.SetEntryPercentageProperties(entPercentage, 6);
         }
 
         /// <summary>
@@ -99,7 +85,7 @@ namespace Finance
             // Validate input values
             entPercentage.Text = Globals.ReplaceDecimalPointComma(entPercentage.Text);
             bool bIsNumber = decimal.TryParse(entPercentage.Text, out decimal nPercentage);
-            if (!bIsNumber || nPercentage < 0 || nPercentage > nMaxPercentage)
+            if (!bIsNumber || nPercentage < 0 || nPercentage > 99.999999m)
             {
                 entPercentage.Text = "";
                 _ = entPercentage.Focus();

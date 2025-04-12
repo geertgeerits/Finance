@@ -2,6 +2,8 @@
 global using Finance.Resources.Languages;
 global using System.Globalization;
 
+using System.Diagnostics;
+
 namespace Finance
 {
     //// Global variables and methods
@@ -112,6 +114,27 @@ namespace Finance
             }
 
             return cNumber;
+        }
+
+        /// <summary>
+        /// Set the  Placeholder and MaxLength for the entry field
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <param name="nMaxDecimalDigits"></param>
+        public static void SetEntryPercentageProperties(Entry entry, int nMaxDecimalDigits)
+        {
+            int nPercDecimalDigits = int.Parse(cPercDecimalDigits);
+
+            if (nPercDecimalDigits > nMaxDecimalDigits)
+            {
+                nPercDecimalDigits = nMaxDecimalDigits;
+            }
+
+            string cMaxPercentage = $"99{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat('9', nPercDecimalDigits))}";
+            entry.Placeholder = $"0 - {cMaxPercentage}";
+            entry.MaxLength = cMaxPercentage.Length;
+
+            Debug.WriteLine($"cMaxPercentage: {cMaxPercentage}");
         }
 
         /* Rounding numbers

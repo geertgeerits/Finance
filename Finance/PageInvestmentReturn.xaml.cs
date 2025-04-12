@@ -77,24 +77,15 @@ namespace Finance
         }
 
         /// <summary>
-        /// Set the value of a another field to '0' if the current field is unfocused 
+        /// Set the entry field to 0 if the field is empty when it lose focus
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryUnfocused(object sender, EventArgs e)
+        private void EntryUnfocused(object sender, FocusEventArgs e)
         {
-            if (sender == entAmountPurchase && entAmountPurchase.Text != "0")
+            if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
             {
-                entPercentageReturnYear.Text = "0";
-            }
-            else if (sender == entAmountCost && entAmountCost.Text != "0")
-            {
-                entPercentageReturnYear.Text = "0";
-            }
-            else if (sender == entPercentageReturnYear && entPercentageReturnYear.Text != "0")
-            {
-                entAmountPurchase.Text = "0";
-                entAmountCost.Text = "0";
+                entry.Text = "0";
             }
         }
 
