@@ -75,19 +75,15 @@ namespace Finance
         }
 
         /// <summary>
-        /// Set the value of a another field to '0' if the current field is unfocused 
+        /// Set the entry field to 0 if the field is empty when it lose focus
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryUnfocused(object sender, EventArgs e)
+        private void EntryUnfocused(object sender, FocusEventArgs e)
         {
-            if (sender == entAmountPeriod && entAmountPeriod.Text != "0")
+            if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
             {
-                entCapitalFinal.Text = "0";
-            }
-            else if (sender == entCapitalFinal && entCapitalFinal.Text != "0")
-            {
-                entAmountPeriod.Text = "0";
+                entry.Text = "0";
             }
         }
 
@@ -101,7 +97,7 @@ namespace Finance
             // Validate input values
             entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bool bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
-            if (bIsNumber == false || nCapitalInitial < 0 || nCapitalInitial > 9_999_999_999)
+            if (!bIsNumber || nCapitalInitial < 0 || nCapitalInitial > 9_999_999_999)
             {
                 entCapitalInitial.Text = "";
                 _ = entCapitalInitial.Focus();
@@ -109,7 +105,7 @@ namespace Finance
             }
 
             bIsNumber = int.TryParse(entDurationYears.Text, out int nDurationYears);
-            if (bIsNumber == false || nDurationYears < 1 || nDurationYears > 100)
+            if (!bIsNumber || nDurationYears < 1 || nDurationYears > 100)
             {
                 entDurationYears.Text = "";
                 _ = entDurationYears.Focus();
@@ -118,7 +114,7 @@ namespace Finance
 
             entAmountPeriod.Text = Globals.ReplaceDecimalPointComma(entAmountPeriod.Text);
             bIsNumber = double.TryParse(entAmountPeriod.Text, out double nAmountPeriod);
-            if (bIsNumber == false || nAmountPeriod < 0 || nAmountPeriod > 9_999_999_999)
+            if (!bIsNumber || nAmountPeriod < 0 || nAmountPeriod > 9_999_999_999)
             {
                 entAmountPeriod.Text = "";
                 _ = entAmountPeriod.Focus();
@@ -127,7 +123,7 @@ namespace Finance
 
             entCapitalFinal.Text = Globals.ReplaceDecimalPointComma(entCapitalFinal.Text);
             bIsNumber = double.TryParse(entCapitalFinal.Text, out double nCapitalFinal);
-            if (bIsNumber == false || nCapitalFinal < 0 || nCapitalFinal > 9_999_999_999)
+            if (!bIsNumber || nCapitalFinal < 0 || nCapitalFinal > 9_999_999_999)
             {
                 entCapitalFinal.Text = "";
                 _ = entCapitalFinal.Focus();

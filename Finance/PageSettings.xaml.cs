@@ -186,7 +186,7 @@ namespace Finance
         {
             // Validate input values
             bool bIsNumber = int.TryParse(entNumDec.Text, out int nNumDec);
-            if (bIsNumber == false || nNumDec < 0 || nNumDec > 4 || entNumDec.Text == "")
+            if (!bIsNumber || nNumDec < 0 || nNumDec > 4 || entNumDec.Text == "")
             {
                 entNumDec.Text = "";
                 _ = entNumDec.Focus();

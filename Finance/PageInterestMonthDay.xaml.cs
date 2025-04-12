@@ -73,7 +73,7 @@ namespace Finance
         {
             // Validate input values
             bool bIsNumber = int.TryParse(entPercDec.Text, out int nPercDec);
-            if (bIsNumber == false || nPercDec < 0 || nPercDec > 8)
+            if (!bIsNumber || nPercDec < 0 || nPercDec > 8)
             {
                 entPercDec.Text = "";
                 _ = entPercDec.Focus();
@@ -82,7 +82,7 @@ namespace Finance
 
             entInterestRate.Text = Globals.ReplaceDecimalPointComma(entInterestRate.Text);
             bIsNumber = double.TryParse(entInterestRate.Text, out double nInterestRate);
-            if (bIsNumber == false || nInterestRate < 0 || nInterestRate > 100)
+            if (!bIsNumber || nInterestRate < 0 || nInterestRate > 100)
             {
                 entInterestRate.Text = "";
                 _ = entInterestRate.Focus();

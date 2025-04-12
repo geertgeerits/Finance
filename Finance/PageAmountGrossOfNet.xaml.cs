@@ -1,8 +1,12 @@
+using System.Diagnostics;
+
 namespace Finance
 {
     public sealed partial class PageAmountGrossOfNet : ContentPage
     {
-    	public PageAmountGrossOfNet()
+        private readonly decimal nMaxPercentage;
+
+        public PageAmountGrossOfNet()
     	{
             try
             {
@@ -14,7 +18,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the margin of the title for windows
+            //// Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -28,6 +32,21 @@ namespace Finance
                 entPercentage.Keyboard = Keyboard.Text;
                 entAmountNet.Keyboard = Keyboard.Text;
             }
+
+            //// Set the maximum value for the percentage and the placeholder for the entry field 'entPercentage'
+            int nPercDecimalDigits = int.Parse(Globals.cPercDecimalDigits);
+
+            if (nPercDecimalDigits > 6)
+            {
+                nPercDecimalDigits = 6;
+            }
+
+            string cMaxPercentage = $"99{Globals.cNumDecimalSeparator}{string.Concat(Enumerable.Repeat('9', nPercDecimalDigits))}";
+            nMaxPercentage = Convert.ToDecimal(cMaxPercentage);
+            entPercentage.Placeholder = $"0 - {cMaxPercentage}";
+
+            Debug.WriteLine($"cMaxPercentage: {cMaxPercentage}");
+            Debug.WriteLine($"nMaxPercentage: {nMaxPercentage}");
         }
 
         /// <summary>
@@ -80,7 +99,7 @@ namespace Finance
             // Validate input values
             entPercentage.Text = Globals.ReplaceDecimalPointComma(entPercentage.Text);
             bool bIsNumber = decimal.TryParse(entPercentage.Text, out decimal nPercentage);
-            if (bIsNumber == false || nPercentage < 0 || nPercentage > 100)
+            if (!bIsNumber || nPercentage < 0 || nPercentage > nMaxPercentage)
             {
                 entPercentage.Text = "";
                 _ = entPercentage.Focus();
@@ -89,7 +108,7 @@ namespace Finance
 
             entAmountNet.Text = Globals.ReplaceDecimalPointComma(entAmountNet.Text);
             bIsNumber = decimal.TryParse(entAmountNet.Text, out decimal nAmountNet);
-            if (bIsNumber == false || nAmountNet < 0 || nAmountNet > 9_999_999_999)
+            if (!bIsNumber || nAmountNet < 0 || nAmountNet > 9_999_999_999)
             {
                 entAmountNet.Text = "";
                 _ = entAmountNet.Focus();
@@ -109,7 +128,14 @@ namespace Finance
             entAmountNet.Text = Globals.RoundToNumDecimals(ref nAmountNet, nNumDec, "F");
 
             // Calculate the net amount
-            if (nPercentage == 0 || nPercentage == 100)
+            if (nPercentage == 0)
+            {
+                decimal nAmountGross = nAmountNet;
+                lblAmountGross.Text = Globals.RoundToNumDecimals(ref nAmountGross, nNumDec, "N");
+                decimal nAmountDifference = nAmountGross - nAmountNet;
+                lblAmountDifference.Text = Globals.RoundToNumDecimals(ref nAmountDifference, nNumDec, "N");
+            }
+            else if (nPercentage == 100)
             {
                 entPercentage.Text = "";
                 _ = entPercentage.Focus();
@@ -119,7 +145,7 @@ namespace Finance
             {
                 try
                 {
-                    decimal nAmountGross = nAmountNet / ((100 - nPercentage) / 100);
+                    decimal nAmountGross = nAmountNet / (1 - (nPercentage / 100));
                     lblAmountGross.Text = Globals.RoundToNumDecimals(ref nAmountGross, nNumDec, "N");
                     decimal nAmountDifference = nAmountGross - nAmountNet;
                     lblAmountDifference.Text = Globals.RoundToNumDecimals(ref nAmountDifference, nNumDec, "N");

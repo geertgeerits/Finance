@@ -49,13 +49,13 @@
                         x:Name="entPercentage"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text=""
-                        Placeholder="0 - 100"
+                        Placeholder="0 - 99.99"
                         MaxLength="10"
                         Completed="GoToNextField"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdPercentage"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="99.999999" BorderName="brdPercentage"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

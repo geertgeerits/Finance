@@ -67,6 +67,19 @@ namespace Finance
         }
 
         /// <summary>
+        /// Set the entry field to 0 if the field is empty when it lose focus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
+            {
+                entry.Text = "0";
+            }
+        }
+
+        /// <summary>
         /// Calculate the result 
         /// </summary>
         /// <param name="sender"></param>
@@ -76,7 +89,7 @@ namespace Finance
             // Validate input values
             entPaymentDiscount.Text = Globals.ReplaceDecimalPointComma(entPaymentDiscount.Text);
             bool bIsNumber = decimal.TryParse(entPaymentDiscount.Text, out decimal nPaymentDiscount);
-            if (bIsNumber == false || nPaymentDiscount < 0 || nPaymentDiscount > 100)
+            if (!bIsNumber || nPaymentDiscount < 0 || nPaymentDiscount > 100)
             {
                 entPaymentDiscount.Text = "";
                 _ = entPaymentDiscount.Focus();
@@ -84,7 +97,7 @@ namespace Finance
             }
 
             bIsNumber = int.TryParse(entExpiryDaysWithDiscount.Text, out int nExpiryDaysWithDiscount);
-            if (bIsNumber == false || nExpiryDaysWithDiscount < 0 || nExpiryDaysWithDiscount > 999)
+            if (!bIsNumber || nExpiryDaysWithDiscount < 0 || nExpiryDaysWithDiscount > 999)
             {
                 entExpiryDaysWithDiscount.Text = "";
                 _ = entExpiryDaysWithDiscount.Focus();
@@ -92,7 +105,7 @@ namespace Finance
             }
 
             bIsNumber = int.TryParse(entExpiryDaysWithoutDiscount.Text, out int nExpiryDaysWithoutDiscount);
-            if (bIsNumber == false || nExpiryDaysWithoutDiscount < nExpiryDaysWithDiscount || nExpiryDaysWithoutDiscount > 999)
+            if (!bIsNumber || nExpiryDaysWithoutDiscount < nExpiryDaysWithDiscount || nExpiryDaysWithoutDiscount > 999)
             {
                 entExpiryDaysWithoutDiscount.Text = "";
                 entExpiryDaysWithoutDiscount.Placeholder = $"{Convert.ToString(nExpiryDaysWithDiscount)} - 999";

@@ -90,7 +90,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Replace decimal point with decimal comma 
+        /// Replace decimal point with decimal comma - The number may not be formatted with the 'N' specifier
         /// </summary>
         /// <param name="cNumber"></param>
         /// <returns></returns>

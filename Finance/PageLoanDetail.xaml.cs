@@ -133,7 +133,7 @@ namespace Finance
             // Validate input values
             entInterestRate.Text = Globals.ReplaceDecimalPointComma(entInterestRate.Text);
             bool bIsNumber = double.TryParse(entInterestRate.Text, out double nInterestRate);
-            if (bIsNumber == false || nInterestRate < 0 || nInterestRate > 100)
+            if (!bIsNumber || nInterestRate < 0 || nInterestRate > 100)
             {
                 entInterestRate.Text = "";
                 _ = entInterestRate.Focus();
@@ -142,7 +142,7 @@ namespace Finance
 
             entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
-            if (bIsNumber == false || nCapitalInitial < 1 || nCapitalInitial > 9_999_999_999)
+            if (!bIsNumber || nCapitalInitial < 1 || nCapitalInitial > 9_999_999_999)
             {
                 entCapitalInitial.Text = "";
                 _ = entCapitalInitial.Focus();
@@ -150,7 +150,7 @@ namespace Finance
             }
 
             bIsNumber = int.TryParse(entDurationYears.Text, out int nDurationYears);
-            if (bIsNumber == false || nDurationYears < 1 || nDurationYears > 100)
+            if (!bIsNumber || nDurationYears < 1 || nDurationYears > 100)
             {
                 entDurationYears.Text = "";
                 _ = entDurationYears.Focus();
@@ -158,7 +158,7 @@ namespace Finance
             }
 
             bIsNumber = int.TryParse(entPeriodsYear.Text, out int nPeriodsYear);
-            if (bIsNumber == false || nPeriodsYear < 1 || nPeriodsYear > 12)
+            if (!bIsNumber || nPeriodsYear < 1 || nPeriodsYear > 12)
             {
                 entPeriodsYear.Text = "";
                 _ = entPeriodsYear.Focus();

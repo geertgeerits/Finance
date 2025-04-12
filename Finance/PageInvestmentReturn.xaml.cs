@@ -108,7 +108,7 @@ namespace Finance
             // Validate input values
             entAmountPurchase.Text = Globals.ReplaceDecimalPointComma(entAmountPurchase.Text);
             bool bIsNumber = decimal.TryParse(entAmountPurchase.Text, out decimal nAmountPurchase);
-            if (bIsNumber == false || nAmountPurchase < 0 || nAmountPurchase > 9_999_999_999)
+            if (!bIsNumber || nAmountPurchase < 0 || nAmountPurchase > 9_999_999_999)
             {
                 entAmountPurchase.Text = "";
                 _ = entAmountPurchase.Focus();
@@ -117,7 +117,7 @@ namespace Finance
 
             entAmountCost.Text = Globals.ReplaceDecimalPointComma(entAmountCost.Text);
             bIsNumber = decimal.TryParse(entAmountCost.Text, out decimal nAmountCost);
-            if (bIsNumber == false || nAmountCost < 0 || nAmountCost > 9_999_999_999)
+            if (!bIsNumber || nAmountCost < 0 || nAmountCost > 9_999_999_999)
             {
                 entAmountCost.Text = "";
                 _ = entAmountCost.Focus();
@@ -126,7 +126,7 @@ namespace Finance
 
             entAmountRevenueYear.Text = Globals.ReplaceDecimalPointComma(entAmountRevenueYear.Text);
             bIsNumber = decimal.TryParse(entAmountRevenueYear.Text, out decimal nAmountRevenueYear);
-            if (bIsNumber == false || nAmountRevenueYear < 0 || nAmountRevenueYear > 9_999_999_999)
+            if (!bIsNumber || nAmountRevenueYear < 0 || nAmountRevenueYear > 9_999_999_999)
             {
                 entAmountRevenueYear.Text = "";
                 _ = entAmountRevenueYear.Focus();
@@ -135,7 +135,7 @@ namespace Finance
 
             entPercentageReturnYear.Text = Globals.ReplaceDecimalPointComma(entPercentageReturnYear.Text);
             bIsNumber = decimal.TryParse(entPercentageReturnYear.Text, out decimal nPercentageReturnYear);
-            if (bIsNumber == false || nPercentageReturnYear < 0 || nPercentageReturnYear > 9_999)
+            if (!bIsNumber || nPercentageReturnYear < 0 || nPercentageReturnYear > 9_999)
             {
                 entPercentageReturnYear.Text = "";
                 _ = entPercentageReturnYear.Focus();
