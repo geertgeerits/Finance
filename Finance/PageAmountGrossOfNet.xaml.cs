@@ -31,8 +31,8 @@ namespace Finance
                 entAmountNet.Keyboard = Keyboard.Text;
             }
 
-            //// Set the  Placeholder and MaxLength for the entry field
-            Globals.SetEntryPercentageProperties(entPercentage, 6);
+            //// Set the Placeholder and MaxLength for the numeric entry field
+            Globals.SetEntryProperties(entPercentage, Globals.cPercDecimalDigits, 6);
         }
 
         /// <summary>

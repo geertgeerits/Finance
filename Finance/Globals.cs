@@ -117,24 +117,25 @@ namespace Finance
         }
 
         /// <summary>
-        /// Set the  Placeholder and MaxLength for the entry field
+        /// Set the Placeholder and MaxLength for the numeric entry field
         /// </summary>
         /// <param name="entry"></param>
+        /// <param name="nDecimalDigits"></param>
         /// <param name="nMaxDecimalDigits"></param>
-        public static void SetEntryPercentageProperties(Entry entry, int nMaxDecimalDigits)
+        public static void SetEntryProperties(Entry entry, string nDecimalDigits, int nMaxDecimalDigits)
         {
-            int nPercDecimalDigits = int.Parse(cPercDecimalDigits);
+            int nNumDecimalDigits = int.Parse(nDecimalDigits);
 
-            if (nPercDecimalDigits > nMaxDecimalDigits)
+            if (nNumDecimalDigits > nMaxDecimalDigits)
             {
-                nPercDecimalDigits = nMaxDecimalDigits;
+                nNumDecimalDigits = nMaxDecimalDigits;
             }
 
-            string cMaxPercentage = $"99{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat('9', nPercDecimalDigits))}";
-            entry.Placeholder = $"0 - {cMaxPercentage}";
-            entry.MaxLength = cMaxPercentage.Length;
+            string cMaxValue = $"99{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat('9', nNumDecimalDigits))}";
+            entry.Placeholder = $"0 - {cMaxValue}";
+            entry.MaxLength = cMaxValue.Length;
 
-            Debug.WriteLine($"cMaxPercentage: {cMaxPercentage}");
+            Debug.WriteLine($"cMaxPercentage: {cMaxValue}");
         }
 
         /* Rounding numbers
