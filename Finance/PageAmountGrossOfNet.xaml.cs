@@ -32,7 +32,7 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entPercentage, Globals.cPercDecimalDigits, 6);
+            Globals.SetEntryProperties(entPercentage, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Finance
             // Validate input values
             entPercentage.Text = Globals.ReplaceDecimalPointComma(entPercentage.Text);
             bool bIsNumber = decimal.TryParse(entPercentage.Text, out decimal nPercentage);
-            if (!bIsNumber || nPercentage < 0 || nPercentage > 99.999999m)
+            if (!bIsNumber || nPercentage < 0 || nPercentage >= 100)
             {
                 entPercentage.Text = "";
                 _ = entPercentage.Focus();
@@ -94,7 +94,7 @@ namespace Finance
 
             entAmountNet.Text = Globals.ReplaceDecimalPointComma(entAmountNet.Text);
             bIsNumber = decimal.TryParse(entAmountNet.Text, out decimal nAmountNet);
-            if (!bIsNumber || nAmountNet < 0 || nAmountNet > 9_999_999_999)
+            if (!bIsNumber || nAmountNet < 0 || nAmountNet >= 10_000_000_000)
             {
                 entAmountNet.Text = "";
                 _ = entAmountNet.Focus();

@@ -3,6 +3,7 @@ global using Finance.Resources.Languages;
 global using System.Globalization;
 
 using System.Diagnostics;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace Finance
 {
@@ -120,22 +121,31 @@ namespace Finance
         /// Set the Placeholder and MaxLength for the numeric entry field
         /// </summary>
         /// <param name="entry"></param>
-        /// <param name="nDecimalDigits"></param>
-        /// <param name="nMaxDecimalDigits"></param>
-        public static void SetEntryProperties(Entry entry, string nDecimalDigits, int nMaxDecimalDigits)
+        /// <param name="cWholeNumFrom"></param>
+        /// <param name="cDecDigetFrom"></param>
+        /// <param name="cWholeNumTo"></param>
+        /// <param name="cDecDigetTo"></param>
+        /// <param name="cNumberOfDecimals"></param>
+        /// <param name="cMaxNumberOfDecimals"></param>
+        public static void SetEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals)
         {
-            int nNumDecimalDigits = int.Parse(nDecimalDigits);
-
-            if (nNumDecimalDigits > nMaxDecimalDigits)
+            if (!int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals) || !int.TryParse(cMaxNumberOfDecimals, out int nMaxNumberOfDecimals))
             {
-                nNumDecimalDigits = nMaxDecimalDigits;
+                return;
             }
 
-            string cMaxValue = $"99{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat('9', nNumDecimalDigits))}";
-            entry.Placeholder = $"0 - {cMaxValue}";
-            entry.MaxLength = cMaxValue.Length;
+            if (nNumberOfDecimals > nMaxNumberOfDecimals)
+            {
+                nNumberOfDecimals = nMaxNumberOfDecimals;
+            }
 
-            Debug.WriteLine($"cMaxPercentage: {cMaxValue}");
+            string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
+            string cValueTo = $"{cWholeNumTo}{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
+            
+            entry.Placeholder = $"{cValueFrom} - {cValueTo}";
+            entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length : cValueFrom.Length;
+
+            Debug.WriteLine($"entry.MaxLength: {entry.MaxLength}");
         }
 
         /* Rounding numbers

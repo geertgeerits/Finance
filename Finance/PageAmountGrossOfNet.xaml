@@ -50,12 +50,12 @@
                         Style="{StaticResource entryStyleNumericNext}"
                         Text=""
                         Placeholder="0 - 99.99"
-                        MaxLength="10"
+                        MaxLength="11"
                         Completed="GoToNextField"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="99.999999" BorderName="brdPercentage"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="99.99999999" BorderName="brdPercentage"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
