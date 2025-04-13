@@ -97,7 +97,7 @@ namespace Finance
             }
 
             bIsNumber = int.TryParse(entExpiryDaysWithDiscount.Text, out int nExpiryDaysWithDiscount);
-            if (!bIsNumber || nExpiryDaysWithDiscount < 0 || nExpiryDaysWithDiscount > 999)
+            if (!bIsNumber || nExpiryDaysWithDiscount < 0 || nExpiryDaysWithDiscount >= 1000)
             {
                 entExpiryDaysWithDiscount.Text = "";
                 _ = entExpiryDaysWithDiscount.Focus();
@@ -105,7 +105,7 @@ namespace Finance
             }
 
             bIsNumber = int.TryParse(entExpiryDaysWithoutDiscount.Text, out int nExpiryDaysWithoutDiscount);
-            if (!bIsNumber || nExpiryDaysWithoutDiscount < nExpiryDaysWithDiscount || nExpiryDaysWithoutDiscount > 999)
+            if (!bIsNumber || nExpiryDaysWithoutDiscount < nExpiryDaysWithDiscount || nExpiryDaysWithoutDiscount >= 1000)
             {
                 entExpiryDaysWithoutDiscount.Text = "";
                 entExpiryDaysWithoutDiscount.Placeholder = $"{Convert.ToString(nExpiryDaysWithDiscount)} - 999";

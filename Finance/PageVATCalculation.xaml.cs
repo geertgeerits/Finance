@@ -88,7 +88,7 @@ namespace Finance
         {
             entVATPercentage.Text = Globals.ReplaceDecimalPointComma(entVATPercentage.Text);
             bool bIsNumber = decimal.TryParse(entVATPercentage.Text, out decimal nVATPercentage);
-            if (!bIsNumber || nVATPercentage < 0 || nVATPercentage > 99_999)
+            if (!bIsNumber || nVATPercentage < 0 || nVATPercentage >= 100_000)
             {
                 entVATPercentage.Text = "0";
                 _ = entVATPercentage.Focus();
@@ -97,7 +97,7 @@ namespace Finance
 
             entVATAmountExclusive.Text = Globals.ReplaceDecimalPointComma(entVATAmountExclusive.Text);
             bIsNumber = decimal.TryParse(entVATAmountExclusive.Text, out decimal nVATAmountExclusive);
-            if (!bIsNumber || nVATAmountExclusive < 0 || nVATAmountExclusive > 9_999_999_999)
+            if (!bIsNumber || nVATAmountExclusive < 0 || nVATAmountExclusive >= 1_000_000_000_000)
             {
                 entVATAmountExclusive.Text = "0";
                 _ = entVATAmountExclusive.Focus();
@@ -106,7 +106,7 @@ namespace Finance
 
             entVATAmount.Text = Globals.ReplaceDecimalPointComma(entVATAmount.Text);
             bIsNumber = decimal.TryParse(entVATAmount.Text, out decimal nVATAmount);
-            if (!bIsNumber || nVATAmount < 0 || nVATAmount > 9_999_999_999)
+            if (!bIsNumber || nVATAmount < 0 || nVATAmount >= 1_000_000_000_000)
             {
                 entVATAmount.Text = "0";
                 _ = entVATAmount.Focus();
@@ -115,7 +115,7 @@ namespace Finance
 
             entVATAmountIncluded.Text = Globals.ReplaceDecimalPointComma(entVATAmountIncluded.Text);
             bIsNumber = decimal.TryParse(entVATAmountIncluded.Text, out decimal nVATAmountIncluded);
-            if (!bIsNumber || nVATAmountIncluded < 0 || nVATAmountIncluded > 9_999_999_999)
+            if (!bIsNumber || nVATAmountIncluded < 0 || nVATAmountIncluded >= 1_000_000_000_000)
             {
                 entVATAmountIncluded.Text = "0";
                 _ = entVATAmountIncluded.Focus();

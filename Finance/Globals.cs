@@ -93,7 +93,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Replace decimal point with decimal comma - The number may not be formatted with the 'N' specifier
+        /// Replace decimal point with decimal comma - The number may NOT be formatted with the 'N' specifier because there can be more than 1 separator
         /// </summary>
         /// <param name="cNumber"></param>
         /// <returns></returns>

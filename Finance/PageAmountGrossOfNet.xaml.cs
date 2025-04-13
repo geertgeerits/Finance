@@ -94,7 +94,7 @@ namespace Finance
 
             entAmountNet.Text = Globals.ReplaceDecimalPointComma(entAmountNet.Text);
             bIsNumber = decimal.TryParse(entAmountNet.Text, out decimal nAmountNet);
-            if (!bIsNumber || nAmountNet < 0 || nAmountNet >= 10_000_000_000)
+            if (!bIsNumber || nAmountNet < 0 || nAmountNet >= 1_000_000_000_000)
             {
                 entAmountNet.Text = "";
                 _ = entAmountNet.Focus();

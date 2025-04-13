@@ -50,7 +50,7 @@
                         Style="{StaticResource entryStyleNumericNext}"
                         Text=""
                         Placeholder="0 - 100"
-                        MaxLength="10"
+                        MaxLength="12"
                         Completed="GoToNextField"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>

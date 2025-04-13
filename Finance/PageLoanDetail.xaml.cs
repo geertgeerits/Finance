@@ -142,7 +142,7 @@ namespace Finance
 
             entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
-            if (!bIsNumber || nCapitalInitial < 1 || nCapitalInitial > 9_999_999_999)
+            if (!bIsNumber || nCapitalInitial < 1 || nCapitalInitial >= 1_000_000_000_000)
             {
                 entCapitalInitial.Text = "";
                 _ = entCapitalInitial.Focus();

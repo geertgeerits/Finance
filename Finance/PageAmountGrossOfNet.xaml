@@ -84,13 +84,13 @@
                         x:Name="entAmountNet"
                         Style="{StaticResource entryStyleNumericDone}"
                         Text=""
-                        Placeholder="0 - 9999999999"
+                        Placeholder="0 - 999999999999"
                         MaxLength="21"
                         Completed="CalculateResult"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdAmountNet"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdAmountNet"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

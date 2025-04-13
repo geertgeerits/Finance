@@ -49,13 +49,13 @@
                         x:Name="entValue1"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text=""
-                        Placeholder="-9999999999 - 9999999999"
-                        MaxLength="21"
+                        Placeholder="-999999999999 - 999999999999"
+                        MaxLength="22"
                         Completed="GoToNextField"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-9999999999" MaxValue="9999999999" BorderName="brdValue1"/>
+                                <local:NumericValidationTriggerAction MinValue="-999999999999" MaxValue="999999999999" BorderName="brdValue1"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -78,13 +78,13 @@
                         x:Name="entValue2"
                         Style="{StaticResource entryStyleNumericDone}"
                         Text=""
-                        Placeholder="-9999999999 - 9999999999"
-                        MaxLength="21"
+                        Placeholder="-999999999999 - 999999999999"
+                        MaxLength="22"
                         Completed="CalculateResult"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-9999999999" MaxValue="9999999999" BorderName="brdValue2"/>
+                                <local:NumericValidationTriggerAction MinValue="-999999999999" MaxValue="999999999999" BorderName="brdValue2"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

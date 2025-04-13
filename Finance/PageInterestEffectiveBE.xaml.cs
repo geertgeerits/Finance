@@ -79,7 +79,7 @@ namespace Finance
             // Validate input values
             entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bool bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
-            if (!bIsNumber || nCapitalInitial < 0 || nCapitalInitial > 9_999_999_999)
+            if (!bIsNumber || nCapitalInitial < 0 || nCapitalInitial >= 1_000_000_000_000)
             {
                 entCapitalInitial.Text = "";
                 _ = entCapitalInitial.Focus();
@@ -88,7 +88,7 @@ namespace Finance
 
             entCapitalFinal.Text = Globals.ReplaceDecimalPointComma(entCapitalFinal.Text);
             bIsNumber = double.TryParse(entCapitalFinal.Text, out double nCapitalFinal);
-            if (!bIsNumber || nCapitalFinal < 0 || nCapitalFinal > 9_999_999_999)
+            if (!bIsNumber || nCapitalFinal < 0 || nCapitalFinal >= 1_000_000_000_000)
             {
                 entCapitalFinal.Text = "";
                 _ = entCapitalFinal.Focus();

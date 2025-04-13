@@ -77,7 +77,7 @@
             // Validate input values
             entValue1.Text = Globals.ReplaceDecimalPointComma(entValue1.Text);
             bool bIsNumber = decimal.TryParse(entValue1.Text, out decimal nValue1);
-            if (!bIsNumber || nValue1 < -9_999_999_999 || nValue1 > 9_999_999_999)
+            if (!bIsNumber || nValue1 <= -1_000_000_000_000 || nValue1 >= 1_000_000_000_000)
             {
                 entValue1.Text = "";
                 _ = entValue1.Focus();
@@ -86,7 +86,7 @@
 
             entValue2.Text = Globals.ReplaceDecimalPointComma(entValue2.Text);
             bIsNumber = decimal.TryParse(entValue2.Text, out decimal nValue2);
-            if (!bIsNumber || nValue2 < -9_999_999_999 || nValue2 > 9_999_999_999)
+            if (!bIsNumber || nValue2 <= -1_000_000_000_000 || nValue2 >= 1_000_000_000_000)
             {
                 entValue2.Text = "";
                 _ = entValue2.Focus();

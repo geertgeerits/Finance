@@ -50,14 +50,14 @@
                         x:Name="entAmountPurchase"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="0"
-                        Placeholder="0 - 9999999999"
+                        Placeholder="0 - 999999999999"
                         MaxLength="21"
                         Completed="GoToNextField"
                         Unfocused="EntryUnfocused"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdAmountPurchase"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdAmountPurchase"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -80,14 +80,14 @@
                         x:Name="entAmountCost"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="0"
-                        Placeholder="0 - 9999999999"
+                        Placeholder="0 - 999999999999"
                         MaxLength="21"
                         Completed="GoToNextField"
                         Unfocused="EntryUnfocused"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdAmountCost"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdAmountCost"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -128,13 +128,13 @@
                         x:Name="entAmountRevenueYear"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="0"
-                        Placeholder="0 - 9999999999"
+                        Placeholder="0 - 999999999999"
                         MaxLength="21"
                         Completed="GoToNextField"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999999999" BorderName="brdAmountRevenueYear"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdAmountRevenueYear"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -158,7 +158,7 @@
                         Style="{StaticResource entryStyleNumericDone}"
                         Text="0"
                         Placeholder="0 - 9999"
-                        MaxLength="12"
+                        MaxLength="13"
                         Completed="CalculateResult"
                         Unfocused="EntryUnfocused"
                         TextChanged="EntryTextChanged">
