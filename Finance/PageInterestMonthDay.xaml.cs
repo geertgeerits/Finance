@@ -40,12 +40,17 @@ namespace Finance
         }
 
         /// <summary>
-        /// Clear result fields 
+        /// Test if the text is a numeric value and clear result fields if the text have changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryTextChanged(object sender, EventArgs e)
+        private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!Globals.IsNumeric(e.NewTextValue))
+            {
+                ((Entry)sender).Text = e.OldTextValue;
+            }
+
             lblInterestMonth.Text = "";
             lblInterestDay365.Text = "";
             lblInterestDay366.Text = "";

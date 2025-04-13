@@ -3,7 +3,6 @@ global using Finance.Resources.Languages;
 global using System.Globalization;
 
 using System.Diagnostics;
-using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace Finance
 {
@@ -34,6 +33,7 @@ namespace Finance
         private static readonly string cColorPosNumberLight = "#000000";
         private static readonly string cColorNegNumberDark = "#FFB0B0";
         private static readonly string cColorPosNumberDark = "#FFFFFF";
+        private const string cNumericCharacters = ",-.0123456789";
 
         /// Global methods
         /// <summary>
@@ -90,6 +90,24 @@ namespace Finance
             {
                 // Do nothing
             }
+        }
+
+        /// <summary>
+        /// Test if the text is a numeric value
+        /// </summary>
+        /// <param name="cText"></param>
+        /// <returns></returns>
+        public static bool IsNumeric(string cText)
+        {
+            foreach (char c in cText)
+            {
+                if (!cNumericCharacters.Contains(c))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>
