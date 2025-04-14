@@ -156,7 +156,7 @@
                 return;
             }
 
-            Globals.FormatTextEntryFocused(entCapitalInitial);
+            //Globals.FormatTextEntryFocused(entCapitalInitial);
             entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
             if (!bIsNumber || nCapitalInitial < 1 || nCapitalInitial >= 1_000_000_000_000)

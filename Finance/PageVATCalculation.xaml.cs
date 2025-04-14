@@ -62,6 +62,19 @@ namespace Finance
         }
 
         /// <summary>
+        /// Set the entry field to 0 if the field is empty when it lose focus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
+            {
+                entry.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
+            }
+        }
+
+        /// <summary>
         /// Test if the text is a numeric value
         /// </summary>
         /// <param name="sender"></param>
@@ -92,19 +105,6 @@ namespace Finance
             else if (sender == entVATAmount)
             {
                 _ = entVATAmountIncluded.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Set the entry field to 0 if the field is empty when it lose focus
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryUnfocused(object sender, FocusEventArgs e)
-        {
-            if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
-            {
-                entry.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
             }
         }
 
