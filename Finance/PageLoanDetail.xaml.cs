@@ -100,7 +100,7 @@
         {
             // Correct the decimal separator before processing
             Entry entry = (Entry)sender;
-            Globals.ReplaceDecimalPointComma(entry.Text);
+            entry.Text = Globals.ReplaceDecimalPointComma(entry.Text);
             Debug.WriteLine($"cText: {entry.Text}");
 
             // Test if the text is a numeric value
@@ -163,7 +163,7 @@
             }
 
             Globals.FormatTextEntryFocused(entCapitalInitial);
-            //entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
+            entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
             if (!bIsNumber || nCapitalInitial < 1 || nCapitalInitial >= 1_000_000_000_000)
             {
@@ -205,7 +205,7 @@
 
             // Set decimal places for the entry controls and values passed by reference
             entInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "F");
-            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N");
+            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "F");
 
             // Clear result fields
             lblAmountPeriod.Text = "";

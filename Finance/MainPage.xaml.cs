@@ -115,9 +115,9 @@ namespace Finance
 
             //// Get the number decimal separator and the group separator
             Globals.cNumDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-            string cNumGroupDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator);
+            string cNumGroupSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator);
             Debug.WriteLine($"Number Decimal Separator: {Globals.cNumDecimalSeparator}");
-            Debug.WriteLine($"Number Group Separator: {cNumGroupDecimalSeparator}");
+            Debug.WriteLine($"Number Group Separator: {cNumGroupSeparator}");
 
             //// Get the number of decimal digits after the decimal point
             if (string.IsNullOrEmpty(Globals.cNumDecimalDigits))
