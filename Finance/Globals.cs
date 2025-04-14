@@ -1,8 +1,7 @@
 ﻿//// Global usings
 global using Finance.Resources.Languages;
 global using System.Globalization;
-
-using System.Diagnostics;
+global using System.Diagnostics;
 
 namespace Finance
 {
@@ -136,7 +135,34 @@ namespace Finance
         }
 
         /// <summary>
-        /// Set the Placeholder and MaxLength for the numeric entry field
+        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="entry"></param>
+        public static void FormatTextEntryFocused(Entry entry)
+        {
+            if (decimal.TryParse(entry.Text, out decimal nValue))
+            {
+                entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F");
+            }
+
+            entry.CursorPosition = 0;
+            entry.SelectionLength = entry.Text.Length;
+        }
+
+        ///// <summary>
+        ///// Format the text value for a numeric entry field with the number separator
+        ///// </summary>
+        ///// <param name="entry"></param>
+        //public static void FormatTextEntryUnfocused(Entry entry)
+        //{
+        //    if (decimal.TryParse(entry.Text, out decimal nValue))
+        //    {
+        //        entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N");
+        //    }
+        //}
+
+        /// <summary>
+        /// Set the Placeholder and MaxLength for a numeric entry field
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="cWholeNumFrom"></param>
@@ -203,8 +229,7 @@ namespace Finance
                 nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.ToEven);
             }
 
-            string cNumFormat = cFormatSpecifier + nNumDec.ToString();
-            return nNumber.ToString(cNumFormat);
+            return nNumber.ToString(format: cFormatSpecifier + nNumDec.ToString());
         }
 
         /// <summary>
@@ -225,8 +250,7 @@ namespace Finance
                 nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.ToEven);
             }
 
-            string cNumFormat = cFormatSpecifier + nNumDec.ToString();
-            return nNumber.ToString(cNumFormat);
+            return nNumber.ToString(format: cFormatSpecifier + nNumDec.ToString());
         }
 
         /// <summary>

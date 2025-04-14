@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Finance
+﻿namespace Finance
 {
     public sealed partial class PageSettings : ContentPage
     {

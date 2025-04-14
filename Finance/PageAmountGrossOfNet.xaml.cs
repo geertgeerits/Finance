@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace Finance
 {
     public sealed partial class PageAmountGrossOfNet : ContentPage
@@ -52,7 +50,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Format the text value without the number separator and select the entire text value
+        /// Format the text value for a numeric entry field without the number separator and select the entire text value
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -60,15 +58,22 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                if (decimal.TryParse(entry.Text, out decimal nValue))
-                {
-                    entry.Text = Globals.RoundToNumDecimals(ref nValue, int.Parse(Globals.cNumDecimalDigits), "F");
-                }
-
-                entry.CursorPosition = 0;
-                entry.SelectionLength = entry.Text.Length;
+                Globals.FormatTextEntryFocused(entry);
             }
         }
+
+        ///// <summary>
+        ///// Format the text value for a numeric entry field with the number separator
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void EntryUnfocused(object sender, FocusEventArgs e)
+        //{
+        //    if (sender is Entry entry)
+        //    {
+        //        Globals.FormatTextEntryUnfocused(entry);
+        //    }
+        //}
 
         /// <summary>
         /// Test if the text is a numeric value and clear result fields if the text have changed 

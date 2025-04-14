@@ -51,6 +51,7 @@
                         Text="0"
                         Placeholder="0 - 99999"
                         MaxLength="14"
+                        Focused="EntryFocused"
                         TextChanged="EntryTextChanged"
                         Unfocused="EntryUnfocused"
                         Completed="GoToNextField">
@@ -87,6 +88,7 @@
                         Text="0"
                         Placeholder="0 - 999999999999"
                         MaxLength="21"
+                        Focused="EntryFocused"
                         TextChanged="EntryTextChanged"
                         Unfocused="EntryUnfocused"
                         Completed="GoToNextField">
@@ -117,6 +119,7 @@
                         Text="0"
                         Placeholder="0 - 999999999999"
                         MaxLength="21"
+                        Focused="EntryFocused"
                         TextChanged="EntryTextChanged"
                         Unfocused="EntryUnfocused"
                         Completed="GoToNextField">
@@ -147,6 +150,7 @@
                         Text="0"
                         Placeholder="0 - 999999999999"
                         MaxLength="21"
+                        Focused="EntryFocused"
                         TextChanged="EntryTextChanged"
                         Unfocused="EntryUnfocused"
                         Completed="CalculateResult">

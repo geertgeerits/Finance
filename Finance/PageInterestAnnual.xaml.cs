@@ -30,6 +30,9 @@ namespace Finance
                 entAmountPeriod.Keyboard = Keyboard.Text;
                 entCapitalFinal.Keyboard = Keyboard.Text;
             }
+
+            // Reset the entry fields
+            ResetEntryFields(null, null);
         }
 
         /// <summary>
@@ -41,6 +44,19 @@ namespace Finance
         private void OnPageLoaded(object sender, EventArgs e)
         {
             _ = entCapitalInitial.Focus();
+        }
+
+        /// <summary>
+        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryFocused(entry);
+            }
         }
 
         /// <summary>
@@ -88,7 +104,7 @@ namespace Finance
         {
             if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
             {
-                entry.Text = "0";
+                entry.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
             }
         }
 
@@ -157,9 +173,9 @@ namespace Finance
             }
 
             // Set decimal places for the Entry controls and values passed by reference
-            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "F");
-            entAmountPeriod.Text = Globals.RoundToNumDecimals(ref nAmountPeriod, nNumDec, "F");
-            entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nCapitalFinal, nNumDec, "F");
+            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N");
+            entAmountPeriod.Text = Globals.RoundToNumDecimals(ref nAmountPeriod, nNumDec, "N");
+            entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nCapitalFinal, nNumDec, "N");
 
             // Initialize variables
             double nInterestAmount;
@@ -179,13 +195,13 @@ namespace Finance
                 {
                     nInterestAmount = nDurationYears * nAmountPeriod - nCapitalInitial;
                     nInterimCalculation = nAmountPeriod * nDurationYears;
-                    entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "F");
+                    entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "N");
                 }
                 else if (nCapitalFinal != 0)
                 {
                     nInterestAmount = nCapitalFinal - nCapitalInitial;
                     nInterimCalculation = nCapitalFinal / nDurationYears;
-                    entAmountPeriod.Text = Globals.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "F");
+                    entAmountPeriod.Text = Globals.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "N");
                 }
                 else
                 {
@@ -219,10 +235,10 @@ namespace Finance
         /// <param name="e"></param>
         private void ResetEntryFields(object? sender, EventArgs? e)
         {
-            entCapitalInitial.Text = "";
+            entCapitalInitial.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
             entDurationYears.Text = "1";
-            entAmountPeriod.Text = "0";
-            entCapitalFinal.Text = "0";
+            entAmountPeriod.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
+            entCapitalFinal.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
             lblInterestRate.Text = "";
 
             _ = entCapitalInitial.Focus();

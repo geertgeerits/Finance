@@ -42,6 +42,19 @@
         }
 
         /// <summary>
+        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryFocused(entry);
+            }
+        }
+
+        /// <summary>
         /// Test if the text is a numeric value and clear result fields if the text have changed 
         /// </summary>
         /// <param name="sender"></param>
@@ -108,8 +121,8 @@
             int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
             // Set decimal places for the Entry controls and values passed by reference
-            entValue1.Text = Globals.RoundToNumDecimals(ref nValue1, nNumDec, "F");
-            entValue2.Text = Globals.RoundToNumDecimals(ref nValue2, nNumDec, "F");
+            entValue1.Text = Globals.RoundToNumDecimals(ref nValue1, nNumDec, "N");
+            entValue2.Text = Globals.RoundToNumDecimals(ref nValue2, nNumDec, "N");
 
             // Calculate the difference
             decimal nValuePercDifference;

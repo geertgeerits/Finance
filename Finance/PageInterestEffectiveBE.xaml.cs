@@ -42,6 +42,19 @@ namespace Finance
         }
 
         /// <summary>
+        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryFocused(entry);
+            }
+        }
+
+        /// <summary>
         /// Test if the text is a numeric value and clear result fields if the text have changed
         /// </summary>
         /// <param name="sender"></param>
@@ -117,8 +130,8 @@ namespace Finance
             int nPercDec = int.Parse(Globals.cPercDecimalDigits);
 
             // Set decimal places for the Entry controls and values passed by reference
-            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "F");
-            entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nCapitalFinal, nNumDec, "F");
+            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N");
+            entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nCapitalFinal, nNumDec, "N");
 
             // Calculating the effective interest
             double nAmountDifference;

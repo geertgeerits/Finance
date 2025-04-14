@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Finance
+﻿namespace Finance
 {
     public sealed partial class PageLoanDetail : ContentPage
     {
@@ -81,6 +79,19 @@ namespace Finance
         }
 
         /// <summary>
+        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryFocused(entry);
+            }
+        }
+
+        /// <summary>
         /// Test if the text is a numeric value and clear result fields if the text have changed
         /// </summary>
         /// <param name="sender"></param>
@@ -145,6 +156,7 @@ namespace Finance
                 return;
             }
 
+            Globals.FormatTextEntryFocused(entCapitalInitial);
             entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
             if (!bIsNumber || nCapitalInitial < 1 || nCapitalInitial >= 1_000_000_000_000)
@@ -187,7 +199,7 @@ namespace Finance
 
             // Set decimal places for the entry controls and values passed by reference
             entInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "F");
-            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "F");
+            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N");
 
             // Clear result fields
             lblAmountPeriod.Text = "";

@@ -7,7 +7,6 @@
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
 
-using System.Diagnostics;
 #if IOS
 using Foundation;
 #endif
