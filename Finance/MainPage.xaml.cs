@@ -113,9 +113,11 @@ namespace Finance
             }
             //App.Current.MainPage.DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");  // For testing
 
-            //// Get the number decimal separator
+            //// Get the number decimal separator and the group separator
             Globals.cNumDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+            string cNumGroupDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator);
             Debug.WriteLine($"Number Decimal Separator: {Globals.cNumDecimalSeparator}");
+            Debug.WriteLine($"Number Group Separator: {cNumGroupDecimalSeparator}");
 
             //// Get the number of decimal digits after the decimal point
             if (string.IsNullOrEmpty(Globals.cNumDecimalDigits))

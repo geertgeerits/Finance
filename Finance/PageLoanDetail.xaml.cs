@@ -98,6 +98,12 @@
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
+            // Correct the decimal separator before processing
+            Entry entry = (Entry)sender;
+            Globals.ReplaceDecimalPointComma(entry.Text);
+            Debug.WriteLine($"cText: {entry.Text}");
+
+            // Test if the text is a numeric value
             if (!Globals.IsNumeric(e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
@@ -156,8 +162,8 @@
                 return;
             }
 
-            //Globals.FormatTextEntryFocused(entCapitalInitial);
-            entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
+            Globals.FormatTextEntryFocused(entCapitalInitial);
+            //entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
             if (!bIsNumber || nCapitalInitial < 1 || nCapitalInitial >= 1_000_000_000_000)
             {
@@ -581,7 +587,7 @@
         /// <param name="e"></param>
         private void OnPickerExportTypeChanged(object sender, EventArgs e)
         {
-            var picker = (Picker)sender;
+            Picker picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)

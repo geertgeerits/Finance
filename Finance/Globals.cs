@@ -104,6 +104,22 @@ namespace Finance
                 {
                     return false;
                 }
+
+                // Check if the character is a negative sign - If the negative sign is not found at the first position (index 0), the condition evaluates to false
+                if (c == '-' && cText.IndexOf(c) != 0)
+                {
+                    return false;
+                }
+
+                // Check if the character is a decimal separator
+                if (c == cNumDecimalSeparator[0])
+                {
+                    // Check if the character is already in the string
+                    if (cText.IndexOf(c) != cText.LastIndexOf(c))
+                    {
+                        return false;
+                    }
+                }
             }
 
             return true;
