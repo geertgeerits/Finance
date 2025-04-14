@@ -52,6 +52,25 @@ namespace Finance
         }
 
         /// <summary>
+        /// Format the text value without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                if (decimal.TryParse(entry.Text, out decimal nValue))
+                {
+                    entry.Text = Globals.RoundToNumDecimals(ref nValue, int.Parse(Globals.cNumDecimalDigits), "F");
+                }
+
+                entry.CursorPosition = 0;
+                entry.SelectionLength = entry.Text.Length;
+            }
+        }
+
+        /// <summary>
         /// Test if the text is a numeric value and clear result fields if the text have changed 
         /// </summary>
         /// <param name="sender"></param>
@@ -116,7 +135,7 @@ namespace Finance
 
             // Set decimal places for the Entry controls and values passed by reference
             entPercentage.Text = Globals.RoundToNumDecimals(ref nPercentage, nPercDec, "F");
-            entAmountNet.Text = Globals.RoundToNumDecimals(ref nAmountNet, nNumDec, "F");
+            entAmountNet.Text = Globals.RoundToNumDecimals(ref nAmountNet, nNumDec, "N");
 
             // Calculate the net amount
             if (nPercentage == 0)

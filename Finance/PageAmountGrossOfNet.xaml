@@ -86,6 +86,7 @@
                         Text=""
                         Placeholder="0 - 999999999999"
                         MaxLength="21"
+                        Focused="EntryFocused"
                         Completed="CalculateResult"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
