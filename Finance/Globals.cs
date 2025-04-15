@@ -138,7 +138,23 @@ namespace Finance
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F");
+                // Ensure AutomationId is set before accessing it
+                if (string.IsNullOrEmpty(entry.AutomationId))
+                {
+                    entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F");
+                }
+                else
+                {
+                    switch (entry.AutomationId)
+                    {
+                        case "Percentage":
+                            entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cPercDecimalDigits), "F");
+                            break;
+                        default:
+                            entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F");
+                            break;
+                    }
+                }
 
                 entry.CursorPosition = 0;
                 entry.SelectionLength = entry.Text.Length;
@@ -156,11 +172,31 @@ namespace Finance
                 return;
             }
 
+            // Replace decimal point with decimal comma or point
             entry.Text = ReplaceDecimalPointComma(entry.Text);
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N");
+                // Ensure AutomationId is set before accessing it
+                if (string.IsNullOrEmpty(entry.AutomationId))
+                {
+                    entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N");
+                }
+                else
+                {
+                    switch (entry.AutomationId)
+                    {
+                        case "Percentage":
+                            entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cPercDecimalDigits), "N");
+                            break;
+                        default:
+                            entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N");
+                            break;
+                    }
+                }
+
+                entry.CursorPosition = 0;
+                entry.SelectionLength = entry.Text.Length;
             }
             else
             {
@@ -201,7 +237,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Replace decimal point with decimal comma - The number may NOT be formatted with the 'N' specifier because there can be more than 1 separator
+        /// Replace decimal point with decimal comma or point - The number may NOT be formatted with the 'N' specifier because there can be more than 1 separator
         /// </summary>
         /// <param name="cNumber"></param>
         /// <returns></returns>

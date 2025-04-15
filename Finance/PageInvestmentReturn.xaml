@@ -159,6 +159,7 @@
 
                     <Entry
                         x:Name="entPercentageReturnYear"
+                        AutomationId="Percentage"
                         Style="{StaticResource entryStyleNumericDone}"
                         Text="0"
                         Placeholder="0 - 9999"

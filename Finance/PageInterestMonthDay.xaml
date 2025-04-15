@@ -76,6 +76,7 @@
 
                     <Entry
                         x:Name="entInterestRate"
+                        AutomationId="Percentage"
                         Style="{StaticResource entryStyleNumericDone}"
                         Text=""
                         Placeholder="0 - 100"

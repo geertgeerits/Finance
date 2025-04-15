@@ -47,6 +47,7 @@
 
                     <Entry
                         x:Name="entPaymentDiscount"
+                        AutomationId="Percentage"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text=""
                         Placeholder="0 - 100"
