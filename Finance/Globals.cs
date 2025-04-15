@@ -126,7 +126,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="entry"></param>
         public static void FormatTextEntryFocused(Entry entry)
@@ -146,7 +146,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Format the text value for a numeric entry field with the number separator
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
         /// </summary>
         /// <param name="entry"></param>
         public static void FormatTextEntryUnfocused(Entry entry)

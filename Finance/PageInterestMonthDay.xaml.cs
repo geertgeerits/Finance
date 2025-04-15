@@ -40,17 +40,38 @@ namespace Finance
         }
 
         /// <summary>
+        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryFocused(entry);
+            }
+        }
+
+        /// <summary>
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryUnfocused(entry);
+            }
+        }
+
+        /// <summary>
         /// Test if the text is a numeric value and clear result fields if the text have changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric(e.NewTextValue))
-            {
-                ((Entry)sender).Text = e.OldTextValue;
-            }
-
             lblInterestMonth.Text = "";
             lblInterestDay365.Text = "";
             lblInterestDay366.Text = "";
@@ -85,7 +106,6 @@ namespace Finance
                 return;
             }
 
-            entInterestRate.Text = Globals.ReplaceDecimalPointComma(entInterestRate.Text);
             bIsNumber = double.TryParse(entInterestRate.Text, out double nInterestRate);
             if (!bIsNumber || nInterestRate < 0 || nInterestRate > 100)
             {
@@ -97,9 +117,6 @@ namespace Finance
             // Close the keyboard
             entInterestRate.IsEnabled = false;
             entInterestRate.IsEnabled = true;
-
-            // Set decimal places for the Entry controls and values passed by reference
-            entInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "F");
 
             double nInterestMonth = 0;
             double nInterestDay365 = 0;

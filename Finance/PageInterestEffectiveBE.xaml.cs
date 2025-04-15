@@ -42,7 +42,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,17 +55,25 @@ namespace Finance
         }
 
         /// <summary>
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryUnfocused(entry);
+            }
+        }
+
+        /// <summary>
         /// Test if the text is a numeric value and clear result fields if the text have changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric(e.NewTextValue))
-            {
-                ((Entry)sender).Text = e.OldTextValue;
-            }
-
             lblAmountDifference.Text = "";
             lblInterestEffective.Text = "";
         }
@@ -95,7 +103,6 @@ namespace Finance
         private void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
-            entCapitalInitial.Text = Globals.ReplaceDecimalPointComma(entCapitalInitial.Text);
             bool bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
             if (!bIsNumber || nCapitalInitial < 0 || nCapitalInitial >= 1_000_000_000_000)
             {
@@ -104,7 +111,6 @@ namespace Finance
                 return;
             }
 
-            entCapitalFinal.Text = Globals.ReplaceDecimalPointComma(entCapitalFinal.Text);
             bIsNumber = double.TryParse(entCapitalFinal.Text, out double nCapitalFinal);
             if (!bIsNumber || nCapitalFinal < 0 || nCapitalFinal >= 1_000_000_000_000)
             {
@@ -128,10 +134,6 @@ namespace Finance
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(Globals.cNumDecimalDigits);
             int nPercDec = int.Parse(Globals.cPercDecimalDigits);
-
-            // Set decimal places for the Entry controls and values passed by reference
-            entCapitalInitial.Text = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N");
-            entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nCapitalFinal, nNumDec, "N");
 
             // Calculating the effective interest
             double nAmountDifference;

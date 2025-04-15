@@ -42,7 +42,7 @@
         }
 
         /// <summary>
-        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,17 +55,25 @@
         }
 
         /// <summary>
-        /// Test if the text is a numeric value and clear result fields if the text have changed 
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryUnfocused(entry);
+            }
+        }
+
+        /// <summary>
+        /// Clear result fields if the text have changed 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric(e.NewTextValue))
-            {
-                ((Entry)sender).Text = e.OldTextValue;
-            }
-
             lblValueDifference.Text = "";
             lblValuePercDifference.Text = "";
             lblValuePercDiffValue1.Text = "";
@@ -93,7 +101,6 @@
         private void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
-            entValue1.Text = Globals.ReplaceDecimalPointComma(entValue1.Text);
             bool bIsNumber = decimal.TryParse(entValue1.Text, out decimal nValue1);
             if (!bIsNumber || nValue1 <= -1_000_000_000_000 || nValue1 >= 1_000_000_000_000)
             {
@@ -102,7 +109,6 @@
                 return;
             }
 
-            entValue2.Text = Globals.ReplaceDecimalPointComma(entValue2.Text);
             bIsNumber = decimal.TryParse(entValue2.Text, out decimal nValue2);
             if (!bIsNumber || nValue2 <= -1_000_000_000_000 || nValue2 >= 1_000_000_000_000)
             {
@@ -119,10 +125,6 @@
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(Globals.cNumDecimalDigits);
             int nPercDec = int.Parse(Globals.cPercDecimalDigits);
-
-            // Set decimal places for the Entry controls and values passed by reference
-            entValue1.Text = Globals.RoundToNumDecimals(ref nValue1, nNumDec, "N");
-            entValue2.Text = Globals.RoundToNumDecimals(ref nValue2, nNumDec, "N");
 
             // Calculate the difference
             decimal nValuePercDifference;

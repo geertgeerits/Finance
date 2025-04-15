@@ -46,12 +46,33 @@ namespace Finance
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric(e.NewTextValue))
-            {
-                ((Entry)sender).Text = e.OldTextValue;
-            }
-
             lblInterestEffective.Text = "";
+        }
+
+        /// <summary>
+        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryFocused(entry);
+            }
+        }
+
+        /// <summary>
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryUnfocused(entry);
+            }
         }
 
         /// <summary>
@@ -72,19 +93,6 @@ namespace Finance
         }
 
         /// <summary>
-        /// Set the entry field to 0 if the field is empty when it lose focus
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryUnfocused(object sender, FocusEventArgs e)
-        {
-            if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
-            {
-                entry.Text = "0";
-            }
-        }
-
-        /// <summary>
         /// Calculate the result 
         /// </summary>
         /// <param name="sender"></param>
@@ -92,7 +100,6 @@ namespace Finance
         private void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
-            entPaymentDiscount.Text = Globals.ReplaceDecimalPointComma(entPaymentDiscount.Text);
             bool bIsNumber = decimal.TryParse(entPaymentDiscount.Text, out decimal nPaymentDiscount);
             if (!bIsNumber || nPaymentDiscount < 0 || nPaymentDiscount > 100)
             {
@@ -124,9 +131,6 @@ namespace Finance
 
             // Convert string to int for number of decimal digits after decimal point
             int nPercDec = int.Parse(Globals.cPercDecimalDigits);
-
-            // Set decimal places for the Entry controls and values passed by reference
-            entPaymentDiscount.Text = Globals.RoundToNumDecimals(ref nPaymentDiscount, nPercDec, "F");
 
             decimal nInterestEffective;
 

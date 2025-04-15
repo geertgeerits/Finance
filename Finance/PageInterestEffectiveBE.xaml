@@ -52,6 +52,7 @@
                         Placeholder="0 - 999999999999"
                         MaxLength="21"
                         Focused="EntryFocused"
+                        Unfocused="EntryUnfocused"
                         Completed="GoToNextField"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
@@ -82,6 +83,7 @@
                         Placeholder="0 - 999999999999"
                         MaxLength="21"
                         Focused="EntryFocused"
+                        Unfocused="EntryUnfocused"
                         Completed="GoToNextField"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>

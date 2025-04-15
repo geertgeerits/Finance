@@ -40,17 +40,38 @@ namespace Finance
         }
 
         /// <summary>
-        /// Test if the text is a numeric value and clear result fields if the text have changed
+        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryFocused(entry);
+            }
+        }
+
+        /// <summary>
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryUnfocused(entry);
+            }
+        }
+
+        /// <summary>
+        /// Clear result fields if the text have changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric(e.NewTextValue))
-            {
-                ((Entry)sender).Text = e.OldTextValue;
-            }
-
             lblInterestEffective.Text = "";
         }
 
@@ -75,7 +96,6 @@ namespace Finance
         private void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
-            entInterestRate.Text = Globals.ReplaceDecimalPointComma(entInterestRate.Text);
             bool bIsNumber = double.TryParse(entInterestRate.Text, out double nInterestRate);
             if (!bIsNumber || nInterestRate < 0 || nInterestRate > 100)
             {
@@ -98,9 +118,6 @@ namespace Finance
 
             // Convert string to int for number of decimal digits after decimal point
             int nPercDec = int.Parse(Globals.cPercDecimalDigits);
-
-            // Set decimal places for the Entry controls and values passed by reference
-            entInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "F");
 
             // Calculating the effective interest
             double nInterestEffective;

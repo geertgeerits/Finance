@@ -49,7 +49,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -62,28 +62,15 @@ namespace Finance
         }
 
         /// <summary>
-        /// Set the entry field to 0 if the field is empty when it lose focus
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EntryUnfocused(object sender, FocusEventArgs e)
         {
-            if (sender is Entry entry && string.IsNullOrEmpty(entry.Text))
+            if (sender is Entry entry)
             {
-                entry.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
-            }
-        }
-
-        /// <summary>
-        /// Test if the text is a numeric value
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EntryTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!Globals.IsNumeric(e.NewTextValue))
-            {
-                ((Entry)sender).Text = e.OldTextValue;
+                Globals.FormatTextEntryUnfocused(entry);
             }
         }
 
@@ -115,7 +102,6 @@ namespace Finance
         /// <param name="e"></param>
         private void CalculateResult(object sender, EventArgs e)
         {
-            entVATPercentage.Text = Globals.ReplaceDecimalPointComma(entVATPercentage.Text);
             bool bIsNumber = decimal.TryParse(entVATPercentage.Text, out decimal nVATPercentage);
             if (!bIsNumber || nVATPercentage < 0 || nVATPercentage >= 100_000)
             {
@@ -124,7 +110,6 @@ namespace Finance
                 return;
             }
 
-            entVATAmountExclusive.Text = Globals.ReplaceDecimalPointComma(entVATAmountExclusive.Text);
             bIsNumber = decimal.TryParse(entVATAmountExclusive.Text, out decimal nVATAmountExclusive);
             if (!bIsNumber || nVATAmountExclusive < 0 || nVATAmountExclusive >= 1_000_000_000_000)
             {
@@ -133,7 +118,6 @@ namespace Finance
                 return;
             }
 
-            entVATAmount.Text = Globals.ReplaceDecimalPointComma(entVATAmount.Text);
             bIsNumber = decimal.TryParse(entVATAmount.Text, out decimal nVATAmount);
             if (!bIsNumber || nVATAmount < 0 || nVATAmount >= 1_000_000_000_000)
             {
@@ -142,7 +126,6 @@ namespace Finance
                 return;
             }
 
-            entVATAmountIncluded.Text = Globals.ReplaceDecimalPointComma(entVATAmountIncluded.Text);
             bIsNumber = decimal.TryParse(entVATAmountIncluded.Text, out decimal nVATAmountIncluded);
             if (!bIsNumber || nVATAmountIncluded < 0 || nVATAmountIncluded >= 1_000_000_000_000)
             {
@@ -160,12 +143,6 @@ namespace Finance
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(Globals.cNumDecimalDigits);
             int nPercDec = int.Parse(Globals.cPercDecimalDigits);
-
-            // Set decimal places for the Entry controls and values passed by reference
-            entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "N");
-            entVATAmountExclusive.Text = Globals.RoundToNumDecimals(ref nVATAmountExclusive, nNumDec, "N");
-            entVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "N");
-            entVATAmountIncluded.Text = Globals.RoundToNumDecimals(ref nVATAmountIncluded, nNumDec, "N");
 
             // Calculate the VAT fields
             /* Possible combinations

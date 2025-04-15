@@ -50,7 +50,7 @@ namespace Finance
         }
 
         /// <summary>
-        /// Format the text value for a numeric entry field without the number separator and select the entire text value
+        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -62,31 +62,26 @@ namespace Finance
             }
         }
 
-        ///// <summary>
-        ///// Format the text value for a numeric entry field with the number separator
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void EntryUnfocused(object sender, FocusEventArgs e)
-        //{
-        //    if (sender is Entry entry)
-        //    {
-        //        Globals.FormatTextEntryUnfocused(entry);
-        //    }
-        //}
+        /// <summary>
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                Globals.FormatTextEntryUnfocused(entry);
+            }
+        }
 
         /// <summary>
-        /// Test if the text is a numeric value and clear result fields if the text have changed 
+        /// Clear result fields if the text have changed 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric(e.NewTextValue))
-            {
-                ((Entry)sender).Text = e.OldTextValue;
-            }
-
             lblAmountDifference.Text = "";
             lblAmountGross.Text = "";
         }
@@ -112,7 +107,6 @@ namespace Finance
         private void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
-            entPercentage.Text = Globals.ReplaceDecimalPointComma(entPercentage.Text);
             bool bIsNumber = decimal.TryParse(entPercentage.Text, out decimal nPercentage);
             if (!bIsNumber || nPercentage < 0 || nPercentage >= 100)
             {
@@ -121,7 +115,6 @@ namespace Finance
                 return;
             }
 
-            entAmountNet.Text = Globals.ReplaceDecimalPointComma(entAmountNet.Text);
             bIsNumber = decimal.TryParse(entAmountNet.Text, out decimal nAmountNet);
             if (!bIsNumber || nAmountNet < 0 || nAmountNet >= 1_000_000_000_000)
             {
@@ -137,10 +130,6 @@ namespace Finance
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(Globals.cNumDecimalDigits);
             int nPercDec = int.Parse(Globals.cPercDecimalDigits);
-
-            // Set decimal places for the Entry controls and values passed by reference
-            entPercentage.Text = Globals.RoundToNumDecimals(ref nPercentage, nPercDec, "F");
-            entAmountNet.Text = Globals.RoundToNumDecimals(ref nAmountNet, nNumDec, "N");
 
             // Calculate the net amount
             if (nPercentage == 0)
