@@ -38,6 +38,7 @@ namespace Finance
 
             //// Set the Placeholder and MaxLength for the numeric entry field
             Globals.SetEntryProperties(entPercentageReturnYear, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            EntryFocused(entPercentageReturnYear, null);
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryFocused(object sender, FocusEventArgs e)
+        private void EntryFocused(object sender, FocusEventArgs? e)
         {
             if (sender is Entry entry)
             {
