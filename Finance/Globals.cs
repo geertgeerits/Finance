@@ -126,56 +126,48 @@ namespace Finance
         }
 
         /// <summary>
-        /// Replace decimal point with decimal comma - The number may NOT be formatted with the 'N' specifier because there can be more than 1 separator
-        /// </summary>
-        /// <param name="cNumber"></param>
-        /// <returns></returns>
-        public static string ReplaceDecimalPointComma(string cNumber)
-        {
-            // Check if the string cNumber is a number
-            if (string.IsNullOrEmpty(cNumber) || !double.TryParse(cNumber, out _))
-            {
-                return cNumber;
-            }
-
-            if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
-            {
-                cNumber = cNumber.Replace(".", ",");
-            }
-            else if (cNumDecimalSeparator == "." && cNumber.Contains(','))
-            {
-                cNumber = cNumber.Replace(",", ".");
-            }
-
-            return cNumber;
-        }
-
-        /// <summary>
         /// Format the text value for a numeric entry field without the number separator and select the entire text value
         /// </summary>
         /// <param name="entry"></param>
         public static void FormatTextEntryFocused(Entry entry)
         {
+            if (string.IsNullOrEmpty(entry.Text))
+            {
+                return;
+            }
+
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
                 entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F");
-            }
 
-            entry.CursorPosition = 0;
-            entry.SelectionLength = entry.Text.Length;
+                entry.CursorPosition = 0;
+                entry.SelectionLength = entry.Text.Length;
+            }
         }
 
-        ///// <summary>
-        ///// Format the text value for a numeric entry field with the number separator
-        ///// </summary>
-        ///// <param name="entry"></param>
-        //public static void FormatTextEntryUnfocused(Entry entry)
-        //{
-        //    if (decimal.TryParse(entry.Text, out decimal nValue))
-        //    {
-        //        entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N");
-        //    }
-        //}
+        /// <summary>
+        /// Format the text value for a numeric entry field with the number separator
+        /// </summary>
+        /// <param name="entry"></param>
+        public static void FormatTextEntryUnfocused(Entry entry)
+        {
+            if (string.IsNullOrEmpty(entry.Text))
+            {
+                return;
+            }
+
+            entry.Text = ReplaceDecimalPointComma(entry.Text);
+
+            if (decimal.TryParse(entry.Text, out decimal nValue))
+            {
+                entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N");
+            }
+            else
+            {
+                entry.Text = "";
+                entry.Focus();
+            }
+        }
 
         /// <summary>
         /// Set the Placeholder and MaxLength for a numeric entry field
@@ -206,6 +198,31 @@ namespace Finance
             entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length : cValueFrom.Length;
 
             Debug.WriteLine($"entry.MaxLength: {entry.MaxLength}");
+        }
+
+        /// <summary>
+        /// Replace decimal point with decimal comma - The number may NOT be formatted with the 'N' specifier because there can be more than 1 separator
+        /// </summary>
+        /// <param name="cNumber"></param>
+        /// <returns></returns>
+        public static string ReplaceDecimalPointComma(string cNumber)
+        {
+            // Check if the string cNumber is a number
+            if (string.IsNullOrEmpty(cNumber) || !double.TryParse(cNumber, out _))
+            {
+                return cNumber;
+            }
+
+            if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
+            {
+                cNumber = cNumber.Replace(".", ",");
+            }
+            else if (cNumDecimalSeparator == "." && cNumber.Contains(','))
+            {
+                cNumber = cNumber.Replace(",", ".");
+            }
+
+            return cNumber;
         }
 
         /* Rounding numbers
