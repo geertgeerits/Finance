@@ -26,6 +26,9 @@ namespace Finance
             {
                 entPaymentDiscount.Keyboard = Keyboard.Text;
             }
+
+            //// Set the Placeholder and MaxLength for the numeric entry field
+            Globals.SetEntryProperties(entPaymentDiscount, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
         }
 
         /// <summary>

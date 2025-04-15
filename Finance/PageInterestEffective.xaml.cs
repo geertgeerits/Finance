@@ -26,6 +26,9 @@ namespace Finance
             {
                 entInterestRate.Keyboard = Keyboard.Text;
             }
+
+            //// Set the Placeholder and MaxLength for the numeric entry field
+            Globals.SetEntryProperties(entInterestRate, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
         }
 
         /// <summary>

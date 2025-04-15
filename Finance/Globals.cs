@@ -194,9 +194,6 @@ namespace Finance
                             break;
                     }
                 }
-
-                entry.CursorPosition = 0;
-                entry.SelectionLength = entry.Text.Length;
             }
             else
             {

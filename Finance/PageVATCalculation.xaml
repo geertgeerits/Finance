@@ -47,6 +47,7 @@
 
                     <Entry
                         x:Name="entVATPercentage"
+                        AutomationId="Percentage"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="0"
                         Placeholder="0 - 99999"
