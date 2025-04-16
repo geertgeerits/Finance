@@ -82,6 +82,19 @@ namespace Finance
         }
 
         /// <summary>
+        /// Check if the value is numeric and clear result fields if the text have changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EntryTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!Globals.IsNumeric(e.NewTextValue))
+            {
+                ((Entry)sender).Text = e.OldTextValue;
+            }
+        }
+
+        /// <summary>
         /// Go to the next field when the return key have been pressed 
         /// </summary>
         /// <param name="sender"></param>

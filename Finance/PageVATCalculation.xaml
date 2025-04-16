@@ -54,7 +54,8 @@
                         MaxLength="14"
                         Focused="EntryFocused"
                         Unfocused="EntryUnfocused"
-                        Completed="GoToNextField">
+                        Completed="GoToNextField"
+                        TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="99999" BorderName="brdVATPercentage"/>
@@ -90,7 +91,8 @@
                         MaxLength="21"
                         Focused="EntryFocused"
                         Unfocused="EntryUnfocused"
-                        Completed="GoToNextField">
+                        Completed="GoToNextField"
+                        TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdVATAmountExclusive"/>
@@ -120,7 +122,8 @@
                         MaxLength="21"
                         Focused="EntryFocused"
                         Unfocused="EntryUnfocused"
-                        Completed="GoToNextField">
+                        Completed="GoToNextField"
+                        TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdVATAmountExclusive"/>
@@ -150,7 +153,8 @@
                         MaxLength="21"
                         Focused="EntryFocused"
                         Unfocused="EntryUnfocused"
-                        Completed="CalculateResult">
+                        Completed="CalculateResult"
+                        TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdVATAmountIncluded"/>

@@ -76,12 +76,17 @@ namespace Finance
         }
 
         /// <summary>
-        /// Clear result fields if the text have changed 
+        /// Check if the value is numeric and clear result fields if the text have changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!Globals.IsNumeric(e.NewTextValue))
+            {
+                ((Entry)sender).Text = e.OldTextValue;
+            }
+
             lblAmountDifference.Text = "";
             lblAmountGross.Text = "";
         }

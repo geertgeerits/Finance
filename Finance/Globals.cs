@@ -105,8 +105,8 @@ namespace Finance
                     return false;
                 }
 
-                // Check if the character is a negative sign - If the negative sign is not found at the first position (index 0), the condition evaluates to false
-                if (c == '-' && cText.IndexOf(c) != 0)
+                // Check if the character is a negative sign - the negative sign must be at the first position (index 0)
+                if (c == '-' && !cText.StartsWith(c))
                 {
                     return false;
                 }

@@ -66,7 +66,8 @@
                         MaxLength="12"
                         Focused="EntryFocused"
                         Unfocused="EntryUnfocused"
-                        Completed="GoToNextField">
+                        Completed="GoToNextField"
+                        TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdInterestRate"/>
@@ -103,7 +104,8 @@
                         MaxLength="21"
                         Focused="EntryFocused"
                         Unfocused="EntryUnfocused"
-                        Completed="GoToNextField">
+                        Completed="GoToNextField"
+                        TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="1" MaxValue="999999999999" BorderName="brdCapitalInitial"/>
@@ -132,7 +134,8 @@
                         Text=""
                         Placeholder="1 - 100"
                         MaxLength="3"
-                        Completed="GoToNextField">
+                        Completed="GoToNextField"
+                        TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="1" MaxValue="100" BorderName="brdDurationYears"/>
@@ -161,7 +164,8 @@
                         Text="12"
                         Placeholder="1-2-3-4-6-12"
                         MaxLength="2"
-                        Completed="CalculateResult">
+                        Completed="CalculateResult"
+                        TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="1" MaxValue="12" BorderName="brdPeriodsYear"/>
