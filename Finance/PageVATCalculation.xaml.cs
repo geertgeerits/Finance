@@ -38,6 +38,9 @@ namespace Finance
 
             //// Set the Placeholder and MaxLength for the numeric entry field
             Globals.SetEntryProperties(entVATPercentage, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+
+            //// Format the text value for a numeric entry without the number separator and select the entire text value
+            //   This is necessary if the default value of the field is 0
             EntryFocused(entVATPercentage, null);
         }
 
@@ -109,7 +112,7 @@ namespace Finance
             bool bIsNumber = decimal.TryParse(entVATPercentage.Text, out decimal nVATPercentage);
             if (!bIsNumber || nVATPercentage < 0 || nVATPercentage >= 100_000)
             {
-                entVATPercentage.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
+                entVATPercentage.Text = 0.ToString("F" + Globals.cPercDecimalDigits);
                 _ = entVATPercentage.Focus();
                 return;
             }
@@ -211,7 +214,7 @@ namespace Finance
                     nVATPercentage = nVATAmount / nVATAmountExclusive * 100;
 
                     entVATPercentage.Text = Globals.RoundToNumDecimals(ref nVATPercentage, nPercDec, "N");
-                    entVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nPercDec, "N");
+                    entVATAmount.Text = Globals.RoundToNumDecimals(ref nVATAmount, nNumDec, "N");
                 }
 
                 // 3+4 Amount VAT +amount VAT included - Calculate VAT percentage and VAT amount exclusive
@@ -250,7 +253,7 @@ namespace Finance
         /// <param name="e"></param>
         private void ResetEntryFields(object? sender, EventArgs? e)
         {
-            entVATPercentage.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
+            entVATPercentage.Text = 0.ToString("F" + Globals.cPercDecimalDigits);
             entVATAmountExclusive.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
             entVATAmount.Text = 0.ToString("F" + Globals.cNumDecimalDigits );
             entVATAmountIncluded.Text = 0.ToString("F" + Globals.cNumDecimalDigits);

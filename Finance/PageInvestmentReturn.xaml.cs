@@ -38,6 +38,9 @@ namespace Finance
 
             //// Set the Placeholder and MaxLength for the numeric entry field
             Globals.SetEntryProperties(entPercentageReturnYear, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+
+            //// Format the text value for a numeric entry without the number separator and select the entire text value
+            //   This is necessary if the default value of the field is 0
             EntryFocused(entPercentageReturnYear, null);
         }
 
@@ -227,7 +230,7 @@ namespace Finance
             entAmountCost.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
             lblAmountTotal.Text = "";
             entAmountRevenueYear.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
-            entPercentageReturnYear.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
+            entPercentageReturnYear.Text = 0.ToString("F" + Globals.cPercDecimalDigits);
 
             _ = entAmountPurchase.Focus();
         }
