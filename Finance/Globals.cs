@@ -92,6 +92,37 @@ namespace Finance
         }
 
         /// <summary>
+        /// Set the Placeholder and MaxLength for a numeric entry field
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <param name="cWholeNumFrom"></param>
+        /// <param name="cDecDigetFrom"></param>
+        /// <param name="cWholeNumTo"></param>
+        /// <param name="cDecDigetTo"></param>
+        /// <param name="cNumberOfDecimals"></param>
+        /// <param name="cMaxNumberOfDecimals"></param>
+        public static void SetEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals)
+        {
+            if (!int.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !int.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals) || !int.TryParse(cMaxNumberOfDecimals, out int nMaxNumberOfDecimals))
+            {
+                return;
+            }
+
+            if (nNumberOfDecimals > nMaxNumberOfDecimals)
+            {
+                nNumberOfDecimals = nMaxNumberOfDecimals;
+            }
+
+            string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
+            string cValueTo = $"{cWholeNumTo}{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
+
+            entry.Placeholder = $"{cValueFrom} - {cValueTo}";
+            entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length : cValueFrom.Length;
+
+            Debug.WriteLine($"entry.MaxLength: {entry.MaxLength}");
+        }
+
+        /// <summary>
         /// Test if the text is a numeric value
         /// </summary>
         /// <param name="cText"></param>
@@ -120,21 +151,22 @@ namespace Finance
                         return false;
                     }
                 }
+            }
 
-                // Check the number of decimals after the decimal separator
-                var nDecimals = entry.AutomationId switch
-                {
-                    "Percentage" => int.Parse(cPercDecimalDigits),
-                    _ => int.Parse(cNumDecimalDigits),
-                };
+            // Check the number of decimals after the decimal separator
+            int nDecimals = entry.AutomationId switch
+            {
+                "Percentage" => int.Parse(cPercDecimalDigits),
+                _ => int.Parse(cNumDecimalDigits),
+            };
 
-                if (c == cNumDecimalSeparator[0])
+            // Search for the decimal separator in the string
+            if (cText.IndexOf(cNumDecimalSeparator[0]) != -1)
+            {
+                // Check if the number of decimals is greater than the allowed number of decimals
+                if (cText.Length - cText.IndexOf(cNumDecimalSeparator[0]) > nDecimals + 1)
                 {
-                    // Check if the number of decimals is greater than the allowed number of decimals
-                    if (cText.Length - cText.IndexOf(c) > nDecimals + 1)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 
@@ -194,37 +226,6 @@ namespace Finance
                 entry.Text = "";
                 entry.Focus();
             }
-        }
-
-        /// <summary>
-        /// Set the Placeholder and MaxLength for a numeric entry field
-        /// </summary>
-        /// <param name="entry"></param>
-        /// <param name="cWholeNumFrom"></param>
-        /// <param name="cDecDigetFrom"></param>
-        /// <param name="cWholeNumTo"></param>
-        /// <param name="cDecDigetTo"></param>
-        /// <param name="cNumberOfDecimals"></param>
-        /// <param name="cMaxNumberOfDecimals"></param>
-        public static void SetEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals)
-        {
-            if (!int.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !int.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals) || !int.TryParse(cMaxNumberOfDecimals, out int nMaxNumberOfDecimals))
-            {
-                return;
-            }
-
-            if (nNumberOfDecimals > nMaxNumberOfDecimals)
-            {
-                nNumberOfDecimals = nMaxNumberOfDecimals;
-            }
-
-            string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
-            string cValueTo = $"{cWholeNumTo}{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
-            
-            entry.Placeholder = $"{cValueFrom} - {cValueTo}";
-            entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length : cValueFrom.Length;
-
-            Debug.WriteLine($"entry.MaxLength: {entry.MaxLength}");
         }
 
         /// <summary>
