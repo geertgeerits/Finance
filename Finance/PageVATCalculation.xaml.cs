@@ -37,7 +37,7 @@ namespace Finance
             ResetEntryFields(null, null);
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entVATPercentage, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            Globals.SetEntryProperties(entVATPercentage, "0", "0", "999", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
 
             //// Format the text value for a numeric entry without the number separator and select the entire text value
             //   This is necessary if the default value of the field is 0
@@ -123,7 +123,7 @@ namespace Finance
         private void CalculateResult(object sender, EventArgs e)
         {
             bool bIsNumber = decimal.TryParse(entVATPercentage.Text, out decimal nVATPercentage);
-            if (!bIsNumber || nVATPercentage < 0 || nVATPercentage >= 100_000)
+            if (!bIsNumber || nVATPercentage < 0 || nVATPercentage >= 1_000)
             {
                 entVATPercentage.Text = 0.ToString("F" + Globals.cPercDecimalDigits);
                 _ = entVATPercentage.Focus();

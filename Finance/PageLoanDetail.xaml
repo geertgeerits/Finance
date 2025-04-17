@@ -108,7 +108,7 @@
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="1" MaxValue="999999999999" BorderName="brdCapitalInitial"/>
+                                <local:NumericValidationTriggerAction MinValue="1" MaxValue="999999999999.9999" BorderName="brdCapitalInitial"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

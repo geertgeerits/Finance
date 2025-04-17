@@ -50,15 +50,15 @@
                         AutomationId="Percentage"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="0"
-                        Placeholder="0 - 99999"
-                        MaxLength="14"
+                        Placeholder="0 - 999"
+                        MaxLength="12"
                         Focused="EntryFocused"
                         Unfocused="EntryUnfocused"
                         Completed="GoToNextField"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="99999" BorderName="brdVATPercentage"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999.99999999" BorderName="brdVATPercentage"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -95,7 +95,7 @@
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdVATAmountExclusive"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdVATAmountExclusive"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -126,7 +126,7 @@
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdVATAmountExclusive"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdVATAmountExclusive"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -157,7 +157,7 @@
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdVATAmountIncluded"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdVATAmountIncluded"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

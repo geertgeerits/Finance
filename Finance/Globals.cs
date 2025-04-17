@@ -139,22 +139,11 @@ namespace Finance
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
                 // Ensure AutomationId is set before accessing it
-                if (string.IsNullOrEmpty(entry.AutomationId))
+                entry.Text = entry.AutomationId switch
                 {
-                    entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F");
-                }
-                else
-                {
-                    switch (entry.AutomationId)
-                    {
-                        case "Percentage":
-                            entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cPercDecimalDigits), "F");
-                            break;
-                        default:
-                            entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F");
-                            break;
-                    }
-                }
+                    "Percentage" => RoundToNumDecimals(ref nValue, int.Parse(cPercDecimalDigits), "F"),
+                    _ => RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F"),
+                };
 
                 entry.CursorPosition = 0;
                 entry.SelectionLength = entry.Text.Length;
@@ -178,22 +167,11 @@ namespace Finance
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
                 // Ensure AutomationId is set before accessing it
-                if (string.IsNullOrEmpty(entry.AutomationId))
+                entry.Text = entry.AutomationId switch
                 {
-                    entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N");
-                }
-                else
-                {
-                    switch (entry.AutomationId)
-                    {
-                        case "Percentage":
-                            entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cPercDecimalDigits), "N");
-                            break;
-                        default:
-                            entry.Text = RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N");
-                            break;
-                    }
-                }
+                    "Percentage" => RoundToNumDecimals(ref nValue, int.Parse(cPercDecimalDigits), "N"),
+                    _ => RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N"),
+                };
             }
             else
             {
@@ -214,7 +192,7 @@ namespace Finance
         /// <param name="cMaxNumberOfDecimals"></param>
         public static void SetEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals)
         {
-            if (!int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals) || !int.TryParse(cMaxNumberOfDecimals, out int nMaxNumberOfDecimals))
+            if (!int.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !int.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals) || !int.TryParse(cMaxNumberOfDecimals, out int nMaxNumberOfDecimals))
             {
                 return;
             }

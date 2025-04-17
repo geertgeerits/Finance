@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using static Finance.PageLoanDetail;
+﻿using static Finance.PageLoanDetail;
 
 namespace Finance
 {

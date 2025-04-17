@@ -58,7 +58,7 @@
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdAmountPurchase"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdAmountPurchase"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -89,7 +89,7 @@
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdAmountCost"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdAmountCost"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -138,7 +138,7 @@
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999" BorderName="brdAmountRevenueYear"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdAmountRevenueYear"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -162,15 +162,15 @@
                         AutomationId="Percentage"
                         Style="{StaticResource entryStyleNumericDone}"
                         Text="0"
-                        Placeholder="0 - 9999"
-                        MaxLength="13"
+                        Placeholder="0 - 999"
+                        MaxLength="12"
                         Focused="EntryFocused"
                         Unfocused="EntryUnfocused"
                         Completed="CalculateResult"
                         TextChanged="EntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="9999" BorderName="brdPercentageReturnYear"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999.99999999" BorderName="brdPercentageReturnYear"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

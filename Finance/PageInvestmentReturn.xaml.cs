@@ -37,7 +37,7 @@ namespace Finance
             ResetEntryFields(null, null);
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entPercentageReturnYear, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            Globals.SetEntryProperties(entPercentageReturnYear, "0", "0", "999", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
 
             //// Format the text value for a numeric entry without the number separator and select the entire text value
             //   This is necessary if the default value of the field is 0
@@ -150,7 +150,7 @@ namespace Finance
             }
 
             bIsNumber = decimal.TryParse(entPercentageReturnYear.Text, out decimal nPercentageReturnYear);
-            if (!bIsNumber || nPercentageReturnYear < 0 || nPercentageReturnYear >= 10_000)
+            if (!bIsNumber || nPercentageReturnYear < 0 || nPercentageReturnYear >= 1_000)
             {
                 entPercentageReturnYear.Text = "";
                 _ = entPercentageReturnYear.Focus();
