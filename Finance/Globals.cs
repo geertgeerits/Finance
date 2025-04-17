@@ -96,7 +96,7 @@ namespace Finance
         /// </summary>
         /// <param name="cText"></param>
         /// <returns></returns>
-        public static bool IsNumeric(string cText)
+        public static bool IsNumeric(Entry entry, string cText)
         {
             foreach (char c in cText)
             {
@@ -116,6 +116,22 @@ namespace Finance
                 {
                     // Check if the character is already in the string
                     if (cText.IndexOf(c) != cText.LastIndexOf(c))
+                    {
+                        return false;
+                    }
+                }
+
+                // Check the number of decimals after the decimal separator
+                var nDecimals = entry.AutomationId switch
+                {
+                    "Percentage" => int.Parse(cPercDecimalDigits),
+                    _ => int.Parse(cNumDecimalDigits),
+                };
+
+                if (c == cNumDecimalSeparator[0])
+                {
+                    // Check if the number of decimals is greater than the allowed number of decimals
+                    if (cText.Length - cText.IndexOf(c) > nDecimals + 1)
                     {
                         return false;
                     }
