@@ -113,8 +113,14 @@ namespace Finance
                 nNumberOfDecimals = nMaxNumberOfDecimals;
             }
 
-            string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
-            string cValueTo = $"{cWholeNumTo}{cNumDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
+            string cDecimalSeparator = nNumberOfDecimals switch
+            {
+                0 => "",
+                _ => cNumDecimalSeparator,
+            };
+
+            string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
+            string cValueTo = $"{cWholeNumTo}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
 
             entry.Placeholder = $"{cValueFrom} - {cValueTo}";
             entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length : cValueFrom.Length;
