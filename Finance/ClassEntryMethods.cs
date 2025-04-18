@@ -115,7 +115,7 @@
             // Show the keyboard if it is not already shown
             if (!entry.IsSoftInputShowing())
             {
-                await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
+                _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
 
             if (string.IsNullOrEmpty(entry.Text))
@@ -172,7 +172,7 @@
         /// </summary>
         /// <param name="cNumber"></param>
         /// <returns></returns>
-        public static string ReplaceDecimalPointComma(string cNumber)
+        private static string ReplaceDecimalPointComma(string cNumber)
         {
             // Check if the string cNumber is a number
             if (string.IsNullOrEmpty(cNumber) || !double.TryParse(cNumber, out _))
@@ -261,25 +261,29 @@
         {
             if (Application.Current == null)
             {
-                throw new InvalidOperationException("Application.Current is null. Ensure the application is properly initialized.");
+#if DEBUG
+                Debug.WriteLine("Application.Current is null. Ensure the application is properly initialized.");
+#endif
+                return;
             }
 
-            switch (Globals.cTheme)
+            // Get the current device theme
+            AppTheme currentTheme = Application.Current.RequestedTheme;
+
+            //  Set the number text color
+            switch (currentTheme)
             {
-                case "Light":
+                case AppTheme.Light:
                     cColorNegNumber = bColorNumber ? cColorNegNumberLight : cColorPosNumberLight;
                     cColorPosNumber = cColorPosNumberLight;
                     break;
 
-                case "Dark":
+                case AppTheme.Dark:
                     cColorNegNumber = bColorNumber ? cColorNegNumberDark : cColorPosNumberDark;
                     cColorPosNumber = cColorPosNumberDark;
                     break;
-
+                
                 default:
-                    // Get the current device theme and set the number color
-                    AppTheme currentTheme = Application.Current.RequestedTheme;
-                    
                     if (currentTheme == AppTheme.Dark)
                     {
                         cColorNegNumber = bColorNumber ? cColorNegNumberDark : cColorPosNumberDark;
@@ -329,25 +333,26 @@
             });
         }
 
-        ///// <summary>
-        ///// Close the keyboard 
-        ///// </summary>
-        ///// <param name="entry"></param>
-        ///// <param name="e"></param>
-        //public async static void CloseKeyboard(Entry entry, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        entry.IsEnabled = false;
-        //        entry.IsEnabled = true;
-        //        // or
-        //        await entry.HideSoftInputAsync(default);
-        //        await entry.ShowSoftInputAsync(default);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return;
-        //    }
-        //}
+        /// <summary>
+        /// Hide the keyboard
+        /// </summary>
+        /// <param name="entry"></param>
+        public async static void CloseKeyboard(Entry entry)
+        {
+            try
+            {
+                //entry.IsEnabled = false;
+                //entry.IsEnabled = true;
+
+                if (entry.IsSoftInputShowing())
+                {
+                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
     }
 }

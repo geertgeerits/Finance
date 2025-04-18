@@ -153,11 +153,8 @@ namespace Finance
                 return;
             }
 
-            // Close the keyboard
-            entVATAmountExclusive.IsEnabled = false;
-            entVATAmountExclusive.IsEnabled = true;
-            entVATAmountIncluded.IsEnabled = false;
-            entVATAmountIncluded.IsEnabled = true;
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entVATAmountIncluded);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

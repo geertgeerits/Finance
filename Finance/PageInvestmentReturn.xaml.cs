@@ -160,11 +160,8 @@ namespace Finance
                 return;
             }
 
-            // Close the keyboard
-            entAmountRevenueYear.IsEnabled = false;
-            entAmountRevenueYear.IsEnabled = true;
-            entPercentageReturnYear.IsEnabled = false;
-            entPercentageReturnYear.IsEnabled = true;
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entPercentageReturnYear);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

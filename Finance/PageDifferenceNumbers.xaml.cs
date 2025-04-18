@@ -126,10 +126,8 @@
                 return;
             }
 
-            // Close the keyboard
-            entValue2.IsEnabled = false;
-            entValue2.IsEnabled = true;
-            //await entValue2.HideSoftInputAsync(default);
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entValue2);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

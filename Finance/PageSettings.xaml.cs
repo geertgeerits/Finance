@@ -212,9 +212,8 @@
 
             ClassEntryMethods.cPercDecimalDigits = Convert.ToString(nPercDec);
 
-            // Close the keyboard
-            entPercDec.IsEnabled = false;
-            entPercDec.IsEnabled = true;
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entPercDec);
         }
 
         /// <summary>

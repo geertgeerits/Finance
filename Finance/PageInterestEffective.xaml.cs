@@ -120,9 +120,8 @@ namespace Finance
                 return;
             }
 
-            // Close the keyboard
-            entPeriodsYear.IsEnabled = false;
-            entPeriodsYear.IsEnabled = true;
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entPeriodsYear);
 
             // Convert string to int for number of decimal digits after decimal point
             int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);

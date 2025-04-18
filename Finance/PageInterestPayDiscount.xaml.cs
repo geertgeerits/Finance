@@ -133,9 +133,8 @@ namespace Finance
                 return;
             }
 
-            // Close the keyboard
-            entExpiryDaysWithoutDiscount.IsEnabled = false;
-            entExpiryDaysWithoutDiscount.IsEnabled = true;
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entExpiryDaysWithoutDiscount);
 
             // Convert string to int for number of decimal digits after decimal point
             int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);

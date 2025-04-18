@@ -122,9 +122,8 @@ namespace Finance
                 return;
             }
 
-            // Close the keyboard
-            entInterestRate.IsEnabled = false;
-            entInterestRate.IsEnabled = true;
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entInterestRate);
 
             double nInterestMonth = 0;
             double nInterestDay365 = 0;

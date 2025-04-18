@@ -142,9 +142,8 @@
             }
             else if (sender == entCurrencyCode)
             {
-                // Close the keyboard
-                entCurrencyCode.IsEnabled = false;
-                entCurrencyCode.IsEnabled = true;
+                // Hide the keyboard
+                ClassEntryMethods.CloseKeyboard(entCurrencyCode);
 
                 _ = btnExport.Focus();
             }
@@ -197,9 +196,8 @@
                 return;
             }
 
-            // Close the keyboard
-            entPeriodsYear.IsEnabled = false;
-            entPeriodsYear.IsEnabled = true;
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entPeriodsYear);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

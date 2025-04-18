@@ -136,9 +136,8 @@ namespace Finance
                 return;
             }
 
-            // Close the keyboard
-            entDurationYears.IsEnabled = false;
-            entDurationYears.IsEnabled = true;
+            // Hide the keyboard
+            ClassEntryMethods.CloseKeyboard(entDurationYears);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
