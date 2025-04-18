@@ -31,6 +31,7 @@ namespace Finance
 
             //// Set the Placeholder and MaxLength for the numeric entry field
             Globals.SetEntryProperties(entPercentage, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            Globals.SetEntryProperties(entAmountNet, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
         }
 
         /// <summary>

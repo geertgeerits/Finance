@@ -56,6 +56,7 @@
 
             //// Set the Placeholder and MaxLength for the numeric entry field
             Globals.SetEntryProperties(entInterestRate, "0", "0", "100", "0", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            Globals.SetEntryProperties(entCapitalInitial, "1", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
 
             //// Set the current date format and date for the DatePicker
             dtpExpirationDate.Format = Globals.cDateFormat;

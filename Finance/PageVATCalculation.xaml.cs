@@ -38,6 +38,9 @@ namespace Finance
 
             //// Set the Placeholder and MaxLength for the numeric entry field
             Globals.SetEntryProperties(entVATPercentage, "0", "0", "999", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            Globals.SetEntryProperties(entVATAmountExclusive, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            Globals.SetEntryProperties(entVATAmount, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            Globals.SetEntryProperties(entVATAmountIncluded, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
 
             //// Format the text value for a numeric entry without the number separator and select the entire text value
             //   This is necessary if the default value of the field is 0

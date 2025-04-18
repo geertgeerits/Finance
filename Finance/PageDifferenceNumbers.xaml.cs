@@ -28,6 +28,10 @@
                 entValue1.Keyboard = Keyboard.Text;
                 entValue2.Keyboard = Keyboard.Text;
             }
+
+            //// Set the Placeholder and MaxLength for the numeric entry field
+            Globals.SetEntryProperties(entValue1, "-999999999999", "9", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            Globals.SetEntryProperties(entValue2, "-999999999999", "9", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
         }
 
         /// <summary>

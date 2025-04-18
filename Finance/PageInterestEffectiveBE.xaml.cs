@@ -28,6 +28,10 @@ namespace Finance
                 entCapitalInitial.Keyboard = Keyboard.Text;
                 entCapitalFinal.Keyboard = Keyboard.Text;
             }
+
+            //// Set the Placeholder and MaxLength for the numeric entry field
+            Globals.SetEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            Globals.SetEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
         }
 
         /// <summary>

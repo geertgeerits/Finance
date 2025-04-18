@@ -37,6 +37,9 @@ namespace Finance
             ResetEntryFields(null, null);
 
             //// Set the Placeholder and MaxLength for the numeric entry field
+            Globals.SetEntryProperties(entAmountPurchase, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            Globals.SetEntryProperties(entAmountCost, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            Globals.SetEntryProperties(entAmountRevenueYear, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
             Globals.SetEntryProperties(entPercentageReturnYear, "0", "0", "999", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
 
             //// Format the text value for a numeric entry without the number separator and select the entire text value

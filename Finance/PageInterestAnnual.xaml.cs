@@ -33,6 +33,11 @@ namespace Finance
 
             // Reset the entry fields
             ResetEntryFields(null, null);
+
+            //// Set the Placeholder and MaxLength for the numeric entry field
+            Globals.SetEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            Globals.SetEntryProperties(entAmountPeriod, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            Globals.SetEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
         }
 
         /// <summary>
