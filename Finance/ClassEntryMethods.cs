@@ -110,8 +110,13 @@
         /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="entry"></param>
-        public static void FormatTextEntryFocused(Entry entry)
+        public async static void FormatTextEntryFocused(Entry entry)
         {
+            if (!entry.IsSoftInputShowing())
+            {
+                await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
+            }
+
             if (string.IsNullOrEmpty(entry.Text))
             {
                 return;
@@ -273,6 +278,7 @@
                 default:
                     // Get the current device theme and set the number color
                     AppTheme currentTheme = Application.Current.RequestedTheme;
+                    
                     if (currentTheme == AppTheme.Dark)
                     {
                         cColorNegNumber = bColorNumber ? cColorNegNumberDark : cColorPosNumberDark;
