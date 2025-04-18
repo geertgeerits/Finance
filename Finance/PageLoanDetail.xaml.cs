@@ -55,8 +55,8 @@
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entInterestRate, "0", "0", "100", "0", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
-            Globals.SetEntryProperties(entCapitalInitial, "1", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entInterestRate, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entCapitalInitial, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
 
             //// Set the current date format and date for the DatePicker
             dtpExpirationDate.Format = Globals.cDateFormat;
@@ -91,7 +91,7 @@
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatTextEntryFocused(entry);
             }
         }
 
@@ -104,7 +104,7 @@
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatTextEntryUnfocused(entry);
             }
         }
 
@@ -115,7 +115,7 @@
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -202,8 +202,8 @@
             entPeriodsYear.IsEnabled = true;
 
             // Convert string to int for number of decimal digits after decimal point
-            int nNumDec = int.Parse(Globals.cNumDecimalDigits);
-            int nPercDec = int.Parse(Globals.cPercDecimalDigits);
+            int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
+            int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
 
             // Clear result fields
             lblAmountPeriod.Text = "";
@@ -244,11 +244,11 @@
             }
 
             // Rounding to 6 digits after decimal point
-            if (Globals.cRoundNumber == "AwayFromZero")
+            if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
             {
                 nInterestRatePeriod = Math.Round(nInterestRatePeriod, 6, MidpointRounding.AwayFromZero);
             }
-            else if (Globals.cRoundNumber == "ToEven")
+            else if (ClassEntryMethods.cRoundNumber == "ToEven")
             {
                 nInterestRatePeriod = Math.Round(nInterestRatePeriod, 6, MidpointRounding.ToEven);  // Rounding to 6 digits after decimal point
             }
@@ -270,18 +270,18 @@
                 }
 
                 nCapitalRemainder = nCapitalInitial;                        // Remainder of capital
-                lblAmountPeriod.Text = Globals.RoundToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
+                lblAmountPeriod.Text = ClassEntryMethods.RoundToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
             }
 
             // Calculate linear loan per period
             else
             {                      
                 // Amount of capital per period
-                if (Globals.cRoundNumber == "AwayFromZero")
+                if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
                 {
                     nCapitalPeriod = Math.Round(nCapitalInitial / nNumberPeriods, nNumDec, MidpointRounding.AwayFromZero);
                 }
-                else if (Globals.cRoundNumber == "ToEven")
+                else if (ClassEntryMethods.cRoundNumber == "ToEven")
                 {
                     nCapitalPeriod = Math.Round(nCapitalInitial / nNumberPeriods, nNumDec, MidpointRounding.ToEven);
                 }
@@ -295,11 +295,11 @@
                 // Calculate loan annuity per period
                 if (rbnLoanAnnuity.IsChecked)
                 {
-                    if (Globals.cRoundNumber == "AwayFromZero")
+                    if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
                     {
                         nInterestPeriod = Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.AwayFromZero);
                     }
-                    else if (Globals.cRoundNumber == "ToEven")
+                    else if (ClassEntryMethods.cRoundNumber == "ToEven")
                     {
                         nInterestPeriod = Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.ToEven);
                     }
@@ -311,11 +311,11 @@
                 // Calculate loan linear per period
                 else
                 {
-                    if (Globals.cRoundNumber == "AwayFromZero")
+                    if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
                     {
                         nInterestPeriod = Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.AwayFromZero);
                     }
-                    else if (Globals.cRoundNumber == "ToEven")
+                    else if (ClassEntryMethods.cRoundNumber == "ToEven")
                     {
                         nInterestPeriod = Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.ToEven);
                     }
@@ -351,11 +351,11 @@
                 // Fill the array with data
                 aLoanDetail[nRow, 0] = Convert.ToString(nRow + 1);
                 aLoanDetail[nRow, 1] = dExpirationDate.ToString(Globals.cDateFormat);
-                aLoanDetail[nRow, 2] = Globals.RoundToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
-                aLoanDetail[nRow, 3] = Globals.RoundToNumDecimals(ref nCapitalPeriod, nNumDec, "N");
-                aLoanDetail[nRow, 4] = Globals.RoundToNumDecimals(ref nInterestPeriod, nNumDec, "N");
-                aLoanDetail[nRow, 5] = Globals.RoundToNumDecimals(ref nInterestTotal, nNumDec, "N");
-                aLoanDetail[nRow, 6] = Globals.RoundToNumDecimals(ref nCapitalRemainder, nNumDec, "N");
+                aLoanDetail[nRow, 2] = ClassEntryMethods.RoundToNumDecimals(ref nPaymentPeriod, nNumDec, "N");
+                aLoanDetail[nRow, 3] = ClassEntryMethods.RoundToNumDecimals(ref nCapitalPeriod, nNumDec, "N");
+                aLoanDetail[nRow, 4] = ClassEntryMethods.RoundToNumDecimals(ref nInterestPeriod, nNumDec, "N");
+                aLoanDetail[nRow, 5] = ClassEntryMethods.RoundToNumDecimals(ref nInterestTotal, nNumDec, "N");
+                aLoanDetail[nRow, 6] = ClassEntryMethods.RoundToNumDecimals(ref nCapitalRemainder, nNumDec, "N");
 
                 dExpirationDate = dtpExpirationDate.Date.AddMonths(nNumberMonthsAddCumul);
                 nNumberMonthsAddCumul += nNumberMonthsAdd;
@@ -365,13 +365,13 @@
             //Debug.WriteLine("Row number: " + nRow);  // For testing
 
             // Rounding and formatting result
-            lblInterestTotal.Text = Globals.RoundToNumDecimals(ref nInterestTotal, nNumDec, "N");
+            lblInterestTotal.Text = ClassEntryMethods.RoundToNumDecimals(ref nInterestTotal, nNumDec, "N");
             double nCapitalInterest = nCapitalInitial + nInterestTotal;
-            lblCapitalInterest.Text = Globals.RoundToNumDecimals(ref nCapitalInterest, nNumDec, "N");
+            lblCapitalInterest.Text = ClassEntryMethods.RoundToNumDecimals(ref nCapitalInterest, nNumDec, "N");
 
             // Store totals in row of array aLoanDetail (ex. nNumberPeriods = 12 -> nRow in for loop = 0-11 -> nRow after for loop = 12)
             aLoanDetail[nRow, 2] = lblCapitalInterest.Text;
-            aLoanDetail[nRow, 3] = Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N");
+            aLoanDetail[nRow, 3] = ClassEntryMethods.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N");
             aLoanDetail[nRow, 4] = lblInterestTotal.Text;
 
             // Test variable te recalculate the loan

@@ -31,13 +31,13 @@ namespace Finance
                 entCapitalFinal.Keyboard = Keyboard.Text;
             }
 
+            //// Set the Placeholder and MaxLength for the numeric entry field
+            ClassEntryMethods.SetEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entAmountPeriod, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+
             // Reset the entry fields
             ResetEntryFields(null, null);
-
-            //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
-            Globals.SetEntryProperties(entAmountPeriod, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
-            Globals.SetEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatTextEntryFocused(entry);
             }
         }
 
@@ -73,7 +73,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatTextEntryUnfocused(entry);
             }
         }
 
@@ -84,7 +84,7 @@ namespace Finance
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -160,8 +160,8 @@ namespace Finance
             entCapitalFinal.IsEnabled = true;
 
             // Convert string to int for number of decimal digits after decimal point
-            int nNumDec = int.Parse(Globals.cNumDecimalDigits);
-            int nPercDec = int.Parse(Globals.cPercDecimalDigits);
+            int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
+            int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
 
             // Check what needs to be calculated first
             if (nCapitalFinal > 0)
@@ -192,13 +192,13 @@ namespace Finance
                 {
                     nInterestAmount = nDurationYears * nAmountPeriod - nCapitalInitial;
                     nInterimCalculation = nAmountPeriod * nDurationYears;
-                    entCapitalFinal.Text = Globals.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "N");
+                    entCapitalFinal.Text = ClassEntryMethods.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "N");
                 }
                 else if (nCapitalFinal != 0)
                 {
                     nInterestAmount = nCapitalFinal - nCapitalInitial;
                     nInterimCalculation = nCapitalFinal / nDurationYears;
-                    entAmountPeriod.Text = Globals.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "N");
+                    entAmountPeriod.Text = ClassEntryMethods.RoundToNumDecimals(ref nInterimCalculation, nNumDec, "N");
                 }
                 else
                 {
@@ -218,8 +218,8 @@ namespace Finance
             }
 
             // Rounding interest
-            lblInterestRate.Text = Globals.RoundToNumDecimals(ref nInterestRate, nPercDec, "N");
-            Globals.SetLabelTextColorForNumber(lblInterestRate);
+            lblInterestRate.Text = ClassEntryMethods.RoundToNumDecimals(ref nInterestRate, nPercDec, "N");
+            ClassEntryMethods.SetLabelTextColorForNumber(lblInterestRate);
 
             // Set focus
             _ = btnReset.Focus();
@@ -232,10 +232,10 @@ namespace Finance
         /// <param name="e"></param>
         private void ResetEntryFields(object? sender, EventArgs? e)
         {
-            entCapitalInitial.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
+            entCapitalInitial.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
             entDurationYears.Text = "1";
-            entAmountPeriod.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
-            entCapitalFinal.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
+            entAmountPeriod.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
+            entCapitalFinal.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
             lblInterestRate.Text = "";
 
             _ = entCapitalInitial.Focus();

@@ -46,16 +46,16 @@ namespace Finance
             lblTitle.Margin = new Thickness(16, 8, 0, 0);
 #endif
             //// Select all the text in the entry field - works for all pages in the app
-            Globals.ModifyEntrySelectAllText();
+            ClassEntryMethods.ModifyEntrySelectAllText();
 
             //// Get the saved settings
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
             Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
             Globals.cPageFormat = Preferences.Default.Get("SettingPageFormat", "");
-            Globals.cNumDecimalDigits = Preferences.Default.Get("SettingNumDecimalDigits", "");
-            Globals.cPercDecimalDigits = Preferences.Default.Get("SettingPercDecimalDigits", "2");
-            Globals.cRoundNumber = Preferences.Default.Get("SettingRoundNumber", "AwayFromZero");
-            Globals.bColorNumber = Preferences.Default.Get("SettingColorNumber", false);
+            ClassEntryMethods.cNumDecimalDigits = Preferences.Default.Get("SettingNumDecimalDigits", "");
+            ClassEntryMethods.cPercDecimalDigits = Preferences.Default.Get("SettingPercDecimalDigits", "2");
+            ClassEntryMethods.cRoundNumber = Preferences.Default.Get("SettingRoundNumber", "AwayFromZero");
+            ClassEntryMethods.bColorNumber = Preferences.Default.Get("SettingColorNumber", false);
             Globals.cKeyboard = Preferences.Default.Get("SettingKeyboard", "Numeric");
             Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
@@ -70,7 +70,8 @@ namespace Finance
             }
 
             //// Set the theme and the number color
-            Globals.SetThemeAndNumberColor();
+            Globals.SetTheme();
+            ClassEntryMethods.SetNumberColor();
 
             //// Get and set the user interface language after a first start or reset of the application
             try
@@ -114,17 +115,17 @@ namespace Finance
             //App.Current.MainPage.DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");  // For testing
 
             //// Get the number decimal separator and the group separator
-            Globals.cNumDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+            ClassEntryMethods.cNumDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
             string cNumGroupSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator);
-            Debug.WriteLine($"Number Decimal Separator: {Globals.cNumDecimalSeparator}");
+            Debug.WriteLine($"Number Decimal Separator: {ClassEntryMethods.cNumDecimalSeparator}");
             Debug.WriteLine($"Number Group Separator: {cNumGroupSeparator}");
 
             //// Get the number of decimal digits after the decimal point
-            if (string.IsNullOrEmpty(Globals.cNumDecimalDigits))
+            if (string.IsNullOrEmpty(ClassEntryMethods.cNumDecimalDigits))
             {
-                Globals.cNumDecimalDigits = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalDigits);
+                ClassEntryMethods.cNumDecimalDigits = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalDigits);
             }
-            Debug.WriteLine($"Number Decimal Digits: {Globals.cNumDecimalDigits}");
+            Debug.WriteLine($"Number Decimal Digits: {ClassEntryMethods.cNumDecimalDigits}");
 
             //// Get the system culture and country code
             string cCountry2LetterISO;
@@ -164,9 +165,9 @@ namespace Finance
             }
 
             //// Set the rounding system of numbers
-            if (string.IsNullOrEmpty(Globals.cRoundNumber))
+            if (string.IsNullOrEmpty(ClassEntryMethods.cRoundNumber))
             {
-                Globals.cRoundNumber = "AwayFromZero";
+                ClassEntryMethods.cRoundNumber = "AwayFromZero";
             }
         }
 

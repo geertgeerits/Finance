@@ -52,8 +52,8 @@
             };
 
             //// Set the number of decimal digits after the decimal point
-            entNumDec.Text = Globals.cNumDecimalDigits;
-            entPercDec.Text = Globals.cPercDecimalDigits;
+            entNumDec.Text = ClassEntryMethods.cNumDecimalDigits;
+            entPercDec.Text = ClassEntryMethods.cPercDecimalDigits;
 
             //// Set radiobutton to the date format
             if (Globals.bDateFormatSystem == true)
@@ -76,7 +76,7 @@
             }
 
             //// Set radiobutton to the rounding numbers method
-            if (Globals.cRoundNumber == "AwayFromZero")
+            if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
             {
                 rbnRoundNumberAwayFromZero.IsChecked = true;
             }
@@ -100,7 +100,7 @@
             }
 
             //// Set the color of number to false or true
-            swtColorNumber.IsToggled = Globals.bColorNumber;
+            swtColorNumber.IsToggled = ClassEntryMethods.bColorNumber;
 
             //// Start the stopWatch for resetting all the settings
             stopWatch.Start();
@@ -171,7 +171,8 @@
                     _ => "System",  // System
                 };
 
-                Globals.SetThemeAndNumberColor();
+                Globals.SetTheme();
+                ClassEntryMethods.SetNumberColor();
             }
         }
 
@@ -191,7 +192,7 @@
                 return;
             }
 
-            Globals.cNumDecimalDigits = Convert.ToString(nNumDec);
+            ClassEntryMethods.cNumDecimalDigits = Convert.ToString(nNumDec);
         }
 
         /// <summary>
@@ -209,7 +210,7 @@
                 return;
             }
 
-            Globals.cPercDecimalDigits = Convert.ToString(nPercDec);
+            ClassEntryMethods.cPercDecimalDigits = Convert.ToString(nPercDec);
 
             // Close the keyboard
             entPercDec.IsEnabled = false;
@@ -283,11 +284,11 @@
         {
             if (rbnRoundNumberAwayFromZero.IsChecked)
             {
-                Globals.cRoundNumber = "AwayFromZero";
+                ClassEntryMethods.cRoundNumber = "AwayFromZero";
             }
             else if (rbnRoundNumberToEven.IsChecked)
             {
-                Globals.cRoundNumber = "ToEven";
+                ClassEntryMethods.cRoundNumber = "ToEven";
             }
         }
 
@@ -319,8 +320,9 @@
         /// <param name="e"></param>
         private void OnSwtColorNumberToggled(object sender, ToggledEventArgs e)
         {
-            Globals.bColorNumber = swtColorNumber.IsToggled;
-            Globals.SetThemeAndNumberColor();
+            ClassEntryMethods.bColorNumber = swtColorNumber.IsToggled;
+            Globals.SetTheme();
+            ClassEntryMethods.SetNumberColor();
         }
 
         /// <summary>
@@ -333,10 +335,10 @@
             Preferences.Default.Set("SettingTheme", Globals.cTheme);
             Preferences.Default.Set("SettingDateFormatSystem", Globals.bDateFormatSystem);
             Preferences.Default.Set("SettingPageFormat", Globals.cPageFormat);
-            Preferences.Default.Set("SettingNumDecimalDigits", Globals.cNumDecimalDigits);
-            Preferences.Default.Set("SettingPercDecimalDigits", Globals.cPercDecimalDigits);
-            Preferences.Default.Set("SettingRoundNumber", Globals.cRoundNumber);
-            Preferences.Default.Set("SettingColorNumber", Globals.bColorNumber);
+            Preferences.Default.Set("SettingNumDecimalDigits", ClassEntryMethods.cNumDecimalDigits);
+            Preferences.Default.Set("SettingPercDecimalDigits", ClassEntryMethods.cPercDecimalDigits);
+            Preferences.Default.Set("SettingRoundNumber", ClassEntryMethods.cRoundNumber);
+            Preferences.Default.Set("SettingColorNumber", ClassEntryMethods.bColorNumber);
             Preferences.Default.Set("SettingKeyboard", Globals.cKeyboard);
             Preferences.Default.Set("SettingLanguage", Globals.cLanguage);
 

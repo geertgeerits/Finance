@@ -28,7 +28,7 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entInterestRate, "0", "0", "100", "0", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entInterestRate, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatTextEntryFocused(entry);
             }
         }
 
@@ -64,7 +64,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatTextEntryUnfocused(entry);
             }
         }
 
@@ -75,7 +75,7 @@ namespace Finance
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -149,9 +149,9 @@ namespace Finance
             }
 
             // Rounding result
-            lblInterestMonth.Text = Globals.RoundToNumDecimals(ref nInterestMonth, nPercDec, "N");
-            lblInterestDay365.Text = Globals.RoundToNumDecimals(ref nInterestDay365, nPercDec, "N");
-            lblInterestDay366.Text = Globals.RoundToNumDecimals(ref nInterestDay366, nPercDec, "N");
+            lblInterestMonth.Text = ClassEntryMethods.RoundToNumDecimals(ref nInterestMonth, nPercDec, "N");
+            lblInterestDay365.Text = ClassEntryMethods.RoundToNumDecimals(ref nInterestDay365, nPercDec, "N");
+            lblInterestDay366.Text = ClassEntryMethods.RoundToNumDecimals(ref nInterestDay366, nPercDec, "N");
 
             // Set focus
             _ = btnReset.Focus();

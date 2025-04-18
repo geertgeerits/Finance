@@ -34,7 +34,7 @@ namespace Finance
                 // Data loan
                 sw.WriteLine($"{tLblEnt.lblInterestRateText} {tLblEnt.entInterestRateText} %");
                 double nCapitalInitial = Convert.ToDouble(tLblEnt.entCapitalInitialText);
-                sw.WriteLine($"{tLblEnt.lblCapitalInitialText} {Globals.RoundToNumDecimals(ref nCapitalInitial, Convert.ToInt32(Globals.cNumDecimalDigits), "N")} {cCurrency}");
+                sw.WriteLine($"{tLblEnt.lblCapitalInitialText} {ClassEntryMethods.RoundToNumDecimals(ref nCapitalInitial, Convert.ToInt32(ClassEntryMethods.cNumDecimalDigits), "N")} {cCurrency}");
                 sw.WriteLine($"{tLblEnt.lblDurationYearsText} {tLblEnt.entDurationYearsText}");
                 sw.WriteLine($"{tLblEnt.lblPeriodsYearText} {tLblEnt.entPeriodsYearText}");
                 sw.WriteLine("");
@@ -105,7 +105,7 @@ namespace Finance
                 // Data loan
                 sw.WriteLine($"<p>{tLblEnt.lblInterestRateText} {tLblEnt.entInterestRateText} %<br>");
                 double nCapitalInitial = Convert.ToDouble(tLblEnt.entCapitalInitialText);
-                sw.WriteLine($"{tLblEnt.lblCapitalInitialText} {Globals.RoundToNumDecimals(ref nCapitalInitial, Convert.ToInt32(Globals.cNumDecimalDigits), "N")} {cCurrency}<br>");
+                sw.WriteLine($"{tLblEnt.lblCapitalInitialText} {ClassEntryMethods.RoundToNumDecimals(ref nCapitalInitial, Convert.ToInt32(ClassEntryMethods.cNumDecimalDigits), "N")} {cCurrency}<br>");
                 sw.WriteLine($"{tLblEnt.lblDurationYearsText} {tLblEnt.entDurationYearsText}<br>");
                 sw.WriteLine($"{tLblEnt.lblPeriodsYearText} {tLblEnt.entPeriodsYearText}</p>");
 
@@ -440,7 +440,7 @@ namespace Finance
                 nTextLine++;
 
                 // Convert string to int for number of decimal digits after decimal point
-                int nNumDec = int.Parse(Globals.cNumDecimalDigits);
+                int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
 
                 for (nPagNo = 1; nPagNo < nNumPages + 1; nPagNo++)
                 {
@@ -477,7 +477,7 @@ namespace Finance
 
                         double nCapitalInitial = Convert.ToDouble(tLblEnt.entCapitalInitialText);
                         nHeight -= 15;
-                        cText = $"BT /F1 10 Tf {cHorPointsBeg} {Convert.ToString(nHeight)} Td ({ReplaceCharacters(tLblEnt.lblCapitalInitialText)} {Globals.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N")} {cCurrency})Tj ET";
+                        cText = $"BT /F1 10 Tf {cHorPointsBeg} {Convert.ToString(nHeight)} Td ({ReplaceCharacters(tLblEnt.lblCapitalInitialText)} {ClassEntryMethods.RoundToNumDecimals(ref nCapitalInitial, nNumDec, "N")} {cCurrency})Tj ET";
                         cTextLines[nTextLine] = cText;
                         nTextLine++;
 

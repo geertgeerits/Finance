@@ -30,8 +30,8 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entPercentage, "0", "0", "99", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
-            Globals.SetEntryProperties(entAmountNet, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entPercentage, "0", "0", "99", "9", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entAmountNet, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatTextEntryFocused(entry);
             }
         }
 
@@ -72,7 +72,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatTextEntryUnfocused(entry);
             }
         }
 
@@ -83,7 +83,7 @@ namespace Finance
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -134,16 +134,16 @@ namespace Finance
             entAmountNet.IsEnabled = true;
 
             // Convert string to int for number of decimal digits after decimal point
-            int nNumDec = int.Parse(Globals.cNumDecimalDigits);
-            int nPercDec = int.Parse(Globals.cPercDecimalDigits);
+            int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
+            int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
 
             // Calculate the net amount
             if (nPercentage == 0)
             {
                 decimal nAmountGross = nAmountNet;
-                lblAmountGross.Text = Globals.RoundToNumDecimals(ref nAmountGross, nNumDec, "N");
+                lblAmountGross.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountGross, nNumDec, "N");
                 decimal nAmountDifference = nAmountGross - nAmountNet;
-                lblAmountDifference.Text = Globals.RoundToNumDecimals(ref nAmountDifference, nNumDec, "N");
+                lblAmountDifference.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountDifference, nNumDec, "N");
             }
             else if (nPercentage == 100)
             {
@@ -156,9 +156,9 @@ namespace Finance
                 try
                 {
                     decimal nAmountGross = nAmountNet / (1 - (nPercentage / 100));
-                    lblAmountGross.Text = Globals.RoundToNumDecimals(ref nAmountGross, nNumDec, "N");
+                    lblAmountGross.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountGross, nNumDec, "N");
                     decimal nAmountDifference = nAmountGross - nAmountNet;
-                    lblAmountDifference.Text = Globals.RoundToNumDecimals(ref nAmountDifference, nNumDec, "N");
+                    lblAmountDifference.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountDifference, nNumDec, "N");
                 }
                 catch (Exception ex)
                 {

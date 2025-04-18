@@ -33,18 +33,18 @@ namespace Finance
                 entPercentageReturnYear.Keyboard = Keyboard.Text;
             }
 
-            // Reset the entry fields
-            ResetEntryFields(null, null);
-
             //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entAmountPurchase, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
-            Globals.SetEntryProperties(entAmountCost, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
-            Globals.SetEntryProperties(entAmountRevenueYear, "0", "0", "999999999999", "9", Globals.cNumDecimalDigits, Globals.cNumDecimalDigits);
-            Globals.SetEntryProperties(entPercentageReturnYear, "0", "0", "999", "9", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entAmountPurchase, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entAmountCost, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entAmountRevenueYear, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entPercentageReturnYear, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
 
             //// Format the text value for a numeric entry without the number separator and select the entire text value
             //   This is necessary if the default value of the field is 0
-            EntryFocused(entPercentageReturnYear, null);
+            //EntryFocused(entPercentageReturnYear, null);
+
+            // Reset the entry fields
+            ResetEntryFields(null, null);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatTextEntryFocused(entry);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatTextEntryUnfocused(entry);
             }
         }
 
@@ -91,7 +91,7 @@ namespace Finance
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -167,8 +167,8 @@ namespace Finance
             entPercentageReturnYear.IsEnabled = true;
 
             // Convert string to int for number of decimal digits after decimal point
-            int nNumDec = int.Parse(Globals.cNumDecimalDigits);
-            int nPercDec = int.Parse(Globals.cPercDecimalDigits);
+            int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
+            int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
 
             // Check what needs to be calculated first
             if (nPercentageReturnYear > 0)
@@ -187,13 +187,13 @@ namespace Finance
 
             if (nAmountTotal == 0)
             {
-                lblAmountTotal.Text = Globals.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
+                lblAmountTotal.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
             }
 
             if (nAmountRevenueYear == 0)
             {
                 decimal nNumberTemp = 0;
-                entPercentageReturnYear.Text = Globals.RoundToNumDecimals(ref nNumberTemp, nPercDec, "N");
+                entPercentageReturnYear.Text = ClassEntryMethods.RoundToNumDecimals(ref nNumberTemp, nPercDec, "N");
             }
 
             try
@@ -201,7 +201,7 @@ namespace Finance
                 if (nAmountPurchase + nAmountCost > 0)
                 {
                     nPercentageReturnYear = nAmountRevenueYear / nAmountTotal * 100;
-                    entPercentageReturnYear.Text = Globals.RoundToNumDecimals(ref nPercentageReturnYear, nPercDec, "N");
+                    entPercentageReturnYear.Text = ClassEntryMethods.RoundToNumDecimals(ref nPercentageReturnYear, nPercDec, "N");
                 }
                 else if (nPercentageReturnYear > 0)
                 {
@@ -212,7 +212,7 @@ namespace Finance
                     return;
                 }
 
-                lblAmountTotal.Text = Globals.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
+                lblAmountTotal.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
             }
             catch (Exception ex)
             {
@@ -234,11 +234,11 @@ namespace Finance
         /// <param name="e"></param>
         private void ResetEntryFields(object? sender, EventArgs? e)
         {
-            entAmountPurchase.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
-            entAmountCost.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
+            entAmountPurchase.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
+            entAmountCost.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
             lblAmountTotal.Text = "";
-            entAmountRevenueYear.Text = 0.ToString("F" + Globals.cNumDecimalDigits);
-            entPercentageReturnYear.Text = 0.ToString("F" + Globals.cPercDecimalDigits);
+            entAmountRevenueYear.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
+            entPercentageReturnYear.Text = 0.ToString("F" + ClassEntryMethods.cPercDecimalDigits);
 
             _ = entAmountPurchase.Focus();
         }

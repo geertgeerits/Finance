@@ -28,7 +28,7 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            Globals.SetEntryProperties(entPaymentDiscount, "0", "0", "100", "0", Globals.cPercDecimalDigits, Globals.cPercDecimalDigits);
+            ClassEntryMethods.SetEntryProperties(entPaymentDiscount, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Finance
         /// <param name="e"></param>
         private void EntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!Globals.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -66,7 +66,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatTextEntryFocused(entry);
             }
         }
 
@@ -79,7 +79,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
-                Globals.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatTextEntryUnfocused(entry);
             }
         }
 
@@ -138,7 +138,7 @@ namespace Finance
             entExpiryDaysWithoutDiscount.IsEnabled = true;
 
             // Convert string to int for number of decimal digits after decimal point
-            int nPercDec = int.Parse(Globals.cPercDecimalDigits);
+            int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
 
             decimal nInterestEffective;
 
@@ -163,7 +163,7 @@ namespace Finance
             }
 
             // Rounding result
-            lblInterestEffective.Text = Globals.RoundToNumDecimals(ref nInterestEffective, nPercDec, "N");
+            lblInterestEffective.Text = ClassEntryMethods.RoundToNumDecimals(ref nInterestEffective, nPercDec, "N");
 
             // Set focus
             _ = btnReset.Focus();

@@ -17,7 +17,7 @@
             border.Stroke = isValid ? Color.FromArgb("969696") : Colors.OrangeRed;
 
             // Set the text color.
-            entry.TextColor = result < 0 ? Color.FromArgb(Globals.cColorNegNumber) : Color.FromArgb(Globals.cColorPosNumber);
+            entry.TextColor = result < 0 ? Color.FromArgb(ClassEntryMethods.cColorNegNumber) : Color.FromArgb(ClassEntryMethods.cColorPosNumber);
         }
     }
 }
