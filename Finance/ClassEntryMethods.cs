@@ -112,6 +112,7 @@
         /// <param name="entry"></param>
         public async static void FormatTextEntryFocused(Entry entry)
         {
+            // Show the keyboard if it is not already shown
             if (!entry.IsSoftInputShowing())
             {
                 await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
