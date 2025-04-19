@@ -255,7 +255,7 @@
 
         /// Global methods
         /// <summary>
-        /// Set the theme and the number text color 
+        /// Set the entry text color to a different color for a negative and a positive number
         /// </summary>
         public static void SetNumberColor()
         {
@@ -299,7 +299,7 @@
         }
 
         /// <summary>
-        /// Set the label text color to a different color for a negative and a positive number 
+        /// Set the label text color to a different color for a negative and a positive number
         /// </summary>
         /// <param name="label"></param>
         public static void SetLabelTextColorForNumber(Label label)
