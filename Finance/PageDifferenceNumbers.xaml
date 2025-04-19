@@ -51,10 +51,10 @@
                         Text=""
                         Placeholder="-999999999999 - 999999999999"
                         MaxLength="22"
-                        Focused="EntryFocused"
-                        Unfocused="EntryUnfocused"
+                        Focused="NumberEntryFocused"
+                        Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue1"/>
@@ -82,10 +82,10 @@
                         Text=""
                         Placeholder="-999999999999 - 999999999999"
                         MaxLength="22"
-                        Focused="EntryFocused"
-                        Unfocused="EntryUnfocused"
+                        Focused="NumberEntryFocused"
+                        Unfocused="NumberEntryUnfocused"
                         Completed="CalculateResult"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue2"/>

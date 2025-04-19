@@ -51,10 +51,10 @@
                         Text=""
                         Placeholder="0 - 999999999999"
                         MaxLength="21"
-                        Focused="EntryFocused"
-                        Unfocused="EntryUnfocused"
+                        Focused="NumberEntryFocused"
+                        Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdCapitalInitial"/>
@@ -82,10 +82,10 @@
                         Text=""
                         Placeholder="0 - 999999999999"
                         MaxLength="21"
-                        Focused="EntryFocused"
-                        Unfocused="EntryUnfocused"
+                        Focused="NumberEntryFocused"
+                        Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdCapitalFinal"/>
@@ -114,7 +114,7 @@
                         Placeholder="1 - 100"
                         MaxLength="3"
                         Completed="CalculateResult"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="1" MaxValue="100" BorderName="brdDurationYears"/>

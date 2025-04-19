@@ -52,7 +52,7 @@
                         Placeholder="0 - 8"
                         MaxLength="1"
                         Completed="GoToNextField"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="8" BorderName="brdPercDec"/>
@@ -81,10 +81,10 @@
                         Text=""
                         Placeholder="0 - 100"
                         MaxLength="12"
-                        Focused="EntryFocused"
-                        Unfocused="EntryUnfocused"
+                        Focused="NumberEntryFocused"
+                        Unfocused="NumberEntryUnfocused"
                         Completed="CalculateResult"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdInterestRate"/>

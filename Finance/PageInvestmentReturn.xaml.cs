@@ -34,14 +34,14 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetEntryProperties(entAmountPurchase, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetEntryProperties(entAmountCost, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetEntryProperties(entAmountRevenueYear, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetEntryProperties(entPercentageReturnYear, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entAmountPurchase, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entAmountCost, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entAmountRevenueYear, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entPercentageReturnYear, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
 
             //// Format the text value for a numeric entry without the number separator and select the entire text value
             //   This is necessary if the default value of the field is 0
-            //EntryFocused(entPercentageReturnYear, null);
+            //NumberEntryFocused(entPercentageReturnYear, null);
 
             // Reset the entry fields
             ResetEntryFields(null, null);
@@ -63,11 +63,11 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryFocused(object sender, FocusEventArgs? e)
+        private void NumberEntryFocused(object sender, FocusEventArgs? e)
         {
             if (sender is Entry entry)
             {
-                ClassEntryMethods.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
 
@@ -76,11 +76,11 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryUnfocused(object sender, FocusEventArgs e)
+        private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                ClassEntryMethods.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryTextChanged(object sender, TextChangedEventArgs e)
+        private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
             if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {

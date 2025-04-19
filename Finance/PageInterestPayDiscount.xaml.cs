@@ -28,7 +28,7 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetEntryProperties(entPaymentDiscount, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entPaymentDiscount, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryTextChanged(object sender, TextChangedEventArgs e)
+        private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
             if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {
@@ -62,11 +62,11 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryFocused(object sender, FocusEventArgs e)
+        private void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                ClassEntryMethods.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
 
@@ -75,11 +75,11 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryUnfocused(object sender, FocusEventArgs e)
+        private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                ClassEntryMethods.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }
 

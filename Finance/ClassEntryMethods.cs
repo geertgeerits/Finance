@@ -28,7 +28,7 @@
         /// <param name="cDecDigetTo"></param>
         /// <param name="cNumberOfDecimals"></param>
         /// <param name="cMaxNumberOfDecimals"></param>
-        public static void SetEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals)
+        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals)
         {
             if (!decimal.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !decimal.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals) || !int.TryParse(cMaxNumberOfDecimals, out int nMaxNumberOfDecimals))
             {
@@ -110,7 +110,7 @@
         /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="entry"></param>
-        public async static void FormatTextEntryFocused(Entry entry)
+        public async static void FormatNumberEntryFocused(Entry entry)
         {
             // Show the keyboard if it is not already shown
             if (!entry.IsSoftInputShowing())
@@ -141,7 +141,7 @@
         /// Entry unfocused event: format the text value for a numeric entry field with the number separator
         /// </summary>
         /// <param name="entry"></param>
-        public static void FormatTextEntryUnfocused(Entry entry)
+        public static void FormatNumberEntryUnfocused(Entry entry)
         {
             if (string.IsNullOrEmpty(entry.Text))
             {

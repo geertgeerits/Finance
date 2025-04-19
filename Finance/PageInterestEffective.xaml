@@ -52,10 +52,10 @@
                         Text=""
                         Placeholder="0 - 100"
                         MaxLength="12"
-                        Focused="EntryFocused"
-                        Unfocused="EntryUnfocused"
+                        Focused="NumberEntryFocused"
+                        Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdInterestRate"/>
@@ -90,7 +90,7 @@
                         Placeholder="1 - 12"
                         MaxLength="2"
                         Completed="CalculateResult"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="1" MaxValue="12" BorderName="brdPeriodsYear"/>

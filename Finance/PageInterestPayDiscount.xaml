@@ -52,10 +52,10 @@
                         Text=""
                         Placeholder="0 - 100"
                         MaxLength="12"
-                        Focused="EntryFocused"
-                        Unfocused="EntryUnfocused"
+                        Focused="NumberEntryFocused"
+                        Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdPaymentDiscount"/>
@@ -90,7 +90,7 @@
                         Placeholder="0 - 999"
                         MaxLength="3"
                         Completed="GoToNextField"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="999" BorderName="brdExpiryDaysWithDiscount"/>
@@ -119,7 +119,7 @@
                         Placeholder="0 - 999"
                         MaxLength="3"
                         Completed="CalculateResult"
-                        TextChanged="EntryTextChanged">
+                        TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:NumericValidationTriggerAction MinValue="0" MaxValue="999" BorderName="brdExpiryDaysWithoutDiscount"/>

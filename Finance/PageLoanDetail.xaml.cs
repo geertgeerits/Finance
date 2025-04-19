@@ -55,8 +55,8 @@
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetEntryProperties(entInterestRate, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
-            ClassEntryMethods.SetEntryProperties(entCapitalInitial, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entInterestRate, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
 
             //// Set the current date format and date for the DatePicker
             dtpExpirationDate.Format = Globals.cDateFormat;
@@ -87,11 +87,11 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryFocused(object sender, FocusEventArgs e)
+        private void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                ClassEntryMethods.FormatTextEntryFocused(entry);
+                ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
 
@@ -100,11 +100,11 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryUnfocused(object sender, FocusEventArgs e)
+        private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                ClassEntryMethods.FormatTextEntryUnfocused(entry);
+                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }
 
@@ -113,7 +113,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EntryTextChanged(object sender, TextChangedEventArgs e)
+        private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
             if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
             {
