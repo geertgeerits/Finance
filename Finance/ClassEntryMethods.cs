@@ -175,7 +175,7 @@
         private static string ReplaceDecimalPointComma(string cNumber)
         {
             // Check if the string cNumber is a number
-            if (string.IsNullOrEmpty(cNumber) || !double.TryParse(cNumber, out _))
+            if (string.IsNullOrEmpty(cNumber) || !decimal.TryParse(cNumber, out _))
             {
                 return cNumber;
             }
@@ -283,6 +283,7 @@
                     cColorPosNumber = cColorPosNumberDark;
                     break;
                 
+                case AppTheme.Unspecified:
                 default:
                     if (currentTheme == AppTheme.Dark)
                     {
