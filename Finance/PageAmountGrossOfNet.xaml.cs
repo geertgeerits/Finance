@@ -130,7 +130,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.CloseKeyboard(entAmountNet);
+            ClassEntryMethods.HideKeyboard(entAmountNet);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

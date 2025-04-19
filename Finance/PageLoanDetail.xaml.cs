@@ -143,7 +143,7 @@
             else if (sender == entCurrencyCode)
             {
                 // Hide the keyboard
-                ClassEntryMethods.CloseKeyboard(entCurrencyCode);
+                ClassEntryMethods.HideKeyboard(entCurrencyCode);
 
                 _ = btnExport.Focus();
             }
@@ -197,7 +197,7 @@
             }
 
             // Hide the keyboard
-            ClassEntryMethods.CloseKeyboard(entPeriodsYear);
+            ClassEntryMethods.HideKeyboard(entPeriodsYear);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

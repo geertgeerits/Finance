@@ -123,7 +123,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.CloseKeyboard(entInterestRate);
+            ClassEntryMethods.HideKeyboard(entInterestRate);
 
             double nInterestMonth = 0;
             double nInterestDay365 = 0;

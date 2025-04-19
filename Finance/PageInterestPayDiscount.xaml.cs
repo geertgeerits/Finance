@@ -134,7 +134,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.CloseKeyboard(entExpiryDaysWithoutDiscount);
+            ClassEntryMethods.HideKeyboard(entExpiryDaysWithoutDiscount);
 
             // Convert string to int for number of decimal digits after decimal point
             int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);

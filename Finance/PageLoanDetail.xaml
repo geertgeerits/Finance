@@ -322,15 +322,9 @@
                         HorizontalOptions="Fill"
                         Text="EUR"
                         MaxLength="3"
+                        TextTransform="Uppercase"
                         ReturnType="Done"
                         Completed="GoToNextField">
-                        <Entry.Keyboard>
-                            <Keyboard x:FactoryMethod="Create">
-                                <x:Arguments>
-                                    <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
-                                </x:Arguments>
-                            </Keyboard>
-                        </Entry.Keyboard>
                     </Entry>
                 </Border>
           

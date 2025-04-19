@@ -337,20 +337,22 @@
         /// Hide the keyboard
         /// </summary>
         /// <param name="entry"></param>
-        public async static void CloseKeyboard(Entry entry)
+        public async static void HideKeyboard(Entry entry)
         {
             try
             {
-                //entry.IsEnabled = false;
-                //entry.IsEnabled = true;
-
                 if (entry.IsSoftInputShowing())
                 {
+                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
+                    entry.Unfocus();
                     _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
                 }
             }
             catch (Exception)
             {
+                entry.IsEnabled = false;
+                entry.IsEnabled = true;
+
                 return;
             }
         }
