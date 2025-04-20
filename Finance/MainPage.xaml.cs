@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2025
  * Version .....: 3.0.69
- * Date ........: 2025-04-19 (YYYY-MM-DD)
+ * Date ........: 2025-04-20 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -116,9 +116,9 @@ namespace Finance
 
             //// Get the number decimal separator and the group separator
             ClassEntryMethods.cNumDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-            string cNumGroupSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator);
+            //string cNumGroupSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator);
             Debug.WriteLine($"Number Decimal Separator: {ClassEntryMethods.cNumDecimalSeparator}");
-            Debug.WriteLine($"Number Group Separator: {cNumGroupSeparator}");
+            //Debug.WriteLine($"Number Group Separator: {cNumGroupSeparator}");
 
             //// Get the number of decimal digits after the decimal point
             if (string.IsNullOrEmpty(ClassEntryMethods.cNumDecimalDigits))

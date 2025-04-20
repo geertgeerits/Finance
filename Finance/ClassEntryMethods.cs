@@ -8,15 +8,11 @@
         public static string cPercDecimalDigits = "";
         public static string cRoundNumber = "";
         public static bool bColorNumber;
-        public static string cColorNegNumber = "";
-        public static string cColorPosNumber = "";
 
         // Local variables
         private const string cNumericCharacters = ",-.0123456789";
-        private static readonly string cColorNegNumberLight = "#FF0000";
-        private static readonly string cColorPosNumberLight = "#000000";
-        private static readonly string cColorNegNumberDark = "#FFB0B0";
-        private static readonly string cColorPosNumberDark = "#FFFFFF";
+        private static string cColorNegNumber = "";
+        private static string cColorPosNumber = "";
 
         /// <summary>
         /// Set the Placeholder and MaxLength for a numeric entry field
@@ -94,13 +90,24 @@
             };
 
             // Search for the decimal separator in the string
-            if (cText.Contains(cNumDecimalSeparator[0]))
+            string cDecimalSeparator = cNumDecimalSeparator;
+
+            cDecimalSeparator = cText.Contains(',') ? "," : ".";
+
+            if (cText.Contains(cDecimalSeparator[0]))
             {
                 // Check if the number of decimals is greater than the allowed number of decimals
-                if (cText.Length - cText.IndexOf(cNumDecimalSeparator[0]) > nDecimals + 1)
+                if (cText.Length - cText.IndexOf(cDecimalSeparator[0]) > nDecimals + 1)
                 {
                     return false;
                 }
+            }
+
+            // Validate the number
+            if (decimal.TryParse(entry.Text, out decimal nValue))
+            {
+                // Set the text color
+                entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
             }
 
             return true;
@@ -266,6 +273,12 @@
 #endif
                 return;
             }
+
+            // Set the color for negative and positive numbers
+            const string cColorNegNumberLight = "#FF0000";
+            const string cColorPosNumberLight = "#000000";
+            const string cColorNegNumberDark = "#FFB0B0";
+            const string cColorPosNumberDark = "#FFFFFF";
 
             // Get the current device theme
             AppTheme currentTheme = Application.Current.RequestedTheme;
