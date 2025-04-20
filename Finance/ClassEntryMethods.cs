@@ -90,23 +90,18 @@
             };
 
             // Search for the decimal separator in the string
-            string cDecimalSeparator = cNumDecimalSeparator;
-
-            cDecimalSeparator = cText.Contains(',') ? "," : ".";
-
-            if (cText.Contains(cDecimalSeparator[0]))
+            if (cText.Contains(cNumDecimalSeparator[0]))
             {
                 // Check if the number of decimals is greater than the allowed number of decimals
-                if (cText.Length - cText.IndexOf(cDecimalSeparator[0]) > nDecimals + 1)
+                if (cText.Length - cText.IndexOf(cNumDecimalSeparator[0]) > nDecimals + 1)
                 {
                     return false;
                 }
             }
 
-            // Validate the number
+            // Validate the number and set the text color
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Set the text color
                 entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
             }
 
