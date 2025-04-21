@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace Finance
+﻿namespace Finance
 {
     internal static class ClassEntryMethods
     {
@@ -93,15 +91,33 @@ namespace Finance
             }
 
             // Asign the decimal separator to the variable cDecimalSeparator
+            // Android and iOS !!!BUG!!!? The NumberGroupSeparator is not set in the entry field after leaving the entry field if the switch (cNumDecimalSeparator) is not excecuted in this order
             string cDecimalSeparator = cNumDecimalSeparator;
 
-            if (cText.Contains(','))
+            switch (cNumDecimalSeparator)
             {
-                cDecimalSeparator = ",";
-            }
-            else if (cText.Contains('.'))
-            {
-                cDecimalSeparator = ".";
+                case ",":
+                    if (cText.Contains(','))
+                    {
+                        cDecimalSeparator = ",";
+                    }
+                    else if (cText.Contains('.'))
+                    {
+                        cDecimalSeparator = ".";
+                    }
+                    break;
+                case ".":
+                    if (cText.Contains('.'))
+                    {
+                        cDecimalSeparator = ".";
+                    }
+                    else if (cText.Contains(','))
+                    {
+                        cDecimalSeparator = ",";
+                    }
+                    break;
+                default:
+                    break;
             }
 
             // Get the number of decimals allowed after the decimal separator
@@ -112,14 +128,13 @@ namespace Finance
             };
 
             // Check if the number of decimals is greater than the allowed number of decimals
-            // Android and iOS !!!BUG!!! The NumberGroupSeparator is not set in the entry field after leaving the entry field
-            //if (cText.Contains(cDecimalSeparator))
-            //{
-            //    if (cText.Length - cText.IndexOf(cDecimalSeparator[0]) > nDecimals + 1)
-            //    {
-            //        return false;
-            //    }
-            //}
+            if (cText.Contains(cDecimalSeparator))
+            {
+                if (cText.Length - cText.IndexOf(cDecimalSeparator[0]) > nDecimals + 1)
+                {
+                    return false;
+                }
+            }
 
             // Validate the number and set the text color
             if (decimal.TryParse(entry.Text, out decimal nValue))
@@ -285,9 +300,7 @@ namespace Finance
         {
             if (Microsoft.Maui.Controls.Application.Current == null)
             {
-#if DEBUG
                 Debug.WriteLine("Application.Current is null. Ensure the application is properly initialized.");
-#endif
                 return;
             }
 
@@ -376,6 +389,7 @@ namespace Finance
                 {
                     // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
                     entry.Unfocus();
+                    
                     _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
                 }
             }
