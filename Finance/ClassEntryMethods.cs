@@ -71,10 +71,17 @@
                     return false;
                 }
 
-                // Check if the character is a decimal separator
-                if (c == cNumDecimalSeparator[0])
+                // Asign the decimal separator to the variable cDecSeparator
+                char cDecSeparator = c switch
                 {
-                    // Check if the character is already in the string
+                    ',' => ',',
+                    '.' => '.',
+                    _ => cNumDecimalSeparator[0],
+                };
+
+                // Check if the character is already in the string
+                if (c == cDecSeparator)
+                {
                     if (cText.IndexOf(c) != cText.LastIndexOf(c))
                     {
                         return false;
@@ -82,18 +89,29 @@
                 }
             }
 
-            // Check the number of decimals after the decimal separator
+            // Asign the decimal separator to the variable cDecimalSeparator
+            string cDecimalSeparator = cNumDecimalSeparator;
+
+            if (cText.Contains(','))
+            {
+                cDecimalSeparator = ",";
+            }
+            else if (cText.Contains('.'))
+            {
+                cDecimalSeparator = ".";
+            }
+
+            // Set the number of decimals allowed after the decimal separator
             int nDecimals = entry.AutomationId switch
             {
                 "Percentage" => int.Parse(cPercDecimalDigits),
                 _ => int.Parse(cNumDecimalDigits),
             };
 
-            // Search for the decimal separator in the string
-            if (cText.Contains(cNumDecimalSeparator[0]))
+            // Check if the number of decimals is greater than the allowed number of decimals
+            if (cText.Contains(cDecimalSeparator))
             {
-                // Check if the number of decimals is greater than the allowed number of decimals
-                if (cText.Length - cText.IndexOf(cNumDecimalSeparator[0]) > nDecimals + 1)
+                if (cText.Length - cText.IndexOf(cDecimalSeparator[0]) > nDecimals + 1)
                 {
                     return false;
                 }
