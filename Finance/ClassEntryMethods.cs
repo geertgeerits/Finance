@@ -15,6 +15,35 @@
         private static string cColorPosNumber = "";
 
         /// <summary>
+        /// Initialize the number format settings based on the current culture
+        /// </summary>
+        public static void InitializeNumberFormat()
+        {
+            // Get the current culture's number format
+            var numberFormat = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
+
+            // Set the decimal separator and digits based on the current culture
+            //string cNumGroupSeparator = numberFormat.NumberGroupSeparator;
+            cNumDecimalSeparator = numberFormat.NumberDecimalSeparator;
+            //cNumDecimalDigits = numberFormat.NumberDecimalDigits.ToString();
+            //cPercDecimalDigits = numberFormat.PercentDecimalDigits.ToString();
+            //cRoundNumber = "AwayFromZero";      // Default rounding method
+            //bColorNumber = true;                // Default color setting
+
+            //Debug.WriteLine($"Number Group Separator: {cNumGroupSeparator}");
+            Debug.WriteLine($"Number Decimal Separator: {cNumDecimalSeparator}");
+
+            // The NumberGroupSeparator is not set in the entry field after leaving the entry field if this switch is used because the NumberGroupSeparator is not allowed when returning to this method
+            //cNumericCharacters = cNumDecimalSeparator switch
+            //{
+            //    "," => ",-0123456789",
+            //    "." => "-.0123456789",
+            //    _ => ",-.0123456789",
+            //};
+            Debug.WriteLine($"cNumericCharacters: {cNumericCharacters}");
+        }
+
+        /// <summary>
         /// Set the Placeholder and MaxLength for a numeric entry field
         /// </summary>
         /// <param name="entry"></param>
@@ -72,52 +101,14 @@
                     return false;
                 }
 
-                // Asign the decimal separator to the variable cDecSeparator
-                char cDecSeparator = c switch
-                {
-                    ',' => ',',
-                    '.' => '.',
-                    _ => cNumDecimalSeparator[0],
-                };
-
                 // Check if the character is already in the string
-                if (c == cDecSeparator)
+                if (c == cNumDecimalSeparator[0])
                 {
                     if (cText.IndexOf(c) != cText.LastIndexOf(c))
                     {
                         return false;
                     }
                 }
-            }
-
-            // Asign the decimal separator to the variable cDecimalSeparator
-            // Android and iOS !!!BUG!!!? The NumberGroupSeparator is not set in the entry field after leaving the entry field if the switch (cNumDecimalSeparator) is not excecuted in this order
-            string cDecimalSeparator = cNumDecimalSeparator;
-
-            switch (cNumDecimalSeparator)
-            {
-                case ",":
-                    if (cText.Contains(','))
-                    {
-                        cDecimalSeparator = ",";
-                    }
-                    else if (cText.Contains('.'))
-                    {
-                        cDecimalSeparator = ".";
-                    }
-                    break;
-                case ".":
-                    if (cText.Contains('.'))
-                    {
-                        cDecimalSeparator = ".";
-                    }
-                    else if (cText.Contains(','))
-                    {
-                        cDecimalSeparator = ",";
-                    }
-                    break;
-                default:
-                    break;
             }
 
             // Get the number of decimals allowed after the decimal separator
@@ -127,10 +118,9 @@
                 _ => int.Parse(cNumDecimalDigits),
             };
 
-            // Check if the number of decimals is greater than the allowed number of decimals
-            if (cText.Contains(cDecimalSeparator))
+            if (cText.Contains(cNumDecimalSeparator))
             {
-                if (cText.Length - cText.IndexOf(cDecimalSeparator[0]) > nDecimals + 1)
+                if (cText.Length - cText.IndexOf(cNumDecimalSeparator[0]) > nDecimals + 1)
                 {
                     return false;
                 }
@@ -186,9 +176,6 @@
             {
                 return;
             }
-
-            // Replace decimal point with decimal comma or point
-            entry.Text = ReplaceDecimalPointComma(entry.Text);
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {

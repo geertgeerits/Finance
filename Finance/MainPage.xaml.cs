@@ -55,7 +55,7 @@ namespace Finance
             ClassEntryMethods.cNumDecimalDigits = Preferences.Default.Get("SettingNumDecimalDigits", "");
             ClassEntryMethods.cPercDecimalDigits = Preferences.Default.Get("SettingPercDecimalDigits", "2");
             ClassEntryMethods.cRoundNumber = Preferences.Default.Get("SettingRoundNumber", "AwayFromZero");
-            ClassEntryMethods.bColorNumber = Preferences.Default.Get("SettingColorNumber", false);
+            ClassEntryMethods.bColorNumber = Preferences.Default.Get("SettingColorNumber", true);
             Globals.cKeyboard = Preferences.Default.Get("SettingKeyboard", "Numeric");
             Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
@@ -114,11 +114,8 @@ namespace Finance
             }
             //App.Current.MainPage.DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");  // For testing
 
-            //// Get the number decimal separator and the group separator
-            ClassEntryMethods.cNumDecimalSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-            //string cNumGroupSeparator = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator);
-            Debug.WriteLine($"Number Decimal Separator: {ClassEntryMethods.cNumDecimalSeparator}");
-            //Debug.WriteLine($"Number Group Separator: {cNumGroupSeparator}");
+            //// Initialize the number format settings based on the current culture
+            ClassEntryMethods.InitializeNumberFormat();
 
             //// Get the number of decimal digits after the decimal point
             if (string.IsNullOrEmpty(ClassEntryMethods.cNumDecimalDigits))
