@@ -1,4 +1,6 @@
-﻿namespace Finance
+﻿using Microsoft.Maui.Controls;
+
+namespace Finance
 {
     internal static class ClassEntryMethods
     {
@@ -60,6 +62,7 @@
         {
             foreach (char c in cText)
             {
+                // Check if the character is a digit or a decimal separator
                 if (!cNumericCharacters.Contains(c))
                 {
                     return false;
@@ -101,7 +104,7 @@
                 cDecimalSeparator = ".";
             }
 
-            // Set the number of decimals allowed after the decimal separator
+            // Get the number of decimals allowed after the decimal separator
             int nDecimals = entry.AutomationId switch
             {
                 "Percentage" => int.Parse(cPercDecimalDigits),
@@ -109,13 +112,14 @@
             };
 
             // Check if the number of decimals is greater than the allowed number of decimals
-            if (cText.Contains(cDecimalSeparator))
-            {
-                if (cText.Length - cText.IndexOf(cDecimalSeparator[0]) > nDecimals + 1)
-                {
-                    return false;
-                }
-            }
+            // Android and iOS !!!BUG!!! The NumberGroupSeparator is not set in the entry field after leaving the entry field
+            //if (cText.Contains(cDecimalSeparator))
+            //{
+            //    if (cText.Length - cText.IndexOf(cDecimalSeparator[0]) > nDecimals + 1)
+            //    {
+            //        return false;
+            //    }
+            //}
 
             // Validate the number and set the text color
             if (decimal.TryParse(entry.Text, out decimal nValue))
@@ -279,7 +283,7 @@
         /// </summary>
         public static void SetNumberColor()
         {
-            if (Application.Current == null)
+            if (Microsoft.Maui.Controls.Application.Current == null)
             {
 #if DEBUG
                 Debug.WriteLine("Application.Current is null. Ensure the application is properly initialized.");
@@ -294,7 +298,7 @@
             const string cColorPosNumberDark = "#FFFFFF";
 
             // Get the current device theme
-            AppTheme currentTheme = Application.Current.RequestedTheme;
+            AppTheme currentTheme = Microsoft.Maui.Controls.Application.Current.RequestedTheme;
 
             //  Set the number text color
             switch (currentTheme)
@@ -308,7 +312,7 @@
                     cColorNegNumber = bColorNumber ? cColorNegNumberDark : cColorPosNumberDark;
                     cColorPosNumber = cColorPosNumberDark;
                     break;
-                
+
                 case AppTheme.Unspecified:
                 default:
                     if (currentTheme == AppTheme.Dark)
