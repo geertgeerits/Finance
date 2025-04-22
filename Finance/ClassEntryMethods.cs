@@ -3,16 +3,18 @@
     internal static class ClassEntryMethods
     {
         // Global variables
-        public static string cNumDecimalSeparator = "";
         public static string cNumDecimalDigits = "";
         public static string cPercDecimalDigits = "";
         public static string cRoundNumber = "";
         public static bool bColorNumber;
 
         // Local variables
-        private const string cNumericCharacters = ",-.0123456789";
+        private static string cNumGroupSeparator = "";
+        private static string cNumDecimalSeparator = "";
+        private static string cNumericCharacters = "";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
+        private static bool bExecuteMethodIsNumeric;
 
         /// <summary>
         /// Initialize the number format settings based on the current culture
@@ -20,26 +22,45 @@
         public static void InitializeNumberFormat()
         {
             // Get the current culture's number format
-            var numberFormat = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
+            NumberFormatInfo numberFormatInfo = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
 
-            // Set the decimal separator and digits based on the current culture
-            //string cNumGroupSeparator = numberFormat.NumberGroupSeparator;
-            cNumDecimalSeparator = numberFormat.NumberDecimalSeparator;
-            //cNumDecimalDigits = numberFormat.NumberDecimalDigits.ToString();
-            //cPercDecimalDigits = numberFormat.PercentDecimalDigits.ToString();
-            //cRoundNumber = "AwayFromZero";      // Default rounding method
-            //bColorNumber = true;                // Default color setting
+            // Set the number properties based on the current culture
+            cNumGroupSeparator = numberFormatInfo.NumberGroupSeparator;
+            cNumDecimalSeparator = numberFormatInfo.NumberDecimalSeparator;
 
-            //Debug.WriteLine($"Number Group Separator: {cNumGroupSeparator}");
-            Debug.WriteLine($"Number Decimal Separator: {cNumDecimalSeparator}");
+            if (string.IsNullOrEmpty(cNumDecimalDigits))
+            {
+                cNumDecimalDigits = numberFormatInfo.CurrencyDecimalDigits.ToString();
+                Preferences.Default.Set("SettingNumDecimalDigits", cNumDecimalDigits);
+            }
 
-            // The NumberGroupSeparator is not set in the entry field after leaving the entry field if this switch is used because the NumberGroupSeparator is not allowed when returning to this method
-            //cNumericCharacters = cNumDecimalSeparator switch
-            //{
-            //    "," => ",-0123456789",
-            //    "." => "-.0123456789",
-            //    _ => ",-.0123456789",
-            //};
+            if (string.IsNullOrEmpty(cPercDecimalDigits))
+            {
+                cPercDecimalDigits = numberFormatInfo.PercentDecimalDigits.ToString();
+                Preferences.Default.Set("SettingPercDecimalDigits", cPercDecimalDigits);
+            }
+
+            //// Set the rounding system of numbers
+            if (string.IsNullOrEmpty(cRoundNumber))
+            {
+                cRoundNumber = "AwayFromZero";
+                Preferences.Default.Set("SettingRoundNumber", cRoundNumber);
+            }
+
+            Debug.WriteLine($"cNumGroupSeparator: {cNumGroupSeparator}");
+            Debug.WriteLine($"cNumDecimalSeparator: {cNumDecimalSeparator}");
+            Debug.WriteLine($"cNumDecimalDigits: {cNumDecimalDigits}");
+            Debug.WriteLine($"cPercDecimalDigits: {cPercDecimalDigits}");
+            Debug.WriteLine($"cRoundNumber: {cRoundNumber}");
+
+            // Set the allowed characters for numeric input
+            cNumericCharacters = cNumDecimalSeparator switch
+            {
+                "," => ",-0123456789",
+                "." => "-.0123456789",
+                _ => ",-.0123456789",
+            };
+            
             Debug.WriteLine($"cNumericCharacters: {cNumericCharacters}");
         }
 
@@ -87,6 +108,11 @@
         /// <returns></returns>
         public static bool IsNumeric(Entry entry, string cText)
         {
+            if (!bExecuteMethodIsNumeric)
+            {
+                return true;
+            }
+
             foreach (char c in cText)
             {
                 // Check if the character is a digit or a decimal separator
@@ -146,7 +172,10 @@
             {
                 _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
-
+            
+            // Allow the IsNumeric method to execute
+            bExecuteMethodIsNumeric = true;
+            
             if (string.IsNullOrEmpty(entry.Text))
             {
                 return;
@@ -157,8 +186,8 @@
                 // Ensure AutomationId is set before accessing it (Entry property: AutomationId="Percentage")
                 entry.Text = entry.AutomationId switch
                 {
-                    "Percentage" => RoundToNumDecimals(ref nValue, int.Parse(cPercDecimalDigits), "F"),
-                    _ => RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "F"),
+                    "Percentage" => nValue.ToString(format: "F" + cPercDecimalDigits),
+                    _ => nValue.ToString(format: "F" + cNumDecimalDigits),
                 };
 
                 entry.CursorPosition = 0;
@@ -177,13 +206,16 @@
                 return;
             }
 
+            // Do not allow the IsNumeric method to execute
+            bExecuteMethodIsNumeric = false;
+
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
                 // Ensure AutomationId is set before accessing it
                 entry.Text = entry.AutomationId switch
                 {
-                    "Percentage" => RoundToNumDecimals(ref nValue, int.Parse(cPercDecimalDigits), "N"),
-                    _ => RoundToNumDecimals(ref nValue, int.Parse(cNumDecimalDigits), "N"),
+                    "Percentage" => nValue.ToString(format: "N" + cPercDecimalDigits),
+                    _ => nValue.ToString(format: "N" + cNumDecimalDigits),
                 };
             }
             else

@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2025
  * Version .....: 3.0.69
- * Date ........: 2025-04-21 (YYYY-MM-DD)
+ * Date ........: 2025-04-22 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -53,8 +53,8 @@ namespace Finance
             Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
             Globals.cPageFormat = Preferences.Default.Get("SettingPageFormat", "");
             ClassEntryMethods.cNumDecimalDigits = Preferences.Default.Get("SettingNumDecimalDigits", "");
-            ClassEntryMethods.cPercDecimalDigits = Preferences.Default.Get("SettingPercDecimalDigits", "2");
-            ClassEntryMethods.cRoundNumber = Preferences.Default.Get("SettingRoundNumber", "AwayFromZero");
+            ClassEntryMethods.cPercDecimalDigits = Preferences.Default.Get("SettingPercDecimalDigits", "");
+            ClassEntryMethods.cRoundNumber = Preferences.Default.Get("SettingRoundNumber", "");
             ClassEntryMethods.bColorNumber = Preferences.Default.Get("SettingColorNumber", true);
             Globals.cKeyboard = Preferences.Default.Get("SettingKeyboard", "Numeric");
             Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
@@ -112,17 +112,10 @@ namespace Finance
             {
                 Globals.cDateFormat = "yyyy-MM-dd";
             }
-            //App.Current.MainPage.DisplayAlert("Globals.cDateFormat", Globals.cDateFormat, "OK");  // For testing
+            Debug.WriteLine($"Globals.cDateFormat: {Globals.cDateFormat}");  // For testing
 
             //// Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
-
-            //// Get the number of decimal digits after the decimal point
-            if (string.IsNullOrEmpty(ClassEntryMethods.cNumDecimalDigits))
-            {
-                ClassEntryMethods.cNumDecimalDigits = Convert.ToString(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalDigits);
-            }
-            Debug.WriteLine($"Number Decimal Digits: {ClassEntryMethods.cNumDecimalDigits}");
 
             //// Get the system culture and country code
             string cCountry2LetterISO;
@@ -159,12 +152,6 @@ namespace Finance
             if (string.IsNullOrEmpty(Globals.cPageFormat))
             {
                 Globals.cPageFormat = "CA;CL;CO;CR;DO;GT;MX;PA;PH;US".Contains(cCountry2LetterISO) ? "Letter" : "A4";
-            }
-
-            //// Set the rounding system of numbers
-            if (string.IsNullOrEmpty(ClassEntryMethods.cRoundNumber))
-            {
-                ClassEntryMethods.cRoundNumber = "AwayFromZero";
             }
         }
 
