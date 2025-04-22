@@ -225,30 +225,30 @@
             }
         }
 
-        /// <summary>
-        /// Replace decimal point with decimal comma or point - The number may NOT be formatted with the 'N' specifier because there can be more than 1 separator
-        /// </summary>
-        /// <param name="cNumber"></param>
-        /// <returns></returns>
-        private static string ReplaceDecimalPointComma(string cNumber)
-        {
-            // Check if the string cNumber is a number
-            if (string.IsNullOrEmpty(cNumber) || !decimal.TryParse(cNumber, out _))
-            {
-                return cNumber;
-            }
+        ///// <summary>
+        ///// Replace decimal point with decimal comma or point - The number may NOT be formatted with the 'N' specifier because there can be more than 1 separator
+        ///// </summary>
+        ///// <param name="cNumber"></param>
+        ///// <returns></returns>
+        //private static string ReplaceDecimalPointComma(string cNumber)
+        //{
+        //    // Check if the string cNumber is a number
+        //    if (string.IsNullOrEmpty(cNumber) || !decimal.TryParse(cNumber, out _))
+        //    {
+        //        return cNumber;
+        //    }
 
-            if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
-            {
-                cNumber = cNumber.Replace(".", ",");
-            }
-            else if (cNumDecimalSeparator == "." && cNumber.Contains(','))
-            {
-                cNumber = cNumber.Replace(",", ".");
-            }
+        //    if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
+        //    {
+        //        cNumber = cNumber.Replace(".", ",");
+        //    }
+        //    else if (cNumDecimalSeparator == "." && cNumber.Contains(','))
+        //    {
+        //        cNumber = cNumber.Replace(",", ".");
+        //    }
 
-            return cNumber;
-        }
+        //    return cNumber;
+        //}
 
         /* Rounding numbers
          * Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
