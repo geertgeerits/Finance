@@ -555,6 +555,9 @@ Utilizați acest program în întregime pe propriul risc.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>La număr par</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>La numărul zero</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Rotunjirea numărului:</value>
   </data>

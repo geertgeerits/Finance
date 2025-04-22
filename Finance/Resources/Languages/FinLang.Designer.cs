@@ -1351,6 +1351,15 @@ namespace Finance.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To zero number.
+        /// </summary>
+        internal static string RoundNumberToZero_Text {
+            get {
+                return ResourceManager.GetString("RoundNumberToZero_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Save_Text {

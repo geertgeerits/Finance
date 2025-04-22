@@ -555,6 +555,9 @@ Använd detta program helt på egen risk.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Till jämnt nummer</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Till noll nummer</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Avrundning av tal:</value>
   </data>

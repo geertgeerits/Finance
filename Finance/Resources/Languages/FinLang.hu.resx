@@ -555,6 +555,9 @@ Ezt a programot kizárólag saját felelősségére használja.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Páros számra</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Nulla számra</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>A szám kerekítése:</value>
   </data>

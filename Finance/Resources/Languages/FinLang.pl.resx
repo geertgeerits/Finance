@@ -555,6 +555,9 @@ Korzystaj z tego programu całkowicie na własne ryzyko.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Do liczby parzystej</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Do liczby zerowej</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Zaokrąglenie liczby:</value>
   </data>

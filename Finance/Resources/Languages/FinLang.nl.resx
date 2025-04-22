@@ -555,6 +555,9 @@ Gebruik dit programma geheel op eigen risico.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Naar even getal</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Naar nul getal</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Afronding van getal:</value>
   </data>

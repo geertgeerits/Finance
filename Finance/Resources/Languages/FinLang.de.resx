@@ -555,6 +555,9 @@ Verwenden Sie dieses Programm ausschließlich auf eigene Gefahr.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Auf gerade Zahl</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Zur Nullzahl</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Rundung der Zahl:</value>
   </data>

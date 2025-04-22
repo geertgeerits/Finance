@@ -555,6 +555,9 @@ Brug dette program helt på egen risiko.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Til lige tal</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Til nul tal</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Afrunding af tal:</value>
   </data>

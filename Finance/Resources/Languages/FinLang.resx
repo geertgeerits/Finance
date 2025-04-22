@@ -555,6 +555,9 @@ Use this program entirely at your own risk.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>To even number</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>To zero number</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Rounding of number:</value>
   </data>

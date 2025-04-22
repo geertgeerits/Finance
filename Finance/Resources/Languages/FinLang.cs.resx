@@ -555,6 +555,9 @@ Používejte tento program zcela na vlastní nebezpečí.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Na sudé číslo</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Na nulové číslo</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Zaokrouhlení čísla:</value>
   </data>

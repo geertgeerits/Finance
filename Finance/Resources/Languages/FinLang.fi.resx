@@ -555,6 +555,9 @@ Käytä tätä ohjelmaa täysin omalla vastuullasi.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Parilliseen numeroon</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Nollaan numeroon</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Numeron pyöristys:</value>
   </data>

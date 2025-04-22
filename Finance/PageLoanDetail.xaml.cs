@@ -242,16 +242,14 @@
             }
 
             // Rounding to 6 digits after decimal point
-            if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
+            nInterestRatePeriod = ClassEntryMethods.cRoundNumber switch
             {
-                nInterestRatePeriod = Math.Round(nInterestRatePeriod, 6, MidpointRounding.AwayFromZero);
-            }
-            else if (ClassEntryMethods.cRoundNumber == "ToEven")
-            {
-                nInterestRatePeriod = Math.Round(nInterestRatePeriod, 6, MidpointRounding.ToEven);  // Rounding to 6 digits after decimal point
-            }
+                "AwayFromZero" => Math.Round(nInterestRatePeriod, 6, MidpointRounding.AwayFromZero),
+                "ToEven" => Math.Round(nInterestRatePeriod, 6, MidpointRounding.ToEven),
+                _ => Math.Round(nInterestRatePeriod, 6, MidpointRounding.ToZero),
+            };
 
-            //Debug.WriteLine("nInterestRatePeriod: " + nInterestRatePeriod);  // For testing
+            //Debug.WriteLine($"nInterestRatePeriod: {nInterestRatePeriod}");  // For testing
 
             // Calculate annuity loan per period
             if (rbnLoanAnnuity.IsChecked)
@@ -273,17 +271,14 @@
 
             // Calculate linear loan per period
             else
-            {                      
+            {
                 // Amount of capital per period
-                if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
+                nCapitalPeriod = ClassEntryMethods.cRoundNumber switch
                 {
-                    nCapitalPeriod = Math.Round(nCapitalInitial / nNumberPeriods, nNumDec, MidpointRounding.AwayFromZero);
-                }
-                else if (ClassEntryMethods.cRoundNumber == "ToEven")
-                {
-                    nCapitalPeriod = Math.Round(nCapitalInitial / nNumberPeriods, nNumDec, MidpointRounding.ToEven);
-                }
-
+                    "AwayFromZero" => Math.Round(nCapitalInitial / nNumberPeriods, nNumDec, MidpointRounding.AwayFromZero),
+                    "ToEven" => Math.Round(nCapitalInitial / nNumberPeriods, nNumDec, MidpointRounding.ToEven),
+                    _ => Math.Round(nCapitalInitial / nNumberPeriods, nNumDec, MidpointRounding.ToZero),
+                };
                 nCapitalRemainder = nCapitalInitial;                        // Remainder of capital
             }
 
@@ -293,15 +288,12 @@
                 // Calculate loan annuity per period
                 if (rbnLoanAnnuity.IsChecked)
                 {
-                    if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
+                    nInterestPeriod = ClassEntryMethods.cRoundNumber switch
                     {
-                        nInterestPeriod = Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.AwayFromZero);
-                    }
-                    else if (ClassEntryMethods.cRoundNumber == "ToEven")
-                    {
-                        nInterestPeriod = Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.ToEven);
-                    }
-
+                        "AwayFromZero" => Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.AwayFromZero),
+                        "ToEven" => Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.ToEven),
+                        _ => Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.ToZero),
+                    };
                     nInterestTotal += nInterestPeriod;
                     nCapitalPeriod = nPaymentPeriod - nInterestPeriod;
                     nCapitalRemainder -= nCapitalPeriod;
@@ -309,15 +301,12 @@
                 // Calculate loan linear per period
                 else
                 {
-                    if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
+                    nInterestPeriod = ClassEntryMethods.cRoundNumber switch
                     {
-                        nInterestPeriod = Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.AwayFromZero);
-                    }
-                    else if (ClassEntryMethods.cRoundNumber == "ToEven")
-                    {
-                        nInterestPeriod = Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.ToEven);
-                    }
-
+                        "AwayFromZero" => Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.AwayFromZero),
+                        "ToEven" => Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.ToEven),
+                        _ => Math.Round(nCapitalRemainder * nInterestRatePeriod, nNumDec, MidpointRounding.ToZero),
+                    };
                     nPaymentPeriod = nCapitalPeriod + nInterestPeriod;
                     nInterestTotal += nInterestPeriod;
                     nCapitalRemainder -= nCapitalPeriod;

@@ -47,20 +47,14 @@
                 Preferences.Default.Set("SettingRoundNumber", cRoundNumber);
             }
 
+            // Set the allowed characters for numeric input
+            cNumericCharacters = $"{cNumDecimalSeparator}-0123456789";
+
             Debug.WriteLine($"cNumGroupSeparator: {cNumGroupSeparator}");
             Debug.WriteLine($"cNumDecimalSeparator: {cNumDecimalSeparator}");
             Debug.WriteLine($"cNumDecimalDigits: {cNumDecimalDigits}");
             Debug.WriteLine($"cPercDecimalDigits: {cPercDecimalDigits}");
             Debug.WriteLine($"cRoundNumber: {cRoundNumber}");
-
-            // Set the allowed characters for numeric input
-            cNumericCharacters = cNumDecimalSeparator switch
-            {
-                "," => ",-0123456789",
-                "." => "-.0123456789",
-                _ => ",-.0123456789",
-            };
-            
             Debug.WriteLine($"cNumericCharacters: {cNumericCharacters}");
         }
 
@@ -278,15 +272,12 @@
         /// <returns></returns>
         public static string RoundToNumDecimals(ref double nNumber, int nNumDec, string cFormatSpecifier)
         {
-            if (cRoundNumber == "AwayFromZero")
+            nNumber = cRoundNumber switch
             {
-                nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.AwayFromZero);
-            }
-            else if (cRoundNumber == "ToEven")
-            {
-                nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.ToEven);
-            }
-
+                "AwayFromZero" => Math.Round(nNumber, nNumDec, MidpointRounding.AwayFromZero),
+                "ToEven" => Math.Round(nNumber, nNumDec, MidpointRounding.ToEven),
+                _ => Math.Round(nNumber, nNumDec, MidpointRounding.ToZero),
+            };
             return nNumber.ToString(format: cFormatSpecifier + nNumDec.ToString());
         }
 
@@ -299,15 +290,12 @@
         /// <returns></returns>
         public static string RoundToNumDecimals(ref decimal nNumber, int nNumDec, string cFormatSpecifier)
         {
-            if (cRoundNumber == "AwayFromZero")
+            nNumber = cRoundNumber switch
             {
-                nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.AwayFromZero);
-            }
-            else if (cRoundNumber == "ToEven")
-            {
-                nNumber = Math.Round(nNumber, nNumDec, MidpointRounding.ToEven);
-            }
-
+                "AwayFromZero" => Math.Round(nNumber, nNumDec, MidpointRounding.AwayFromZero),
+                "ToEven" => Math.Round(nNumber, nNumDec, MidpointRounding.ToEven),
+                _ => Math.Round(nNumber, nNumDec, MidpointRounding.ToZero),
+            };
             return nNumber.ToString(format: cFormatSpecifier + nNumDec.ToString());
         }
 

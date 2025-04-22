@@ -24,7 +24,7 @@
 
             <Grid
                 Style="{StaticResource gridStyleSettings}"
-                RowDefinitions="Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, Auto, 4, Auto, 4, Auto">
+                RowDefinitions="Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, 4, Auto, Auto, 4, Auto, Auto, 4, Auto, Auto, Auto, 4, Auto, Auto, Auto, 4, Auto, 4, Auto">
 
                 <Border
                     Style="{StaticResource borderStyleDefault}"
@@ -248,7 +248,7 @@
                     Style="{StaticResource borderStyleGroup}"
                     Grid.Row="16"
                     Grid.Column="1"
-                    Grid.RowSpan="2">
+                    Grid.RowSpan="3">
                 </Border>
                 
                 <RadioButton
@@ -272,23 +272,33 @@
                     CheckedChanged="OnRoundNumberRadioButtonCheckedChanged">
                 </RadioButton>
 
+                <RadioButton
+                    x:Name="rbnRoundNumberToZero"
+                    Grid.Row="18"
+                    Grid.Column="1"
+                    GroupName="rbgRoundNumber"
+                    Value="rbnRoundNumberToZero"
+                    Content="{local:Translate RoundNumberToZero_Text}"
+                    CheckedChanged="OnRoundNumberRadioButtonCheckedChanged">
+                </RadioButton>
+
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="19"
+                    Grid.Row="20"
                     Grid.Column="0"
                     Text="{local:Translate Keyboard_Text}">
                 </Label>
 
                 <Border
                     Style="{StaticResource borderStyleGroup}"
-                    Grid.Row="19"
+                    Grid.Row="20"
                     Grid.Column="1"
                     Grid.RowSpan="3">
                 </Border>
                 
                 <RadioButton
                     x:Name="rbnKeyboardDefault"
-                    Grid.Row="19"
+                    Grid.Row="20"
                     Grid.Column="1"
                     GroupName="rbgKeyboard"
                     Value="rbnKeyboardDefault"
@@ -298,7 +308,7 @@
 
                 <RadioButton
                     x:Name="rbnKeyboardNumeric"
-                    Grid.Row="20"
+                    Grid.Row="21"
                     Grid.Column="1"
                     GroupName="rbgKeyboard"
                     Value="rbnKeyboardNumeric"
@@ -309,7 +319,7 @@
 
                 <RadioButton
                     x:Name="rbnKeyboardText"
-                    Grid.Row="21"
+                    Grid.Row="22"
                     Grid.Column="1"
                     GroupName="rbgKeyboard"
                     Value="rbnKeyboardText"
@@ -319,14 +329,14 @@
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="23"
+                    Grid.Row="24"
                     Grid.Column="0"
                     Text="{local:Translate NegativeNumberRed_Text}">
                 </Label>
 
                 <Switch
                     x:Name="swtColorNumber"
-                    Grid.Row="23"
+                    Grid.Row="24"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Toggled="OnSwtColorNumberToggled">

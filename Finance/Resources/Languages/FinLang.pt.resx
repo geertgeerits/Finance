@@ -553,7 +553,10 @@ Use este programa inteiramente por sua conta e risco.</value>
     <value>Aritmético</value>
   </data>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
-    <value>Para numeração par</value>
+    <value>Para número par</value>
+  </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Para número zero</value>
   </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Arredondamento do número:</value>

@@ -56,47 +56,53 @@
             entPercDec.Text = ClassEntryMethods.cPercDecimalDigits;
 
             //// Set radiobutton to the date format
-            if (Globals.bDateFormatSystem == true)
+            switch (Globals.bDateFormatSystem)
             {
-                rbnDateFormatSystem.IsChecked = true;
-            }
-            else
-            {
-                rbnDateFormatISO8601.IsChecked = true;
+                case true:
+                    rbnDateFormatSystem.IsChecked = true;
+                    break;
+                default:
+                    rbnDateFormatISO8601.IsChecked = true;
+                    break;
             }
 
             //// Set radiobutton to the page format
-            if (Globals.cPageFormat == "A4")
+            switch (Globals.cPageFormat)
             {
-                rbnPageFormatA4.IsChecked = true;
-            }
-            else
-            {
-                rbnPageFormatLetter.IsChecked = true;
+                case "A4":
+                    rbnPageFormatA4.IsChecked = true;
+                    break;
+                default:
+                    rbnPageFormatLetter.IsChecked = true;
+                    break;
             }
 
             //// Set radiobutton to the rounding numbers method
-            if (ClassEntryMethods.cRoundNumber == "AwayFromZero")
+            switch (ClassEntryMethods.cRoundNumber)
             {
-                rbnRoundNumberAwayFromZero.IsChecked = true;
-            }
-            else
-            {
-                rbnRoundNumberToEven.IsChecked = true;
+                case "AwayFromZero":
+                    rbnRoundNumberAwayFromZero.IsChecked = true;
+                    break;
+                case "ToEven":
+                    rbnRoundNumberToEven.IsChecked = true;
+                    break;
+                default:
+                    rbnRoundNumberToZero.IsChecked = true;
+                    break;
             }
 
             //// Set radiobutton to the used keyboard
-            if (Globals.cKeyboard == "Default")
+            switch (Globals.cKeyboard)
             {
-                rbnKeyboardDefault.IsChecked = true;
-            }
-            else if (Globals.cKeyboard == "Numeric")
-            {
-                rbnKeyboardNumeric.IsChecked = true;
-            }
-            else
-            {
-                rbnKeyboardText.IsChecked = true;
+                case "Default":
+                    rbnKeyboardDefault.IsChecked = true;
+                    break;
+                case "Numeric":
+                    rbnKeyboardNumeric.IsChecked = true;
+                    break;
+                default:
+                    rbnKeyboardText.IsChecked = true;
+                    break;
             }
 
             //// Set the color of number to false or true
@@ -288,6 +294,10 @@
             else if (rbnRoundNumberToEven.IsChecked)
             {
                 ClassEntryMethods.cRoundNumber = "ToEven";
+            }
+            else
+            {
+                ClassEntryMethods.cRoundNumber = "ToZero";
             }
         }
 

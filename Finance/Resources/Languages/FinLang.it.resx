@@ -555,6 +555,9 @@ Utilizzare questo programma interamente a proprio rischio.</value>
   <data name="RoundNumberToEven_Text" xml:space="preserve">
     <value>Al numero pari</value>
   </data>
+  <data name="RoundNumberToZero_Text" xml:space="preserve">
+    <value>Al numero zero</value>
+  </data>
   <data name="RoundNumber_Text" xml:space="preserve">
     <value>Arrotondamento del numero:</value>
   </data>
