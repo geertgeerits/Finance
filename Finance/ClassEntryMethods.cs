@@ -7,6 +7,7 @@
         public static string cPercDecimalDigits = "";
         public static string cRoundNumber = "";
         public static bool bColorNumber;
+        public static bool bExecuteMethodIsNumeric;
 
         // Local variables
         private static string cNumGroupSeparator = "";
@@ -14,7 +15,6 @@
         private static string cNumericCharacters = "";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
-        private static bool bExecuteMethodIsNumeric;
 
         /// <summary>
         /// Initialize the number format settings based on the current culture
