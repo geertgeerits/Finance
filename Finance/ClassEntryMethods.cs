@@ -7,11 +7,11 @@
         public static string cPercDecimalDigits = "";
         public static string cRoundNumber = "";
         public static bool bColorNumber;
-        public static bool bExecuteMethodIsNumeric;
 
         // Local variables
         private static string cNumGroupSeparator = "";
         private static string cNumDecimalSeparator = "";
+        private static string cNumNegativeSign = "";
         private static string cNumericCharacters = "";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
@@ -27,6 +27,7 @@
             // Set the number properties based on the current culture
             cNumGroupSeparator = numberFormatInfo.NumberGroupSeparator;
             cNumDecimalSeparator = numberFormatInfo.NumberDecimalSeparator;
+            cNumNegativeSign = numberFormatInfo.NegativeSign;
 
             if (string.IsNullOrEmpty(cNumDecimalDigits))
             {
@@ -48,10 +49,11 @@
             }
 
             // Set the allowed characters for numeric input
-            cNumericCharacters = $"{cNumDecimalSeparator}-0123456789";
+            cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}0123456789";
 
             Debug.WriteLine($"cNumGroupSeparator: {cNumGroupSeparator}");
             Debug.WriteLine($"cNumDecimalSeparator: {cNumDecimalSeparator}");
+            Debug.WriteLine($"cNumNegativeSign: {cNumNegativeSign}");
             Debug.WriteLine($"cNumDecimalDigits: {cNumDecimalDigits}");
             Debug.WriteLine($"cPercDecimalDigits: {cPercDecimalDigits}");
             Debug.WriteLine($"cRoundNumber: {cRoundNumber}");
@@ -102,11 +104,13 @@
         /// <returns></returns>
         public static bool IsNumeric(Entry entry, string cText)
         {
-            if (!bExecuteMethodIsNumeric)
+            // If the number contains the group separator this is only to display the number just like in a label
+            if (cText.Contains(cNumGroupSeparator))
             {
                 return true;
             }
 
+            // Check the text for invalid characters
             foreach (char c in cText)
             {
                 // Check if the character is a digit or a decimal separator
@@ -167,9 +171,6 @@
                 _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
             
-            // Allow the IsNumeric method to execute
-            bExecuteMethodIsNumeric = true;
-            
             if (string.IsNullOrEmpty(entry.Text))
             {
                 return;
@@ -199,9 +200,6 @@
             {
                 return;
             }
-
-            // Do not allow the IsNumeric method to execute
-            bExecuteMethodIsNumeric = false;
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {

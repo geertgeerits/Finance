@@ -163,9 +163,6 @@ namespace Finance
             // Hide the keyboard
             ClassEntryMethods.HideKeyboard(entPercentageReturnYear);
 
-            // Set the entry method
-            ClassEntryMethods.bExecuteMethodIsNumeric = false;
-
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
             int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
