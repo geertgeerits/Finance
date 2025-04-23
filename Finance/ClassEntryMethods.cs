@@ -7,6 +7,7 @@
         public static string cPercDecimalDigits = "";
         public static string cRoundNumber = "";
         public static bool bColorNumber;
+        public static bool bShowFormattedNumber;
 
         // Local variables
         private static string cNumGroupSeparator = "";
@@ -104,8 +105,8 @@
         /// <returns></returns>
         public static bool IsNumeric(Entry entry, string cText)
         {
-            // If the number contains the group separator this is only to display the number just like in a label
-            if (cText.Contains(cNumGroupSeparator))
+            // Do not execute this method because this is only to show the formatted number just like in a label
+            if (bShowFormattedNumber)
             {
                 return true;
             }
@@ -170,7 +171,10 @@
             {
                 _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
-            
+
+            // Allow the IsNumeric method to execute
+            bShowFormattedNumber = false;
+
             if (string.IsNullOrEmpty(entry.Text))
             {
                 return;
@@ -200,6 +204,9 @@
             {
                 return;
             }
+
+            // Do not allow the IsNumeric method to execute
+            bShowFormattedNumber = true;
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
