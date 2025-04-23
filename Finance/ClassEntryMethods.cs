@@ -13,6 +13,7 @@
         private static string cNumGroupSeparator = "";
         private static string cNumDecimalSeparator = "";
         private static string cNumNegativeSign = "";
+        private static string cNumNativeDigits = "";
         private static string cNumericCharacters = "";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
@@ -29,6 +30,7 @@
             cNumGroupSeparator = numberFormatInfo.NumberGroupSeparator;
             cNumDecimalSeparator = numberFormatInfo.NumberDecimalSeparator;
             cNumNegativeSign = numberFormatInfo.NegativeSign;
+            cNumNativeDigits = string.Join("", numberFormatInfo.NativeDigits);  // Get the native digits as a string from the array
 
             if (string.IsNullOrEmpty(cNumDecimalDigits))
             {
@@ -50,11 +52,12 @@
             }
 
             // Set the allowed characters for numeric input
-            cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}0123456789";
+            cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
 
             Debug.WriteLine($"cNumGroupSeparator: {cNumGroupSeparator}");
             Debug.WriteLine($"cNumDecimalSeparator: {cNumDecimalSeparator}");
             Debug.WriteLine($"cNumNegativeSign: {cNumNegativeSign}");
+            Debug.WriteLine($"cNumNativeDigits: {cNumNativeDigits}");
             Debug.WriteLine($"cNumDecimalDigits: {cNumDecimalDigits}");
             Debug.WriteLine($"cPercDecimalDigits: {cPercDecimalDigits}");
             Debug.WriteLine($"cRoundNumber: {cRoundNumber}");
