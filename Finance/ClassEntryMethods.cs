@@ -413,5 +413,27 @@
                 return;
             }
         }
+
+        /// <summary>
+        /// Test the rounding of numbers
+        /// </summary>
+        public static void TestRoundingNumbers()
+        {
+            List<double> numbers = new List<double> { 12.0, 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.9, 13.0 };
+
+            foreach (double number in numbers)
+            {
+                double nNumber = number;
+                string cFormatSpecifier = "F";
+                int nNumDec = 0;
+                cRoundNumber = "AwayFromZero";
+                //cRoundNumber = "ToEven";
+                //cRoundNumber = "ToZero";
+                
+                string cRoundedNumber = RoundToNumDecimals(ref nNumber, nNumDec, cFormatSpecifier);
+                
+                Debug.WriteLine($"Original: {number} - Rounded: {cRoundedNumber}");
+            }
+        }
     }
 }

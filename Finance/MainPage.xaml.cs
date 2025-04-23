@@ -9,6 +9,8 @@
 
 #if IOS
 using Foundation;
+using Microsoft.Maui.Controls;
+using static System.Net.Mime.MediaTypeNames;
 #endif
 
 namespace Finance
@@ -153,6 +155,9 @@ namespace Finance
             {
                 Globals.cPageFormat = "CA;CL;CO;CR;DO;GT;MX;PA;PH;US".Contains(cCountry2LetterISO) ? "Letter" : "A4";
             }
+            
+            // Test the rounding of numbers
+            //ClassEntryMethods.TestRoundingNumbers();
         }
 
         //// Buttons clicked events
