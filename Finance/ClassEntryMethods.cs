@@ -51,6 +51,37 @@
                 Preferences.Default.Set("SettingRoundNumber", cRoundNumber);
             }
 
+            // Check the number settings
+            if (string.IsNullOrEmpty(cNumGroupSeparator))
+            {
+                cNumGroupSeparator = ",";
+            }
+
+            if (string.IsNullOrEmpty(cNumDecimalSeparator))
+            {
+                cNumDecimalSeparator = cNumGroupSeparator == "," ? "." : ",";
+            }
+
+            if (string.IsNullOrEmpty(cNumNegativeSign))
+            {
+                cNumNegativeSign = "-";
+            }
+
+            if (string.IsNullOrEmpty(cNumNativeDigits))
+            {
+                cNumNativeDigits = "0123456789";
+            }
+
+            if (string.IsNullOrEmpty(cNumDecimalDigits))
+            {
+                cNumDecimalDigits = "2";
+            }
+
+            if (string.IsNullOrEmpty(cPercDecimalDigits))
+            {
+                cPercDecimalDigits = "2";
+            }
+
             // Set the allowed characters for numeric input
             cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
 
