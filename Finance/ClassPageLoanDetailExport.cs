@@ -687,7 +687,7 @@ namespace Finance
                 nRow += 3;
                 for (int nObject = 1; nObject < nNumObjects; nObject++)
                 {
-                    cText = new String('0', 10) + Convert.ToString(aPosObject[nObject]);
+                    cText = $"{new string('0', 10)}{Convert.ToString(aPosObject[nObject])}";
                     cText = string.Concat(cText.AsSpan(cText.Length - 10, 10), " 00000 n ");
                     cTextLines[nRow] = cText;
                     nRow++;
@@ -790,8 +790,8 @@ namespace Finance
                     cTextPart2 = cTextPart2[..nMaxTextLength];
                 }
 
-                cText = new String(' ', nMaxTextLength - cText.Length) + cText;
-                cTextPart2 = new String(' ', nMaxTextLength - cTextPart2.Length) + cTextPart2;
+                cText = $"{new string(' ', nMaxTextLength - cText.Length)}{cText}";
+                cTextPart2 = $"{new string(' ', nMaxTextLength - cTextPart2.Length)}{cTextPart2}";
 
                 return cText;
             }

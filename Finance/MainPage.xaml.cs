@@ -154,7 +154,7 @@ namespace Finance
                 Globals.cPageFormat = "CA;CL;CO;CR;DO;GT;MX;PA;PH;US".Contains(cCountry2LetterISO) ? "Letter" : "A4";
             }
             
-            // Test the rounding of numbers
+            //// Test the rounding of numbers
             //ClassEntryMethods.TestRoundingNumbers();
         }
 

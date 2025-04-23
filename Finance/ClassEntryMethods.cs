@@ -42,7 +42,7 @@
                 Preferences.Default.Set("SettingPercDecimalDigits", cPercDecimalDigits);
             }
 
-            //// Set the rounding system of numbers
+            // Set the rounding system of numbers
             if (string.IsNullOrEmpty(cRoundNumber))
             {
                 cRoundNumber = "AwayFromZero";
@@ -224,31 +224,6 @@
             }
         }
 
-        ///// <summary>
-        ///// Replace decimal point with decimal comma or point - The number may NOT be formatted with the 'N' specifier because there can be more than 1 separator
-        ///// </summary>
-        ///// <param name="cNumber"></param>
-        ///// <returns></returns>
-        //private static string ReplaceDecimalPointComma(string cNumber)
-        //{
-        //    // Check if the string cNumber is a number
-        //    if (string.IsNullOrEmpty(cNumber) || !decimal.TryParse(cNumber, out _))
-        //    {
-        //        return cNumber;
-        //    }
-
-        //    if (cNumDecimalSeparator == "," && cNumber.Contains('.'))
-        //    {
-        //        cNumber = cNumber.Replace(".", ",");
-        //    }
-        //    else if (cNumDecimalSeparator == "." && cNumber.Contains(','))
-        //    {
-        //        cNumber = cNumber.Replace(",", ".");
-        //    }
-
-        //    return cNumber;
-        //}
-
         /* Rounding numbers
          * Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
          * Round half to even or banker's rounding: MidpointRounding.ToEven
@@ -325,7 +300,7 @@
             // Get the current device theme
             AppTheme currentTheme = Microsoft.Maui.Controls.Application.Current.RequestedTheme;
 
-            //  Set the number text color
+            // Set the number text color
             switch (currentTheme)
             {
                 case AppTheme.Light:
@@ -367,6 +342,31 @@
         }
 
         /// <summary>
+        /// Hide the keyboard
+        /// </summary>
+        /// <param name="entry"></param>
+        public async static void HideKeyboard(Entry entry)
+        {
+            try
+            {
+                if (entry.IsSoftInputShowing())
+                {
+                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
+                    entry.Unfocus();
+
+                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                }
+            }
+            catch (Exception)
+            {
+                entry.IsEnabled = false;
+                entry.IsEnabled = true;
+
+                return;
+            }
+        }
+
+        /// <summary>
         /// Select all the text in the entry field
         /// </summary>
         public static void ModifyEntrySelectAllText()
@@ -389,51 +389,26 @@
             });
         }
 
-        /// <summary>
-        /// Hide the keyboard
-        /// </summary>
-        /// <param name="entry"></param>
-        public async static void HideKeyboard(Entry entry)
-        {
-            try
-            {
-                if (entry.IsSoftInputShowing())
-                {
-                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
-                    entry.Unfocus();
-                    
-                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
-                }
-            }
-            catch (Exception)
-            {
-                entry.IsEnabled = false;
-                entry.IsEnabled = true;
+        ///// <summary>
+        ///// Test the rounding of numbers
+        ///// </summary>
+        //public static void TestRoundingNumbers()
+        //{
+        //    List<double> numbers = new List<double> { 12.0, 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.9, 13.0 };
 
-                return;
-            }
-        }
-
-        /// <summary>
-        /// Test the rounding of numbers
-        /// </summary>
-        public static void TestRoundingNumbers()
-        {
-            List<double> numbers = new List<double> { 12.0, 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.9, 13.0 };
-
-            foreach (double number in numbers)
-            {
-                double nNumber = number;
-                string cFormatSpecifier = "F";
-                int nNumDec = 0;
-                cRoundNumber = "AwayFromZero";
-                //cRoundNumber = "ToEven";
-                //cRoundNumber = "ToZero";
+        //    foreach (double number in numbers)
+        //    {
+        //        double nNumber = number;
+        //        string cFormatSpecifier = "F";
+        //        int nNumDec = 0;
+        //        cRoundNumber = "AwayFromZero";
+        //        //cRoundNumber = "ToEven";
+        //        //cRoundNumber = "ToZero";
                 
-                string cRoundedNumber = RoundToNumDecimals(ref nNumber, nNumDec, cFormatSpecifier);
+        //        string cRoundedNumber = RoundToNumDecimals(ref nNumber, nNumDec, cFormatSpecifier);
                 
-                Debug.WriteLine($"Original: {number} - Rounded: {cRoundedNumber}");
-            }
-        }
+        //        Debug.WriteLine($"Original: {number} - Rounded: {cRoundedNumber}");
+        //    }
+        //}
     }
 }

@@ -39,7 +39,7 @@ namespace Finance
             ClassEntryMethods.SetNumberEntryProperties(entVATAmount, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entVATAmountIncluded, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
 
-            // Reset the entry fields
+            //// Reset the entry fields
             ResetEntryFields(null, null);
         }
 

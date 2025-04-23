@@ -14,7 +14,7 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            // Set the margin of the title for windows
+            //// Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
             //// Set the type of keyboard
@@ -43,7 +43,7 @@ namespace Finance
             //   This is necessary if the default value of the field is 0
             //NumberEntryFocused(entPercentageReturnYear, null);
 
-            // Reset the entry fields
+            //// Reset the entry fields
             ResetEntryFields(null, null);
         }
 
