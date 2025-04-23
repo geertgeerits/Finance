@@ -357,7 +357,7 @@ Fișierul creat trebuie atașat manual la e-mail.</value>
 
 Metoda de rotunjire poate duce la abateri de la rezultatul final (de exemplu în ultima tranșă de împrumuturi).
 Numerele sunt rotunjite la cel mai apropiat cent în mod implicit (aritmetică: 1-4 în jos și 5-9 în sus).
-Poate fi schimbat la număr par (rotunjirea bancherului) 1-4 în jos, 6-9 în sus și 5 la numărul par în jos, numărul impar în sus.
+Poate fi schimbat în setări la număr par (rotunjirea bancherului) 1-4 în jos, 6-9 în sus și 5 la numărul par în jos, numărul impar în sus. Sau la numărul zero (1-9 în jos).
 
 Google Translate a fost folosit pentru traducerea textului. Aceasta nu este o garanție că toate traducerile sunt corecte.
 Limbile suportate sunt: cehă, daneză, olandeză, engleză, finlandeză, franceză, germană, maghiară, italiană, norvegiană, poloneză, portugheză, română, spaniolă și suedeză.

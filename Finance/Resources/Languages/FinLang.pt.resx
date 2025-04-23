@@ -355,9 +355,9 @@ O arquivo criado deve ser anexado manualmente ao e-mail.</value>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>O formato da data pode ser alterado nas configurações para o formato padrão internacional ISO 8601 (AAAA-MM-DD).
 
-O método de arredondamento pode levar a desvios do resultado final (por exemplo, na última prestação de empréstimos).
+O método de arredondamento pode levar a desvios do resultado final (por exemplo, na última parcela de empréstimos).
 Os números são arredondados para o centavo mais próximo por padrão (aritmética: 1-4 para baixo e 5-9 para cima).
-Pode ser alterado para número par (arredondamento do banqueiro) 1-4 para baixo, 6-9 para cima e 5 para número par para baixo, número ímpar para cima.
+Pode ser alterado nas configurações para números pares (arredondamento bancário): 1-4 para baixo, 6-9 para cima e 5 para números pares para baixo, ímpares para cima. Ou para zero (1-9 para baixo).
 
 O Google Tradutor foi utilizado para a tradução do texto. Isso não é uma garantia de que todas as traduções estejam corretas.
 Os idiomas de suporte são: tcheco, dinamarquês, holandês, inglês, finlandês, francês, alemão, húngaro, italiano, norueguês, polonês, português, romeno, espanhol e sueco.

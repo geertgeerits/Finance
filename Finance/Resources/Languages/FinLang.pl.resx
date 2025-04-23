@@ -355,9 +355,9 @@ Utworzony plik należy ręcznie dołączyć do wiadomości e-mail.</value>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Format daty można zmienić w ustawieniach na międzynarodowy standardowy format ISO 8601 (RRRR-MM-DD).
 
-Sposób zaokrąglania może prowadzić do odchyleń od wyniku końcowego (np. w przypadku ostatniej raty kredytów).
-Liczby są domyślnie zaokrąglane do najbliższego centa (arytmetycznie: 1-4 w dół i 5-9 w górę).
-Można zmienić na liczbę parzystą (zaokrąglenie bankiera) 1-4 w dół, 6-9 w górę i 5 na parzystą liczbę w dół, nieparzystą w górę.
+Metoda zaokrąglania może prowadzić do odchyleń od wyniku końcowego (np. w ostatniej racie pożyczki).
+Domyślnie liczby są zaokrąglane do najbliższego centa (arytmetyka: 1-4 w dół i 5-9 w górę).
+Można zmienić w ustawieniach na liczbę parzystą (zaokrąglanie bankierskie) 1-4 w dół, 6-9 w górę i 5 na liczbę parzystą w dół, liczbę nieparzystą w górę. Lub na liczbę zerową (1-9 w dół).
 
 Do tłumaczenia tekstu użyto Tłumacza Google. Nie gwarantuje to, że wszystkie tłumaczenia są poprawne.
 Obsługiwane języki to: czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, węgierski, włoski, norweski, polski, portugalski, rumuński, hiszpański i szwedzki.

@@ -357,7 +357,7 @@ Den opprettede filen må legges ved e-post.</value>
 
 Avrundingsmetoden kan føre til avvik fra sluttresultatet (for eksempel i siste avdrag av lån).
 Tallene er avrundet til nærmeste cent som standard (aritmetikk: 1-4 ned og 5-9 opp).
-Kan endres til partall (bankers avrunding) 1-4 ned, 6-9 opp og 5 på partall ned, oddetall opp.
+Kan endres i innstillingene til partall (bankers avrunding) 1-4 ned, 6-9 opp og 5 på partall ned, oddetall opp. Eller til null tall (1-9 ned).
 
 Google Translate ble brukt til oversettelsen av teksten. Dette er ikke en garanti for at alle oversettelser er korrekte.
 Støttespråkene er: tsjekkisk, dansk, nederlandsk, engelsk, finsk, fransk, tysk, ungarsk, italiensk, norsk, polsk, portugisisk, rumensk, spansk og svensk.

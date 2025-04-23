@@ -355,9 +355,9 @@ Il file creato deve essere allegato manualmente all'e-mail.</value>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Il formato della data può essere modificato nelle impostazioni nel formato standard internazionale ISO 8601 (AAAA-MM-GG).
 
-Il metodo di arrotondamento può comportare scostamenti dal risultato finale (ad esempio nell'ultima rata dei prestiti).
-I numeri sono arrotondati al centesimo più vicino per impostazione predefinita (aritmetica: 1-4 per difetto e 5-9 per eccesso).
-Può essere cambiato in numero pari (arrotondamento bancario) 1-4 per difetto, 6-9 per eccesso e 5 per numero pari per difetto, numero dispari per eccesso.
+Il metodo di arrotondamento può comportare deviazioni dal risultato finale (ad esempio nell'ultima rata dei prestiti).
+Per impostazione predefinita, i numeri vengono arrotondati al centesimo più vicino (aritmetica: 1-4 per difetto e 5-9 per eccesso).
+Può essere modificato nelle impostazioni in numeri pari (arrotondamento bancario): 1-4 per difetto, 6-9 per eccesso e 5 per difetto, numero dispari per eccesso. Oppure in numeri pari (1-9 per difetto).
 
 Per la traduzione del testo è stato utilizzato Google Translate. Questa non è una garanzia che tutte le traduzioni siano corrette.
 Le lingue di supporto sono: ceco, danese, olandese, inglese, finlandese, francese, tedesco, ungherese, italiano, norvegese, polacco, portoghese, rumeno, spagnolo e svedese.

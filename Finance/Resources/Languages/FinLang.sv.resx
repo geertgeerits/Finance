@@ -357,7 +357,7 @@ Den skapade filen måste bifogas manuellt till e-postmeddelandet.</value>
 
 Metoden för avrundning kan leda till avvikelser från slutresultatet (till exempel i den sista avbetalningen av lån).
 Siffrorna avrundas till närmaste cent som standard (arithmetik: 1-4 ner och 5-9 upp).
-Kan ändras till jämnt nummer (bankers avrundning) 1-4 ner, 6-9 upp och 5 på jämnt nummer ner, udda nummer upp.
+Kan ändras i inställningarna till jämnt nummer (bankers avrundning) 1-4 ner, 6-9 upp och 5 på jämnt nummer ner, udda nummer upp. Eller till noll nummer (1-9 ner).
 
 Google Translate användes för översättningen av texten. Detta är inte en garanti för att alla översättningar är korrekta.
 Stödspråken är: tjeckiska, danska, holländska, engelska, finska, franska, tyska, ungerska, italienska, norska, polska, portugisiska, rumänska, spanska och svenska.

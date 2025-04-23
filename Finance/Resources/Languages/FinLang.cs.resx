@@ -357,7 +357,7 @@ Vytvořený soubor je nutné ručně připojit k e-mailu.</value>
 
 Způsob zaokrouhlování může vést k odchylkám od konečného výsledku (například u poslední splátky úvěrů).
 Čísla jsou standardně zaokrouhlena na nejbližší cent (aritmeticky: 1-4 dolů a 5-9 nahoru).
-Lze změnit na sudé číslo (zaokrouhlení bankéře) 1-4 dolů, 6-9 nahoru a 5 na sudé číslo dolů, liché číslo nahoru.
+Lze změnit v nastavení na sudé číslo (zaokrouhlení bankéře) 1-4 dolů, 6-9 nahoru a 5 na sudé číslo dolů, liché číslo nahoru. Nebo na nulové číslo (1-9 dolů).
 
 K překladu textu byl použit Google Translate. To nezaručuje, že všechny překlady jsou správné.
 Podporované jazyky jsou: čeština, dánština, holandština, angličtina, finština, francouzština, němčina, maďarština, italština, norština, polština, portugalština, rumunština, španělština a švédština.

@@ -355,9 +355,9 @@ Die erstellte Datei muss manuell an die E-Mail angehängt werden.</value>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Das Datumsformat kann in den Einstellungen auf das internationale Standardformat ISO 8601 (JJJJ-MM-TT) geändert werden.
 
-Durch die Rundungsmethode kann es zu Abweichungen vom Endergebnis kommen (z. B. bei der letzten Kreditrate).
-Die Zahlen werden standardmäßig auf den nächsten Cent gerundet (Rechnung: 1-4 abwärts und 5-9 aufwärts).
-Kann in gerade Zahlen geändert werden (Bankrundung) 1-4 nach unten, 6-9 nach oben und 5 bei geraden Zahlen nach unten, ungerade Zahlen nach oben.
+Die Rundungsmethode kann zu Abweichungen vom Endergebnis führen (z. B. bei der letzten Kreditrate).
+Die Zahlen werden standardmäßig auf den nächsten Cent gerundet (Arithmetik: 1–4 abwärts, 5–9 aufwärts).
+Kann in den Einstellungen auf gerade Zahlen (Banker-Rundung) geändert werden: 1–4 abwärts, 6–9 aufwärts, 5 auf gerade Zahlen abwärts, ungerade Zahlen aufwärts. Oder auf Nullzahlen (1–9 abwärts).
 
 Für die Übersetzung des Textes wurde Google Translate verwendet. Dies ist keine Garantie dafür, dass alle Übersetzungen korrekt sind.
 Die unterstützten Sprachen sind: Tschechisch, Dänisch, Niederländisch, Englisch, Finnisch, Französisch, Deutsch, Ungarisch, Italienisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Spanisch und Schwedisch.

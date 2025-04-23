@@ -357,7 +357,7 @@ Luotu tiedosto on liitettävä sähköpostiin manuaalisesti.</value>
 
 Pyöristysmenetelmä voi johtaa poikkeamiin lopputuloksesta (esimerkiksi lainojen viimeisessä erässä).
 Numerot pyöristetään oletusarvoisesti lähimpään senttiin (aritmeettinen: 1-4 alas ja 5-9 ylös).
-Voidaan muuttaa parilliseen (pankkiirin pyöristys) 1-4 alaspäin, 6-9 ylös ja 5 parilliseen alaspäin, pariton luku ylös.
+Voidaan muuttaa asetuksissa parilliseen numeroon (pankkiirin pyöristys) 1-4 alas, 6-9 ylös ja 5 parilliseen alas, pariton ylös. Tai nollaan numeroon (1-9 alas).
 
 Tekstin kääntämiseen käytettiin Google Translatea. Tämä ei takaa, että kaikki käännökset ovat oikein.
 Tukikielet ovat: tšekki, tanska, hollanti, englanti, suomi, ranska, saksa, unkari, italia, norja, puola, portugali, romania, espanja ja ruotsi.

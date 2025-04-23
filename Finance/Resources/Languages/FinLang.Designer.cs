@@ -777,9 +777,9 @@ namespace Finance.Resources.Languages {
         ///
         ///The method of rounding can lead to deviations from the final result (for example in the last installment of loans).
         ///The numbers are rounded to the nearest cent by default (arithmetic: 1-4 down and 5-9 up).
-        ///Can be changed to even number (banker&apos;s rounding) 1-4 down, 6-9 up and 5 on even number down, odd number up.
+        ///Can be changed in the settings to even number (banker&apos;s rounding) 1-4 down, 6-9 up and 5 on even number down, odd number up.  Or to zero number (1-9 down).
         ///
-        ///Google Translate was used for the translation of the text. This is not a guarantee [rest of string was truncated]&quot;;.
+        ///Google Translate was used for the t [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InfoExplanation_Text {
             get {

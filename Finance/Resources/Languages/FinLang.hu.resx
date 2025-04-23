@@ -357,7 +357,7 @@ A létrehozott fájlt manuálisan kell csatolni az e-mailhez.</value>
 
 A kerekítés módja a végeredménytől való eltéréshez vezethet (például a hitelek utolsó részletében).
 A számok alapértelmezés szerint a legközelebbi centre vannak kerekítve (számtani: 1-4-ig lefelé és 5-9-ig felfelé).
-Változtatható páros számra (banki kerekítés) 1-4-ig lefelé, 6-9-ig felfelé és 5-ig páros számra lefelé, páratlan számra felfelé.
+A beállításokban módosítható páros számra (banki kerekítés) 1-4-ig lefelé, 6-9-ig felfelé és 5-ig páros számon lefelé, páratlan számra felfelé. Vagy nulla számra (1-9 le).
 
 A szöveg fordításához a Google Fordítót használtuk. Ez nem garancia arra, hogy minden fordítás helyes.
 A támogatott nyelvek: cseh, dán, holland, angol, finn, francia, német, magyar, olasz, norvég, lengyel, portugál, román, spanyol és svéd.

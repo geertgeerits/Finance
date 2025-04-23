@@ -357,7 +357,7 @@ Den oprettede fil skal manuelt vedhæftes e-mailen.</value>
 
 Afrundingsmetoden kan føre til afvigelser fra det endelige resultat (f.eks. i sidste rate af lån).
 Tallene er som standard afrundet til nærmeste cent (aritmetik: 1-4 ned og 5-9 op).
-Kan ændres til lige tal (bankmands afrunding) 1-4 ned, 6-9 op og 5 på lige tal ned, ulige tal op.
+Kan ændres i indstillingerne til lige tal (bankmands afrunding) 1-4 ned, 6-9 op og 5 på lige tal ned, ulige tal op. Eller til nul tal (1-9 ned).
 
 Google Translate blev brugt til oversættelsen af teksten. Dette er ikke en garanti for, at alle oversættelser er korrekte.
 Understøttende sprog er: tjekkisk, dansk, hollandsk, engelsk, finsk, fransk, tysk, ungarsk, italiensk, norsk, polsk, portugisisk, rumænsk, spansk og svensk.

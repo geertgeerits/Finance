@@ -355,9 +355,9 @@ El archivo creado debe adjuntarse manualmente al correo electrónico.</value>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>El formato de fecha se puede cambiar en la configuración al formato estándar internacional ISO 8601 (AAAA-MM-DD).
 
-El método de redondeo puede dar lugar a desviaciones del resultado final (por ejemplo en la última cuota de los préstamos).
-Los números se redondean al centavo más cercano de forma predeterminada (aritmética: 1-4 hacia abajo y 5-9 hacia arriba).
-Se puede cambiar a número par (redondeo bancario) 1-4 hacia abajo, 6-9 hacia arriba y 5 en número par hacia abajo, número impar hacia arriba.
+El método de redondeo puede generar desviaciones respecto al resultado final (por ejemplo, en la última cuota de un préstamo).
+Por defecto, los números se redondean al céntimo más cercano (redondeo aritmético: 1-4 hacia abajo y 5-9 hacia arriba).
+Se puede cambiar en la configuración a número par (redondeo bancario): 1-4 hacia abajo, 6-9 hacia arriba y 5 hacia abajo, número impar hacia arriba. O a número cero (1-9 hacia abajo).
 
 Para la traducción del texto se utilizó Google Translate. Esto no es una garantía de que todas las traducciones sean correctas.
 Los idiomas de soporte son: checo, danés, holandés, inglés, finlandés, francés, alemán, húngaro, italiano, noruego, polaco, portugués, rumano, español y sueco.

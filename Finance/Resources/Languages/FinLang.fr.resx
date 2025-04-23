@@ -355,9 +355,9 @@ Le fichier créé doit être joint manuellement à l'e-mail.</value>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Le format de la date peut être modifié dans les paramètres au format standard international ISO 8601 (AAAA-MM-JJ).
 
-La méthode d'arrondi peut conduire à des écarts par rapport au résultat final (par exemple dans la dernière tranche de prêts).
-Les nombres sont arrondis au cent le plus proche par défaut (arithmétique : 1-4 vers le bas et 5-9 vers le haut).
-Peut être changé en nombre pair (arrondi du banquier) 1-4 vers le bas, 6-9 vers le haut et 5 sur le nombre pair vers le bas, le nombre impair vers le haut.
+La méthode d'arrondi peut entraîner des écarts par rapport au résultat final (par exemple, pour la dernière tranche d'un prêt).
+Les nombres sont arrondis au centime près par défaut (arithmétique : 1-4 vers le bas et 5-9 vers le haut).
+Les paramètres peuvent être modifiés : arrondi pair (arrondi bancaire) : 1-4 vers le bas, 6-9 vers le haut et 5 vers le bas pour les nombres pairs et impairs. Ou arrondi zéro (1-9 vers le bas).
 
 Google Translate a été utilisé pour la traduction du texte. Ceci ne garantit pas que toutes les traductions sont correctes.
 Les langues de support sont les suivantes : tchèque, danois, néerlandais, anglais, finnois, français, allemand, hongrois, italien, norvégien, polonais, portugais, roumain, espagnol et suédois.

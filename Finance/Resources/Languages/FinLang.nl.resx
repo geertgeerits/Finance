@@ -355,9 +355,9 @@ Het aangemaakte bestand moet manueel toegevoegd worden aan de e-mail.</value>
   <data name="InfoExplanation_Text" xml:space="preserve">
     <value>Het datumformaat kan in de instellingen worden gewijzigd in het internationale standaardformaat ISO 8601 (JJJJ-MM-DD).
 
-De wijze van afronding kan leiden tot afwijkingen van het eindresultaat (bijvoorbeeld in de laatste termijn van leningen).
+De afrondingsmethode kan leiden tot afwijkingen van het eindresultaat (bijvoorbeeld bij de laatste termijn van een lening).
 De getallen worden standaard afgerond op de dichtstbijzijnde cent (rekenkundig: 1-4 naar beneden en 5-9 naar boven).
-Kan worden gewijzigd in een even getal (bankiersafronding) 1-4 naar beneden, 6-9 naar boven en 5 op even getal naar beneden, oneven getal naar boven.
+Kan in de instellingen worden aangepast naar even getallen (bankiersafronding) 1-4 naar beneden, 6-9 naar boven en 5 naar even getallen naar beneden, oneven getallen naar boven. Of naar nul (1-9 naar beneden).
 
 Voor de vertaling van de tekst werd Google Translate gebruikt. Dit is geen garantie dat alle vertalingen correct zijn.
 De ondersteunende talen zijn: Tsjechisch, Deens, Nederlands, Engels, Fins, Frans, Duits, Hongaars, Italiaans, Noors, Pools, Portugees, Roemeens, Spaans en Zweeds.
