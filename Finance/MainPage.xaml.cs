@@ -9,8 +9,6 @@
 
 #if IOS
 using Foundation;
-using Microsoft.Maui.Controls;
-using static System.Net.Mime.MediaTypeNames;
 #endif
 
 namespace Finance
