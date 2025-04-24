@@ -24,6 +24,8 @@
         public static void InitializeNumberFormat()
         {
             // Get the current culture's number format
+            // For initializing number formatting settings, use CurrentCulture
+            // It ensures that the number format aligns with the user's regional settings, which is the intended behavior in the InitializeNumberFormat method
             NumberFormatInfo numberFormatInfo = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
 
             // Set the number properties based on the current culture

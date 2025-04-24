@@ -311,6 +311,9 @@ namespace Finance
    CultureInfo.CurrentCulture.Name); Display the name of the current culture - returns en-US
    CultureInfo.CurrentUICulture.Name); Display the name of the current UI culture - returns en-US
 
+   CurrentCulture is the .NET representation of the default user locale of the system, this controls default number and date formatting and the like
+   CurrentUICulture refers to the default user interface language, this is primarily regarding the UI localization/translation part of your app
+
 Android:
 [0:] Number Decimal Separator: .
 [0:] Number Decimal Digits: 2
