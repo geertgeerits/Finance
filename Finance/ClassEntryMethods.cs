@@ -51,6 +51,14 @@
                 Preferences.Default.Set("SettingRoundNumber", cRoundNumber);
             }
 
+            Debug.WriteLine($"cNumGroupSeparator: {cNumGroupSeparator}");
+            Debug.WriteLine($"cNumDecimalSeparator: {cNumDecimalSeparator}");
+            Debug.WriteLine($"cNumNegativeSign: {cNumNegativeSign}");
+            Debug.WriteLine($"cNumNativeDigits: {cNumNativeDigits}");
+            Debug.WriteLine($"cNumDecimalDigits: {cNumDecimalDigits}");
+            Debug.WriteLine($"cPercDecimalDigits: {cPercDecimalDigits}");
+            Debug.WriteLine($"cRoundNumber: {cRoundNumber}");
+
             // Check the number settings
             if (string.IsNullOrEmpty(cNumGroupSeparator))
             {
@@ -84,14 +92,6 @@
 
             // Set the allowed characters for numeric input
             cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
-
-            Debug.WriteLine($"cNumGroupSeparator: {cNumGroupSeparator}");
-            Debug.WriteLine($"cNumDecimalSeparator: {cNumDecimalSeparator}");
-            Debug.WriteLine($"cNumNegativeSign: {cNumNegativeSign}");
-            Debug.WriteLine($"cNumNativeDigits: {cNumNativeDigits}");
-            Debug.WriteLine($"cNumDecimalDigits: {cNumDecimalDigits}");
-            Debug.WriteLine($"cPercDecimalDigits: {cPercDecimalDigits}");
-            Debug.WriteLine($"cRoundNumber: {cRoundNumber}");
             Debug.WriteLine($"cNumericCharacters: {cNumericCharacters}");
         }
 
@@ -133,7 +133,7 @@
         }
 
         /// <summary>
-        /// Test if the text is a numeric value
+        /// Check if the text is a numeric value
         /// </summary>
         /// <param name="cText"></param>
         /// <returns></returns>
@@ -148,19 +148,19 @@
             // Check the text for invalid characters
             foreach (char c in cText)
             {
-                // Check if the character is a digit or a decimal separator
+                // Check if the character is allowed
                 if (!cNumericCharacters.Contains(c))
                 {
                     return false;
                 }
 
-                // Check if the character is a negative sign - the negative sign must be at the first position (index 0)
-                if (c == '-' && !cText.StartsWith(c))
+                // Check if the character is a negative sign and at the first position (index 0), or there is no more than one negative sign
+                if ((c == cNumNegativeSign[0] && !cText.StartsWith(c)) || cText.Count(static ch => ch == cNumNegativeSign[0]) > 1)
                 {
                     return false;
                 }
 
-                // Check if the character is already in the string
+                // Check if the decimal separator is already in the string
                 if (c == cNumDecimalSeparator[0])
                 {
                     if (cText.IndexOf(c) != cText.LastIndexOf(c))
@@ -170,7 +170,7 @@
                 }
             }
 
-            // Get the number of decimals allowed after the decimal separator
+            // Get and check the number of decimals allowed after the decimal separator
             int nDecimals = entry.AutomationId switch
             {
                 "Percentage" => int.Parse(cPercDecimalDigits),
@@ -223,6 +223,7 @@
                     _ => nValue.ToString(format: "F" + cNumDecimalDigits),
                 };
 
+                // Select all the text in the entry field
                 entry.CursorPosition = 0;
                 entry.SelectionLength = entry.Text.Length;
             }
@@ -259,23 +260,24 @@
         }
 
         /* Rounding numbers
-         * Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
-         * Round half to even or banker's rounding: MidpointRounding.ToEven
-         *
-         *  Value      Default    ToEven     AwayFromZero    ToZero
-         *   12.0       12         12         12              12
-         *   12.1       12         12         12              12
-         *   12.2       12         12         12              12
-         *   12.3       12         12         12              12
-         *   12.4       12         12         12              12
-         *   12.5       12         12         13              12
-         *   12.6       13         13         13              12
-         *   12.7       13         13         13              12
-         *   12.8       13         13         13              12
-         *   12.9       13         13         13              12
-         *   13.0       13         13         13              13
-         *
-         * Format specifier: "F" = 1234.56 or 1234,56 ; "N" = 1,234.56 or 1.234,56 */
+           Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
+           Round half to even or banker's rounding: MidpointRounding.ToEven
+           Round towards zero: 1-9 down
+
+           Value      Default    ToEven     AwayFromZero    ToZero
+            12.0       12         12         12              12
+            12.1       12         12         12              12
+            12.2       12         12         12              12
+            12.3       12         12         12              12
+            12.4       12         12         12              12
+            12.5       12         12         13              12
+            12.6       13         13         13              12
+            12.7       13         13         13              12
+            12.8       13         13         13              12
+            12.9       13         13         13              12
+            13.0       13         13         13              13
+         
+          Format specifier: "F" = 1234.56 or 1234,56 ; "N" = 1,234.56 or 1.234,56 */
 
         /// <summary>
         /// Rounding and formatting double number to # decimals returning number as value and as string 
