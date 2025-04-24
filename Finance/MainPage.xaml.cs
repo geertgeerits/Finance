@@ -139,7 +139,7 @@ namespace Finance
 #else
                 //Android and Windows
                 CultureInfo cCulture = CultureInfo.CurrentCulture;
-                Debug.WriteLine($"cCulture.Name: {cCulture.Name}");         // "en_US" for United States
+                Debug.WriteLine($"cCulture.Name: {cCulture.Name}");         // "en-US" for United States
                 cCountry2LetterISO = cCulture.Name.Split('-')[1];           // "US" for United States
 #endif
                 Debug.WriteLine($"cCountry2LetterISO: {cCountry2LetterISO}");
