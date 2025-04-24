@@ -123,12 +123,19 @@ namespace Finance
             try
             {
 #if IOS
-                // iOS                
-                // !!!BUG!!! in iOS: The result of the CurrentCulture is wrong (shows only the language: en)
-                // since .NET 9, so we use the CurrentLocale
+                // iOS !!!BUG!!!: The result of the CurrentCulture is wrong (shows only the language: en) since .NET 9, so we use the CurrentLocale
                 string cLocale = NSLocale.CurrentLocale.LocaleIdentifier;   // "en_US@rg=bezzzz" for United States @ region Belgium
                 Debug.WriteLine($"cLocale: {cLocale}");
-                cCountry2LetterISO = cLocale.Substring(3, 2);               // "US" for United States
+
+                int underscoreIndex = cLocale.IndexOf('_');
+                if (underscoreIndex != -1 && underscoreIndex + 2 < cLocale.Length)
+                {
+                    cCountry2LetterISO = cLocale.Substring(underscoreIndex + 1, 2);     // "US" for United States
+                }
+                else
+                {
+                    cCountry2LetterISO = "US";
+                }
 #else
                 //Android and Windows
                 CultureInfo cCulture = CultureInfo.CurrentCulture;
