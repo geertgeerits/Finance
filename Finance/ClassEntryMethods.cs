@@ -139,7 +139,8 @@
             // Set the Placeholder text for the entry field
             entry.Placeholder = $"{cValueFrom} - {cValueTo}";
 
-            // Calculate and set the MaxLength of the entry field by adding the number of group separators if showing the number with group separators
+            // Calculate and set the MaxLength of the entry field by adding the number of group separators when showing the number with group separators
+            // Add also '1' extra just to be sure that the MaxLength is enough when using unusual group sizes
             int nNumberOfGroupSeparators = 0;
 
             if (cValueTo.Length > cValueFrom.Length)
@@ -153,7 +154,7 @@
             {
                 if (cValueFrom.Length > 1)
                 {
-                    nNumberOfGroupSeparators = ((cWholeNumFrom.Length - 1) / nNumGroupSizes) +1;
+                    nNumberOfGroupSeparators = ((cWholeNumFrom.Length - 1) / nNumGroupSizes) + 1;
                 }
             }
 
