@@ -10,6 +10,7 @@
         public static bool bShowFormattedNumber;
 
         // Local variables
+        private static int nNumGroupSizes;
         private static string cNumGroupSeparator = "";
         private static string cNumDecimalSeparator = "";
         private static string cNumNegativeSign = "";
@@ -29,6 +30,7 @@
             NumberFormatInfo numberFormatInfo = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
 
             // Set the number properties based on the current culture
+            nNumGroupSizes = numberFormatInfo.NumberGroupSizes.Max();
             cNumGroupSeparator = numberFormatInfo.NumberGroupSeparator;
             cNumDecimalSeparator = numberFormatInfo.NumberDecimalSeparator;
             cNumNegativeSign = numberFormatInfo.NegativeSign;
@@ -53,6 +55,7 @@
                 Preferences.Default.Set("SettingRoundNumber", cRoundNumber);
             }
 
+            Debug.WriteLine($"nNumGroupSizes: {nNumGroupSizes}");
             Debug.WriteLine($"cNumGroupSeparator: {cNumGroupSeparator}");
             Debug.WriteLine($"cNumDecimalSeparator: {cNumDecimalSeparator}");
             Debug.WriteLine($"cNumNegativeSign: {cNumNegativeSign}");
@@ -61,7 +64,12 @@
             Debug.WriteLine($"cPercDecimalDigits: {cPercDecimalDigits}");
             Debug.WriteLine($"cRoundNumber: {cRoundNumber}");
 
-            // Check the number settings
+            // Check the number settings and set default values if they are empty
+            if (nNumGroupSizes < 1)
+            {
+                nNumGroupSizes = 3;
+            }
+
             if (string.IsNullOrEmpty(cNumGroupSeparator))
             {
                 cNumGroupSeparator = ",";
@@ -128,8 +136,28 @@
             string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
             string cValueTo = $"{cWholeNumTo}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
 
+            // Set the Placeholder text for the entry field
             entry.Placeholder = $"{cValueFrom} - {cValueTo}";
-            entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length : cValueFrom.Length;
+
+            // Calculate and set the MaxLength of the entry field by adding the number of group separators if showing the number with group separators
+            int nNumberOfGroupSeparators = 0;
+
+            if (cValueTo.Length > cValueFrom.Length)
+            {
+                if (cValueTo.Length > 1)
+                {
+                    nNumberOfGroupSeparators = ((cWholeNumTo.Length - 1) / nNumGroupSizes) + 1;
+                }
+            }
+            else
+            {
+                if (cValueFrom.Length > 1)
+                {
+                    nNumberOfGroupSeparators = ((cWholeNumFrom.Length - 1) / nNumGroupSizes) +1;
+                }
+            }
+
+            entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length + nNumberOfGroupSeparators : cValueFrom.Length + nNumberOfGroupSeparators;
 
             Debug.WriteLine($"entry.MaxLength: {entry.MaxLength}");
         }
