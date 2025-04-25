@@ -30,21 +30,21 @@
             NumberFormatInfo numberFormatInfo = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
 
             // Set the number properties based on the current culture
-            nNumGroupSizes = numberFormatInfo.NumberGroupSizes.Max();
-            cNumGroupSeparator = numberFormatInfo.NumberGroupSeparator;
-            cNumDecimalSeparator = numberFormatInfo.NumberDecimalSeparator;
+            nNumGroupSizes = numberFormatInfo.NumberGroupSizes.Max();                   // Use numberFormatInfo.Number...
+            cNumGroupSeparator = numberFormatInfo.NumberGroupSeparator;                 // Use numberFormatInfo.Number...
+            cNumDecimalSeparator = numberFormatInfo.NumberDecimalSeparator;             // Use numberFormatInfo.Number...
             cNumNegativeSign = numberFormatInfo.NegativeSign;
-            cNumNativeDigits = string.Join("", numberFormatInfo.NativeDigits);  // Get the native digits as a string from the array
+            cNumNativeDigits = string.Join("", numberFormatInfo.NativeDigits);          // Get the native digits as a string from the array
 
             if (string.IsNullOrEmpty(cNumDecimalDigits))
             {
-                cNumDecimalDigits = numberFormatInfo.CurrencyDecimalDigits.ToString();
+                cNumDecimalDigits = numberFormatInfo.CurrencyDecimalDigits.ToString();  // Use numberFormatInfo.Currency...
                 Preferences.Default.Set("SettingNumDecimalDigits", cNumDecimalDigits);
             }
 
             if (string.IsNullOrEmpty(cPercDecimalDigits))
             {
-                cPercDecimalDigits = numberFormatInfo.PercentDecimalDigits.ToString();
+                cPercDecimalDigits = numberFormatInfo.PercentDecimalDigits.ToString();  // Use numberFormatInfo.Percent...
                 Preferences.Default.Set("SettingPercDecimalDigits", cPercDecimalDigits);
             }
 
