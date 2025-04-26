@@ -131,7 +131,7 @@ namespace Finance
             bool bIsNumber = decimal.TryParse(entAmountPurchase.Text, out decimal nAmountPurchase);
             if (!bIsNumber || nAmountPurchase < 0 || nAmountPurchase >= 1_000_000_000_000)
             {
-                entAmountPurchase.Text = "";
+                entAmountPurchase.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
                 _ = entAmountPurchase.Focus();
                 return;
             }
@@ -139,7 +139,7 @@ namespace Finance
             bIsNumber = decimal.TryParse(entAmountCost.Text, out decimal nAmountCost);
             if (!bIsNumber || nAmountCost < 0 || nAmountCost >= 1_000_000_000_000)
             {
-                entAmountCost.Text = "";
+                entAmountCost.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
                 _ = entAmountCost.Focus();
                 return;
             }
@@ -147,7 +147,7 @@ namespace Finance
             bIsNumber = decimal.TryParse(entAmountRevenueYear.Text, out decimal nAmountRevenueYear);
             if (!bIsNumber || nAmountRevenueYear < 0 || nAmountRevenueYear >= 1_000_000_000_000)
             {
-                entAmountRevenueYear.Text = "";
+                entAmountRevenueYear.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
                 _ = entAmountRevenueYear.Focus();
                 return;
             }
@@ -155,7 +155,7 @@ namespace Finance
             bIsNumber = decimal.TryParse(entPercentageReturnYear.Text, out decimal nPercentageReturnYear);
             if (!bIsNumber || nPercentageReturnYear < 0 || nPercentageReturnYear >= 1_000)
             {
-                entPercentageReturnYear.Text = "";
+                entPercentageReturnYear.Text = 0.ToString("F" + ClassEntryMethods.cPercDecimalDigits);
                 _ = entPercentageReturnYear.Focus();
                 return;
             }
@@ -170,50 +170,33 @@ namespace Finance
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
             int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
 
-            // Check what needs to be calculated first
-            if (nPercentageReturnYear > 0)
-            {
-                nAmountPurchase = 0;
-                nAmountCost = 0;
-            }
-
-            if (nAmountPurchase + nAmountCost > 0)
-            {
-                nPercentageReturnYear = 0;
-            }
-        
             // Calculate the results
             decimal nAmountTotal = nAmountPurchase + nAmountCost;
 
-            if (nAmountTotal == 0)
-            {
-                lblAmountTotal.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
-            }
-
-            if (nAmountRevenueYear == 0)
-            {
-                decimal nNumberTemp = 0;
-                entPercentageReturnYear.Text = ClassEntryMethods.RoundToNumDecimals(ref nNumberTemp, nPercDec, "N");
-            }
-
             try
             {
-                if (nAmountPurchase + nAmountCost > 0)
+                // Calculate the return in percentage
+                if (nAmountTotal > 0 && nAmountRevenueYear > 0 && nPercentageReturnYear == 0)
                 {
                     nPercentageReturnYear = nAmountRevenueYear / nAmountTotal * 100;
                     entPercentageReturnYear.Text = ClassEntryMethods.RoundToNumDecimals(ref nPercentageReturnYear, nPercDec, "N");
-                }
-                else if (nPercentageReturnYear > 0)
-                {
-                    nAmountTotal = nAmountRevenueYear / nPercentageReturnYear * 100;
-                }
-                else
-                {
-                    return;
+                    lblAmountTotal.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
                 }
 
-                lblAmountTotal.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
+                // Calculate the amount total of the investment
+                else if (nAmountTotal == 0 && nAmountRevenueYear > 0 && nPercentageReturnYear > 0)
+                {
+                    nAmountTotal = nAmountRevenueYear / nPercentageReturnYear * 100;
+                    lblAmountTotal.Text = ClassEntryMethods.RoundToNumDecimals(ref nAmountTotal, nNumDec, "N");
+                }
+
+                // Invalid values or combination of values
+                else
+                {
+                    ResetEntryFields(null, null);
+                }
             }
+
             catch (Exception ex)
             {
 #if DEBUG                
