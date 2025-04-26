@@ -67,7 +67,7 @@
             // Check the number settings and set default values if they are empty
             if (nNumGroupSizes < 1)
             {
-                nNumGroupSizes = 3;
+                nNumGroupSizes = 2;
             }
 
             if (string.IsNullOrEmpty(cNumGroupSeparator))
