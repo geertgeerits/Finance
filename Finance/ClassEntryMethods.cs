@@ -115,7 +115,7 @@
         /// <param name="cDecDigetTo"></param>
         /// <param name="cNumberOfDecimals"></param>
         /// <param name="cMaxNumberOfDecimals"></param>
-        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals)
+        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals, bool bIncreaseMaxLength = false)
         {
             if (!decimal.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !decimal.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals) || !int.TryParse(cMaxNumberOfDecimals, out int nMaxNumberOfDecimals))
             {
@@ -140,22 +140,32 @@
             entry.Placeholder = $"{cValueFrom} - {cValueTo}";
 
             // Calculate and set the MaxLength of the entry field by adding the number of group separators when showing the number with group separators
-            // Add also '1' extra just to be sure that the MaxLength is enough when using unusual group sizes
             int nNumberOfGroupSeparators = 0;
 
             if (cValueTo.Length > cValueFrom.Length)
             {
                 if (cValueTo.Length > 1)
                 {
-                    nNumberOfGroupSeparators = ((cWholeNumTo.Length - 1) / nNumGroupSizes) + 1;
+                    nNumberOfGroupSeparators = ((cWholeNumTo.Length - 1) / nNumGroupSizes);
                 }
             }
             else
             {
                 if (cValueFrom.Length > 1)
                 {
-                    nNumberOfGroupSeparators = ((cWholeNumFrom.Length - 1) / nNumGroupSizes) + 1;
+                    nNumberOfGroupSeparators = ((cWholeNumFrom.Length - 1) / nNumGroupSizes);
                 }
+            }
+
+            // Increase the MaxLength by 3 to allow result entry fields
+            // and add also '1' extra just to be sure that the MaxLength is enough when using unusual group sizes
+            if (bIncreaseMaxLength)
+            {
+                nNumberOfGroupSeparators += 3;
+            }
+            else if (!bIncreaseMaxLength)
+            {
+                nNumberOfGroupSeparators++;
             }
 
             entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length + nNumberOfGroupSeparators : cValueFrom.Length + nNumberOfGroupSeparators;
@@ -176,6 +186,11 @@
                 return true;
             }
 
+            if (string.IsNullOrEmpty(cText))
+            {
+                return true;
+            }
+            
             // Check the text for invalid characters
             foreach (char c in cText)
             {

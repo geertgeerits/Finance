@@ -126,7 +126,7 @@
                         TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdVATAmountExclusive"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdVATAmount"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
