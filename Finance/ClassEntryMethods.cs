@@ -158,18 +158,32 @@
             }
 
             // Increase the MaxLength by 3 to allow result entry fields
-            // and add also '1' extra just to be sure that the MaxLength is enough when using unusual group sizes
+            // and add also '2' extra just to be sure that the MaxLength is enough when using unusual group sizes
+            /*        -999999999999.9999 = 18 characters
+                     -9999999999999.9999 = 19 characters
+                   -999,999,999,999.9999 = 21 characters
+                 -9,999,999,999,999.9999 = 23 characters
+                 -99,99,99,99,99,99.9999 = 23 characters
+               -9,99,99,99,99,99,99.9999 = 25 characters */
+            int nIncreaseMaxLength = 0;
+            
             if (bIncreaseMaxLength)
             {
-                nNumberOfGroupSeparators += 3;
+                nIncreaseMaxLength += 3;
             }
             else if (!bIncreaseMaxLength)
             {
-                nNumberOfGroupSeparators++;
+                nIncreaseMaxLength += 2;
             }
+            
+            nIncreaseMaxLength = nNumberOfGroupSeparators + nIncreaseMaxLength;
+            
+            entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length + nIncreaseMaxLength : cValueFrom.Length + nIncreaseMaxLength;
 
-            entry.MaxLength = cValueTo.Length > cValueFrom.Length ? cValueTo.Length + nNumberOfGroupSeparators : cValueFrom.Length + nNumberOfGroupSeparators;
-
+#if WINDOWS
+            // Windows !!!BUG!!!: MaxLength problem for Entry - when reaching the MaxLength and moving to the next field the app hangs
+            entry.MaxLength *= 2;
+#endif
             Debug.WriteLine($"entry.MaxLength: {entry.MaxLength}");
         }
 
@@ -190,7 +204,7 @@
             {
                 return true;
             }
-            
+
             // Check the text for invalid characters
             foreach (char c in cText)
             {
