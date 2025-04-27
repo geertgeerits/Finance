@@ -146,25 +146,34 @@
             {
                 if (cValueTo.Length > 1)
                 {
-                    nNumberOfGroupSeparators = ((cWholeNumTo.Length - 1) / nNumGroupSizes);
+                    nNumberOfGroupSeparators = (cWholeNumTo.Length - 1) / nNumGroupSizes;
                 }
             }
             else
             {
                 if (cValueFrom.Length > 1)
                 {
-                    nNumberOfGroupSeparators = ((cWholeNumFrom.Length - 1) / nNumGroupSizes);
+                    nNumberOfGroupSeparators = (cWholeNumFrom.Length - 1) / nNumGroupSizes;
                 }
             }
 
             // Increase the MaxLength by 3 to allow result entry fields
             // and add also '2' extra just to be sure that the MaxLength is enough when using unusual group sizes
-            /*        -999999999999.9999 = 18 characters
+            /*
+                       999999999999.9999 = 17 characters
+                      9999999999999.9999 = 18 characters
+                    999,999,999,999.9999 = 20 characters
+                  9,999,999,999,999.9999 = 22 characters
+                  99,99,99,99,99,99.9999 = 22 characters
+                9,99,99,99,99,99,99.9999 = 24 characters
+
+                      -999999999999.9999 = 18 characters
                      -9999999999999.9999 = 19 characters
                    -999,999,999,999.9999 = 21 characters
                  -9,999,999,999,999.9999 = 23 characters
                  -99,99,99,99,99,99.9999 = 23 characters
-               -9,99,99,99,99,99,99.9999 = 25 characters */
+               -9,99,99,99,99,99,99.9999 = 25 characters
+            */
             int nIncreaseMaxLength = 0;
             
             if (bIncreaseMaxLength)
