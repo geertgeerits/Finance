@@ -54,7 +54,7 @@
                 entCapitalInitial.Keyboard = Keyboard.Text;
             }
 
-            //// Set the Placeholder and MaxLength for the numeric entry field
+            //// Set the Placeholder for the numeric entry field
             ClassEntryMethods.SetNumberEntryProperties(entInterestRate, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
 

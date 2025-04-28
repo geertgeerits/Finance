@@ -33,7 +33,7 @@ namespace Finance
                 entVATAmountIncluded.Keyboard = Keyboard.Text;
             }
 
-            //// Set the Placeholder and MaxLength for the numeric entry field
+            //// Set the Placeholder for the numeric entry field
             ClassEntryMethods.SetNumberEntryProperties(entVATPercentage, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entVATAmountExclusive, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entVATAmount, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
@@ -67,17 +67,9 @@ namespace Finance
                 {
                     entVATPercentage.MaxLength = 12;
                 }
-                else if (sender == entVATAmountExclusive)
+                else
                 {
-                    entVATAmountExclusive.MaxLength = 17;
-                }
-                else if (sender == entVATAmount)
-                {
-                    entVATAmount.MaxLength = 17;
-                }
-                else if (sender == entVATAmountIncluded)
-                {
-                    entVATAmountIncluded.MaxLength = 17;
+                    entry.MaxLength = 17;
                 }
 
                 ClassEntryMethods.FormatNumberEntryFocused(entry);

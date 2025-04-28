@@ -29,7 +29,7 @@
                 entValue2.Keyboard = Keyboard.Text;
             }
 
-            //// Set the Placeholder and MaxLength for the numeric entry field
+            //// Set the Placeholder for the numeric entry field
             ClassEntryMethods.SetNumberEntryProperties(entValue1, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entValue2, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
         }

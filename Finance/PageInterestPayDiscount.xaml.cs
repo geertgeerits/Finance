@@ -27,7 +27,7 @@ namespace Finance
                 entPaymentDiscount.Keyboard = Keyboard.Text;
             }
 
-            //// Set the Placeholder and MaxLength for the numeric entry field
+            //// Set the Placeholder for the numeric entry field
             ClassEntryMethods.SetNumberEntryProperties(entPaymentDiscount, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
         }
 
@@ -40,21 +40,6 @@ namespace Finance
         private void OnPageLoaded(object sender, EventArgs e)
         {
             _ = entPaymentDiscount.Focus();
-        }
-
-        /// <summary>
-        /// Check if the value is numeric and clear result fields if the text have changed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
-            {
-                ((Entry)sender).Text = e.OldTextValue;
-            }
-
-            lblInterestEffective.Text = "";
         }
 
         /// <summary>
@@ -83,6 +68,21 @@ namespace Finance
                 entry.MaxLength = -1;
                 ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
+        }
+
+        /// <summary>
+        /// Check if the value is numeric and clear result fields if the text have changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
+            {
+                ((Entry)sender).Text = e.OldTextValue;
+            }
+
+            lblInterestEffective.Text = "";
         }
 
         /// <summary>

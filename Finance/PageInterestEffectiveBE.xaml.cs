@@ -29,7 +29,7 @@ namespace Finance
                 entCapitalFinal.Keyboard = Keyboard.Text;
             }
 
-            //// Set the Placeholder and MaxLength for the numeric entry field
+            //// Set the Placeholder for the numeric entry field
             ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
         }
