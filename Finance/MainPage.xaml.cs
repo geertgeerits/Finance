@@ -122,27 +122,9 @@ namespace Finance
 
             try
             {
-//#if IOS
-//                // iOS !!!BUG!!!: The result of the CurrentCulture is wrong (shows only the language: en) since .NET 9, so we use the CurrentLocale
-//                // Has been solved in NET 9.0.3
-//                string cLocale = NSLocale.CurrentLocale.LocaleIdentifier;   // "en_US@rg=bezzzz" for United States @ region Belgium
-//                Debug.WriteLine($"cLocale: {cLocale}");
-
-//                int underscoreIndex = cLocale.IndexOf('_');
-//                if (underscoreIndex != -1 && underscoreIndex + 2 < cLocale.Length)
-//                {
-//                    cCountry2LetterISO = cLocale.Substring(underscoreIndex + 1, 2);     // "US" for United States
-//                }
-//                else
-//                {
-//                    cCountry2LetterISO = "US";
-//                }
-//#else
-                //Android, iOS and Windows
-                CultureInfo cCulture = CultureInfo.CurrentCulture;
-                Debug.WriteLine($"cCulture.Name: {cCulture.Name}");         // "en-US" for United States
+                CultureInfo cCulture = CultureInfo.CurrentCulture;          // "en-US" for United States
+                Debug.WriteLine($"cCulture.Name: {cCulture.Name}");
                 cCountry2LetterISO = cCulture.Name.Split('-')[1];           // "US" for United States
-//#endif
                 Debug.WriteLine($"cCountry2LetterISO: {cCountry2LetterISO}");
             }
             catch (Exception Ex)
