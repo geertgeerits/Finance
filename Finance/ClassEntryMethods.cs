@@ -8,9 +8,9 @@
         public static string cRoundNumber = "";
         public static bool bColorNumber;
         public static bool bShowFormattedNumber;
+        public static string cNumGroupSeparator = "";
 
         // Local variables
-        private static string cNumGroupSeparator = "";
         private static string cNumDecimalSeparator = "";
         private static string cNumNegativeSign = "";
         private static string cNumNativeDigits = "";
@@ -122,7 +122,7 @@
             string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
             string cValueTo = $"{cWholeNumTo}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
 
-            // Set the Placeholder text for the entry field
+            // Set the Placeholder for the entry field
             entry.Placeholder = $"{cValueFrom} - {cValueTo}";
         }
 

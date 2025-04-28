@@ -50,8 +50,6 @@
                         AutomationId="Percentage"
                         Style="{StaticResource entryStyleNumericNext}"
                         Text=""
-                        Placeholder="0 - 100"
-                        MaxLength="11"
                         Focused="NumberEntryFocused"
                         Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"

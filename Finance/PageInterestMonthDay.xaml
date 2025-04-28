@@ -79,7 +79,6 @@
                         AutomationId="Percentage"
                         Style="{StaticResource entryStyleNumericDone}"
                         Text=""
-                        Placeholder="0 - 100"
                         Focused="NumberEntryFocused"
                         Unfocused="NumberEntryUnfocused"
                         Completed="CalculateResult"
