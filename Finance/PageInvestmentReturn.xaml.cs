@@ -34,10 +34,10 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entAmountPurchase, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entAmountCost, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entAmountRevenueYear, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entPercentageReturnYear, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entAmountPurchase, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entAmountCost, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entAmountRevenueYear, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entPercentageReturnYear, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits);
 
             //// Format the text value for a numeric entry without the number separator and select the entire text value
             //   This is necessary if the default value of the field is 0
@@ -67,6 +67,23 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
+                if (sender == entAmountPurchase)
+                {
+                    entAmountPurchase.MaxLength = 17;
+                }
+                else if (sender == entAmountCost)
+                {
+                    entAmountCost.MaxLength = 17;
+                }
+                else if (sender == entAmountRevenueYear)
+                {
+                    entAmountRevenueYear.MaxLength = 17;
+                }
+                else if (sender == entPercentageReturnYear)
+                {
+                    entPercentageReturnYear.MaxLength = 12;
+                }
+
                 ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
@@ -80,6 +97,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = -1;
                 ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }

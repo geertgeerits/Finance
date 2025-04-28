@@ -30,8 +30,8 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
         }
 
         /// <summary>
@@ -54,6 +54,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = 17;
                 ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
@@ -67,6 +68,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = -1;
                 ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }

@@ -51,7 +51,6 @@
                         Style="{StaticResource entryStyleNumericNext}"
                         Text=""
                         Placeholder="0 - 100"
-                        MaxLength="12"
                         Focused="NumberEntryFocused"
                         Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"

@@ -32,9 +32,9 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits, false);
-            ClassEntryMethods.SetNumberEntryProperties(entAmountPeriod, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits, false);
-            ClassEntryMethods.SetNumberEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits, true);
+            ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, false);
+            ClassEntryMethods.SetNumberEntryProperties(entAmountPeriod, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, false);
+            ClassEntryMethods.SetNumberEntryProperties(entCapitalFinal, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, true);
 
             //// Reset the entry fields
             ResetEntryFields(null, null);
@@ -60,6 +60,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = 17;
                 ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
@@ -73,6 +74,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = -1;
                 ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }

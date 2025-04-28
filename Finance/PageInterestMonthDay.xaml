@@ -80,7 +80,6 @@
                         Style="{StaticResource entryStyleNumericDone}"
                         Text=""
                         Placeholder="0 - 100"
-                        MaxLength="12"
                         Focused="NumberEntryFocused"
                         Unfocused="NumberEntryUnfocused"
                         Completed="CalculateResult"

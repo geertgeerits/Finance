@@ -55,8 +55,8 @@
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entInterestRate, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entInterestRate, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
 
             //// Set the current date format and date for the DatePicker
             dtpExpirationDate.Format = Globals.cDateFormat;
@@ -91,6 +91,15 @@
         {
             if (sender is Entry entry)
             {
+                if (sender == entInterestRate)
+                {
+                    entInterestRate.MaxLength = 11;
+                }
+                else if (sender == entCapitalInitial)
+                {
+                    entCapitalInitial.MaxLength = 17;
+                }
+
                 ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
@@ -104,6 +113,7 @@
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = -1;
                 ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }

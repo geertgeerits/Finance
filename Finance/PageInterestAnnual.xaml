@@ -51,7 +51,6 @@
                         Style="{StaticResource entryStyleNumericNext}"
                         Text=""
                         Placeholder="0 - 999999999999"
-                        MaxLength="21"
                         Focused="NumberEntryFocused"
                         Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"
@@ -82,7 +81,7 @@
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="1"
                         Placeholder="1 - 100"
-                        MaxLength="5"
+                        MaxLength="3"
                         Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged">
                         <Entry.Triggers>
@@ -111,7 +110,6 @@
                         Style="{StaticResource entryStyleNumericNext}"
                         Text="0"
                         Placeholder="0 - 999999999999"
-                        MaxLength="21"
                         Focused="NumberEntryFocused"
                         Unfocused="NumberEntryUnfocused"
                         Completed="GoToNextField"
@@ -142,7 +140,6 @@
                         Style="{StaticResource entryStyleNumericDone}"
                         Text="0"
                         Placeholder="0 - 999999999999"
-                        MaxLength="21"
                         Focused="NumberEntryFocused"
                         Unfocused="NumberEntryUnfocused"
                         Completed="CalculateResult"

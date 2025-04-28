@@ -30,8 +30,8 @@
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entValue1, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entValue2, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entValue1, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entValue2, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
         }
 
         /// <summary>
@@ -54,6 +54,7 @@
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = 18;
                 ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
@@ -67,6 +68,7 @@
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = -1;
                 ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }

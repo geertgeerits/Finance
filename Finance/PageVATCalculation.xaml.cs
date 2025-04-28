@@ -34,10 +34,10 @@ namespace Finance
             }
 
             //// Set the Placeholder and MaxLength for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entVATPercentage, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits, ClassEntryMethods.cPercDecimalDigits, false);
-            ClassEntryMethods.SetNumberEntryProperties(entVATAmountExclusive, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits, false);
-            ClassEntryMethods.SetNumberEntryProperties(entVATAmount, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits, true);
-            ClassEntryMethods.SetNumberEntryProperties(entVATAmountIncluded, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, ClassEntryMethods.cNumDecimalDigits, true);
+            ClassEntryMethods.SetNumberEntryProperties(entVATPercentage, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits, false);
+            ClassEntryMethods.SetNumberEntryProperties(entVATAmountExclusive, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, false);
+            ClassEntryMethods.SetNumberEntryProperties(entVATAmount, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, true);
+            ClassEntryMethods.SetNumberEntryProperties(entVATAmountIncluded, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits, true);
 
             //// Reset the entry fields
             ResetEntryFields(null, null);
@@ -63,6 +63,23 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
+                if (sender == entVATPercentage)
+                {
+                    entVATPercentage.MaxLength = 12;
+                }
+                else if (sender == entVATAmountExclusive)
+                {
+                    entVATAmountExclusive.MaxLength = 17;
+                }
+                else if (sender == entVATAmount)
+                {
+                    entVATAmount.MaxLength = 17;
+                }
+                else if (sender == entVATAmountIncluded)
+                {
+                    entVATAmountIncluded.MaxLength = 17;
+                }
+
                 ClassEntryMethods.FormatNumberEntryFocused(entry);
             }
         }
@@ -76,6 +93,7 @@ namespace Finance
         {
             if (sender is Entry entry)
             {
+                entry.MaxLength = -1;
                 ClassEntryMethods.FormatNumberEntryUnfocused(entry);
             }
         }

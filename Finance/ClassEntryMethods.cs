@@ -10,7 +10,6 @@
         public static bool bShowFormattedNumber;
 
         // Local variables
-        private static int nNumGroupSizes;
         private static string cNumGroupSeparator = "";
         private static string cNumDecimalSeparator = "";
         private static string cNumNegativeSign = "";
@@ -30,7 +29,6 @@
             NumberFormatInfo numberFormatInfo = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;
 
             // Set the number properties based on the current culture
-            nNumGroupSizes = numberFormatInfo.NumberGroupSizes.Min();                   // Use numberFormatInfo.Number...
             cNumGroupSeparator = numberFormatInfo.NumberGroupSeparator;                 // Use numberFormatInfo.Number...
             cNumDecimalSeparator = numberFormatInfo.NumberDecimalSeparator;             // Use numberFormatInfo.Number...
             cNumNegativeSign = numberFormatInfo.NegativeSign;
@@ -55,7 +53,6 @@
                 Preferences.Default.Set("SettingRoundNumber", cRoundNumber);
             }
 
-            Debug.WriteLine($"nNumGroupSizes: {nNumGroupSizes}");
             Debug.WriteLine($"cNumGroupSeparator: {cNumGroupSeparator}");
             Debug.WriteLine($"cNumDecimalSeparator: {cNumDecimalSeparator}");
             Debug.WriteLine($"cNumNegativeSign: {cNumNegativeSign}");
@@ -65,11 +62,6 @@
             Debug.WriteLine($"cRoundNumber: {cRoundNumber}");
 
             // Check the number settings and set default values if they are empty
-            if (nNumGroupSizes < 1)
-            {
-                nNumGroupSizes = 2;
-            }
-
             if (string.IsNullOrEmpty(cNumGroupSeparator))
             {
                 cNumGroupSeparator = ",";
@@ -114,17 +106,12 @@
         /// <param name="cWholeNumTo"></param>
         /// <param name="cDecDigetTo"></param>
         /// <param name="cNumberOfDecimals"></param>
-        /// <param name="cMaxNumberOfDecimals"></param>
-        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, string cMaxNumberOfDecimals, bool bIncreaseMaxLength = false)
+        /// <param name="bIncreaseMaxLength"></param>
+        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, bool bIncreaseMaxLength = false)
         {
-            if (!decimal.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !decimal.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals) || !int.TryParse(cMaxNumberOfDecimals, out int nMaxNumberOfDecimals))
+            if (!decimal.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !decimal.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals))
             {
                 return;
-            }
-
-            if (nNumberOfDecimals > nMaxNumberOfDecimals)
-            {
-                nNumberOfDecimals = nMaxNumberOfDecimals;
             }
 
             string cDecimalSeparator = nNumberOfDecimals switch
@@ -146,11 +133,11 @@
 
             if (cValueFrom.Length > cValueTo.Length)
             {
-                cRoundedNumber = RoundToNumDecimals(ref nValueFrom, nNumberOfDecimals, "N");
+                cRoundedNumber = nValueFrom.ToString(format: "N" + nNumberOfDecimals);
             }
             else
             {
-                cRoundedNumber = RoundToNumDecimals(ref nValueTo, nNumberOfDecimals, "N");
+                cRoundedNumber = nValueTo.ToString(format: "N" + nNumberOfDecimals);
             }
 
             Debug.WriteLine($"cRoundedNumber: {cRoundedNumber}");
@@ -183,11 +170,11 @@
                 nIncreaseMaxLength += 2;
             }
 
-            entry.MaxLength = cRoundedNumber.Length + nIncreaseMaxLength;
+            //entry.MaxLength = cRoundedNumber.Length + nIncreaseMaxLength;
 
 #if WINDOWS
             // Windows !!!BUG!!!: MaxLength problem for Entry - when reaching the MaxLength and moving to the next field the app hangs
-            entry.MaxLength *= 2;
+            //entry.MaxLength *= 2;
 #endif
             Debug.WriteLine($"entry.MaxLength: {entry.MaxLength}");
         }
