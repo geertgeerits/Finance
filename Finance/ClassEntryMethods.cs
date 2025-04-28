@@ -314,7 +314,6 @@
             return nNumber.ToString(format: cFormatSpecifier + nNumDec.ToString());
         }
 
-        /// Global methods
         /// <summary>
         /// Set the entry text color to a different color for a negative and a positive number
         /// </summary>
