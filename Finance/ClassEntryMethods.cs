@@ -98,7 +98,7 @@
         }
 
         /// <summary>
-        /// Set the Placeholder and MaxLength for a numeric entry field
+        /// Set the Placeholder for a numeric entry field
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="cWholeNumFrom"></param>
@@ -106,8 +106,7 @@
         /// <param name="cWholeNumTo"></param>
         /// <param name="cDecDigetTo"></param>
         /// <param name="cNumberOfDecimals"></param>
-        /// <param name="bIncreaseMaxLength"></param>
-        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals, bool bIncreaseMaxLength = false)
+        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals)
         {
             if (!decimal.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !decimal.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals))
             {
@@ -125,58 +124,6 @@
 
             // Set the Placeholder text for the entry field
             entry.Placeholder = $"{cValueFrom} - {cValueTo}";
-
-            // Calculate and set the MaxLength of the entry with the group separators
-            decimal nValueFrom = decimal.Parse(cValueFrom);
-            decimal nValueTo = decimal.Parse(cValueTo);
-            string cRoundedNumber = string.Empty;
-
-            if (cValueFrom.Length > cValueTo.Length)
-            {
-                cRoundedNumber = nValueFrom.ToString(format: "N" + nNumberOfDecimals);
-            }
-            else
-            {
-                cRoundedNumber = nValueTo.ToString(format: "N" + nNumberOfDecimals);
-            }
-
-            Debug.WriteLine($"cRoundedNumber: {cRoundedNumber}");
-
-            // Increase the MaxLength by 3 to allow result entry fields
-            // and add also '2' extra just to be sure that the MaxLength is enough when using unusual group sizes
-            /*
-                       999999999999.9999 = 17 characters
-                      9999999999999.9999 = 18 characters
-                    999,999,999,999.9999 = 20 characters
-                  9,999,999,999,999.9999 = 22 characters
-                  9,99,99,99,99,999.9999 = 22 characters    India
-                 99,99,99,99,99,999.9999 = 23 characters    India 10,00,00,00,00,000.0000
-
-                      -999999999999.9999 = 18 characters
-                     -9999999999999.9999 = 19 characters
-                   -999,999,999,999.9999 = 21 characters
-                 -9,999,999,999,999.9999 = 23 characters
-                 -9,99,99,99,99,999.9999 = 23 characters    India
-                -99,99,99,99,99,999.9999 = 24 characters    India -10,00,00,00,00,000.0000
-            */
-            int nIncreaseMaxLength = 0;
-
-            if (bIncreaseMaxLength)
-            {
-                nIncreaseMaxLength += 3;
-            }
-            else if (!bIncreaseMaxLength)
-            {
-                nIncreaseMaxLength += 2;
-            }
-
-            //entry.MaxLength = cRoundedNumber.Length + nIncreaseMaxLength;
-
-#if WINDOWS
-            // Windows !!!BUG!!!: MaxLength problem for Entry - when reaching the MaxLength and moving to the next field the app hangs
-            //entry.MaxLength *= 2;
-#endif
-            Debug.WriteLine($"entry.MaxLength: {entry.MaxLength}");
         }
 
         /// <summary>
