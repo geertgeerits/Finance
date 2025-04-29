@@ -133,7 +133,28 @@ namespace Finance
         /// <param name="e"></param>
         private void CalculateResult(object sender, EventArgs e)
         {
-            // Validate input values
+            // Replace null or empty values with 0
+            if (string.IsNullOrEmpty(entAmountPurchase.Text))
+            {
+                entAmountPurchase.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
+            }
+
+            if (string.IsNullOrEmpty(entAmountCost.Text))
+            {
+                entAmountCost.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
+            }
+
+            if (string.IsNullOrEmpty(entAmountRevenueYear.Text))
+            {
+                entAmountRevenueYear.Text = 0.ToString("F" + ClassEntryMethods.cNumDecimalDigits);
+            }
+
+            if (string.IsNullOrEmpty(entPercentageReturnYear.Text))
+            {
+                entPercentageReturnYear.Text = 0.ToString("F" + ClassEntryMethods.cPercDecimalDigits);
+            }
+
+            // Check if the values are numeric and in the correct range            
             bool bIsNumber = decimal.TryParse(entAmountPurchase.Text, out decimal nAmountPurchase);
             if (!bIsNumber || nAmountPurchase < 0 || nAmountPurchase >= 1_000_000_000_000)
             {

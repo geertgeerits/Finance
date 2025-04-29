@@ -131,6 +131,28 @@ namespace Finance
         /// <param name="e"></param>
         private void CalculateResult(object sender, EventArgs e)
         {
+            // Replace null or empty values with 0
+            if (string.IsNullOrEmpty(entVATPercentage.Text))
+            {
+                entVATPercentage.Text = "0";
+            }
+
+            if (string.IsNullOrEmpty(entVATAmountExclusive.Text))
+            {
+                entVATAmountExclusive.Text = "0";
+            }
+
+            if (string.IsNullOrEmpty(entVATAmount.Text))
+            {
+                entVATAmount.Text = "0";
+            }
+
+            if (string.IsNullOrEmpty(entVATAmountIncluded.Text))
+            {
+                entVATAmountIncluded.Text = "0";
+            }
+
+            // Check if the values are numeric and in the correct range
             bool bIsNumber = decimal.TryParse(entVATPercentage.Text, out decimal nVATPercentage);
             if (!bIsNumber || nVATPercentage < 0 || nVATPercentage >= 1_000)
             {

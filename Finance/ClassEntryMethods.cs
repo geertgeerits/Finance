@@ -160,28 +160,29 @@
                 }
 
                 // Check if the decimal separator is already in the string
-                if (c == cNumDecimalSeparator[0])
+                if (c == cNumDecimalSeparator[0] && cText.IndexOf(c) != cText.LastIndexOf(c))
                 {
-                    if (cText.IndexOf(c) != cText.LastIndexOf(c))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 
-            // Get and check the number of decimals allowed after the decimal separator
+            // Get the number of decimals allowed after the decimal separator
             int nDecimals = entry.AutomationId switch
             {
                 "Percentage" => int.Parse(cPercDecimalDigits),
                 _ => int.Parse(cNumDecimalDigits),
             };
 
-            if (cText.Contains(cNumDecimalSeparator))
+            // Check if the decimal separator is allowed
+            if (cText.Contains(cNumDecimalSeparator) && nDecimals == 0)
             {
-                if (cText.Length - cText.IndexOf(cNumDecimalSeparator[0]) > nDecimals + 1)
-                {
-                    return false;
-                }
+                return false;
+            }
+
+            // Check if the number of decimals is valid
+            if (cText.Contains(cNumDecimalSeparator) && cText.Length - cText.IndexOf(cNumDecimalSeparator[0]) > nDecimals + 1)
+            {
+                return false;
             }
 
             // Validate the number and set the text color
