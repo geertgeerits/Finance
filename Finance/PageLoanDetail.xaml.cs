@@ -100,7 +100,7 @@
                     entCapitalInitial.MaxLength = 17;
                 }
 
-                ClassEntryMethods.FormatNumberEntryFocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -114,7 +114,7 @@
             if (sender is Entry entry)
             {
                 entry.MaxLength = -1;
-                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
         }
 
@@ -125,7 +125,7 @@
         /// <param name="e"></param>
         private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -153,7 +153,7 @@
             else if (sender == entCurrencyCode)
             {
                 // Hide the keyboard
-                ClassEntryMethods.HideKeyboard(entCurrencyCode);
+                ClassEntryMethods.HideSystemKeyboard(entCurrencyCode);
 
                 _ = btnExport.Focus();
             }
@@ -207,7 +207,7 @@
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideKeyboard(entPeriodsYear);
+            ClassEntryMethods.HideSystemKeyboard(entPeriodsYear);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

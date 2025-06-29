@@ -219,7 +219,7 @@
             ClassEntryMethods.cPercDecimalDigits = Convert.ToString(nPercDec);
 
             // Hide the keyboard
-            ClassEntryMethods.HideKeyboard(entPercDec);
+            ClassEntryMethods.HideSystemKeyboard(entPercDec);
         }
 
         /// <summary>

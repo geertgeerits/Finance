@@ -72,7 +72,7 @@ namespace Finance
                     entry.MaxLength = 17;
                 }
 
-                ClassEntryMethods.FormatNumberEntryFocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -86,7 +86,7 @@ namespace Finance
             if (sender is Entry entry)
             {
                 entry.MaxLength = -1;
-                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
         }
 
@@ -97,7 +97,7 @@ namespace Finance
         /// <param name="e"></param>
         private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -188,7 +188,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideKeyboard(entPercentageReturnYear);
+            ClassEntryMethods.HideSystemKeyboard(entPercentageReturnYear);
 
             // Show the formatted number in the entry field
             ClassEntryMethods.bShowFormattedNumber = true;

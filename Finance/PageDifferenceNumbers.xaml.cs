@@ -55,7 +55,7 @@
             if (sender is Entry entry)
             {
                 entry.MaxLength = 18;
-                ClassEntryMethods.FormatNumberEntryFocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -69,7 +69,7 @@
             if (sender is Entry entry)
             {
                 entry.MaxLength = -1;
-                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
         }
 
@@ -80,7 +80,7 @@
         /// <param name="e"></param>
         private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -129,7 +129,7 @@
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideKeyboard(entValue2);
+            ClassEntryMethods.HideSystemKeyboard(entValue2);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

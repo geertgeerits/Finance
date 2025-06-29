@@ -3,18 +3,20 @@
     internal static class ClassEntryMethods
     {
         // Global variables
+        public static string cKeyboard = "";
         public static string cNumDecimalDigits = "";
         public static string cPercDecimalDigits = "";
         public static string cRoundNumber = "";
-        public static bool bColorNumber;
+        public static bool bColorNumber = true;
         public static bool bShowFormattedNumber;
         public static string cNumGroupSeparator = "";
 
         // Local variables
-        private static string cNumDecimalSeparator = "";
-        private static string cNumNegativeSign = "";
-        private static string cNumNativeDigits = "";
-        private static string cNumericCharacters = "";
+        public static string cNumDecimalSeparator = "";
+        public static string cNumNegativeSign = "";
+        public static string cNumNativeDigits = "";
+        private static string cDecimalCharacters = "";
+        //private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
 
@@ -93,12 +95,16 @@
             }
 
             // Set the allowed characters for numeric input
-            cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
-            Debug.WriteLine($"cNumericCharacters: {cNumericCharacters}");
+            cDecimalCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
+            Debug.WriteLine($"cDecimalCharacters: {cDecimalCharacters}");
+
+            // Set the entry text color to a different color for a negative and a positive number
+            SetNumberColor();
         }
 
         /// <summary>
         /// Set the Placeholder for a numeric entry field
+        /// Use: ClassEntryMethods.SetNumberEntryProperties(entTest1, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="cWholeNumFrom"></param>
@@ -127,11 +133,11 @@
         }
 
         /// <summary>
-        /// Check if the text is a numeric value
+        /// Check if the text is a decimal number
         /// </summary>
         /// <param name="cText"></param>
         /// <returns></returns>
-        public static bool IsNumeric(Entry entry, string cText)
+        public static bool IsDecimalNumber(Entry entry, string cText)
         {
             // Do not execute this method because this is only to show the formatted number just like in a label
             if (bShowFormattedNumber)
@@ -148,7 +154,7 @@
             foreach (char c in cText)
             {
                 // Check if the character is allowed
-                if (!cNumericCharacters.Contains(c))
+                if (!cDecimalCharacters.Contains(c))
                 {
                     return false;
                 }
@@ -167,11 +173,10 @@
             }
 
             // Get the number of decimals allowed after the decimal separator
-            int nDecimals = entry.AutomationId switch
-            {
-                "Percentage" => int.Parse(cPercDecimalDigits),
-                _ => int.Parse(cNumDecimalDigits),
-            };
+            // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+            int nDecimals = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                ? int.Parse(cPercDecimalDigits)
+                : int.Parse(cNumDecimalDigits);
 
             // Check if the decimal separator is allowed
             if (cText.Contains(cNumDecimalSeparator) && nDecimals == 0)
@@ -194,19 +199,44 @@
             return true;
         }
 
+        ///// <summary>
+        ///// Check if the text is a hexadecimal number
+        ///// </summary>
+        ///// <param name="cText"></param>
+        ///// <returns></returns>
+        //public static bool IsHexadecimalNumber(string cText)
+        //{
+        //    if (string.IsNullOrEmpty(cText))
+        //    {
+        //        return true;
+        //    }
+
+        //    // Check the text for invalid characters
+        //    foreach (char c in cText)
+        //    {
+        //        // Check if the character is allowed
+        //        if (!cHexadecimalCharacters.Contains(c))
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
+
         /// <summary>
         /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="entry"></param>
-        public async static void FormatNumberEntryFocused(Entry entry)
+        public async static void FormatDecimalNumberEntryFocused(Entry entry)
         {
-            // Show the keyboard if it is not already shown
-            if (!entry.IsSoftInputShowing())
+            // Show the keyboard if it is not already shown and no custom keyboard is used
+            if (!entry.IsSoftInputShowing() && cKeyboard != "Custom")
             {
                 _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
 
-            // Allow the IsNumeric method to execute
+            // Allow the IsDecimalNumber method to execute
             bShowFormattedNumber = false;
 
             if (string.IsNullOrEmpty(entry.Text))
@@ -216,12 +246,10 @@
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Ensure AutomationId is set before accessing it (Entry property: AutomationId="Percentage")
-                entry.Text = entry.AutomationId switch
-                {
-                    "Percentage" => nValue.ToString(format: "F" + cPercDecimalDigits),
-                    _ => nValue.ToString(format: "F" + cNumDecimalDigits),
-                };
+                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                    ? nValue.ToString(format: "F" + cPercDecimalDigits)
+                    : nValue.ToString(format: "F" + cNumDecimalDigits);
 
                 // Select all the text in the entry field
                 entry.CursorPosition = 0;
@@ -233,24 +261,22 @@
         /// Entry unfocused event: format the text value for a numeric entry field with the number separator
         /// </summary>
         /// <param name="entry"></param>
-        public static void FormatNumberEntryUnfocused(Entry entry)
+        public static void FormatDecimalNumberEntryUnfocused(Entry entry)
         {
             if (string.IsNullOrEmpty(entry.Text))
             {
                 return;
             }
 
-            // Do not allow the IsNumeric method to execute
+            // Do not allow the IsDecimalNumber method to execute
             bShowFormattedNumber = true;
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Ensure AutomationId is set before accessing it
-                entry.Text = entry.AutomationId switch
-                {
-                    "Percentage" => nValue.ToString(format: "N" + cPercDecimalDigits),
-                    _ => nValue.ToString(format: "N" + cNumDecimalDigits),
-                };
+                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                    ? nValue.ToString(format: "N" + cPercDecimalDigits)
+                    : nValue.ToString(format: "N" + cNumDecimalDigits);
             }
             else
             {
@@ -377,31 +403,6 @@
         }
 
         /// <summary>
-        /// Hide the keyboard
-        /// </summary>
-        /// <param name="entry"></param>
-        public async static void HideKeyboard(Entry entry)
-        {
-            try
-            {
-                if (entry.IsSoftInputShowing())
-                {
-                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
-                    entry.Unfocus();
-
-                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
-                }
-            }
-            catch (Exception)
-            {
-                entry.IsEnabled = false;
-                entry.IsEnabled = true;
-
-                return;
-            }
-        }
-
-        /// <summary>
         /// Select all the text in the entry field
         /// </summary>
         public static void ModifyEntrySelectAllText()
@@ -424,6 +425,30 @@
             });
         }
 
+        /// <summary>
+        /// Hide the keyboard
+        /// </summary>
+        /// <param name="entry"></param>
+        public async static void HideSystemKeyboard(Entry entry)
+        {
+            try
+            {
+                if (entry.IsSoftInputShowing())
+                {
+#if ANDROID
+                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
+                    entry.Unfocus();
+#endif
+                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                }
+            }
+            catch (Exception)
+            {
+                entry.IsEnabled = false;
+                entry.IsEnabled = true;
+            }
+        }
+        
         ///// <summary>
         ///// Test the rounding of numbers
         ///// </summary>
@@ -439,9 +464,9 @@
         //        cRoundNumber = "AwayFromZero";
         //        //cRoundNumber = "ToEven";
         //        //cRoundNumber = "ToZero";
-                
+
         //        string cRoundedNumber = RoundToNumDecimals(ref nNumber, nNumDec, cFormatSpecifier);
-                
+
         //        Debug.WriteLine($"Original: {number} - Rounded: {cRoundedNumber}");
         //    }
         //}

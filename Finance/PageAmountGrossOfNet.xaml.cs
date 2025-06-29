@@ -68,7 +68,7 @@ namespace Finance
                     entAmountNet.MaxLength = 17;
                 }
 
-                ClassEntryMethods.FormatNumberEntryFocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -82,7 +82,7 @@ namespace Finance
             if (sender is Entry entry)
             {
                 entry.MaxLength = -1;
-                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
         }
 
@@ -93,7 +93,7 @@ namespace Finance
         /// <param name="e"></param>
         private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -140,7 +140,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideKeyboard(entAmountNet);
+            ClassEntryMethods.HideSystemKeyboard(entAmountNet);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

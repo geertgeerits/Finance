@@ -52,7 +52,7 @@ namespace Finance
             if (sender is Entry entry)
             {
                 entInterestRate.MaxLength = 11;
-                ClassEntryMethods.FormatNumberEntryFocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Finance
             if (sender is Entry entry)
             {
                 entry.MaxLength = -1;
-                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
         }
 
@@ -77,7 +77,7 @@ namespace Finance
         /// <param name="e"></param>
         private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -123,7 +123,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideKeyboard(entPeriodsYear);
+            ClassEntryMethods.HideSystemKeyboard(entPeriodsYear);
 
             // Convert string to int for number of decimal digits after decimal point
             int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
