@@ -14,78 +14,76 @@
     </NavigationPage.TitleView>
 
     <ScrollView>
-        <VerticalStackLayout>
-            <Grid
-                Style="{StaticResource gridStyleInfo}"
-                RowDefinitions="Auto">
+        <Grid
+            Style="{StaticResource gridStyleInfo}"
+            RowDefinitions="Auto">
 
-                <VerticalStackLayout>
-                    <Label
-                        Style="{StaticResource labelStyleInfo}"
-                        Text="{x:Static resx:FinLang.NameProgram_Text}"
-                        FontSize="16">
-                    </Label>
+            <VerticalStackLayout>
+                <Label
+                    Style="{StaticResource labelStyleInfo}"
+                    Text="{x:Static resx:FinLang.NameProgram_Text}"
+                    FontSize="16">
+                </Label>
 
-                    <Label
-                        Style="{StaticResource labelStyleInfo}"
-                        Text="{x:Static resx:FinLang.Description_Text}">
-                    </Label>
+                <Label
+                    Style="{StaticResource labelStyleInfo}"
+                    Text="{x:Static resx:FinLang.Description_Text}">
+                </Label>
 
-                    <Label
-                        x:Name="lblVersion"
-                        Style="{StaticResource labelStyleInfo}">
-                    </Label>
+                <Label
+                    x:Name="lblVersion"
+                    Style="{StaticResource labelStyleInfo}">
+                </Label>
             
-                    <Label
-                        x:Name="lblCopyright"
-                        Style="{StaticResource labelStyleInfo}">
-                    </Label>
+                <Label
+                    x:Name="lblCopyright"
+                    Style="{StaticResource labelStyleInfo}">
+                </Label>
 
-                    <Label
-                        Style="{StaticResource labelStyleInfo}">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{x:Static resx:FinLang.Email_Text}"
-                                      FontFamily="OpenSansRegular"
-                                      FontAttributes="Bold"
-                                      FontSize="16" />
-                                <link:HyperlinkSpan Text="geertgeerits@gmail.com"
-                                                    Url="mailto:geertgeerits@gmail.com" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                <Label
+                    Style="{StaticResource labelStyleInfo}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static resx:FinLang.Email_Text}"
+                                  FontFamily="OpenSansRegular"
+                                  FontAttributes="Bold"
+                                  FontSize="16" />
+                            <link:HyperlinkSpan Text="geertgeerits@gmail.com"
+                                                Url="mailto:geertgeerits@gmail.com" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
-                    <Label
-                        Style="{StaticResource labelStyleInfo}">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{x:Static resx:FinLang.Website_Text}"
-                                      FontFamily="OpenSansRegular"
-                                      FontAttributes="Bold"
-                                      FontSize="16" />
-                                <link:HyperlinkSpan Text="../finance"
-                                                    Url="https://geertgeerits.wixsite.com/geertgeerits/finance" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                <Label
+                    Style="{StaticResource labelStyleInfo}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static resx:FinLang.Website_Text}"
+                                  FontFamily="OpenSansRegular"
+                                  FontAttributes="Bold"
+                                  FontSize="16" />
+                            <link:HyperlinkSpan Text="../finance"
+                                                Url="https://geertgeerits.wixsite.com/geertgeerits/finance" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
-                    <Label
-                        x:Name="lblPrivacyPolicy"
-                        Style="{StaticResource labelStyleInfo}">
-                    </Label>
+                <Label
+                    x:Name="lblPrivacyPolicy"
+                    Style="{StaticResource labelStyleInfo}">
+                </Label>
 
-                    <Label
-                        x:Name="lblLicense"
-                        Style="{StaticResource labelStyleInfo}">
-                    </Label>
+                <Label
+                    x:Name="lblLicense"
+                    Style="{StaticResource labelStyleInfo}">
+                </Label>
 
-                    <Label
-                        x:Name="lblExplanation"
-                        Style="{StaticResource labelStyleInfo}">
-                    </Label>
-                </VerticalStackLayout>
+                <Label
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleInfo}">
+                </Label>
+            </VerticalStackLayout>
 
-            </Grid>
-        </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>

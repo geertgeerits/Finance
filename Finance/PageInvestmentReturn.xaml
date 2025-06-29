@@ -15,185 +15,183 @@
     </NavigationPage.TitleView>
 
     <ScrollView>
-        <StackLayout>
-            <Grid
-                Style="{StaticResource gridStyleMenuItems}"
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+        <Grid
+            Style="{StaticResource gridStyleMenuItems}"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3">
-
-                    <Label
-                        x:Name="lblExplanation"
-                        Style="{StaticResource labelStyleExplanation}"
-                        Text="{x:Static resx:FinLang.InvestmentReturnExplanation_Text}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="0" 
-                    Text="{x:Static resx:FinLang.AmountPurchase_Text}">
+                    x:Name="lblExplanation"
+                    Style="{StaticResource labelStyleExplanation}"
+                    Text="{x:Static resx:FinLang.InvestmentReturnExplanation_Text}">
                 </Label>
+            </Border>
 
-                <Border
-                    x:Name="brdAmountPurchase"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="1"
+                Grid.Column="0" 
+                Text="{x:Static resx:FinLang.AmountPurchase_Text}">
+            </Label>
 
-                    <Entry
-                        x:Name="entAmountPurchase"
-                        Style="{StaticResource entryStyleNumericNext}"
-                        Text="0"
-                        Focused="NumberEntryFocused"
-                        Unfocused="NumberEntryUnfocused"
-                        Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdAmountPurchase"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
+            <Border
+                x:Name="brdAmountPurchase"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="1"
+                Grid.Column="1">
+
+                <Entry
+                    x:Name="entAmountPurchase"
+                    Style="{StaticResource entryStyleNumericNext}"
+                    Text="0"
+                    Focused="NumberEntryFocused"
+                    Unfocused="NumberEntryUnfocused"
+                    Completed="GoToNextField"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999.9999"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
+
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="2"
+                Grid.Column="0" 
+                Text="{x:Static resx:FinLang.AmountCost_Text}">
+            </Label>
+
+            <Border
+                x:Name="brdAmountCost"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="2"
+                Grid.Column="1">
+
+                <Entry
+                    x:Name="entAmountCost"
+                    Style="{StaticResource entryStyleNumericNext}"
+                    Text="0"
+                    Focused="NumberEntryFocused"
+                    Unfocused="NumberEntryUnfocused"
+                    Completed="GoToNextField"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999.9999"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
+
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.AmountTotal_Text}">
+            </Label>
+
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="3"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="0" 
-                    Text="{x:Static resx:FinLang.AmountCost_Text}">
+                    x:Name="lblAmountTotal"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
 
-                <Border
-                    x:Name="brdAmountCost"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="4"
+                Grid.Column="0" 
+                Text="{x:Static resx:FinLang.AmountRevenueYear_Text}">
+            </Label>
 
-                    <Entry
-                        x:Name="entAmountCost"
-                        Style="{StaticResource entryStyleNumericNext}"
-                        Text="0"
-                        Focused="NumberEntryFocused"
-                        Unfocused="NumberEntryUnfocused"
-                        Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdAmountCost"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
+            <Border
+                x:Name="brdAmountRevenueYear"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="4"
+                Grid.Column="1">
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.AmountTotal_Text}">
-                </Label>
+                <Entry
+                    x:Name="entAmountRevenueYear"
+                    Style="{StaticResource entryStyleNumericNext}"
+                    Text="0"
+                    Focused="NumberEntryFocused"
+                    Unfocused="NumberEntryUnfocused"
+                    Completed="GoToNextField"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                           <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999.9999"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="3"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="5"
+                Grid.Column="0" 
+                Text="{x:Static resx:FinLang.PercentageReturnYear_Text}">
+            </Label>
 
-                    <Label
-                        x:Name="lblAmountTotal"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
+            <Border
+                x:Name="brdPercentageReturnYear"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="5"
+                Grid.Column="1">
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="4"
-                    Grid.Column="0" 
-                    Text="{x:Static resx:FinLang.AmountRevenueYear_Text}">
-                </Label>
+                <Entry
+                    x:Name="entPercentageReturnYear"
+                    AutomationId="Percentage"
+                    Style="{StaticResource entryStyleNumericDone}"
+                    Text="0"
+                    Focused="NumberEntryFocused"
+                    Unfocused="NumberEntryUnfocused"
+                    Completed="CalculateResult"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999.99999999"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
 
-                <Border
-                    x:Name="brdAmountRevenueYear"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="4"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStylePercent}"
+                Grid.Row="5"
+                Grid.Column="2">
+            </Label>
 
-                    <Entry
-                        x:Name="entAmountRevenueYear"
-                        Style="{StaticResource entryStyleNumericNext}"
-                        Text="0"
-                        Focused="NumberEntryFocused"
-                        Unfocused="NumberEntryUnfocused"
-                        Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdAmountRevenueYear"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
+            <Button
+                Style="{StaticResource buttonStyleCalculate}"
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.Calculate_Text}"
+                ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
+                Clicked="CalculateResult">
+            </Button>
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="5"
-                    Grid.Column="0" 
-                    Text="{x:Static resx:FinLang.PercentageReturnYear_Text}">
-                </Label>
-
-                <Border
-                    x:Name="brdPercentageReturnYear"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="5"
-                    Grid.Column="1">
-
-                    <Entry
-                        x:Name="entPercentageReturnYear"
-                        AutomationId="Percentage"
-                        Style="{StaticResource entryStyleNumericDone}"
-                        Text="0"
-                        Focused="NumberEntryFocused"
-                        Unfocused="NumberEntryUnfocused"
-                        Completed="CalculateResult"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999.99999999" BorderName="brdPercentageReturnYear"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
-
-                <Label
-                    Style="{StaticResource labelStylePercent}"
-                    Grid.Row="5"
-                    Grid.Column="2">
-                </Label>
-
-                <Button
-                    Style="{StaticResource buttonStyleCalculate}"
-                    Grid.Row="6"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.Calculate_Text}"
-                    ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
-                    Clicked="CalculateResult">
-                </Button>
-
-                <Button
-                    x:Name="btnReset"
-                    Style="{StaticResource buttonStyleReset}"
-                    Grid.Row="6"
-                    Grid.Column="1"
-                    Text="{x:Static resx:FinLang.Reset_Text}"
-                    ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
-                    Clicked="ResetEntryFields">
-                </Button>
+            <Button
+                x:Name="btnReset"
+                Style="{StaticResource buttonStyleReset}"
+                Grid.Row="6"
+                Grid.Column="1"
+                Text="{x:Static resx:FinLang.Reset_Text}"
+                ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                Clicked="ResetEntryFields">
+            </Button>
             
-            </Grid>
-        </StackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>

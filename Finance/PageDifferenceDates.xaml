@@ -13,204 +13,202 @@
     </NavigationPage.TitleView>
     
     <ScrollView>
-        <StackLayout>
-               <Grid
-                   Style="{StaticResource gridStyleMenuItems2}"
-                   RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+        <Grid
+            Style="{StaticResource gridStyleMenuItems2}"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2">
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
 
-                    <Label
-                        Style="{StaticResource labelStyleExplanation}"
-                        Text="{x:Static resx:FinLang.DifferenceExplanationDates_Text}">
-                    </Label>
-                </Border>
+                <Label
+                    Style="{StaticResource labelStyleExplanation}"
+                    Text="{x:Static resx:FinLang.DifferenceExplanationDates_Text}">
+                </Label>
+            </Border>
           
-                <Label
-                    x:Name="lblDate1"
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.Date1_Text}">
-                </Label>
+            <Label
+                x:Name="lblDate1"
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.Date1_Text}">
+            </Label>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="1">
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="1"
+                Grid.Column="1">
 
-                    <DatePicker
-                        x:Name="dtpDate1"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Fill"
-                        DateSelected="CalculateResult">
-                    </DatePicker>
-                </Border>
+                <DatePicker
+                    x:Name="dtpDate1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Fill"
+                    DateSelected="CalculateResult">
+                </DatePicker>
+            </Border>
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.Date2_Text}">
-                </Label>
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.Date2_Text}">
+            </Label>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="1">
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="2"
+                Grid.Column="1">
 
-                    <DatePicker
-                        x:Name="dtpDate2"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Fill"
-                        DateSelected="CalculateResult">
-                    </DatePicker>
-                </Border>
+                <DatePicker
+                    x:Name="dtpDate2"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Fill"
+                    DateSelected="CalculateResult">
+                </DatePicker>
+            </Border>
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    VerticalOptions="End"
-                    Text="{x:Static resx:FinLang.DateDifferenceYearMonthDay_Text}">
-                </Label>
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalOptions="End"
+                Text="{x:Static resx:FinLang.DateDifferenceYearMonthDay_Text}">
+            </Label>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2">
-
-                    <Label
-                        x:Name="lblDateDifferenceYearMonthDay"
-                        Style="{StaticResource labelStyleResultDate}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.DateDifferenceMonths_Text}">
+                    x:Name="lblDateDifferenceYearMonthDay"
+                    Style="{StaticResource labelStyleResultDate}">
                 </Label>
+            </Border>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="5"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.DateDifferenceMonths_Text}">
+            </Label>
 
-                    <Label
-                        x:Name="lblDateDifferenceMonths"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="5"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="6"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.DateDifferenceWeeks_Text}">
+                    x:Name="lblDateDifferenceMonths"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="6"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.DateDifferenceWeeks_Text}">
+            </Label>
 
-                    <Label
-                        x:Name="lblDateDifferenceWeeks"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="6"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="7"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.DateDifferenceDays_Text}">
+                    x:Name="lblDateDifferenceWeeks"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="7"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="7"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.DateDifferenceDays_Text}">
+            </Label>
 
-                    <Label
-                        x:Name="lblDateDifferenceDays"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="7"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="8"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.DateDifferenceHours_Text}">
+                    x:Name="lblDateDifferenceDays"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="8"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="8"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.DateDifferenceHours_Text}">
+            </Label>
 
-                    <Label
-                        x:Name="lblDateDifferenceHours"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="8"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="9"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.DateDifferenceMinutes_Text}">
+                    x:Name="lblDateDifferenceHours"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="9"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="9"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.DateDifferenceMinutes_Text}">
+            </Label>
 
-                    <Label
-                        x:Name="lblDateDifferenceMinutes"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="9"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="10"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.DateDifferenceSeconds_Text}">
+                    x:Name="lblDateDifferenceMinutes"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="10"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="10"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.DateDifferenceSeconds_Text}">
+            </Label>
 
-                    <Label
-                        x:Name="lblDateDifferenceSeconds"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="10"
+                Grid.Column="1">
 
+                <Label
+                    x:Name="lblDateDifferenceSeconds"
+                    Style="{StaticResource labelStyleResult}">
+                </Label>
+            </Border>
 
-                <Button
-                    x:Name="btnReset"
-                    Style="{StaticResource buttonStyleReset}"
-                    Grid.Row="11"
-                    Grid.Column="1"
-                    Text="{x:Static resx:FinLang.Reset_Text}"
-                    ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
-                    Clicked="ResetEntryFields">
-                </Button>
-            </Grid>
-        </StackLayout>
+            <Button
+                x:Name="btnReset"
+                Style="{StaticResource buttonStyleReset}"
+                Grid.Row="11"
+                Grid.Column="1"
+                Text="{x:Static resx:FinLang.Reset_Text}"
+                ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                Clicked="ResetEntryFields">
+            </Button>
+        
+        </Grid>
     </ScrollView>
 </ContentPage>

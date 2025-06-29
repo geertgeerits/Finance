@@ -15,144 +15,142 @@
     </NavigationPage.TitleView>
 
     <ScrollView>
-        <StackLayout>
-            <Grid
-                Style="{StaticResource gridStyleMenuItems}"
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+        <Grid
+            Style="{StaticResource gridStyleMenuItems}"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3">
-
-                    <Label
-                        Style="{StaticResource labelStyleExplanation}"
-                        Text="{x:Static resx:FinLang.AmountGrossOfNetExplanation_Text}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="0" 
-                    Text="{x:Static resx:FinLang.Percentage_Text}">
+                    Style="{StaticResource labelStyleExplanation}"
+                    Text="{x:Static resx:FinLang.AmountGrossOfNetExplanation_Text}">
                 </Label>
+            </Border>
 
-                <Border
-                    x:Name="brdPercentage"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="1">
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="1"
+                Grid.Column="0" 
+                Text="{x:Static resx:FinLang.Percentage_Text}">
+            </Label>
 
-                    <Entry
-                        x:Name="entPercentage"
-                        AutomationId="Percentage"
-                        Style="{StaticResource entryStyleNumericNext}"
-                        Text=""
-                        Focused="NumberEntryFocused"
-                        Unfocused="NumberEntryUnfocused"
-                        Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="99.99999999" BorderName="brdPercentage"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
+            <Border
+                x:Name="brdPercentage"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="1"
+                Grid.Column="1">
+
+                <Entry
+                    x:Name="entPercentage"
+                    AutomationId="Percentage"
+                    Style="{StaticResource entryStyleNumericNext}"
+                    Text=""
+                    Focused="NumberEntryFocused"
+                    Unfocused="NumberEntryUnfocused"
+                    Completed="GoToNextField"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="99.99999999"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
+
+            <Label
+                Style="{StaticResource labelStylePercent}"
+                Grid.Row="1"
+                Grid.Column="2">
+            </Label>
+
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="2"
+                Grid.Column="0" 
+                Text="{x:Static resx:FinLang.AmountNet_Text}">
+            </Label>
+
+            <Border
+                x:Name="brdAmountNet"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="2"
+                Grid.Column="1">
+
+                <Entry
+                    x:Name="entAmountNet"
+                    Style="{StaticResource entryStyleNumericDone}"
+                    Text=""
+                    Focused="NumberEntryFocused"
+                    Unfocused="NumberEntryUnfocused"
+                    Completed="CalculateResult"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999.9999"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
+
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.AmountDifference_Text}">
+            </Label>
+
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="3"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStylePercent}"
-                    Grid.Row="1"
-                    Grid.Column="2">
+                    x:Name="lblAmountDifference"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
+
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.AmountGross_Text}">
+            </Label>
+
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="4"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="0" 
-                    Text="{x:Static resx:FinLang.AmountNet_Text}">
+                    x:Name="lblAmountGross"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
 
-                <Border
-                    x:Name="brdAmountNet"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="1">
+            <Button
+                Style="{StaticResource buttonStyleCalculate}"
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.Calculate_Text}"
+                ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
+                Clicked="CalculateResult">
+            </Button>
 
-                    <Entry
-                        x:Name="entAmountNet"
-                        Style="{StaticResource entryStyleNumericDone}"
-                        Text=""
-                        Focused="NumberEntryFocused"
-                        Unfocused="NumberEntryUnfocused"
-                        Completed="CalculateResult"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.9999" BorderName="brdAmountNet"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
+            <Button
+                x:Name="btnReset"
+                Style="{StaticResource buttonStyleReset}"
+                Grid.Row="5"
+                Grid.Column="1"
+                Text="{x:Static resx:FinLang.Reset_Text}"
+                ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                Clicked="ResetEntryFields">
+            </Button>
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.AmountDifference_Text}">
-                </Label>
-
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="3"
-                    Grid.Column="1">
-
-                    <Label
-                        x:Name="lblAmountDifference"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
-
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.AmountGross_Text}">
-                </Label>
-
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="4"
-                    Grid.Column="1">
-
-                    <Label
-                        x:Name="lblAmountGross"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
-
-                <Button
-                    Style="{StaticResource buttonStyleCalculate}"
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.Calculate_Text}"
-                    ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
-                    Clicked="CalculateResult">
-                </Button>
-
-                <Button
-                    x:Name="btnReset"
-                    Style="{StaticResource buttonStyleReset}"
-                    Grid.Row="5"
-                    Grid.Column="1"
-                    Text="{x:Static resx:FinLang.Reset_Text}"
-                    ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
-                    Clicked="ResetEntryFields">
-                </Button>
-
-            </Grid>
-        </StackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>

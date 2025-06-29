@@ -15,161 +15,159 @@
     </NavigationPage.TitleView>
     
     <ScrollView>
-        <StackLayout>
-            <Grid
-                Style="{StaticResource gridStyleMenuItems}"
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
+        <Grid
+            Style="{StaticResource gridStyleMenuItems}"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto">
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3">
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3">
 
-                    <Label
-                        Style="{StaticResource labelStyleExplanation}"
-                        Text="{x:Static resx:FinLang.InterestPayDiscountExplanation_Text}">
-                    </Label>
-                </Border>
+                <Label
+                    Style="{StaticResource labelStyleExplanation}"
+                    Text="{x:Static resx:FinLang.InterestPayDiscountExplanation_Text}">
+                </Label>
+            </Border>
             
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="0" 
-                    Text="{x:Static resx:FinLang.PaymentDiscount_Text}">
-                </Label>
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="1"
+                Grid.Column="0" 
+                Text="{x:Static resx:FinLang.PaymentDiscount_Text}">
+            </Label>
 
-                <Border
-                    x:Name="brdPaymentDiscount"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="1"
-                    Grid.Column="1">
+            <Border
+                x:Name="brdPaymentDiscount"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="1"
+                Grid.Column="1">
 
-                    <Entry
-                        x:Name="entPaymentDiscount"
-                        AutomationId="Percentage"
-                        Style="{StaticResource entryStyleNumericNext}"
-                        Text=""
-                        Focused="NumberEntryFocused"
-                        Unfocused="NumberEntryUnfocused"
-                        Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdPaymentDiscount"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
+                <Entry
+                    x:Name="entPaymentDiscount"
+                    AutomationId="Percentage"
+                    Style="{StaticResource entryStyleNumericNext}"
+                    Text=""
+                    Focused="NumberEntryFocused"
+                    Unfocused="NumberEntryUnfocused"
+                    Completed="GoToNextField"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="100"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
 
-                <Label
-                    Style="{StaticResource labelStylePercent}"
-                    Grid.Row="1"
-                    Grid.Column="2">
-                </Label>
+            <Label
+                Style="{StaticResource labelStylePercent}"
+                Grid.Row="1"
+                Grid.Column="2">
+            </Label>
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.ExpiryDaysWithDiscount_Text}">
-                </Label>
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.ExpiryDaysWithDiscount_Text}">
+            </Label>
 
-                <Border
-                    x:Name="brdExpiryDaysWithDiscount"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="1">
+            <Border
+                x:Name="brdExpiryDaysWithDiscount"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="2"
+                Grid.Column="1">
 
-                    <Entry
-                        x:Name="entExpiryDaysWithDiscount"
-                        Style="{StaticResource entryStyleNumericNext}"
-                        Text="7"
-                        Placeholder="0 - 999"
-                        MaxLength="3"
-                        Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999" BorderName="brdExpiryDaysWithDiscount"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
+                <Entry
+                    x:Name="entExpiryDaysWithDiscount"
+                    Style="{StaticResource entryStyleNumericNext}"
+                    Text="7"
+                    Placeholder="0 - 999"
+                    MaxLength="3"
+                    Completed="GoToNextField"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.ExpiryDaysWithoutDiscount_Text}">
-                </Label>
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.ExpiryDaysWithoutDiscount_Text}">
+            </Label>
 
-                <Border
-                    x:Name="brdExpiryDaysWithoutDiscount"
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="3"
-                    Grid.Column="1">
+            <Border
+                x:Name="brdExpiryDaysWithoutDiscount"
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="3"
+                Grid.Column="1">
 
-                    <Entry
-                        x:Name="entExpiryDaysWithoutDiscount"
-                        Style="{StaticResource entryStyleNumericDone}"
-                        Text="30"
-                        Placeholder="0 - 999"
-                        MaxLength="3"
-                        Completed="CalculateResult"
-                        TextChanged="NumberEntryTextChanged">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999" BorderName="brdExpiryDaysWithoutDiscount"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
-                </Border>
+                <Entry
+                    x:Name="entExpiryDaysWithoutDiscount"
+                    Style="{StaticResource entryStyleNumericDone}"
+                    Text="30"
+                    Placeholder="0 - 999"
+                    MaxLength="3"
+                    Completed="CalculateResult"
+                    TextChanged="NumberEntryTextChanged">
+                    <Entry.Triggers>
+                        <EventTrigger Event="TextChanged">
+                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999"/>
+                        </EventTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
 
-                <Label
-                    Style="{StaticResource labelStyleDefault}"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.InterestEffective_Text}">
-                </Label>
+            <Label
+                Style="{StaticResource labelStyleDefault}"
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.InterestEffective_Text}">
+            </Label>
 
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="4"
-                    Grid.Column="1">
-
-                    <Label
-                        x:Name="lblInterestEffective"
-                        Style="{StaticResource labelStyleResult}">
-                    </Label>
-                </Border>
+            <Border
+                Style="{StaticResource borderStyleDefault}"
+                Grid.Row="4"
+                Grid.Column="1">
 
                 <Label
-                    Style="{StaticResource labelStylePercent}"
-                    Grid.Row="4"
-                    Grid.Column="2">
+                    x:Name="lblInterestEffective"
+                    Style="{StaticResource labelStyleResult}">
                 </Label>
+            </Border>
 
-                <Button
-                    Style="{StaticResource buttonStyleCalculate}"
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    Text="{x:Static resx:FinLang.Calculate_Text}"
-                    ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
-                    Clicked="CalculateResult">
-                </Button>
+            <Label
+                Style="{StaticResource labelStylePercent}"
+                Grid.Row="4"
+                Grid.Column="2">
+            </Label>
 
-                <Button
-                    x:Name="btnReset"
-                    Style="{StaticResource buttonStyleReset}"
-                    Grid.Row="5"
-                    Grid.Column="1"
-                    Text="{x:Static resx:FinLang.Reset_Text}"
-                    ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
-                    Clicked="ResetEntryFields">
-                </Button>
+            <Button
+                Style="{StaticResource buttonStyleCalculate}"
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="{x:Static resx:FinLang.Calculate_Text}"
+                ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
+                Clicked="CalculateResult">
+            </Button>
+
+            <Button
+                x:Name="btnReset"
+                Style="{StaticResource buttonStyleReset}"
+                Grid.Row="5"
+                Grid.Column="1"
+                Text="{x:Static resx:FinLang.Reset_Text}"
+                ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                Clicked="ResetEntryFields">
+            </Button>
             
-            </Grid>
-        </StackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>

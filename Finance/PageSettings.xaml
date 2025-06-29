@@ -132,7 +132,7 @@
                         TextChanged="VerifyNumberDecimals">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="4" BorderName="brdNumDec"/>
+                                <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="4"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -161,7 +161,7 @@
                         TextChanged="VerifyPercentageDecimals">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="8" BorderName="brdPercDec"/>
+                                <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="8"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
