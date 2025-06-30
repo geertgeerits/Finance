@@ -114,7 +114,6 @@ namespace Finance
             Debug.WriteLine($"_currentTheme: {selectedTheme}"); 
 
             // Set the selected item
-            //selectedTheme = Themes.FirstOrDefault(l => l == _currentTheme);
             ThemeCollection.SelectedItem = selectedTheme;
 
             // Ensure the selected item is visible in the horizontal list
@@ -364,8 +363,17 @@ namespace Finance
             {
                 Globals.cTheme = "System";
             }
-            
             Debug.WriteLine($"OnThemeSelected - Selected theme: {Globals.cTheme}");
+
+            if (Dispatcher != null)
+            {
+                Dispatcher.Dispatch(async () =>
+                {
+                    await Task.Delay(100);
+                    //ThemeCollection.SelectedItem = selectedTheme;
+                    //ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Center, animate: false);
+                });
+            }
 
             Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
@@ -416,12 +424,12 @@ namespace Finance
         /// </summary>
         private void SetLanguage()
         {
-            var ThemeList = new List<string>
-            {
+            List<string> ThemeList =
+            [
                 FinLang.System_Text,
                 FinLang.Light_Text,
                 FinLang.Dark_Text
-            };
+            ];
 #if ANDROID || WINDOWS
             pckTheme.ItemsSource = ThemeList;
 
@@ -436,16 +444,16 @@ namespace Finance
 #if IOS
             // Set the current theme in the CollectionView
             ThemeCollection.ItemsSource = ThemeList;
-            
+
             // Set the default selected item
-            var selectedTheme = ThemeList.FirstOrDefault(t => t == FinLang.System_Text);
+            string? selectedTheme = ThemeList.FirstOrDefault(t => t == Globals.cTheme);
             ThemeCollection.SelectedItem = selectedTheme;
         
             // Ensure the selected item is visible in the horizontal list
             if (selectedTheme != null)
             {
                 // Scroll to the item after the UI is loaded
-                ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.MakeVisible, animate: false);
+                ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Center, animate: false);
             }
 #endif
         }
