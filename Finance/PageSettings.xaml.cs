@@ -1,8 +1,25 @@
-﻿namespace Finance
+﻿using System.Collections.ObjectModel;
+
+namespace Finance
 {
     public sealed partial class PageSettings : ContentPage
     {
+        //// Set the values for the CollectionView languages and themes
+        public ObservableCollection<string> Languages { get; } =
+        [
+            "Čeština", "Dansk", "Deutsch", "English", "Español", "Français",
+            "Italiano", "Magyar", "Nederlands", "Norsk", "Polski", "Português",
+            "Română", "Suomi", "Svenska"
+        ];
+
+        public ObservableCollection<string> Themes { get; } =
+        [
+            FinLang.System_Text, FinLang.Light_Text, FinLang.Dark_Text
+        ];
+
         //// Local variables.
+        private string _currentLanguage = "";
+        private string _currentTheme = "";
         private readonly Stopwatch stopWatch = new();
 
         public PageSettings()
@@ -10,6 +27,7 @@
             try
             {
                 InitializeComponent();
+                BindingContext = this;
             }
             catch (Exception ex)
             {
@@ -22,8 +40,9 @@
 #endif
             //// Put text in the chosen language in the controls and variables
             SetLanguage();
-        
-            //// Set the current language in the picker
+
+            //// Set the current language in the picker or CollectionView
+#if ANDROID || WINDOWS
             pckLanguage.SelectedIndex = Globals.cLanguage switch
             {
                 "cs" => 0,      // Čeština - Czech
@@ -42,15 +61,69 @@
                 "sv" => 14,     // Svenska - Swedish
                 _ => 3,         // English
             };
+#endif
+#if IOS
+            //// Select the current language in the CollectionView
+            _currentLanguage = Globals.cLanguage switch
+            {
+                "cs" => "Čeština",      // Čeština - Czech
+                "da" => "Dansk",        // Dansk - Danish
+                "de" => "Deutsch",      // Deutsch - German
+                "es" => "Español",      // Español - Spanish
+                "fr" => "Français",     // Français - French
+                "it" => "Italiano",     // Italiano - Italian
+                "hu" => "Magyar",       // Magyar - Hungarian
+                "nl" => "Nederlands",   // Nederlands - Dutch
+                "nb" => "Norsk",        // Norsk Bokmål - Norwegian Bokmål
+                "pl" => "Polski",       // Polski - Polish
+                "pt" => "Português",    // Português - Portuguese
+                "ro" => "Română",       // Română - Romanian
+                "fi" => "Suomi",        // Suomi - Finnish
+                "sv" => "Svenska",      // Svenska - Swedish
+                _ => "English",         // English
+            };
+            Debug.WriteLine($"_currentLanguage: {_currentLanguage}");
 
-            //// Set the current theme in the picker
+            // Set the selected item
+            string? selectedLanguage = Languages.FirstOrDefault(l => l == _currentLanguage);
+            LanguageCollection.SelectedItem = selectedLanguage;
+
+            // Ensure the selected item is visible in the horizontal list
+            if (selectedLanguage != null)
+            {
+                // Scroll to the item after the UI is loaded
+                LanguageCollection.ScrollTo(selectedLanguage, position: ScrollToPosition.Center, animate: false);
+            }
+#endif
+            //// Set the current theme in the picker or CollectionView
+#if ANDROID || WINDOWS
             pckTheme.SelectedIndex = Globals.cTheme switch
             {
                 "Light" => 1,   // Light
                 "Dark" => 2,    // Dark
                 _ => 0,         // System
             };
+#endif
+#if IOS
+            string selectedTheme = Globals.cTheme switch
+            {
+                "Light" => FinLang.Light_Text,
+                "Dark" => FinLang.Dark_Text,
+                _ => FinLang.System_Text,
+            };
+            Debug.WriteLine($"_currentTheme: {selectedTheme}"); 
 
+            // Set the selected item
+            //selectedTheme = Themes.FirstOrDefault(l => l == _currentTheme);
+            ThemeCollection.SelectedItem = selectedTheme;
+
+            // Ensure the selected item is visible in the horizontal list
+            if (selectedTheme != null)
+            {
+                // Scroll to the item after the UI is loaded
+                ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Center, animate: false);
+            }
+#endif
             //// Set the number of decimal digits after the decimal point
             entNumDec.Text = ClassEntryMethods.cNumDecimalDigits;
             entPercDec.Text = ClassEntryMethods.cPercDecimalDigits;
@@ -112,6 +185,49 @@
             stopWatch.Start();
         }
 
+#if IOS
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Ensure the selected item is visible in the horizontal list
+            string? selectedLanguage = Languages.FirstOrDefault(l => l == _currentLanguage);
+            if (selectedLanguage != null)
+            {
+                if (Dispatcher != null)
+                {
+                    Dispatcher.Dispatch(async () =>
+                    {
+                        await Task.Delay(100);
+                        LanguageCollection.SelectedItem = selectedLanguage;
+                        LanguageCollection.ScrollTo(selectedLanguage, position: ScrollToPosition.Center, animate: false);
+                    });
+                }
+            }
+            Debug.WriteLine($"selectedLanguage: {selectedLanguage}");
+
+            string? selectedTheme = Themes.FirstOrDefault(l => l == _currentTheme);
+            if (selectedTheme != null)
+            {
+                selectedTheme = Globals.cTheme switch
+                {
+                    "Light" => FinLang.Light_Text,
+                    "Dark" => FinLang.Dark_Text,
+                    _ => FinLang.System_Text,
+                };
+                if (Dispatcher != null)
+                {
+                    Dispatcher.Dispatch(async () =>
+                    {
+                        await Task.Delay(100);
+                        ThemeCollection.SelectedItem = selectedTheme;
+                        ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Center, animate: false);
+                    });
+                }
+            }
+            Debug.WriteLine($"selectedTheme: {selectedTheme}");
+        }
+#endif
         /// <summary>
         /// Picker language clicked event 
         /// </summary>
@@ -159,6 +275,50 @@
         }
 
         /// <summary>
+        /// CollectionView language clicked event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnLanguageSelected(object sender, SelectionChangedEventArgs e)
+        {
+            string cLanguageOld = Globals.cLanguage;
+
+            var selectedLanguage = e.CurrentSelection.FirstOrDefault() as string;
+
+            // Handle selection
+            Globals.cLanguage = selectedLanguage switch
+            {
+                "Čeština" => "cs",       // Czech
+                "Dansk" => "da",         // Danish
+                "Deutsch" => "de",       // German
+                "English" => "en",       // English
+                "Español" => "es",       // Spanish
+                "Français" => "fr",      // French
+                "Italiano" => "it",      // Italian
+                "Magyar" => "hu",        // Hungarian
+                "Nederlands" => "nl",    // Dutch
+                "Norsk" => "nb",         // Norwegian Bokmål
+                "Polski" => "pl",        // Polish
+                "Português" => "pt",     // Portuguese
+                "Română" => "ro",        // Romanian
+                "Suomi" => "fi",         // Finnish
+                "Svenska" => "sv",       // Swedish
+                _ => Globals.cLanguage,  // Default to current language if not found
+            };
+
+            if (cLanguageOld != Globals.cLanguage)
+            {
+                Globals.bLanguageChanged = true;
+
+                // Set the current UI culture of the selected language
+                Globals.SetCultureSelectedLanguage();
+
+                // Put text in the chosen language in the controls and variables
+                SetLanguage();
+            }
+        }
+
+        /// <summary>
         /// Picker theme clicked event 
         /// </summary>
         /// <param name="sender"></param>
@@ -180,6 +340,35 @@
                 Globals.SetTheme();
                 ClassEntryMethods.SetNumberColor();
             }
+        }
+
+        /// <summary>
+        /// CollectionView theme clicked event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnThemeSelected(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedTheme = e.CurrentSelection.FirstOrDefault() as string;
+
+            // Handle selection
+            if (selectedTheme == FinLang.Light_Text)
+            {
+                Globals.cTheme = "Light";
+            }
+            else if (selectedTheme == FinLang.Dark_Text)
+            {
+                Globals.cTheme = "Dark";
+            }
+            else
+            {
+                Globals.cTheme = "System";
+            }
+            
+            Debug.WriteLine($"OnThemeSelected - Selected theme: {Globals.cTheme}");
+
+            Globals.SetTheme();
+            ClassEntryMethods.SetNumberColor();
         }
 
         /// <summary>
@@ -233,6 +422,7 @@
                 FinLang.Light_Text,
                 FinLang.Dark_Text
             };
+#if ANDROID || WINDOWS
             pckTheme.ItemsSource = ThemeList;
 
             // Set the current theme in the picker
@@ -242,6 +432,22 @@
                 "Dark" => 2,    // Dark
                 _ => 0,         // System
             };
+#endif
+#if IOS
+            // Set the current theme in the CollectionView
+            ThemeCollection.ItemsSource = ThemeList;
+            
+            // Set the default selected item
+            var selectedTheme = ThemeList.FirstOrDefault(t => t == FinLang.System_Text);
+            ThemeCollection.SelectedItem = selectedTheme;
+        
+            // Ensure the selected item is visible in the horizontal list
+            if (selectedTheme != null)
+            {
+                // Scroll to the item after the UI is loaded
+                ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.MakeVisible, animate: false);
+            }
+#endif
         }
 
         /// <summary>

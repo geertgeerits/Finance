@@ -46,40 +46,68 @@
                     VerticalTextAlignment="Center"
                     Text="{local:Translate Language_Text}">
                 </Label>
-                
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="2"
-                    Grid.Column="1">
 
-                    <Picker
-                        x:Name="pckLanguage"
-                        VerticalOptions="Center"
-                        MinimumWidthRequest="160"
-                        VerticalTextAlignment="Center"
-                        SelectedIndexChanged="OnPickerLanguageChanged"
-                        IsEnabled="True">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Čeština</x:String>
-                                <x:String>Dansk</x:String>
-                                <x:String>Deutsch</x:String>
-                                <x:String>English</x:String>
-                                <x:String>Español</x:String>
-                                <x:String>Français</x:String>
-                                <x:String>Italiano</x:String>
-                                <x:String>Magyar</x:String>
-                                <x:String>Nederlands</x:String>
-                                <x:String>Norsk</x:String>
-                                <x:String>Polski</x:String>
-                                <x:String>Português</x:String>
-                                <x:String>Română</x:String>
-                                <x:String>Suomi</x:String>
-                                <x:String>Svenska</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-                </Border>
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="Android, WinUI">
+                        <Border
+                            Style="{StaticResource borderStyleDefault}"
+                            Grid.Row="2"
+                            Grid.Column="1">
+
+                            <Picker
+                                x:Name="pckLanguage"
+                                VerticalOptions="Center"
+                                MinimumWidthRequest="160"
+                                VerticalTextAlignment="Center"
+                                SelectedIndexChanged="OnPickerLanguageChanged"
+                                IsEnabled="True">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Čeština</x:String>
+                                        <x:String>Dansk</x:String>
+                                        <x:String>Deutsch</x:String>
+                                        <x:String>English</x:String>
+                                        <x:String>Español</x:String>
+                                        <x:String>Français</x:String>
+                                        <x:String>Italiano</x:String>
+                                        <x:String>Magyar</x:String>
+                                        <x:String>Nederlands</x:String>
+                                        <x:String>Norsk</x:String>
+                                        <x:String>Polski</x:String>
+                                        <x:String>Português</x:String>
+                                        <x:String>Română</x:String>
+                                        <x:String>Suomi</x:String>
+                                        <x:String>Svenska</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Border>
+                    </On>
+                </OnPlatform>
+
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="iOS">
+                        <Border
+                            Style="{StaticResource borderStyleDefault}"
+                            Grid.Row="2"
+                            Grid.Column="1">
+
+                            <CollectionView
+                                x:Name="LanguageCollection"
+                                Style="{StaticResource collectionViewStyleHorizontal}"
+                                SelectionChanged="OnLanguageSelected"
+                                ItemsSource="{Binding Languages}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Style="{StaticResource gridStyleCollectionView}">
+                                            <Label Text="{Binding .}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Border>
+                    </On>
+                </OnPlatform>
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"
@@ -87,27 +115,55 @@
                     Grid.Column="0"
                     Text="{local:Translate Theme_Text}">
                 </Label>
-            
-                <Border
-                    Style="{StaticResource borderStyleDefault}"
-                    Grid.Row="4"
-                    Grid.Column="1">
 
-                    <Picker
-                        x:Name="pckTheme"
-                        VerticalOptions="Center"
-                        MinimumWidthRequest="160"
-                        VerticalTextAlignment="Center"
-                        SelectedIndexChanged="OnPickerThemeChanged">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>System</x:String>
-                                <x:String>Light</x:String>
-                                <x:String>Dark</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-                </Border>
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="Android, WinUI">
+                        <Border
+                            Style="{StaticResource borderStyleDefault}"
+                            Grid.Row="4"
+                            Grid.Column="1">
+
+                            <Picker
+                                x:Name="pckTheme"
+                                VerticalOptions="Center"
+                                MinimumWidthRequest="160"
+                                VerticalTextAlignment="Center"
+                                SelectedIndexChanged="OnPickerThemeChanged">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>System</x:String>
+                                        <x:String>Light</x:String>
+                                        <x:String>Dark</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Border>
+                    </On>
+                </OnPlatform>
+
+                <OnPlatform x:TypeArguments="View">
+                    <On Platform="iOS">
+                        <Border
+                            Style="{StaticResource borderStyleDefault}"
+                            Grid.Row="4"
+                            Grid.Column="1">
+
+                            <CollectionView
+                                x:Name="ThemeCollection"
+                                Style="{StaticResource collectionViewStyleHorizontal}"
+                                SelectionChanged="OnThemeSelected"
+                                ItemsSource="{Binding Themes}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Style="{StaticResource gridStyleCollectionView}">
+                                            <Label Text="{Binding .}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Border>
+                    </On>
+                </OnPlatform>
 
                 <Label
                     Style="{StaticResource labelStyleDefault}"

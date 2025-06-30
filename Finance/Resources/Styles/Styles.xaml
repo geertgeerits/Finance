@@ -151,6 +151,31 @@
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
+    <!--!!!BUG!!! in iOS: HeightRequest does not work for CollectionView-->
+    <Style x:Key="collectionViewStyleHorizontal" TargetType="CollectionView">
+        <Setter Property="MinimumHeightRequest" Value="40"/>
+        <Setter Property="MaximumHeightRequest" Value="50"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Always"/>
+        <Setter Property="ItemsLayout" Value="HorizontalList"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+    </Style>
+
+    <Style x:Key="gridStyleCollectionView" TargetType="Grid">
+        <Setter Property="Padding" Value="10,0,10,0"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightSelected}, Dark={StaticResource DarkSelected}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
     <Style TargetType="Switch">
         <Setter Property="HorizontalOptions" Value="Start"/>
         <Setter Property="OnColor" Value="LimeGreen" />
