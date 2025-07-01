@@ -18,8 +18,7 @@ namespace Finance
         ];
 
         //// Local variables.
-        private string _currentLanguage = "";
-        private string _currentTheme = "";
+        private readonly string _currentLanguage = "";
         private readonly Stopwatch stopWatch = new();
 
         public PageSettings()
@@ -91,8 +90,7 @@ namespace Finance
             // Ensure the selected item is visible in the horizontal list
             if (selectedLanguage != null)
             {
-                // Scroll to the item after the UI is loaded
-                LanguageCollection.ScrollTo(selectedLanguage, position: ScrollToPosition.Center, animate: false);
+                LanguageCollection.ScrollTo(selectedLanguage, position: ScrollToPosition.Start, animate: false);
             }
 #endif
             //// Set the current theme in the picker or CollectionView
@@ -111,7 +109,7 @@ namespace Finance
                 "Dark" => FinLang.Dark_Text,
                 _ => FinLang.System_Text,
             };
-            Debug.WriteLine($"_currentTheme: {selectedTheme}"); 
+            Debug.WriteLine($"selectedTheme: {selectedTheme}"); 
 
             // Set the selected item
             ThemeCollection.SelectedItem = selectedTheme;
@@ -120,7 +118,7 @@ namespace Finance
             if (selectedTheme != null)
             {
                 // Scroll to the item after the UI is loaded
-                ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Center, animate: false);
+                ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Start, animate: false);
             }
 #endif
             //// Set the number of decimal digits after the decimal point
@@ -191,40 +189,21 @@ namespace Finance
 
             // Ensure the selected item is visible in the horizontal list
             string? selectedLanguage = Languages.FirstOrDefault(l => l == _currentLanguage);
+
             if (selectedLanguage != null)
             {
-                if (Dispatcher != null)
-                {
-                    Dispatcher.Dispatch(async () =>
-                    {
-                        await Task.Delay(100);
-                        LanguageCollection.SelectedItem = selectedLanguage;
-                        LanguageCollection.ScrollTo(selectedLanguage, position: ScrollToPosition.Center, animate: false);
-                    });
-                }
+                // Scroll to the item after the UI is loaded
+                CollectionViewScrollToPosition(LanguageCollection, selectedLanguage);
             }
-            Debug.WriteLine($"selectedLanguage: {selectedLanguage}");
 
-            string? selectedTheme = Themes.FirstOrDefault(l => l == _currentTheme);
-            if (selectedTheme != null)
+            string selectedTheme = Globals.cTheme switch
             {
-                selectedTheme = Globals.cTheme switch
-                {
-                    "Light" => FinLang.Light_Text,
-                    "Dark" => FinLang.Dark_Text,
-                    _ => FinLang.System_Text,
-                };
-                if (Dispatcher != null)
-                {
-                    Dispatcher.Dispatch(async () =>
-                    {
-                        await Task.Delay(100);
-                        ThemeCollection.SelectedItem = selectedTheme;
-                        ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Center, animate: false);
-                    });
-                }
-            }
-            Debug.WriteLine($"selectedTheme: {selectedTheme}");
+                "Light" => FinLang.Light_Text,
+                "Dark" => FinLang.Dark_Text,
+                _ => FinLang.System_Text,
+            };
+
+            CollectionViewScrollToPosition(ThemeCollection, selectedTheme);
         }
 #endif
         /// <summary>
@@ -282,7 +261,7 @@ namespace Finance
         {
             string cLanguageOld = Globals.cLanguage;
 
-            var selectedLanguage = e.CurrentSelection.FirstOrDefault() as string;
+            string? selectedLanguage = e.CurrentSelection.FirstOrDefault() as string;
 
             // Handle selection
             Globals.cLanguage = selectedLanguage switch
@@ -365,16 +344,6 @@ namespace Finance
             }
             Debug.WriteLine($"OnThemeSelected - Selected theme: {Globals.cTheme}");
 
-            if (Dispatcher != null)
-            {
-                Dispatcher.Dispatch(async () =>
-                {
-                    await Task.Delay(100);
-                    //ThemeCollection.SelectedItem = selectedTheme;
-                    //ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Center, animate: false);
-                });
-            }
-
             Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
         }
@@ -430,6 +399,7 @@ namespace Finance
                 FinLang.Light_Text,
                 FinLang.Dark_Text
             ];
+
 #if ANDROID || WINDOWS
             pckTheme.ItemsSource = ThemeList;
 
@@ -446,18 +416,36 @@ namespace Finance
             ThemeCollection.ItemsSource = ThemeList;
 
             // Set the default selected item
-            string? selectedTheme = ThemeList.FirstOrDefault(t => t == Globals.cTheme);
-            ThemeCollection.SelectedItem = selectedTheme;
-        
-            // Ensure the selected item is visible in the horizontal list
-            if (selectedTheme != null)
+            string selectedTheme = Globals.cTheme switch
             {
-                // Scroll to the item after the UI is loaded
-                ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Center, animate: false);
-            }
+                "Light" => FinLang.Light_Text,
+                "Dark" => FinLang.Dark_Text,
+                _ => FinLang.System_Text,
+            };
+            Debug.WriteLine($"SetLanguage - selectedTheme: {selectedTheme}");
+
+            CollectionViewScrollToPosition(ThemeCollection, selectedTheme);
 #endif
         }
-
+#if IOS
+        /// <summary>
+        /// Scroll to a position of a CollectionView, ensure the selected item is visible in the horizontal list
+        /// </summary>
+        /// <param name="collectionView"></param>
+        /// <param name="selectedItem"></param>
+        private void CollectionViewScrollToPosition(CollectionView collectionView, string selectedItem)
+        {
+            if (selectedItem != null && Dispatcher != null)
+            {
+                Dispatcher.Dispatch(async () =>
+                {
+                    collectionView.SelectedItem = selectedItem;
+                    await Task.Delay(100);
+                    collectionView.ScrollTo(selectedItem, position: ScrollToPosition.Start, animate: false);
+                });
+            }
+        }
+#endif
         /// <summary>
         /// Radio button date format clicked event 
         /// </summary>
