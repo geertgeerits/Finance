@@ -1,24 +1,8 @@
-﻿using System.Collections.ObjectModel;
-
-namespace Finance
+﻿namespace Finance
 {
     public sealed partial class PageSettings : ContentPage
     {
-        //// Set the values for the CollectionView languages and themes
-        public ObservableCollection<string> Languages { get; } =
-        [
-            "Čeština", "Dansk", "Deutsch", "English", "Español", "Français",
-            "Italiano", "Magyar", "Nederlands", "Norsk", "Polski", "Português",
-            "Română", "Suomi", "Svenska"
-        ];
-
-        public ObservableCollection<string> Themes { get; } =
-        [
-            FinLang.System_Text, FinLang.Light_Text, FinLang.Dark_Text
-        ];
-
         //// Local variables.
-        private readonly string _currentLanguage = "";
         private readonly Stopwatch stopWatch = new();
 
         public PageSettings()
@@ -40,8 +24,7 @@ namespace Finance
             //// Put text in the chosen language in the controls and variables
             SetLanguage();
 
-            //// Set the current language in the picker or CollectionView
-#if ANDROID || WINDOWS
+            //// Set the current language in the picker
             pckLanguage.SelectedIndex = Globals.cLanguage switch
             {
                 "cs" => 0,      // Čeština - Czech
@@ -60,67 +43,15 @@ namespace Finance
                 "sv" => 14,     // Svenska - Swedish
                 _ => 3,         // English
             };
-#endif
-#if IOS
-            //// Select the current language in the CollectionView
-            _currentLanguage = Globals.cLanguage switch
-            {
-                "cs" => "Čeština",      // Čeština - Czech
-                "da" => "Dansk",        // Dansk - Danish
-                "de" => "Deutsch",      // Deutsch - German
-                "es" => "Español",      // Español - Spanish
-                "fr" => "Français",     // Français - French
-                "it" => "Italiano",     // Italiano - Italian
-                "hu" => "Magyar",       // Magyar - Hungarian
-                "nl" => "Nederlands",   // Nederlands - Dutch
-                "nb" => "Norsk",        // Norsk Bokmål - Norwegian Bokmål
-                "pl" => "Polski",       // Polski - Polish
-                "pt" => "Português",    // Português - Portuguese
-                "ro" => "Română",       // Română - Romanian
-                "fi" => "Suomi",        // Suomi - Finnish
-                "sv" => "Svenska",      // Svenska - Swedish
-                _ => "English",         // English
-            };
-            Debug.WriteLine($"_currentLanguage: {_currentLanguage}");
 
-            // Set the selected item
-            string? selectedLanguage = Languages.FirstOrDefault(l => l == _currentLanguage);
-            LanguageCollection.SelectedItem = selectedLanguage;
-
-            // Ensure the selected item is visible in the horizontal list
-            if (selectedLanguage != null)
-            {
-                LanguageCollection.ScrollTo(selectedLanguage, position: ScrollToPosition.Start, animate: false);
-            }
-#endif
-            //// Set the current theme in the picker or CollectionView
-#if ANDROID || WINDOWS
+            //// Set the current theme in the picker
             pckTheme.SelectedIndex = Globals.cTheme switch
             {
                 "Light" => 1,   // Light
                 "Dark" => 2,    // Dark
                 _ => 0,         // System
             };
-#endif
-#if IOS
-            string selectedTheme = Globals.cTheme switch
-            {
-                "Light" => FinLang.Light_Text,
-                "Dark" => FinLang.Dark_Text,
-                _ => FinLang.System_Text,
-            };
-            Debug.WriteLine($"selectedTheme: {selectedTheme}"); 
 
-            // Set the selected item
-            ThemeCollection.SelectedItem = selectedTheme;
-
-            // Ensure the selected item is visible in the horizontal list
-            if (selectedTheme != null)
-            {
-                // Scroll to the item after the UI is loaded
-                ThemeCollection.ScrollTo(selectedTheme, position: ScrollToPosition.Start, animate: false);
-            }
-#endif
             //// Set the number of decimal digits after the decimal point
             entNumDec.Text = ClassEntryMethods.cNumDecimalDigits;
             entPercDec.Text = ClassEntryMethods.cPercDecimalDigits;
@@ -182,30 +113,6 @@ namespace Finance
             stopWatch.Start();
         }
 
-#if IOS
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            // Ensure the selected item is visible in the horizontal list
-            string? selectedLanguage = Languages.FirstOrDefault(l => l == _currentLanguage);
-
-            if (selectedLanguage != null)
-            {
-                // Scroll to the item after the UI is loaded
-                CollectionViewScrollToPosition(LanguageCollection, selectedLanguage);
-            }
-
-            string selectedTheme = Globals.cTheme switch
-            {
-                "Light" => FinLang.Light_Text,
-                "Dark" => FinLang.Dark_Text,
-                _ => FinLang.System_Text,
-            };
-
-            CollectionViewScrollToPosition(ThemeCollection, selectedTheme);
-        }
-#endif
         /// <summary>
         /// Picker language clicked event 
         /// </summary>
@@ -253,50 +160,6 @@ namespace Finance
         }
 
         /// <summary>
-        /// CollectionView language clicked event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnLanguageSelected(object sender, SelectionChangedEventArgs e)
-        {
-            string cLanguageOld = Globals.cLanguage;
-
-            string? selectedLanguage = e.CurrentSelection.FirstOrDefault() as string;
-
-            // Handle selection
-            Globals.cLanguage = selectedLanguage switch
-            {
-                "Čeština" => "cs",       // Czech
-                "Dansk" => "da",         // Danish
-                "Deutsch" => "de",       // German
-                "English" => "en",       // English
-                "Español" => "es",       // Spanish
-                "Français" => "fr",      // French
-                "Italiano" => "it",      // Italian
-                "Magyar" => "hu",        // Hungarian
-                "Nederlands" => "nl",    // Dutch
-                "Norsk" => "nb",         // Norwegian Bokmål
-                "Polski" => "pl",        // Polish
-                "Português" => "pt",     // Portuguese
-                "Română" => "ro",        // Romanian
-                "Suomi" => "fi",         // Finnish
-                "Svenska" => "sv",       // Swedish
-                _ => Globals.cLanguage,  // Default to current language if not found
-            };
-
-            if (cLanguageOld != Globals.cLanguage)
-            {
-                Globals.bLanguageChanged = true;
-
-                // Set the current UI culture of the selected language
-                Globals.SetCultureSelectedLanguage();
-
-                // Put text in the chosen language in the controls and variables
-                SetLanguage();
-            }
-        }
-
-        /// <summary>
         /// Picker theme clicked event 
         /// </summary>
         /// <param name="sender"></param>
@@ -318,34 +181,6 @@ namespace Finance
                 Globals.SetTheme();
                 ClassEntryMethods.SetNumberColor();
             }
-        }
-
-        /// <summary>
-        /// CollectionView theme clicked event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnThemeSelected(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedTheme = e.CurrentSelection.FirstOrDefault() as string;
-
-            // Handle selection
-            if (selectedTheme == FinLang.Light_Text)
-            {
-                Globals.cTheme = "Light";
-            }
-            else if (selectedTheme == FinLang.Dark_Text)
-            {
-                Globals.cTheme = "Dark";
-            }
-            else
-            {
-                Globals.cTheme = "System";
-            }
-            Debug.WriteLine($"OnThemeSelected - Selected theme: {Globals.cTheme}");
-
-            Globals.SetTheme();
-            ClassEntryMethods.SetNumberColor();
         }
 
         /// <summary>
@@ -400,7 +235,6 @@ namespace Finance
                 FinLang.Dark_Text
             ];
 
-#if ANDROID || WINDOWS
             pckTheme.ItemsSource = ThemeList;
 
             // Set the current theme in the picker
@@ -410,42 +244,8 @@ namespace Finance
                 "Dark" => 2,    // Dark
                 _ => 0,         // System
             };
-#endif
-#if IOS
-            // Set the current theme in the CollectionView
-            ThemeCollection.ItemsSource = ThemeList;
-
-            // Set the default selected item
-            string selectedTheme = Globals.cTheme switch
-            {
-                "Light" => FinLang.Light_Text,
-                "Dark" => FinLang.Dark_Text,
-                _ => FinLang.System_Text,
-            };
-            Debug.WriteLine($"SetLanguage - selectedTheme: {selectedTheme}");
-
-            CollectionViewScrollToPosition(ThemeCollection, selectedTheme);
-#endif
         }
-#if IOS
-        /// <summary>
-        /// Scroll to a position of a CollectionView, ensure the selected item is visible in the horizontal list
-        /// </summary>
-        /// <param name="collectionView"></param>
-        /// <param name="selectedItem"></param>
-        private void CollectionViewScrollToPosition(CollectionView collectionView, string selectedItem)
-        {
-            if (selectedItem != null && Dispatcher != null)
-            {
-                Dispatcher.Dispatch(async () =>
-                {
-                    collectionView.SelectedItem = selectedItem;
-                    await Task.Delay(100);
-                    collectionView.ScrollTo(selectedItem, position: ScrollToPosition.Start, animate: false);
-                });
-            }
-        }
-#endif
+
         /// <summary>
         /// Radio button date format clicked event 
         /// </summary>
