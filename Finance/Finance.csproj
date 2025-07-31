@@ -28,6 +28,7 @@
 		<ApplicationIdGuid>54742229-37CC-49C8-814D-220A22B0EF1F</ApplicationIdGuid>
 
 		<!-- Versions -->
+		<PackageVersion>3.0.70</PackageVersion>
 		<ApplicationDisplayVersion>3.0.70</ApplicationDisplayVersion>
 		<ApplicationVersion>3</ApplicationVersion>
 
