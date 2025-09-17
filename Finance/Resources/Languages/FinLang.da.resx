@@ -613,6 +613,11 @@ Luk nu?</value>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Del eller eksporter amortiseringstabellen</value>
   </data>
+  <data name="Trademarks_Text" xml:space="preserve">
+    <value>Apple, App Store og App Store-logoet er varemærker tilhørende Apple Inc., registreret i USA og andre lande og regioner.
+Google, Google Play, Google Play-logoet og Android er varemærker tilhørende Google LLC.
+Microsoft, Microsoft Store, Microsoft Store-logoet og Windows er varemærker tilhørende Microsoft Corporation.</value>
+  </data>
   <data name="Value1_Text" xml:space="preserve">
     <value>Værdi 1:</value>
   </data>

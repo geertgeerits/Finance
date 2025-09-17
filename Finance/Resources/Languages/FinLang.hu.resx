@@ -613,6 +613,11 @@ Most bezárja?</value>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Ossza meg vagy exportálja az amortizációs táblát</value>
   </data>
+  <data name="Trademarks_Text" xml:space="preserve">
+    <value>Az Apple, az App Store és az App Store logó az Apple Inc. bejegyzett védjegyei az Egyesült Államokban és más országokban és régiókban.
+A Google, a Google Play, a Google Play logó és az Android a Google LLC védjegyei.
+A Microsoft, a Microsoft Store, a Microsoft Store logó és a Windows a Microsoft Corporation védjegyei.</value>
+  </data>
   <data name="Value1_Text" xml:space="preserve">
     <value>Érték 1:</value>
   </data>

@@ -23,6 +23,7 @@ namespace Finance
             lblPrivacyPolicy.Text = $"\n{FinLang.PrivacyPolicyTitle_Text} {FinLang.PrivacyPolicy_Text}";
             lblLicense.Text = $"\n{FinLang.LicenseTitle_Text}: {FinLang.License_Text}\n{FinLang.LicenseMit2_Text}";
             lblExplanation.Text = $"\n{FinLang.InfoExplanation_Text}";
+            lblTrademarks.Text = $"\n{FinLang.Trademarks_Text}";
         }
     }
 

@@ -613,6 +613,11 @@ Fermer maintenant ?</value>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Partagez ou exportez le tableau d'amortissement</value>
   </data>
+  <data name="Trademarks_Text" xml:space="preserve">
+    <value>Apple, App Store et le logo App Store sont des marques commerciales d'Apple Inc., déposées aux États-Unis et dans d'autres pays et régions.
+Google, Google Play, le logo Google Play et Android sont des marques commerciales de Google LLC.
+Microsoft, Microsoft Store, le logo Microsoft Store et Windows sont des marques commerciales de Microsoft Corporation.</value>
+  </data>
   <data name="Value1_Text" xml:space="preserve">
     <value>Valeur 1:</value>
   </data>

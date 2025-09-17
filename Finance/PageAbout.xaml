@@ -82,6 +82,11 @@
                     x:Name="lblExplanation"
                     Style="{StaticResource labelStyleInfo}">
                 </Label>
+
+                <Label
+                	x:Name="lblTrademarks"
+                    Style="{StaticResource labelStyleInfo}">
+                </Label>
             </VerticalStackLayout>
 
         </Grid>

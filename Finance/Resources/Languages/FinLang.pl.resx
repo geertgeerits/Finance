@@ -613,6 +613,11 @@ Zamknij teraz?</value>
   <data name="ToolTipShare_Text" xml:space="preserve">
     <value>Udostępnij lub wyeksportuj tabelę amortyzacji</value>
   </data>
+  <data name="Trademarks_Text" xml:space="preserve">
+    <value>Apple, App Store i logo App Store są znakami towarowymi firmy Apple Inc., zarejestrowanymi w Stanach Zjednoczonych oraz innych krajach i regionach.
+Google, Google Play, logo Google Play i Android są znakami towarowymi firmy Google LLC.
+Microsoft, Microsoft Store, logo Microsoft Store i Windows są znakami towarowymi firmy Microsoft Corporation.</value>
+  </data>
   <data name="Value1_Text" xml:space="preserve">
     <value>Wartość 1:</value>
   </data>
