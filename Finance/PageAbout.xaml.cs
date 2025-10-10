@@ -10,7 +10,7 @@ namespace Finance
             }
             catch (Exception ex)
             {
-                DisplayAlert("InitializeComponent", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent", ex.Message, "OK");
                 return;
             }
 #if WINDOWS
@@ -100,7 +100,7 @@ namespace Finance
                 }
                 catch (Exception ex)
                 {
-                    await Application.Current!.Windows[0].Page!.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                    await Application.Current!.Windows[0].Page!.DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
                 }
             }
         }
@@ -125,7 +125,7 @@ namespace Finance
             }
             catch (Exception ex)
             {
-                await Application.Current!.Windows[0].Page!.DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                await Application.Current!.Windows[0].Page!.DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
             }
         }
     }

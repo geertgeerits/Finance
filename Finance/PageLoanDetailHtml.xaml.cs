@@ -10,7 +10,7 @@ namespace Finance
             }
             catch (Exception ex)
             {
-                DisplayAlert("InitializeComponent: PageWebsite", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent: PageWebsite", ex.Message, "OK");
                 return;
             }
 #if WINDOWS

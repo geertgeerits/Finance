@@ -18,7 +18,7 @@
             }
             catch (Exception ex)
             {
-                DisplayAlert("InitializeComponent", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent", ex.Message, "OK");
                 return;
             }
 #if WINDOWS
@@ -231,7 +231,7 @@
             int nRow;
 
             // Set up the loan calculations
-            DateTime dExpirationDate = dtpExpirationDate.Date;              // Expiration date
+            DateTime dExpirationDate = (DateTime)dtpExpirationDate.Date!;   // Expiration date
 
             int nNumberMonthsAdd = 12 / nPeriodsYear;                       // Number of months to add
             int nNumberMonthsAddCumul = nNumberMonthsAdd;                   // Cumul of number of months to add
@@ -245,7 +245,7 @@
             catch (Exception ex)
             {
 #if DEBUG                
-                _ = DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                _ = DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
                 ResetEntryFields(null, null);
                 return;
@@ -354,7 +354,7 @@
                 aLoanDetail[nRow, 5] = ClassEntryMethods.RoundToNumDecimals(ref nInterestTotal, nNumDec, "N");
                 aLoanDetail[nRow, 6] = ClassEntryMethods.RoundToNumDecimals(ref nCapitalRemainder, nNumDec, "N");
 
-                dExpirationDate = dtpExpirationDate.Date.AddMonths(nNumberMonthsAddCumul);
+                dExpirationDate = ((DateTime)dtpExpirationDate.Date).AddMonths(nNumberMonthsAddCumul);
                 nNumberMonthsAddCumul += nNumberMonthsAdd;
 
                 //Debug.WriteLine("Row number: " + nRow);  // For testing
@@ -475,7 +475,7 @@
         /// <returns></returns>
         private async Task OpenDocumentFileAsync(string cFile)
         {
-            bool answer = await DisplayAlert("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.FileOpenQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
+            bool answer = await DisplayAlertAsync("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.FileOpenQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
             if (answer == false)
             {
                 return;
@@ -497,7 +497,7 @@
             catch (Exception ex)
             {
 #if DEBUG                
-                await DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                await DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
             }
         }
@@ -509,7 +509,7 @@
         /// <returns></returns>
         private async Task OpenShareInterfaceAsync(string cFile)
         {
-            bool answer = await DisplayAlert("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.ShareQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
+            bool answer = await DisplayAlertAsync("Finance", $"{Path.GetFileName(cFile)}\n\n{FinLang.ShareQuestion_Text}", FinLang.Yes_Text, FinLang.No_Text);
             if (answer == false)
             {
                 return;
@@ -526,7 +526,7 @@
             catch (Exception ex)
             {
 #if DEBUG                
-                await DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                await DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
             }
         }

@@ -27,7 +27,7 @@ namespace Finance
             }
             catch (Exception ex)
             {
-                DisplayAlert("InitializeComponent", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent", ex.Message, "OK");
                 return;
             }
             //#if WINDOWS
@@ -221,14 +221,14 @@ namespace Finance
         {
             // Set the CurrentUICulture
             //Globals.cLanguage = "es";  // For testing
-            //App.Current.MainPage.DisplayAlert("Globals.cLanguage", Globals.cLanguage, "OK");  // For testing
+            //App.Current.MainPage.DisplayAlertAsync("Globals.cLanguage", Globals.cLanguage, "OK");  // For testing
 
             Globals.SetCultureSelectedLanguage();
 
             cCopyright = $"{FinLang.Copyright_Text} © 1992-2025 Geert Geerits";
             cLicenseText = $"{FinLang.License_Text}\n\n{FinLang.LicenseMit2_Text}";
 
-            //App.Current.MainPage.DisplayAlert(FinLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing
+            //App.Current.MainPage.DisplayAlertAsync(FinLang.ErrorTitle_Text, Globals.cLanguage, cButtonCloseText);  // For testing
         }
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Finance
         {
             if (Globals.bLicense == false)
             {
-                Globals.bLicense = await Application.Current!.Windows[0].Page!.DisplayAlert(FinLang.LicenseTitle_Text, $"Finance\n{cCopyright}\n\n{cLicenseText}", FinLang.Agree_Text, FinLang.Disagree_Text);
+                Globals.bLicense = await Application.Current!.Windows[0].Page!.DisplayAlertAsync(FinLang.LicenseTitle_Text, $"Finance\n{cCopyright}\n\n{cLicenseText}", FinLang.Agree_Text, FinLang.Disagree_Text);
 
                 if (Globals.bLicense)
                 {
@@ -264,7 +264,7 @@ namespace Finance
                     btnDifferenceNumbers.IsEnabled = false;
                     btnDifferenceDates.IsEnabled = false;
 
-                    await DisplayAlert(FinLang.LicenseTitle_Text, FinLang.CloseApplication_Text, FinLang.ButtonClose_Text);
+                    await DisplayAlertAsync(FinLang.LicenseTitle_Text, FinLang.CloseApplication_Text, FinLang.ButtonClose_Text);
 #else
                     Application.Current.Quit();
 #endif
@@ -284,7 +284,7 @@ namespace Finance
                 SetTextLanguage();
                 Globals.bLanguageChanged = false;
 
-                //DisplayAlert("Globals.bLanguageChanged", "true", "OK");  // For testing
+                //DisplayAlertAsync("Globals.bLanguageChanged", "true", "OK");  // For testing
             }
         }
     }

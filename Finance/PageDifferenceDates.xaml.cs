@@ -10,7 +10,7 @@
             }
             catch (Exception ex)
             {
-                DisplayAlert("InitializeComponent", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent", ex.Message, "OK");
                 return;
             }
 #if WINDOWS
@@ -55,13 +55,13 @@
 
             if (dtpDate1.Date > dtpDate2.Date)
             {
-                fromDate = dtpDate2.Date;
-                toDate = dtpDate1.Date;
+                fromDate = (DateTime)dtpDate2.Date;
+                toDate = (DateTime)dtpDate1.Date;
             }
             else
             {
-                fromDate = dtpDate1.Date;
-                toDate = dtpDate2.Date;
+                fromDate = (DateTime)dtpDate1.Date!;
+                toDate = (DateTime)dtpDate2.Date!;
             }
 
             // Calculate age from start date (date of birth) to end date in years, months, weeks and days (Viorel)

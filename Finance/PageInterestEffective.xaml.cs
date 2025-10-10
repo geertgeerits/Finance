@@ -10,7 +10,7 @@ namespace Finance
             }
             catch (Exception ex)
             {
-                DisplayAlert("InitializeComponent", ex.Message, "OK");
+                DisplayAlertAsync("InitializeComponent", ex.Message, "OK");
                 return;
             }
 #if WINDOWS
@@ -137,7 +137,7 @@ namespace Finance
             catch (Exception ex)
             {
 #if DEBUG                
-                DisplayAlert(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
                 ResetEntryFields(null, null);
                 return;
