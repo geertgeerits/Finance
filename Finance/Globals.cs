@@ -1,9 +1,4 @@
-﻿//// Global usings
-global using Finance.Resources.Languages;
-global using System.Globalization;
-global using System.Diagnostics;
-
-namespace Finance
+﻿namespace Finance
 {
     //// Global variables and methods
     internal static class Globals
