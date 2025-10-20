@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Finance"
              x:Class="Finance.PageSettings"
-             x:DataType="local:PageSettings">
+             x:DataType="PageSettings">
 
     <NavigationPage.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
-            Text="{local:Translate Settings_Text}">
+            Text="{Translate Settings_Text}">
         </Label>
     </NavigationPage.TitleView>
 
@@ -36,7 +35,7 @@
                     <Label
                         x:Name="lblExplanation"
                         Style="{StaticResource labelStyleExplanation}"
-                        Text="{local:Translate SettingsSaved_Text}">
+                        Text="{Translate SettingsSaved_Text}">
                     </Label>
                 </Border>
                 
@@ -45,7 +44,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     VerticalTextAlignment="Center"
-                    Text="{local:Translate Language_Text}">
+                    Text="{Translate Language_Text}">
                 </Label>
 
                 <Border
@@ -86,7 +85,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="4"
                     Grid.Column="0"
-                    Text="{local:Translate Theme_Text}">
+                    Text="{Translate Theme_Text}">
                 </Label>
 
                 <Border
@@ -114,7 +113,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="6"
                     Grid.Column="0"
-                    Text="{local:Translate NumDec_Text}">
+                    Text="{Translate NumDec_Text}">
                 </Label>
 
                 <Border
@@ -133,7 +132,7 @@
                         TextChanged="VerifyNumberDecimals">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="4"/>
+                                <ValidationTriggerActionDecimal MinValue="0" MaxValue="4"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -143,7 +142,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="8"
                     Grid.Column="0"
-                    Text="{local:Translate PercDec_Text}">
+                    Text="{Translate PercDec_Text}">
                 </Label>
 
                 <Border
@@ -162,7 +161,7 @@
                         TextChanged="VerifyPercentageDecimals">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="8"/>
+                                <ValidationTriggerActionDecimal MinValue="0" MaxValue="8"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -172,7 +171,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="10"
                     Grid.Column="0"
-                    Text="{local:Translate DateFormat_Text}">
+                    Text="{Translate DateFormat_Text}">
                 </Label>
 
                 <Border
@@ -188,7 +187,7 @@
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
                     Value="rbnDateFormatSystem"
-                    Content="{local:Translate System_Text}"
+                    Content="{Translate System_Text}"
                     CheckedChanged="OnDateFormatRadioButtonCheckedChanged">
                 </RadioButton>
                 
@@ -198,7 +197,7 @@
                     Grid.Column="1"
                     GroupName="rbgDateFormat"
                     Value="rbnDateFormatISO8601"
-                    Content="{local:Translate DateISO8601_Text}"
+                    Content="{Translate DateISO8601_Text}"
                     IsChecked="True"
                     CheckedChanged="OnDateFormatRadioButtonCheckedChanged">
                 </RadioButton>
@@ -207,7 +206,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="13"
                     Grid.Column="0"
-                    Text="{local:Translate PageFormat_Text}">
+                    Text="{Translate PageFormat_Text}">
                 </Label>
 
                 <Border
@@ -223,7 +222,7 @@
                     Grid.Column="1"
                     GroupName="rbgPageFormat"
                     Value="rbnPageFormatA4"
-                    Content="{local:Translate PageA4_Text}"
+                    Content="{Translate PageA4_Text}"
                     IsChecked="True"
                     CheckedChanged="OnPageFormatRadioButtonCheckedChanged">
                 </RadioButton>
@@ -234,7 +233,7 @@
                     Grid.Column="1"
                     GroupName="rbgPageFormat"
                     Value="rbnPageFormatLetter"
-                    Content="{local:Translate PageLetter_Text}"
+                    Content="{Translate PageLetter_Text}"
                     CheckedChanged="OnPageFormatRadioButtonCheckedChanged">
                 </RadioButton>
 
@@ -242,7 +241,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="16"
                     Grid.Column="0"
-                    Text="{local:Translate RoundNumber_Text}">
+                    Text="{Translate RoundNumber_Text}">
                 </Label>
 
                 <Border
@@ -258,7 +257,7 @@
                     Grid.Column="1"
                     GroupName="rbgRoundNumber"
                     Value="rbnRoundNumberAwayFromZero"
-                    Content="{local:Translate RoundNumberAwayFromZero_Text}"
+                    Content="{Translate RoundNumberAwayFromZero_Text}"
                     CheckedChanged="OnRoundNumberRadioButtonCheckedChanged">
                 </RadioButton>
 
@@ -268,7 +267,7 @@
                     Grid.Column="1"
                     GroupName="rbgRoundNumber"
                     Value="rbnRoundNumberToEven"
-                    Content="{local:Translate RoundNumberToEven_Text}"
+                    Content="{Translate RoundNumberToEven_Text}"
                     IsChecked="True"
                     CheckedChanged="OnRoundNumberRadioButtonCheckedChanged">
                 </RadioButton>
@@ -279,7 +278,7 @@
                     Grid.Column="1"
                     GroupName="rbgRoundNumber"
                     Value="rbnRoundNumberToZero"
-                    Content="{local:Translate RoundNumberToZero_Text}"
+                    Content="{Translate RoundNumberToZero_Text}"
                     CheckedChanged="OnRoundNumberRadioButtonCheckedChanged">
                 </RadioButton>
 
@@ -287,7 +286,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="20"
                     Grid.Column="0"
-                    Text="{local:Translate Keyboard_Text}">
+                    Text="{Translate Keyboard_Text}">
                 </Label>
 
                 <Border
@@ -303,7 +302,7 @@
                     Grid.Column="1"
                     GroupName="rbgKeyboard"
                     Value="rbnKeyboardDefault"
-                    Content="{local:Translate Default_Text}"
+                    Content="{Translate Default_Text}"
                     CheckedChanged="OnKeyboardRadioButtonCheckedChanged">
                 </RadioButton>
 
@@ -313,7 +312,7 @@
                     Grid.Column="1"
                     GroupName="rbgKeyboard"
                     Value="rbnKeyboardNumeric"
-                    Content="{local:Translate Numeric_Text}"
+                    Content="{Translate Numeric_Text}"
                     IsChecked="True"
                     CheckedChanged="OnKeyboardRadioButtonCheckedChanged">
                 </RadioButton>
@@ -324,7 +323,7 @@
                     Grid.Column="1"
                     GroupName="rbgKeyboard"
                     Value="rbnKeyboardText"
-                    Content="{local:Translate Text_Text}"
+                    Content="{Translate Text_Text}"
                     CheckedChanged="OnKeyboardRadioButtonCheckedChanged">
                 </RadioButton>
 
@@ -332,7 +331,7 @@
                     Style="{StaticResource labelStyleDefault}"
                     Grid.Row="24"
                     Grid.Column="0"
-                    Text="{local:Translate NegativeNumberRed_Text}">
+                    Text="{Translate NegativeNumberRed_Text}">
                 </Label>
 
                 <Switch
@@ -350,18 +349,18 @@
         <Button
             Style="{StaticResource buttonStyleFixedStart}"
             Grid.Row="2"
-            Text="{local:Translate Save_Text}"
-            SemanticProperties.Description="{local:Translate ToolTipSettingsSave_Text}"
-            ToolTipProperties.Text="{local:Translate ToolTipSettingsSave_Text}"
+            Text="{Translate Save_Text}"
+            SemanticProperties.Description="{Translate ToolTipSettingsSave_Text}"
+            ToolTipProperties.Text="{Translate ToolTipSettingsSave_Text}"
             Clicked="OnSettingsSaveClicked">
         </Button>
 
         <Button
             Style="{StaticResource buttonStyleFixedEnd}"
             Grid.Row="2"
-            Text="{local:Translate Reset_Text}"
-            SemanticProperties.Description="{local:Translate ToolTipSettingsReset_Text}"
-            ToolTipProperties.Text="{local:Translate ToolTipSettingsReset_Text}"
+            Text="{Translate Reset_Text}"
+            SemanticProperties.Description="{Translate ToolTipSettingsReset_Text}"
+            ToolTipProperties.Text="{Translate ToolTipSettingsReset_Text}"
             Clicked="OnSettingsResetClicked">
         </Button>
 

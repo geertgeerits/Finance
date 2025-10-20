@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Finance"
              x:Class="Finance.MainPage"
              Loaded="OnPageLoad"
              Appearing="OnPageAppearing">
@@ -21,8 +20,8 @@
                 VerticalOptions="Center"
                 HeightRequest="32"
                 WidthRequest="32"
-                SemanticProperties.Description="{local:Translate Info_Text}"
-                ToolTipProperties.Text="{local:Translate Info_Text}"
+                SemanticProperties.Description="{Translate Info_Text}"
+                ToolTipProperties.Text="{Translate Info_Text}"
                 Clicked="OnPageAboutClicked">
             </ImageButton>
 
@@ -42,8 +41,8 @@
                 VerticalOptions="Center"
                 HeightRequest="32"
                 WidthRequest="32"
-                SemanticProperties.Description="{local:Translate Settings_Text}"
-                ToolTipProperties.Text="{local:Translate Settings_Text}"
+                SemanticProperties.Description="{Translate Settings_Text}"
+                ToolTipProperties.Text="{Translate Settings_Text}"
                 Clicked="OnPageSettingsClicked">
             </ImageButton>
         </Grid>
@@ -60,8 +59,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="0"
-                    Text="{local:Translate FinanceInterestEffective_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceInterestEffective_Text}"
+                    Text="{Translate FinanceInterestEffective_Text}"
+                    ToolTipProperties.Text="{Translate FinanceInterestEffective_Text}"
                     Clicked="OnPageInterestEffectiveClicked">
                 </Button>
 
@@ -70,8 +69,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="1"
-                    Text="{local:Translate FinanceInterestEffectiveBE_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceInterestEffectiveBE_Text}"
+                    Text="{Translate FinanceInterestEffectiveBE_Text}"
+                    ToolTipProperties.Text="{Translate FinanceInterestEffectiveBE_Text}"
                     Clicked="OnPageInterestEffectiveBEClicked">
                 </Button>
 
@@ -80,8 +79,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="2"
-                    Text="{local:Translate FinanceInterestAnnual_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceInterestAnnual_Text}"
+                    Text="{Translate FinanceInterestAnnual_Text}"
+                    ToolTipProperties.Text="{Translate FinanceInterestAnnual_Text}"
                     Clicked="OnPageInterestAnnualClicked">
                 </Button>
 
@@ -90,8 +89,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="3"
-                    Text="{local:Translate FinanceInterestMonthDay_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceInterestMonthDay_Text}"
+                    Text="{Translate FinanceInterestMonthDay_Text}"
+                    ToolTipProperties.Text="{Translate FinanceInterestMonthDay_Text}"
                     Clicked="OnPageInterestMonthDayClicked">
                 </Button>
 
@@ -100,8 +99,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="4"
-                    Text="{local:Translate FinanceInterestPayDiscount_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceInterestPayDiscount_Text}"
+                    Text="{Translate FinanceInterestPayDiscount_Text}"
+                    ToolTipProperties.Text="{Translate FinanceInterestPayDiscount_Text}"
                     Clicked="OnPageInterestPayDiscountClicked">
                 </Button>
 
@@ -110,8 +109,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="5"
-                    Text="{local:Translate FinanceLoanDetail_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceLoanDetail_Text}"
+                    Text="{Translate FinanceLoanDetail_Text}"
+                    ToolTipProperties.Text="{Translate FinanceLoanDetail_Text}"
                     Clicked="OnPageLoanDetailClicked">
                 </Button>
 
@@ -120,8 +119,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="6"
-                    Text="{local:Translate FinanceVATCalculation_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceVATCalculation_Text}"
+                    Text="{Translate FinanceVATCalculation_Text}"
+                    ToolTipProperties.Text="{Translate FinanceVATCalculation_Text}"
                     Clicked="OnPageVATCalculationClicked">
                 </Button>
 
@@ -130,8 +129,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="7"
-                    Text="{local:Translate FinanceAmountGrossOfNet_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceAmountGrossOfNet_Text}"
+                    Text="{Translate FinanceAmountGrossOfNet_Text}"
+                    ToolTipProperties.Text="{Translate FinanceAmountGrossOfNet_Text}"
                     Clicked="OnPageAmountGrossOfNetClicked">
                 </Button>
 
@@ -140,8 +139,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="8"
-                    Text="{local:Translate FinanceInvestmentReturn_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceInvestmentReturn_Text}"
+                    Text="{Translate FinanceInvestmentReturn_Text}"
+                    ToolTipProperties.Text="{Translate FinanceInvestmentReturn_Text}"
                     Clicked="OnPageInvestmentReturnClicked">
                 </Button>
 
@@ -150,8 +149,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="9"
-                    Text="{local:Translate FinanceDifferenceNumbers_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceDifferenceNumbers_Text}"
+                    Text="{Translate FinanceDifferenceNumbers_Text}"
+                    ToolTipProperties.Text="{Translate FinanceDifferenceNumbers_Text}"
                     Clicked="OnPageDifferenceNumbersClicked">
                 </Button>
 
@@ -160,8 +159,8 @@
                     Style="{StaticResource buttonStyleMenu}"
                     Grid.Column="0"
                     Grid.Row="10"
-                    Text="{local:Translate FinanceDifferenceDates_Text}"
-                    ToolTipProperties.Text="{local:Translate FinanceDifferenceDates_Text}"
+                    Text="{Translate FinanceDifferenceDates_Text}"
+                    ToolTipProperties.Text="{Translate FinanceDifferenceDates_Text}"
                     Clicked="OnPageDifferenceDatesClicked">
                 </Button>
             </Grid>
