@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resx="clr-namespace:Finance.Resources.Languages"
              xmlns:local="clr-namespace:Finance"
@@ -10,7 +10,7 @@
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
-            Text="{x:Static resx:FinLang.LoanDetailForm_Text}">
+            Text="{Translate LoanDetailForm_Text}">
         </Label>
     </NavigationPage.TitleView>
 
@@ -27,7 +27,7 @@
 
                 <Label
                     Style="{StaticResource labelStyleExplanation}"
-                    Text="{x:Static resx:FinLang.LoanDetailExplanation_Text}">
+                    Text="{Translate LoanDetailExplanation_Text}">
                 </Label>
             </Border>
 
@@ -47,7 +47,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="1"
                 Grid.Column="0" 
-                Text="{x:Static resx:FinLang.InterestRate_Text}">
+                Text="{Translate InterestRate_Text}">
             </Label>
 
             <Border
@@ -84,7 +84,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="2"
                 Grid.Column="0" 
-                Text="{x:Static resx:FinLang.CapitalInitial_Text}">
+                Text="{Translate CapitalInitial_Text}">
             </Label>
 
             <Border
@@ -114,7 +114,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="3"
                  Grid.Column="0"
-                Text="{x:Static resx:FinLang.DurationYears_Text}">
+                Text="{Translate DurationYears_Text}">
             </Label>
 
             <Border
@@ -144,7 +144,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="4"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.PeriodsYear_Text}">
+                Text="{Translate PeriodsYear_Text}">
             </Label>
 
             <Border
@@ -173,7 +173,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="5"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.AmountPeriod_Text}">
+                Text="{Translate AmountPeriod_Text}">
             </Label>
 
             <Border
@@ -191,7 +191,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="6"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.InterestTotal_Text}">
+                Text="{Translate InterestTotal_Text}">
             </Label>
 
             <Border
@@ -209,7 +209,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="7"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.CapitalInterest_Text}">
+                Text="{Translate CapitalInterest_Text}">
             </Label>
 
             <Border
@@ -229,7 +229,7 @@
                 Grid.Column="0"
                 GroupName="rbgLoanType"
                 Value="rbnLoanAnnuity"
-                Content="{x:Static resx:FinLang.LoanAnnuity_Text}"
+                Content="{Translate LoanAnnuity_Text}"
                 IsChecked="True"
                 CheckedChanged="OnRbnLoanCheckedChanged">
             </RadioButton>
@@ -240,15 +240,15 @@
                 Grid.Column="1"
                 GroupName="rbgLoanType"
                 Value="rbnLoanLinear"
-                Content="{x:Static resx:FinLang.LoanLinear_Text}">
+                Content="{Translate LoanLinear_Text}">
             </RadioButton>
 
             <Button
                 Style="{StaticResource buttonStyleCalculate}"
                 Grid.Row="9"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.Calculate_Text}"
-                ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
+                Text="{Translate Calculate_Text}"
+                ToolTipProperties.Text="{Translate Calculate_Text}"
                 Clicked="CalculateResult">
             </Button>
 
@@ -257,8 +257,8 @@
                 Style="{StaticResource buttonStyleReset}"
                 Grid.Row="9"
                 Grid.Column="1"
-                Text="{x:Static resx:FinLang.Reset_Text}"
-                ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                Text="{Translate Reset_Text}"
+                ToolTipProperties.Text="{Translate Reset_Text}"
                 Clicked="ResetEntryFields">
             </Button>
 
@@ -266,7 +266,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="10"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.DateFirstRepayment_Text}">
+                Text="{Translate DateFirstRepayment_Text}">
             </Label>
 
             <Border
@@ -286,7 +286,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="11"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.DayEndMonth_Text}">
+                Text="{Translate DayEndMonth_Text}">
             </Label>
 
             <CheckBox
@@ -303,7 +303,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="12"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.CurrencyCode_Text}">
+                Text="{Translate CurrencyCode_Text}">
             </Label>
 
             <Border
@@ -329,8 +329,8 @@
                 Grid.Row="13"
                 Grid.Column="0"
                 Margin="0"
-                Text="{x:Static resx:FinLang.ButtonShare_Text}"
-                ToolTipProperties.Text="{x:Static resx:FinLang.ButtonShare_Text}"
+                Text="{Translate ButtonShare_Text}"
+                ToolTipProperties.Text="{Translate ButtonShare_Text}"
                 Clicked="ExportDetailLoan">
             </Button>
 

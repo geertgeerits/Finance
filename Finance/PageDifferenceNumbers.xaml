@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage x:Class="Finance.PageDifferenceNumbers"
-             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Finance"
              xmlns:resx="clr-namespace:Finance.Resources.Languages"
+             x:Class="Finance.PageDifferenceNumbers"
              Loaded="OnPageLoaded">
 
     <NavigationPage.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
-            Text="{x:Static resx:FinLang.DifferenceNumbersForm_Text}">
+            Text="{Translate DifferenceNumbersForm_Text}">
         </Label>
     </NavigationPage.TitleView>
     
@@ -27,7 +27,7 @@
 
                 <Label
                     Style="{StaticResource labelStyleExplanation}"
-                    Text="{x:Static resx:FinLang.DifferenceExplanationNumbers_Text}">
+                    Text="{Translate DifferenceExplanationNumbers_Text}">
                 </Label>
             </Border>
 
@@ -35,7 +35,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="1"
                 Grid.Column="0" 
-                Text="{x:Static resx:FinLang.Value1_Text}">
+                Text="{Translate Value1_Text}">
             </Label>
 
             <Border
@@ -64,7 +64,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="2"
                 Grid.Column="0" 
-                Text="{x:Static resx:FinLang.Value2_Text}">
+                Text="{Translate Value2_Text}">
             </Label>
 
             <Border
@@ -93,7 +93,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="3"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.ValueDifference_Text}">
+                Text="{Translate ValueDifference_Text}">
             </Label>
 
             <Border
@@ -111,7 +111,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="4"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.ValuePercDifference_Text}">
+                Text="{Translate ValuePercDifference_Text}">
             </Label>
 
             <Border
@@ -135,7 +135,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="5"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.ValuePercDiffValue1_Text}">
+                Text="{Translate ValuePercDiffValue1_Text}">
             </Label>
 
             <Border
@@ -159,7 +159,7 @@
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="6"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.ValuePercDiffValue2_Text}">
+                Text="{Translate ValuePercDiffValue2_Text}">
             </Label>
 
             <Border
@@ -183,8 +183,8 @@
                 Style="{StaticResource buttonStyleCalculate}"
                 Grid.Row="7"
                 Grid.Column="0"
-                Text="{x:Static resx:FinLang.Calculate_Text}"
-                ToolTipProperties.Text="{x:Static resx:FinLang.Calculate_Text}"
+                Text="{Translate Calculate_Text}"
+                ToolTipProperties.Text="{Translate Calculate_Text}"
                 Clicked="CalculateResult">
             </Button>
 
@@ -193,8 +193,8 @@
                 Style="{StaticResource buttonStyleReset}"
                 Grid.Row="7"
                 Grid.Column="1"
-                Text="{x:Static resx:FinLang.Reset_Text}"
-                ToolTipProperties.Text="{x:Static resx:FinLang.Reset_Text}"
+                Text="{Translate Reset_Text}"
+                ToolTipProperties.Text="{Translate Reset_Text}"
                 Clicked="ResetEntryFields">
             </Button>
             

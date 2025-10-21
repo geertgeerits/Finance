@@ -9,7 +9,7 @@
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
-            Text="{x:Static resx:FinLang.Info_Text}">
+            Text="{Translate Info_Text}">
         </Label>
     </NavigationPage.TitleView>
 
@@ -21,13 +21,13 @@
             <VerticalStackLayout>
                 <Label
                     Style="{StaticResource labelStyleInfo}"
-                    Text="{x:Static resx:FinLang.NameProgram_Text}"
+                    Text="{Translate NameProgram_Text}"
                     FontSize="16">
                 </Label>
 
                 <Label
                     Style="{StaticResource labelStyleInfo}"
-                    Text="{x:Static resx:FinLang.Description_Text}">
+                    Text="{Translate Description_Text}">
                 </Label>
 
                 <Label
@@ -44,7 +44,7 @@
                     Style="{StaticResource labelStyleInfo}">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static resx:FinLang.Email_Text}"
+                            <Span Text="{Translate Email_Text}"
                                   FontFamily="OpenSansRegular"
                                   FontAttributes="Bold"
                                   FontSize="16" />
@@ -58,7 +58,7 @@
                     Style="{StaticResource labelStyleInfo}">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static resx:FinLang.Website_Text}"
+                            <Span Text="{Translate Website_Text}"
                                   FontFamily="OpenSansRegular"
                                   FontAttributes="Bold"
                                   FontSize="16" />
