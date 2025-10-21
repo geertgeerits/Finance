@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:resx="clr-namespace:Finance.Resources.Languages"
-             xmlns:local="clr-namespace:Finance"
              x:Class="Finance.PageLoanDetail"
              Loaded="OnPageLoaded">
 
@@ -67,7 +65,7 @@
                     TextChanged="NumberEntryTextChanged">
                     <Entry.Triggers>
                         <EventTrigger Event="TextChanged">
-                            <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="100"/>
+                            <ValidationTriggerActionDecimal MinValue="0" MaxValue="100"/>
                         </EventTrigger>
                     </Entry.Triggers>
                 </Entry>
@@ -103,7 +101,7 @@
                     TextChanged="NumberEntryTextChanged">
                     <Entry.Triggers>
                         <EventTrigger Event="TextChanged">
-                            <local:ValidationTriggerActionDecimal MinValue="1" MaxValue="999999999999.9999"/>
+                            <ValidationTriggerActionDecimal MinValue="1" MaxValue="999999999999.9999"/>
                         </EventTrigger>
                     </Entry.Triggers>
                 </Entry>
@@ -133,7 +131,7 @@
                     TextChanged="NumberEntryTextChanged">
                     <Entry.Triggers>
                         <EventTrigger Event="TextChanged">
-                            <local:ValidationTriggerActionDecimal MinValue="1" MaxValue="100"/>
+                            <ValidationTriggerActionDecimal MinValue="1" MaxValue="100"/>
                         </EventTrigger>
                     </Entry.Triggers>
                 </Entry>
@@ -163,7 +161,7 @@
                     TextChanged="NumberEntryTextChanged">
                     <Entry.Triggers>
                         <EventTrigger Event="TextChanged">
-                            <local:ValidationTriggerActionDecimal MinValue="1" MaxValue="12"/>
+                            <ValidationTriggerActionDecimal MinValue="1" MaxValue="12"/>
                         </EventTrigger>
                     </Entry.Triggers>
                 </Entry>
