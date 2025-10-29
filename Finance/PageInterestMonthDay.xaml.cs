@@ -20,10 +20,12 @@ namespace Finance
             //// Set the type of keyboard
             if (Globals.cKeyboard == "Default")
             {
+                entPercDec.Keyboard = Keyboard.Default;
                 entInterestRate.Keyboard = Keyboard.Default;
             }
             else if (Globals.cKeyboard == "Text")
             {
+                entPercDec.Keyboard = Keyboard.Text;
                 entInterestRate.Keyboard = Keyboard.Text;
             }
 

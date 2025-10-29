@@ -21,12 +21,14 @@ namespace Finance
             if (Globals.cKeyboard == "Default")
             {
                 entCapitalInitial.Keyboard = Keyboard.Default;
+                entDurationYears.Keyboard = Keyboard.Default;
                 entAmountPeriod.Keyboard = Keyboard.Default;
                 entCapitalFinal.Keyboard = Keyboard.Default;
             }
             else if (Globals.cKeyboard == "Text")
             {
                 entCapitalInitial.Keyboard = Keyboard.Text;
+                entDurationYears.Keyboard = Keyboard.Text;
                 entAmountPeriod.Keyboard = Keyboard.Text;
                 entCapitalFinal.Keyboard = Keyboard.Text;
             }

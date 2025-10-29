@@ -21,10 +21,14 @@ namespace Finance
             if (Globals.cKeyboard == "Default")
             {
                 entPaymentDiscount.Keyboard = Keyboard.Default;
+                entExpiryDaysWithDiscount.Keyboard = Keyboard.Default;
+                entExpiryDaysWithoutDiscount.Keyboard = Keyboard.Default;
             }
             else if (Globals.cKeyboard == "Text")
             {
                 entPaymentDiscount.Keyboard = Keyboard.Text;
+                entExpiryDaysWithDiscount.Keyboard = Keyboard.Text;
+                entExpiryDaysWithoutDiscount.Keyboard = Keyboard.Text;
             }
 
             //// Set the Placeholder for the numeric entry field

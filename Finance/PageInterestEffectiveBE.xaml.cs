@@ -22,11 +22,13 @@ namespace Finance
             {
                 entCapitalInitial.Keyboard = Keyboard.Default;
                 entCapitalFinal.Keyboard = Keyboard.Default;
+                entDurationYears.Keyboard = Keyboard.Default;
             }
             else if (Globals.cKeyboard == "Text")
             {
                 entCapitalInitial.Keyboard = Keyboard.Text;
                 entCapitalFinal.Keyboard = Keyboard.Text;
+                entDurationYears.Keyboard = Keyboard.Text;
             }
 
             //// Set the Placeholder for the numeric entry field

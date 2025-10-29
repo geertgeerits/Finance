@@ -47,11 +47,15 @@
             {
                 entInterestRate.Keyboard = Keyboard.Default;
                 entCapitalInitial.Keyboard = Keyboard.Default;
+                entDurationYears.Keyboard = Keyboard.Default;
+                entPeriodsYear.Keyboard = Keyboard.Default;
             }
             else if (Globals.cKeyboard == "Text")
             {
                 entInterestRate.Keyboard = Keyboard.Text;
                 entCapitalInitial.Keyboard = Keyboard.Text;
+                entDurationYears.Keyboard = Keyboard.Text;
+                entPeriodsYear.Keyboard = Keyboard.Text;
             }
 
             //// Set the Placeholder for the numeric entry field
