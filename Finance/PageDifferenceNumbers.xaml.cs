@@ -18,15 +18,16 @@
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
             //// Set the type of keyboard
-            if (Globals.cKeyboard == "Default")
+            switch (Globals.cKeyboard)
             {
-                entValue1.Keyboard = Keyboard.Default;
-                entValue2.Keyboard = Keyboard.Default;
-            }
-            else if (Globals.cKeyboard == "Text")
-            {
-                entValue1.Keyboard = Keyboard.Text;
-                entValue2.Keyboard = Keyboard.Text;
+                case "Default":
+                    entValue1.Keyboard = Keyboard.Default;
+                    entValue2.Keyboard = Keyboard.Default;
+                    break;
+                case "Text":
+                    entValue1.Keyboard = Keyboard.Text;
+                    entValue2.Keyboard = Keyboard.Text;
+                    break;
             }
 
             //// Set the Placeholder for the numeric entry field

@@ -43,19 +43,20 @@
             aColHeader[6] = FinLang.LoanDetailColumns_6_Text;
 
             //// Set the type of keyboard
-            if (Globals.cKeyboard == "Default")
+            switch (Globals.cKeyboard)
             {
-                entInterestRate.Keyboard = Keyboard.Default;
-                entCapitalInitial.Keyboard = Keyboard.Default;
-                entDurationYears.Keyboard = Keyboard.Default;
-                entPeriodsYear.Keyboard = Keyboard.Default;
-            }
-            else if (Globals.cKeyboard == "Text")
-            {
-                entInterestRate.Keyboard = Keyboard.Text;
-                entCapitalInitial.Keyboard = Keyboard.Text;
-                entDurationYears.Keyboard = Keyboard.Text;
-                entPeriodsYear.Keyboard = Keyboard.Text;
+                case "Default":
+                    entInterestRate.Keyboard = Keyboard.Default;
+                    entCapitalInitial.Keyboard = Keyboard.Default;
+                    entDurationYears.Keyboard = Keyboard.Default;
+                    entPeriodsYear.Keyboard = Keyboard.Default;
+                    break;
+                case "Text":
+                    entInterestRate.Keyboard = Keyboard.Text;
+                    entCapitalInitial.Keyboard = Keyboard.Text;
+                    entDurationYears.Keyboard = Keyboard.Text;
+                    entPeriodsYear.Keyboard = Keyboard.Text;
+                    break;
             }
 
             //// Set the Placeholder for the numeric entry field

@@ -18,17 +18,18 @@ namespace Finance
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
             //// Set the type of keyboard
-            if (Globals.cKeyboard == "Default")
+            switch (Globals.cKeyboard)
             {
-                entPaymentDiscount.Keyboard = Keyboard.Default;
-                entExpiryDaysWithDiscount.Keyboard = Keyboard.Default;
-                entExpiryDaysWithoutDiscount.Keyboard = Keyboard.Default;
-            }
-            else if (Globals.cKeyboard == "Text")
-            {
-                entPaymentDiscount.Keyboard = Keyboard.Text;
-                entExpiryDaysWithDiscount.Keyboard = Keyboard.Text;
-                entExpiryDaysWithoutDiscount.Keyboard = Keyboard.Text;
+                case "Default":
+                    entPaymentDiscount.Keyboard = Keyboard.Default;
+                    entExpiryDaysWithDiscount.Keyboard = Keyboard.Default;
+                    entExpiryDaysWithoutDiscount.Keyboard = Keyboard.Default;
+                    break;
+                case "Text":
+                    entPaymentDiscount.Keyboard = Keyboard.Text;
+                    entExpiryDaysWithDiscount.Keyboard = Keyboard.Text;
+                    entExpiryDaysWithoutDiscount.Keyboard = Keyboard.Text;
+                    break;
             }
 
             //// Set the Placeholder for the numeric entry field
