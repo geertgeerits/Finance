@@ -12,17 +12,21 @@
             isValid = isValid && result >= MinValue && result <= MaxValue;
 
             // Set the border color if the input is invalid
-            Border border = (Border)entry.Parent;
-
-            if (border != null)
+            if (entry.Parent is Border border && Application.Current?.Resources != null)
             {
-                if (entry.Text.Contains(ClassEntryMethods.cNumGroupSeparator))
+                if (isValid)
                 {
-                    border.Stroke = Color.FromArgb("969696");
+                    if (Application.Current.Resources.TryGetValue("EntryValidNumber", out var validColor) && validColor is Color validColorValue)
+                    {
+                        border.Stroke = validColorValue;
+                    }
                 }
                 else
                 {
-                    border.Stroke = isValid ? Color.FromArgb("969696") : Colors.OrangeRed;
+                    if (Application.Current.Resources.TryGetValue("EntryInvalidNumber", out var InvalidColor) && InvalidColor is Color InvalidColorValue)
+                    {
+                        border.Stroke = InvalidColorValue;
+                    }
                 }
             }
         }
