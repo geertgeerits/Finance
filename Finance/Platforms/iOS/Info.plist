@@ -39,7 +39,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.geertgeerits.finance</string>
 
-	<key>UIDesignRequiresCompatibility</key>
-	<true/>
+	<!--<key>UIDesignRequiresCompatibility</key>
+	<true/>-->
 </dict>
 </plist>
