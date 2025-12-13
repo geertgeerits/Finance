@@ -575,6 +575,19 @@
         </Setter>
     </Style>
 
+    <Style x:Key="buttonStyleMinusSign" TargetType="Button">
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource MidGray}, Dark={StaticResource MidGray}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightGray}, Dark={StaticResource DarkGray}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="25" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontAutoScalingEnabled" Value="False" />
+        <Setter Property="Text" Value="-" />
+    </Style>
+
     <Style x:Key="radiobuttonStyleBorder" TargetType="RadioButton">
         <Setter Property="HorizontalOptions" Value="Fill" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource MidGray}, Dark={StaticResource MidGray}}" />

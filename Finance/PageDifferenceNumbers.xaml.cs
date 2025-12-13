@@ -2,6 +2,9 @@
 {
     public sealed partial class PageDifferenceNumbers : ContentPage
     {
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
         public PageDifferenceNumbers()
         {
             try
@@ -30,6 +33,9 @@
                     break;
             }
 
+            //// Character for the minus sign button
+            btnMinusSign.Text = ClassEntryMethods.cNumNegativeSign;
+
             //// Set the Placeholder for the numeric entry field
             ClassEntryMethods.SetNumberEntryProperties(entValue1, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entValue2, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
@@ -55,6 +61,7 @@
         {
             if (sender is Entry entry)
             {
+                _focusedEntry = entry;
                 entry.MaxLength = 18;
                 ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
@@ -85,6 +92,8 @@
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
+
+            _focusedEntry = ((Entry)sender);
 
             lblValueDifference.Text = "";
             lblValuePercDifference.Text = "";
@@ -240,6 +249,37 @@
             entValue2.Text = "";
 
             _ = entValue1.Focus();
+        }
+
+        /// <summary>
+        /// Handles the click event for the minus button, toggling the negative sign on the currently focused entry field
+        /// </summary>
+        /// <remarks>If no entry field is currently focused, this method does nothing. When invoked, it
+        /// adds or removes the negative sign at the beginning of the entry's text and updates the cursor position
+        /// accordingly.</remarks>
+        /// <param name="sender">The source of the event, typically the minus button control.</param>
+        /// <param name="e">An EventArgs object that contains the event data.</param>
+        private void BtnMinusSign_Clicked(object sender, EventArgs e)
+        {
+            if (_focusedEntry == null)
+            {
+                return;
+            }
+
+            if (!_focusedEntry.Text.Contains(ClassEntryMethods.cNumNegativeSign))
+            {
+                _focusedEntry.Text = ClassEntryMethods.cNumNegativeSign + _focusedEntry.Text;
+                _focusedEntry.CursorPosition = 1;
+            }
+            else
+            {
+                _focusedEntry.Text = _focusedEntry.Text.Replace(ClassEntryMethods.cNumNegativeSign, string.Empty);
+                _focusedEntry.CursorPosition = 0;
+            }
+
+            _focusedEntry.Focus();
+            Task.Delay(100).Wait();
+            _focusedEntry.SelectionLength = 0;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Finance.Resources.Languages {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class FinLang {
@@ -1510,6 +1510,15 @@ namespace Finance.Resources.Languages {
         internal static string ToolTipShare_Text {
             get {
                 return ResourceManager.GetString("ToolTipShare_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle key to switch between negative and positive numbers.
+        /// </summary>
+        internal static string ToolTipToggleNegPosNumber_Text {
+            get {
+                return ResourceManager.GetString("ToolTipToggleNegPosNumber_Text", resourceCulture);
             }
         }
         

@@ -58,6 +58,16 @@
                 </Entry>
             </Border>
 
+            <Button
+                x:Name="btnMinusSign"
+                Style="{StaticResource buttonStyleMinusSign}"
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.RowSpan="2"
+                ToolTipProperties.Text="{Translate ToolTipToggleNegPosNumber_Text}"
+                Clicked="BtnMinusSign_Clicked">
+            </Button>
+
             <Label
                 Style="{StaticResource labelStyleDefault}"
                 Grid.Row="2"
