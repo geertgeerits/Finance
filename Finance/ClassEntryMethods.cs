@@ -191,12 +191,21 @@
             }
 
             // Validate the number and set the text color
+            SetEntryNumberColor(entry);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Set the color for negative and positive numbers in an entry field
+        /// </summary>
+        /// <param name="entry"></param>
+        public static void SetEntryNumberColor(Entry entry)
+        {
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
                 entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
             }
-
-            return true;
         }
 
         ///// <summary>

@@ -93,8 +93,6 @@
                 ((Entry)sender).Text = e.OldTextValue;
             }
 
-            _focusedEntry = ((Entry)sender);
-
             lblValueDifference.Text = "";
             lblValuePercDifference.Text = "";
             lblValuePercDiffValue1.Text = "";
@@ -276,6 +274,8 @@
                 _focusedEntry.Text = _focusedEntry.Text.Replace(ClassEntryMethods.cNumNegativeSign, string.Empty);
                 _focusedEntry.CursorPosition = 0;
             }
+
+            ClassEntryMethods.SetEntryNumberColor(_focusedEntry);
 
             _focusedEntry.Focus();
             Task.Delay(100).Wait();
