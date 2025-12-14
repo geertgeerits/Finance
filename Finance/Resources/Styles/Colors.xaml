@@ -7,6 +7,11 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
+    <Color x:Key="EntryTextPositiveNumberLight">Black</Color>
+    <Color x:Key="EntryTextPositiveNumberDark">White</Color>
+    <Color x:Key="EntryTextNegativeNumberLight">Red</Color>
+    <Color x:Key="EntryTextNegativeNumberDark">LightPink</Color>
+    
     <Color x:Key="EntryValidNumber">DarkGray</Color>
     <Color x:Key="EntryInvalidNumber">Orange</Color>
 
