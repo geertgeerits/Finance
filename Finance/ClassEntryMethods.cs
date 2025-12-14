@@ -197,10 +197,40 @@
         }
 
         /// <summary>
-        /// Set the color for negative and positive numbers in an entry field
+        /// Handles the click event for the minus button, toggling the negative sign on the currently focused entry field
         /// </summary>
         /// <param name="entry"></param>
-        public static void SetEntryNumberColor(Entry entry)
+        public static void BtnNumericMinusSignClicked(Entry entry)
+        {
+            if (entry == null)
+            {
+                return;
+            }
+
+            if (!entry.Text.Contains(cNumNegativeSign))
+            {
+                entry.Text = cNumNegativeSign + entry.Text;
+                entry.CursorPosition = 1;
+            }
+            else
+            {
+                entry.Text = entry.Text.Replace(cNumNegativeSign, string.Empty);
+                entry.CursorPosition = 0;
+            }
+
+            // Set the text color for negative and positive numbers
+            SetEntryNumberColor(entry);
+
+            entry.Focus();
+            Task.Delay(100).Wait();
+            entry.SelectionLength = 0;
+        }
+
+        /// <summary>
+        /// Set the text color for negative and positive numbers in an entry field
+        /// </summary>
+        /// <param name="entry"></param>
+        private static void SetEntryNumberColor(Entry entry)
         {
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {

@@ -237,6 +237,19 @@
         }
 
         /// <summary>
+        /// Handles the click event for the minus button, toggling the negative sign on the currently focused entry field
+        /// </summary>
+        /// <remarks>If no entry field is currently focused, this method does nothing. When invoked, it
+        /// adds or removes the negative sign at the beginning of the entry's text and updates the cursor position
+        /// accordingly.</remarks>
+        /// <param name="sender">The source of the event, typically the minus button control.</param>
+        /// <param name="e">An EventArgs object that contains the event data.</param>
+        private void BtnMinusSign_Clicked(object sender, EventArgs e)
+        {
+            ClassEntryMethods.BtnNumericMinusSignClicked(_focusedEntry!);
+        }
+
+        /// <summary>
         /// Reset the entry fields 
         /// </summary>
         /// <param name="sender"></param>
@@ -247,39 +260,6 @@
             entValue2.Text = "";
 
             _ = entValue1.Focus();
-        }
-
-        /// <summary>
-        /// Handles the click event for the minus button, toggling the negative sign on the currently focused entry field
-        /// </summary>
-        /// <remarks>If no entry field is currently focused, this method does nothing. When invoked, it
-        /// adds or removes the negative sign at the beginning of the entry's text and updates the cursor position
-        /// accordingly.</remarks>
-        /// <param name="sender">The source of the event, typically the minus button control.</param>
-        /// <param name="e">An EventArgs object that contains the event data.</param>
-        private void BtnMinusSign_Clicked(object sender, EventArgs e)
-        {
-            if (_focusedEntry == null)
-            {
-                return;
-            }
-
-            if (!_focusedEntry.Text.Contains(ClassEntryMethods.cNumNegativeSign))
-            {
-                _focusedEntry.Text = ClassEntryMethods.cNumNegativeSign + _focusedEntry.Text;
-                _focusedEntry.CursorPosition = 1;
-            }
-            else
-            {
-                _focusedEntry.Text = _focusedEntry.Text.Replace(ClassEntryMethods.cNumNegativeSign, string.Empty);
-                _focusedEntry.CursorPosition = 0;
-            }
-
-            ClassEntryMethods.SetEntryNumberColor(_focusedEntry);
-
-            _focusedEntry.Focus();
-            Task.Delay(100).Wait();
-            _focusedEntry.SelectionLength = 0;
         }
     }
 }
