@@ -34,11 +34,12 @@ namespace Finance
                     break;
             }
 
-            //// Set the Placeholder for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entVATPercentage, "0", "0", "999", "9", ClassEntryMethods.cPercDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entVATAmountExclusive, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entVATAmount, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entVATAmountIncluded, "0", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            //// Set the Placeholder text for the numeric entry fields
+            //// The ValidationTriggerActionDecimal MinValue and MaxValue has to be set but not the MaxDecimalPlaces
+            ClassEntryMethods.SetNumberEntryProperties(entVATPercentage, ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entVATAmountExclusive, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entVATAmount, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entVATAmountIncluded, ClassEntryMethods.cNumDecimalDigits);
 
             //// Reset the entry fields
             ResetEntryFields(null, null);

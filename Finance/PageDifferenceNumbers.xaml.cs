@@ -36,9 +36,10 @@
             //// Character for the minus sign button
             btnMinusSign.Text = ClassEntryMethods.cNumNegativeSign;
 
-            //// Set the Placeholder for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entValue1, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entValue2, "-999999999999", "9", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            //// Set the Placeholder text for the numeric entry fields
+            //// The ValidationTriggerActionDecimal MinValue and MaxValue has to be set but not the MaxDecimalPlaces
+            ClassEntryMethods.SetNumberEntryProperties(entValue1, ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entValue2, ClassEntryMethods.cNumDecimalDigits);
         }
 
         /// <summary>

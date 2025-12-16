@@ -3,22 +3,22 @@
     internal static class ClassEntryMethods
     {
         // Global variables
-        public static string cKeyboard = "";
-        public static string cNumDecimalDigits = "";
-        public static string cPercDecimalDigits = "";
-        public static string cRoundNumber = "";
+        public static bool bKeyboardCustom = true;
+        public static string cNumDecimalDigits = string.Empty;
+        public static string cPercDecimalDigits = string.Empty;
+        public static string cRoundNumber = string.Empty;
         public static bool bColorNumber = true;
         public static bool bShowFormattedNumber;
-        public static string cNumGroupSeparator = "";
+        public static string cNumGroupSeparator = string.Empty;
+        public static string cNumDecimalSeparator = string.Empty;
+        public static string cNumNegativeSign = string.Empty;
+        public static string cNumNativeDigits = string.Empty;
 
         // Local variables
-        public static string cNumDecimalSeparator = "";
-        public static string cNumNegativeSign = "";
-        public static string cNumNativeDigits = "";
-        private static string cDecimalCharacters = "";
-        //private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
-        private static string cColorNegNumber = "";
-        private static string cColorPosNumber = "";
+        private static string cDecimalCharacters = string.Empty;
+        private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
+        private static string cColorNegNumber = string.Empty;
+        private static string cColorPosNumber = string.Empty;
 
         /// <summary>
         /// Initialize the number format settings based on the current culture
@@ -48,7 +48,7 @@
                 Preferences.Default.Set("SettingPercDecimalDigits", cPercDecimalDigits);
             }
 
-            // Set the rounding system of numbers
+            // Set the rounding system of numbers (AwayFromZero, ToEven, ToZero)
             if (string.IsNullOrEmpty(cRoundNumber))
             {
                 cRoundNumber = "AwayFromZero";
@@ -103,33 +103,65 @@
         }
 
         /// <summary>
-        /// Set the Placeholder for a numeric entry field
-        /// Use: ClassEntryMethods.SetNumberEntryProperties(entTest1, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
+        /// Set the placeholder text for the entry fields if the Placeholder property is empty or null
+        /// and the ValidationTriggerActionDecimal MinValue and MaxValue are set
         /// </summary>
         /// <param name="entry"></param>
-        /// <param name="cWholeNumFrom"></param>
-        /// <param name="cDecDigetFrom"></param>
-        /// <param name="cWholeNumTo"></param>
-        /// <param name="cDecDigetTo"></param>
-        /// <param name="cNumberOfDecimals"></param>
-        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals)
+        public static void SetNumberEntryProperties(Entry entry, string cNumberOfDecimals = "-1")
         {
-            if (!decimal.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !decimal.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals))
+            if (!int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals))
             {
                 return;
             }
 
-            string cDecimalSeparator = nNumberOfDecimals switch
-            {
-                0 => "",
-                _ => cNumDecimalSeparator,
-            };
+            // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+            (decimal nMinValue, decimal nMaxValue, _) = EntryFindValidationTriggerActionDecimal(entry);
 
-            string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
-            string cValueTo = $"{cWholeNumTo}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
+            // Construct the placeholder text based on MinValue, MaxValue and number of decimals
+            string cValueFrom = MakeEntryPlaceholder(nMinValue.ToString(), nNumberOfDecimals);
+            string cValueTo = MakeEntryPlaceholder(nMaxValue.ToString(), nNumberOfDecimals);
 
             // Set the Placeholder for the entry field
             entry.Placeholder = $"{cValueFrom} - {cValueTo}";
+        }
+
+        /// <summary>
+        /// Construct the placeholder text based on MinValue, MaxValue and number of decimals
+        /// </summary>
+        /// <param name="cValue"></param>
+        /// <param name="nNumberOfDecimals"></param>
+        /// <returns></returns>
+        private static string MakeEntryPlaceholder(string cValue, int nNumberOfDecimals)
+        {
+            string[] cParts;
+
+            if (nNumberOfDecimals == 0)
+            {
+                if (cValue.Contains(cNumDecimalSeparator))
+                {
+                    cParts = cValue.Split(cNumDecimalSeparator);
+                    return cParts[0];
+                }
+            }
+            else if (nNumberOfDecimals > 0)
+            {
+                if (cValue.Contains(cNumDecimalSeparator))
+                {
+                    cParts = cValue.Split(cNumDecimalSeparator);
+                    string cBeforeDecimalPoint = cParts[0];
+                    string cAfterDecimalPoint = cParts.Length > 1 ? cParts[1] : "9";
+                    string cLastDigit = cValue[^1].ToString();
+
+                    if (cParts[1].Length != nNumberOfDecimals)
+                    {
+                        cAfterDecimalPoint = string.Concat(Enumerable.Repeat(cLastDigit, nNumberOfDecimals));
+                    }
+
+                    return $"{cBeforeDecimalPoint}{cNumDecimalSeparator}{cAfterDecimalPoint}";
+                }
+            }
+
+            return cValue;
         }
 
         /// <summary>
@@ -139,7 +171,6 @@
         /// <returns></returns>
         public static bool IsDecimalNumber(Entry entry, string cText)
         {
-            // Do not execute this method because this is only to show the formatted number just like in a label
             if (bShowFormattedNumber)
             {
                 return true;
@@ -173,10 +204,25 @@
             }
 
             // Get the number of decimals allowed after the decimal separator
-            // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
-            int nDecimals = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
-                ? int.Parse(cPercDecimalDigits)
-                : int.Parse(cNumDecimalDigits);
+            // The method 'IsDecimalNumber' is called before the 'ValidationTriggerActionDecimal' class, so the properties of the 'ValidationTriggerActionDecimal' class cannot be accessed directly
+            int nDecimals = -1;
+
+            // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+            (decimal nMinValue, decimal nMaxValue, nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
+
+            if (nDecimals == -1)
+            {
+                /* If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                   is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                   AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                   Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                   <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>
+                */
+                nDecimals = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                    ? int.Parse(cPercDecimalDigits)
+                    : int.Parse(cNumDecimalDigits);
+            }
+            Debug.WriteLine($"IsDecimalNumber - nDecimals: {nDecimals}");
 
             // Check if the decimal separator is allowed
             if (cText.Contains(cNumDecimalSeparator) && nDecimals == 0)
@@ -227,10 +273,10 @@
         }
 
         /// <summary>
-        /// Set the text color for negative and positive numbers in an entry field
+        /// Set the color for negative and positive numbers in an entry field
         /// </summary>
         /// <param name="entry"></param>
-        private static void SetEntryNumberColor(Entry entry)
+        public static void SetEntryNumberColor(Entry entry)
         {
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
@@ -238,41 +284,41 @@
             }
         }
 
-        ///// <summary>
-        ///// Check if the text is a hexadecimal number
-        ///// </summary>
-        ///// <param name="cText"></param>
-        ///// <returns></returns>
-        //public static bool IsHexadecimalNumber(string cText)
-        //{
-        //    if (string.IsNullOrEmpty(cText))
-        //    {
-        //        return true;
-        //    }
+        /// <summary>
+        /// Check if the text is a hexadecimal number
+        /// </summary>
+        /// <param name="cText"></param>
+        /// <returns></returns>
+        public static bool IsHexadecimalNumber(string cText)
+        {
+            if (string.IsNullOrEmpty(cText))
+            {
+                return true;
+            }
 
-        //    // Check the text for invalid characters
-        //    foreach (char c in cText)
-        //    {
-        //        // Check if the character is allowed
-        //        if (!cHexadecimalCharacters.Contains(c))
-        //        {
-        //            return false;
-        //        }
-        //    }
+            // Check the text for invalid characters
+            foreach (char c in cText)
+            {
+                // Check if the character is allowed
+                if (!cHexadecimalCharacters.Contains(c))
+                {
+                    return false;
+                }
+            }
 
-        //    return true;
-        //}
+            return true;
+        }
 
         /// <summary>
         /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="entry"></param>
-        public async static void FormatDecimalNumberEntryFocused(Entry entry)
+        public static async Task FormatDecimalNumberEntryFocused(Entry entry)
         {
             // Show the keyboard if it is not already shown and no custom keyboard is used
-            if (!entry.IsSoftInputShowing() && cKeyboard != "Custom")
+            if (!entry.IsSoftInputShowing() && !bKeyboardCustom)
             {
-                _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
+                await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
 
             // Allow the IsDecimalNumber method to execute
@@ -283,12 +329,27 @@
                 return;
             }
 
+            // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+            (_, _, int nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
+
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
-                entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
-                    ? nValue.ToString(format: "F" + cPercDecimalDigits)
-                    : nValue.ToString(format: "F" + cNumDecimalDigits);
+                if (nDecimals != -1)
+                {
+                    entry.Text = nValue.ToString(format: "F" + nDecimals);
+                }
+                else
+                {
+                    /* If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                       is set for any 'percentage' entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                       AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                       Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                       <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>
+                    */
+                    entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                        ? nValue.ToString(format: "F" + cPercDecimalDigits)
+                        : nValue.ToString(format: "F" + cNumDecimalDigits);
+                }
 
                 // Select all the text in the entry field
                 entry.CursorPosition = 0;
@@ -310,12 +371,27 @@
             // Do not allow the IsDecimalNumber method to execute
             bShowFormattedNumber = true;
 
+            // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+            (_, _, int nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
+
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
-                entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                if (nDecimals != -1)
+                {
+                    entry.Text = nValue.ToString(format: "N" + nDecimals);
+                }
+                else
+                {
+                    /* If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                       is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                       AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                       Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                       <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>
+                    */
+                    entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                     ? nValue.ToString(format: "N" + cPercDecimalDigits)
                     : nValue.ToString(format: "N" + cNumDecimalDigits);
+                }
             }
             else
             {
@@ -327,7 +403,7 @@
         /* Rounding numbers
            Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
            Round half to even or banker's rounding: MidpointRounding.ToEven
-           Round towards zero: 1-9 down
+           Round towards zero: MidpointRounding.ToZero 1-9 down
 
            Value      Default    ToEven     AwayFromZero    ToZero
             12.0       12         12         12              12
@@ -501,7 +577,7 @@
         /// Hide the keyboard
         /// </summary>
         /// <param name="entry"></param>
-        public async static void HideSystemKeyboard(Entry entry)
+        public static async Task HideSystemKeyboard(Entry entry)
         {
             try
             {
@@ -511,7 +587,7 @@
                     // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
                     entry.Unfocus();
 #endif
-                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                    await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
                 }
             }
             catch (Exception)
@@ -519,6 +595,39 @@
                 entry.IsEnabled = false;
                 entry.IsEnabled = true;
             }
+        }
+
+        /// <summary>
+        /// Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
+        private static Tuple<decimal, decimal, int> EntryFindValidationTriggerActionDecimal(Entry entry)
+        {
+            decimal nMinValue = 0;
+            decimal nMaxValue = 0;
+            int nDecimals = -1;
+
+            // Find the ValidationTriggerActionDecimal attached to the Entry
+            var trigger = entry.Triggers
+                .OfType<EventTrigger>()
+                .SelectMany(t => t.Actions)
+                .OfType<ValidationTriggerActionDecimal>()
+                .FirstOrDefault();
+
+            if (trigger != null)
+            {
+                // Use these values as needed
+                nMinValue = trigger.MinValue;
+                nMaxValue = trigger.MaxValue;
+                nDecimals = trigger.MaxDecimalPlaces;
+
+                Debug.WriteLine($"IsDecimalNumber - MinValue: {trigger.MinValue}");
+                Debug.WriteLine($"IsDecimalNumber - MaxValue: {trigger.MaxValue}");
+                Debug.WriteLine($"IsDecimalNumber - MaxDecimalPlaces: {trigger.MaxDecimalPlaces}");
+            }
+
+            return Tuple.Create(nMinValue, nMaxValue, nDecimals);
         }
 
         /// <summary>

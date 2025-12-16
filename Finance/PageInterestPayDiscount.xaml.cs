@@ -32,8 +32,9 @@ namespace Finance
                     break;
             }
 
-            //// Set the Placeholder for the numeric entry field
-            ClassEntryMethods.SetNumberEntryProperties(entPaymentDiscount, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
+            //// Set the Placeholder text for the numeric entry fields
+            //// The ValidationTriggerActionDecimal MinValue and MaxValue has to be set but not the MaxDecimalPlaces
+            ClassEntryMethods.SetNumberEntryProperties(entPaymentDiscount, ClassEntryMethods.cPercDecimalDigits);
         }
 
         /// <summary>
