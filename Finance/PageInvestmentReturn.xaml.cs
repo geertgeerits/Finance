@@ -229,7 +229,7 @@ namespace Finance
             catch (Exception ex)
             {
 #if DEBUG                
-                DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                await DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
                 ResetEntryFields(null, null);
                 return;
