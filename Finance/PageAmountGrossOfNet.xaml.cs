@@ -124,6 +124,10 @@ namespace Finance
         /// <param name="e"></param>
         private async void CalculateResult(object sender, EventArgs e)
         {
+            // Unfocus the entry controls when the Calculate button has been pressed
+            entPercentage.Unfocus();
+            entAmountNet.Unfocus();
+
             // Validate input values
             bool bIsNumber = decimal.TryParse(entPercentage.Text, out decimal nPercentage);
             if (!bIsNumber || nPercentage < 0 || nPercentage >= 100)

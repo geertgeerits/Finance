@@ -133,6 +133,12 @@ namespace Finance
         /// <param name="e"></param>
         private async void CalculateResult(object sender, EventArgs e)
         {
+            // Unfocus the entry controls when the Calculate button has been pressed
+            entVATPercentage.Unfocus();
+            entVATAmountExclusive.Unfocus();
+            entVATAmount.Unfocus();
+            entVATAmountIncluded.Unfocus();
+
             // Replace null or empty values with 0
             if (string.IsNullOrEmpty(entVATPercentage.Text))
             {

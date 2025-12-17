@@ -115,6 +115,11 @@ namespace Finance
         /// <param name="e"></param>
         private async void CalculateResult(object sender, EventArgs e)
         {
+            // Unfocus the entry controls when the Calculate button has been pressed
+            entPaymentDiscount.Unfocus();
+            entExpiryDaysWithDiscount.Unfocus();
+            entExpiryDaysWithoutDiscount.Unfocus();
+
             // Validate input values
             bool bIsNumber = decimal.TryParse(entPaymentDiscount.Text, out decimal nPaymentDiscount);
             if (!bIsNumber || nPaymentDiscount < 0 || nPaymentDiscount > 100)

@@ -126,6 +126,12 @@ namespace Finance
         /// <param name="e"></param>
         private async void CalculateResult(object sender, EventArgs e)
         {
+            // Unfocus the entry controls when the Calculate button has been pressed
+            entCapitalInitial.Unfocus();
+            entDurationYears.Unfocus();
+            entAmountPeriod.Unfocus();
+            entCapitalFinal.Unfocus();
+
             // Validate input values
             bool bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
             if (!bIsNumber || nCapitalInitial < 0 || nCapitalInitial >= 1_000_000_000_000)

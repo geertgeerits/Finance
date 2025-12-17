@@ -120,6 +120,10 @@
         /// <param name="e"></param>
         private async void CalculateResult(object sender, EventArgs e)
         {
+            // Unfocus the entry controls when the Calculate button has been pressed
+            entValue1.Unfocus();
+            entValue2.Unfocus();
+
             // Validate input values
             bool bIsNumber = decimal.TryParse(entValue1.Text, out decimal nValue1);
             if (!bIsNumber || nValue1 <= -1_000_000_000_000 || nValue1 >= 1_000_000_000_000)
