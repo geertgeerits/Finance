@@ -207,7 +207,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void VerifyPercentageDecimals(object sender, EventArgs e)
+        private async void VerifyPercentageDecimals(object sender, EventArgs e)
         {
             bool bIsNumber = int.TryParse(entPercDec.Text, out int nPercDec);
             if (bIsNumber == false || nPercDec < 0 || nPercDec > 8 || entPercDec.Text == "")
@@ -220,7 +220,7 @@
             ClassEntryMethods.cPercDecimalDigits = Convert.ToString(nPercDec);
 
             // Hide the keyboard
-            ClassEntryMethods.HideSystemKeyboard(entPercDec);
+            await ClassEntryMethods.HideSystemKeyboard(entPercDec);
         }
 
         /// <summary>

@@ -93,7 +93,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -106,7 +106,7 @@
                     entCapitalInitial.MaxLength = 17;
                 }
 
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -142,7 +142,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GoToNextField(object sender, EventArgs e)
+        private async void GoToNextField(object sender, EventArgs e)
         {
             if (sender == entInterestRate)
             {
@@ -159,7 +159,7 @@
             else if (sender == entCurrencyCode)
             {
                 // Hide the keyboard
-                ClassEntryMethods.HideSystemKeyboard(entCurrencyCode);
+                await ClassEntryMethods.HideSystemKeyboard(entCurrencyCode);
 
                 _ = btnExport.Focus();
             }
@@ -170,7 +170,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CalculateResult(object sender, EventArgs e)
+        private async void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
             bool bIsNumber = double.TryParse(entInterestRate.Text, out double nInterestRate);
@@ -213,7 +213,7 @@
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideSystemKeyboard(entPeriodsYear);
+            await ClassEntryMethods.HideSystemKeyboard(entPeriodsYear);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);

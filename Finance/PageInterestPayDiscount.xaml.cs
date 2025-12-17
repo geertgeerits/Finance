@@ -53,12 +53,12 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
                 entPaymentDiscount.MaxLength = 11;
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -113,7 +113,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CalculateResult(object sender, EventArgs e)
+        private async void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
             bool bIsNumber = decimal.TryParse(entPaymentDiscount.Text, out decimal nPaymentDiscount);
@@ -142,7 +142,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideSystemKeyboard(entExpiryDaysWithoutDiscount);
+            await ClassEntryMethods.HideSystemKeyboard(entExpiryDaysWithoutDiscount);
 
             // Convert string to int for number of decimal digits after decimal point
             int nPercDec = int.Parse(ClassEntryMethods.cPercDecimalDigits);
@@ -158,7 +158,7 @@ namespace Finance
                 catch (Exception ex)
                 {
 #if DEBUG                    
-                    DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                    await DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
                     ResetEntryFields(null, null);
                     return;

@@ -48,7 +48,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnPageLoaded(object sender, EventArgs e)
+        private async void OnPageLoaded(object sender, EventArgs e)
         {
             _ = entValue1.Focus();
         }
@@ -58,13 +58,13 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
                 entry.MaxLength = 18;
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -118,7 +118,7 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CalculateResult(object sender, EventArgs e)
+        private async void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
             bool bIsNumber = decimal.TryParse(entValue1.Text, out decimal nValue1);
@@ -138,7 +138,7 @@
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideSystemKeyboard(entValue2);
+            await ClassEntryMethods.HideSystemKeyboard(entValue2);
 
             // Convert string to int for number of decimal digits after decimal point
             int nNumDec = int.Parse(ClassEntryMethods.cNumDecimalDigits);
@@ -224,7 +224,7 @@
             catch (Exception ex)
             {
 #if DEBUG
-                DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                await DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
                 ResetEntryFields(null, null);
                 return;

@@ -60,12 +60,12 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
                 entry.MaxLength = 17;
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -124,7 +124,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CalculateResult(object sender, EventArgs e)
+        private async void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
             bool bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);
@@ -160,7 +160,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideSystemKeyboard(entCapitalFinal);
+            await ClassEntryMethods.HideSystemKeyboard(entCapitalFinal);
 
             // Show the formatted number in the entry field
             ClassEntryMethods.bShowFormattedNumber = true;
@@ -217,7 +217,7 @@ namespace Finance
             catch (Exception ex)
             {
 #if DEBUG                
-                DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                await DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
                 ResetEntryFields(null, null);
                 return;

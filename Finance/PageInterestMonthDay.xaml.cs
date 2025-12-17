@@ -51,12 +51,12 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
                 entInterestRate.MaxLength = 11;
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
             }
         }
 
@@ -109,7 +109,7 @@ namespace Finance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CalculateResult(object sender, EventArgs e)
+        private async void CalculateResult(object sender, EventArgs e)
         {
             // Validate input values
             bool bIsNumber = int.TryParse(entPercDec.Text, out int nPercDec);
@@ -129,7 +129,7 @@ namespace Finance
             }
 
             // Hide the keyboard
-            ClassEntryMethods.HideSystemKeyboard(entInterestRate);
+            await ClassEntryMethods.HideSystemKeyboard(entInterestRate);
 
             double nInterestMonth = 0;
             double nInterestDay365 = 0;
@@ -146,7 +146,7 @@ namespace Finance
                 catch (Exception ex)
                 {
 #if DEBUG                    
-                    DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+                    await DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
 #endif
                     ResetEntryFields(null, null);
                     return;
