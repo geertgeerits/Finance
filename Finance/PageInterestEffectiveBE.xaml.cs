@@ -2,7 +2,10 @@ namespace Finance
 {
     public sealed partial class PageInterestEffectiveBE : ContentPage
     {
-    	public PageInterestEffectiveBE()
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
+        public PageInterestEffectiveBE()
     	{
             try
             {
@@ -60,6 +63,7 @@ namespace Finance
             {
                 entry.MaxLength = 17;
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                _focusedEntry = entry;
             }
         }
 
@@ -118,9 +122,7 @@ namespace Finance
         private async void CalculateResult(object sender, EventArgs e)
         {
             // Unfocus the entry controls when the Calculate button has been pressed
-            entCapitalInitial.Unfocus();
-            entCapitalFinal.Unfocus();
-            entDurationYears.Unfocus();
+            _focusedEntry?.Unfocus();
 
             // Validate input values
             bool bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);

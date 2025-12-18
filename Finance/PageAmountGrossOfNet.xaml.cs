@@ -2,6 +2,9 @@ namespace Finance
 {
     public sealed partial class PageAmountGrossOfNet : ContentPage
     {
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
         public PageAmountGrossOfNet()
     	{
             try
@@ -71,6 +74,7 @@ namespace Finance
                 }
 
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                _focusedEntry = entry;
             }
         }
 
@@ -125,8 +129,7 @@ namespace Finance
         private async void CalculateResult(object sender, EventArgs e)
         {
             // Unfocus the entry controls when the Calculate button has been pressed
-            entPercentage.Unfocus();
-            entAmountNet.Unfocus();
+            _focusedEntry?.Unfocus();
 
             // Validate input values
             bool bIsNumber = decimal.TryParse(entPercentage.Text, out decimal nPercentage);

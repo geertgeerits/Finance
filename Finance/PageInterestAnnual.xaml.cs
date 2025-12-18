@@ -2,6 +2,9 @@ namespace Finance
 {
     public sealed partial class PageInterestAnnual : ContentPage
     {
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
         public PageInterestAnnual()
         {
             try
@@ -66,6 +69,7 @@ namespace Finance
             {
                 entry.MaxLength = 17;
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                _focusedEntry = entry;
             }
         }
 
@@ -127,10 +131,7 @@ namespace Finance
         private async void CalculateResult(object sender, EventArgs e)
         {
             // Unfocus the entry controls when the Calculate button has been pressed
-            entCapitalInitial.Unfocus();
-            entDurationYears.Unfocus();
-            entAmountPeriod.Unfocus();
-            entCapitalFinal.Unfocus();
+            _focusedEntry?.Unfocus();
 
             // Validate input values
             bool bIsNumber = double.TryParse(entCapitalInitial.Text, out double nCapitalInitial);

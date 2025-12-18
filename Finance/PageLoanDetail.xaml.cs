@@ -2,6 +2,9 @@
 {
     public sealed partial class PageLoanDetail : ContentPage
     {
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
         //// Variables for loan detail
         public static readonly string[] aColHeader = new string[7];
         public static readonly string[,] aLoanDetail = new string[1201, 7];
@@ -107,6 +110,7 @@
                 }
 
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                _focusedEntry = entry;
             }
         }
 
@@ -173,11 +177,7 @@
         private async void CalculateResult(object sender, EventArgs e)
         {
             // Unfocus the entry controls when the Calculate button has been pressed
-            entInterestRate.Unfocus();
-            entCapitalInitial.Unfocus();
-            entDurationYears.Unfocus();
-            entPeriodsYear.Unfocus();
-            entCurrencyCode.Unfocus();
+            _focusedEntry?.Unfocus();
 
             // Validate input values
             bool bIsNumber = double.TryParse(entInterestRate.Text, out double nInterestRate);

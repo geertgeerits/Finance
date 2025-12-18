@@ -2,7 +2,10 @@ namespace Finance
 {
     public sealed partial class PageVATCalculation : ContentPage
     {
-    	public PageVATCalculation()
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
+        public PageVATCalculation()
     	{
             try
             {
@@ -75,6 +78,7 @@ namespace Finance
                 }
 
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                _focusedEntry = entry;
             }
         }
 
@@ -134,10 +138,7 @@ namespace Finance
         private async void CalculateResult(object sender, EventArgs e)
         {
             // Unfocus the entry controls when the Calculate button has been pressed
-            entVATPercentage.Unfocus();
-            entVATAmountExclusive.Unfocus();
-            entVATAmount.Unfocus();
-            entVATAmountIncluded.Unfocus();
+            _focusedEntry?.Unfocus();
 
             // Replace null or empty values with 0
             if (string.IsNullOrEmpty(entVATPercentage.Text))

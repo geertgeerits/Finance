@@ -2,7 +2,10 @@ namespace Finance
 {
     public sealed partial class PageInvestmentReturn : ContentPage
     {
-    	public PageInvestmentReturn()
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
+        public PageInvestmentReturn()
     	{
             try
             {
@@ -75,6 +78,7 @@ namespace Finance
                 }
 
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                _focusedEntry = entry;
             }
         }
 
@@ -136,10 +140,7 @@ namespace Finance
         private async void CalculateResult(object sender, EventArgs e)
         {
             // Unfocus the entry controls when the Calculate button has been pressed
-            entAmountPurchase.Unfocus();
-            entAmountCost.Unfocus();
-            entAmountRevenueYear.Unfocus();
-            entPercentageReturnYear.Unfocus();
+            _focusedEntry?.Unfocus();
 
             // Replace null or empty values with 0
             if (string.IsNullOrEmpty(entAmountPurchase.Text))

@@ -2,7 +2,10 @@ namespace Finance
 {
     public sealed partial class PageInterestPayDiscount : ContentPage
     {
-    	public PageInterestPayDiscount()
+        //// The currently focused Entry field
+        private Entry? _focusedEntry;
+
+        public PageInterestPayDiscount()
     	{
             try
             {
@@ -59,6 +62,7 @@ namespace Finance
             {
                 entPaymentDiscount.MaxLength = 11;
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                _focusedEntry = entry;
             }
         }
 
@@ -116,9 +120,7 @@ namespace Finance
         private async void CalculateResult(object sender, EventArgs e)
         {
             // Unfocus the entry controls when the Calculate button has been pressed
-            entPaymentDiscount.Unfocus();
-            entExpiryDaysWithDiscount.Unfocus();
-            entExpiryDaysWithoutDiscount.Unfocus();
+            _focusedEntry?.Unfocus();
 
             // Validate input values
             bool bIsNumber = decimal.TryParse(entPaymentDiscount.Text, out decimal nPaymentDiscount);

@@ -33,7 +33,7 @@
                     x:Name="lblVersion"
                     Style="{StaticResource labelStyleInfo}">
                 </Label>
-            
+
                 <Label
                     x:Name="lblCopyright"
                     Style="{StaticResource labelStyleInfo}">
@@ -66,6 +66,12 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+
+                <!--<Button
+                    x:Name="btnWebsite"
+                    Text="{Translate Website_Text}"
+                    Clicked="btnWebsite_Clicked">
+                </Button>-->
 
                 <Label
                     x:Name="lblPrivacyPolicy"

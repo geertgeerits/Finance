@@ -62,9 +62,9 @@
         {
             if (sender is Entry entry)
             {
-                _focusedEntry = entry;
                 entry.MaxLength = 18;
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                _focusedEntry = entry;
             }
         }
 
@@ -121,8 +121,7 @@
         private async void CalculateResult(object sender, EventArgs e)
         {
             // Unfocus the entry controls when the Calculate button has been pressed
-            entValue1.Unfocus();
-            entValue2.Unfocus();
+            _focusedEntry?.Unfocus();
 
             // Validate input values
             bool bIsNumber = decimal.TryParse(entValue1.Text, out decimal nValue1);

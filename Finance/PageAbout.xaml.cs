@@ -25,6 +25,16 @@ namespace Finance
             lblExplanation.Text = $"\n{FinLang.InfoExplanation_Text}";
             lblTrademarks.Text = $"\n{FinLang.Trademarks_Text}";
         }
+
+        ///// <summary>
+        ///// Open the website page using a WebView
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private async void btnWebsite_Clicked(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new PageWebsite());
+        //}
     }
 
     /// <summary>
