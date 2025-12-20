@@ -53,7 +53,7 @@
                     </Label.FormattedText>
                 </Label>
 
-                <Label
+                <!--<Label
                     Style="{StaticResource labelStyleInfo}">
                     <Label.FormattedText>
                         <FormattedString>
@@ -65,13 +65,7 @@
                                                 Url="https://geertgeerits.wixsite.com/geertgeerits/finance" />
                         </FormattedString>
                     </Label.FormattedText>
-                </Label>
-
-                <!--<Button
-                    x:Name="btnWebsite"
-                    Text="{Translate Website_Text}"
-                    Clicked="btnWebsite_Clicked">
-                </Button>-->
+                </Label>-->
 
                 <Label
                     x:Name="lblPrivacyPolicy"

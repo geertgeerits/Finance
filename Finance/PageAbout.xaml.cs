@@ -77,10 +77,10 @@ namespace Finance
             {
                 await OpenEmailLink(url[7..]);
             }
-            else
-            {
-                await OpenWebsiteLink(url);
-            }
+            //else
+            //{
+            //    await OpenWebsiteLink(url);
+            //}
         }
 
         /// <summary>
@@ -115,28 +115,28 @@ namespace Finance
             }
         }
 
-        /// <summary>
-        /// Open the website link in the default browser
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        private static async Task OpenWebsiteLink(string url)
-        {
-            try
-            {
-                Uri uri = new(url);
-                BrowserLaunchOptions options = new()
-                {
-                    LaunchMode = BrowserLaunchMode.SystemPreferred,
-                    TitleMode = BrowserTitleMode.Show
-                };
+        ///// <summary>
+        ///// Open the website link in the default browser
+        ///// </summary>
+        ///// <param name="url"></param>
+        ///// <returns></returns>
+        //private static async Task OpenWebsiteLink(string url)
+        //{
+        //    try
+        //    {
+        //        Uri uri = new(url);
+        //        BrowserLaunchOptions options = new()
+        //        {
+        //            LaunchMode = BrowserLaunchMode.SystemPreferred,
+        //            TitleMode = BrowserTitleMode.Show
+        //        };
 
-                await Browser.Default.OpenAsync(uri, options);
-            }
-            catch (Exception ex)
-            {
-                await Application.Current!.Windows[0].Page!.DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
-            }
-        }
+        //        await Browser.Default.OpenAsync(uri, options);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await Application.Current!.Windows[0].Page!.DisplayAlertAsync(FinLang.ErrorTitle_Text, ex.Message, FinLang.ButtonClose_Text);
+        //    }
+        //}
     }
 }
