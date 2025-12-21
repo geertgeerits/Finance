@@ -3,7 +3,7 @@
     internal static class ClassEntryMethods
     {
         // Global variables
-        public static bool bKeyboardCustom = true;
+        public static bool bKeyboardCustom = false;
         public static string cNumDecimalDigits = string.Empty;
         public static string cPercDecimalDigits = string.Empty;
         public static string cRoundNumber = string.Empty;
