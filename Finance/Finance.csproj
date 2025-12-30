@@ -28,8 +28,8 @@
 		<ApplicationIdGuid>54742229-37CC-49C8-814D-220A22B0EF1F</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<PackageVersion>3.0.70</PackageVersion>
-		<ApplicationDisplayVersion>3.0.70</ApplicationDisplayVersion>
+		<PackageVersion>3.0.71</PackageVersion>
+		<ApplicationDisplayVersion>3.0.71</ApplicationDisplayVersion>
 		<ApplicationVersion>3</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.2</SupportedOSPlatformVersion>
@@ -44,8 +44,8 @@
 		<Description>Financial applications</Description>
 		<Copyright>Geert Geerits</Copyright>
 		<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
-		<FileVersion>3.0.70</FileVersion>
-		<AssemblyVersion>3.0.70</AssemblyVersion>
+		<FileVersion>3.0.71</FileVersion>
+		<AssemblyVersion>3.0.71</AssemblyVersion>
 		<PackageCertificateThumbprint>3258A94BC8069F3911EA6D4619347375B5F4824A</PackageCertificateThumbprint>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>-->
 		<DefaultLanguage>en</DefaultLanguage>
@@ -181,8 +181,8 @@
 		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
 		<AndroidSigningKeyPass></AndroidSigningKeyPass>
 		<AndroidSigningStorePass></AndroidSigningStorePass>
-		<ApplicationDisplayVersion>3.0.70</ApplicationDisplayVersion>
-		<ApplicationVersion>70</ApplicationVersion>
+		<ApplicationDisplayVersion>3.0.71</ApplicationDisplayVersion>
+		<ApplicationVersion>71</ApplicationVersion>
 		<ApplicationId>com.geertgeerits.finance</ApplicationId>
 	</PropertyGroup>
 
@@ -200,8 +200,8 @@
 		<CodesignProvision>provisioningprofile04iOSFinance</CodesignProvision>
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 		<TcpPort>58181</TcpPort>
-		<ApplicationDisplayVersion>3.0.70</ApplicationDisplayVersion>
-		<ApplicationVersion>70</ApplicationVersion>
+		<ApplicationDisplayVersion>3.0.71</ApplicationDisplayVersion>
+		<ApplicationVersion>71</ApplicationVersion>
 		<ApplicationId>com.geertgeerits.finance</ApplicationId>
 	</PropertyGroup>
 
