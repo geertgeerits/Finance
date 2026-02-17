@@ -19,6 +19,12 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		
+		<!--XAML Source Generation - stored in Dependencies-net10.0xxx-Analyzers-Microsoft.Maui.Controls.SourceGen-->
+		<MauiXamlInflator>SourceGen</MauiXamlInflator>
+		<!--Optional (for Visual Studio Code)-->
+		<!--<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>C:\x</CompilerGeneratedFilesOutputPath>-->
 
 		<!-- Display name -->
 		<ApplicationTitle>Finance</ApplicationTitle>
@@ -96,8 +102,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.20" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.1" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.40" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
