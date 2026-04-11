@@ -5,13 +5,13 @@
              SafeAreaEdges="All"
              Loaded="OnPageLoaded">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
             Text="{Translate InterestMonthDayForm_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
     
     <ScrollView>
         <Grid

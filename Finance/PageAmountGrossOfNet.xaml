@@ -4,14 +4,14 @@
              x:Class="Finance.PageAmountGrossOfNet"
              SafeAreaEdges="All"
              Loaded="OnPageLoaded">
-    
-    <NavigationPage.TitleView>
+
+    <Shell.TitleView>
         <Label
             x:Name="lblTitlePage"
             Style="{StaticResource labelStyleTitleView}"
             Text="{Translate AmountGrossOfNetForm_Text}">
         </Label>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
 
     <ScrollView>
         <Grid

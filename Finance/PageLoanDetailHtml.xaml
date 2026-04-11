@@ -4,7 +4,7 @@
              x:Class="Finance.PageLoanDetailHtml"
              SafeAreaEdges="All">
 
-    <NavigationPage.TitleView>
+    <Shell.TitleView>
         <Grid
             RowDefinitions="50"
             ColumnDefinitions="250*"
@@ -19,7 +19,7 @@
                 Text="{Translate LoanDetailForm_Text}">
             </Label>
         </Grid>
-    </NavigationPage.TitleView>
+    </Shell.TitleView>
 
     <WebView
         x:Name="wvWebpage"
