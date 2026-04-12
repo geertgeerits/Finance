@@ -2,14 +2,10 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2026
  * Version .....: 3.0.71
- * Date ........: 2026-04-11 (YYYY-MM-DD)
+ * Date ........: 2026-04-12 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
-
-#if IOS
-using Foundation;
-#endif
 
 namespace Finance
 {
@@ -30,20 +26,10 @@ namespace Finance
                 DisplayAlertAsync("InitializeComponent", ex.Message, "OK");
                 return;
             }
-            //#if WINDOWS
-            //            //// Set the margins for the controls in the title bar for Windows if using the Shell
-            //            imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
-            //            lblTitle.Margin = new Thickness(20, 8, 0, 0);
-            //#endif
 #if WINDOWS
-            // !!!BUG!!! in Windows - Set the ColumnDefinitions for the TitleView because XAML 140* does not work in Windows if using the NavigationPage
-            grdTitleView.ColumnDefinitions.Clear();
-            grdTitleView.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(60) });
-            grdTitleView.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(726) });
-            grdTitleView.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(50) });
-
-            imgbtnAbout.HorizontalOptions = LayoutOptions.Center;
-            lblTitle.Margin = new Thickness(16, 8, 0, 0);
+            //// Set the margins for the controls in the title bar for Windows if using the Shell
+            imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
+            lblTitle.Margin = new Thickness(20, 8, 0, 0);
 #endif
             //// Select all the text in the entry field - works for all pages in the app
             ClassEntryMethods.ModifyEntrySelectAllText();
