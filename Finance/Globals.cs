@@ -1,6 +1,6 @@
 ﻿namespace Finance
 {
-    //// Global variables and methods
+    // Global variables and methods
     internal static class Globals
     {
         // Global variables

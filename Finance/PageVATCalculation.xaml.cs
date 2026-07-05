@@ -2,7 +2,7 @@ namespace Finance
 {
     public sealed partial class PageVATCalculation : ContentPage
     {
-        //// The currently focused Entry field
+        // The currently focused Entry field
         private Entry? _focusedEntry;
 
         public PageVATCalculation()
@@ -17,10 +17,10 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            //// Set the margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
-            //// Set the type of keyboard
+            // Set the type of keyboard
             switch (Globals.cKeyboard)
             {
                 case "Default":
@@ -37,14 +37,14 @@ namespace Finance
                     break;
             }
 
-            //// Set the Placeholder text for the numeric entry fields
-            //// The ValidationTriggerActionDecimal MinValue and MaxValue has to be set but not the MaxDecimalPlaces
+            // Set the Placeholder text for the numeric entry fields
+            // The ValidationTriggerActionDecimal MinValue and MaxValue has to be set but not the MaxDecimalPlaces
             ClassEntryMethods.SetNumberEntryProperties(entVATPercentage, ClassEntryMethods.cPercDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entVATAmountExclusive, ClassEntryMethods.cNumDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entVATAmount, ClassEntryMethods.cNumDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entVATAmountIncluded, ClassEntryMethods.cNumDecimalDigits);
 
-            //// Reset the entry fields
+            // Reset the entry fields
             ResetEntryFields(null, null);
         }
 

@@ -17,7 +17,7 @@ namespace Finance
             // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
-            //// Put text in the chosen language in the controls
+            // Put text in the chosen language in the controls
             lblVersion.Text = $"{FinLang.Version_Text} 3.0.71";
             lblCopyright.Text = $"{FinLang.Copyright_Text} © 1992-2026 Geert Geerits";
             lblPrivacyPolicy.Text = $"\n{FinLang.PrivacyPolicyTitle_Text} {FinLang.PrivacyPolicy_Text}";
@@ -96,7 +96,7 @@ namespace Finance
                 string body = "";
                 string[] recipients = [url];
 
-                var message = new EmailMessage
+                EmailMessage message = new()
                 {
                     Subject = subject,
                     Body = body,

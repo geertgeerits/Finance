@@ -2,14 +2,14 @@
 {
     public sealed partial class PageLoanDetail : ContentPage
     {
-        //// The currently focused Entry field
+        // The currently focused Entry field
         private Entry? _focusedEntry;
 
-        //// Variables for loan detail
+        // Variables for loan detail
         public static readonly string[] aColHeader = new string[7];
         public static readonly string[,] aLoanDetail = new string[1201, 7];
 
-        //// Variables for export / e-mail
+        // Variables for export / e-mail
         private string cExportType = "";
         private bool bReCalculateResult;
 
@@ -25,18 +25,18 @@
                 return;
             }
 #if WINDOWS
-            //// Set the margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
 #if IOS
-            //// Set the scale of the activity indicator for iOS
+            // Set the scale of the activity indicator for iOS
             activityIndicator.Scale = 2;
 #endif
-            //// Set the date properties for the DatePicker
+            // Set the date properties for the DatePicker
             dtpExpirationDate.MinimumDate = new DateTime(1583, 1, 1);
             dtpExpirationDate.MaximumDate = new DateTime(5000, 1, 1);
 
-            //// Put text for the column headers in the chosen language in the array
+            // Put text for the column headers in the chosen language in the array
             aColHeader[0] = FinLang.LoanDetailColumns_0_Text;
             aColHeader[1] = FinLang.LoanDetailColumns_1_Text;
             aColHeader[2] = FinLang.LoanDetailColumns_2_Text;
@@ -45,7 +45,7 @@
             aColHeader[5] = FinLang.LoanDetailColumns_5_Text;
             aColHeader[6] = FinLang.LoanDetailColumns_6_Text;
 
-            //// Set the type of keyboard
+            // Set the type of keyboard
             switch (Globals.cKeyboard)
             {
                 case "Default":
@@ -62,21 +62,21 @@
                     break;
             }
 
-            //// Set the Placeholder text for the numeric entry fields
-            //// The ValidationTriggerActionDecimal MinValue and MaxValue has to be set but not the MaxDecimalPlaces
+            // Set the Placeholder text for the numeric entry fields
+            // The ValidationTriggerActionDecimal MinValue and MaxValue has to be set but not the MaxDecimalPlaces
             ClassEntryMethods.SetNumberEntryProperties(entInterestRate, ClassEntryMethods.cPercDecimalDigits);
             ClassEntryMethods.SetNumberEntryProperties(entCapitalInitial, ClassEntryMethods.cNumDecimalDigits);
 
-            //// Set the current date format and date for the DatePicker
+            // Set the current date format and date for the DatePicker
             dtpExpirationDate.Format = Globals.cDateFormat;
 
-            //// Set the currency code
+            // Set the currency code
             entCurrencyCode.Text = Globals.cISOCurrencyCode;
 
-            //// Set the default export format
+            // Set the default export format
             pickerExportType.SelectedIndex = 1;
 
-            //// Test variable to recalculate the loan
+            // Test variable to recalculate the loan
             bReCalculateResult = true;
         }
 

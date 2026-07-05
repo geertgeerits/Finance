@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2026
  * Version .....: 3.0.71
- * Date ........: 2026-04-21 (YYYY-MM-DD)
+ * Date ........: 2026-07-05 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -11,12 +11,26 @@ namespace Finance
 {
     public sealed partial class MainPage : ContentPage
     {
-        //// Local variables
+        // Local variables
         private string cCopyright = "";
         private string cLicenseText = "";
 
         public MainPage()
         {
+#if ANDROID
+            // !!!BUG!!! On some Android versions the software keyboard covers the UI when it is opened and the editor is focused
+            // Workaround: set WindowSoftInputModeAdjust.Resize in MainActivity and here in the constructor of the MainPage
+            // Setting WindowSoftInputModeAdjust.Resize on app start (without it - soft keyboard covers UI)
+            // https://github.com/dotnet/maui/issues/33922#issuecomment-4338782788
+            Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.Application.SetWindowSoftInputModeAdjust(
+                App.Current,
+                Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.WindowSoftInputModeAdjust.Resize
+            );
+
+            // MainActivity set ConfigChanges.Density, without it on some android versions still software keyboard covers UI
+            //Android.Views.SoftInput WindowSoftInputMode = Android.Views.SoftInput.AdjustNothing;
+            // On ContentPage "SafeAreaEdges" = "All"
+#endif
             try
             {
                 InitializeComponent();
@@ -27,14 +41,14 @@ namespace Finance
                 return;
             }
 #if WINDOWS
-            //// Set the margins for the controls in the title bar for Windows if using the Shell
+            // Set the margins for the controls in the title bar for Windows if using the Shell
             imgbtnAbout.Margin = new Thickness(20, 0, 0, 0);
             lblTitle.Margin = new Thickness(20, 8, 0, 0);
 #endif
-            //// Select all the text in the entry field - works for all pages in the app
+            // Select all the text in the entry field - works for all pages in the app
             ClassEntryMethods.ModifyEntrySelectAllText();
 
-            //// Get the saved settings
+            // Get the saved settings
             Globals.cTheme = Preferences.Default.Get("SettingTheme", "System");
             Globals.bDateFormatSystem = Preferences.Default.Get("SettingDateFormatSystem", true);
             Globals.cPageFormat = Preferences.Default.Get("SettingPageFormat", "");
@@ -46,7 +60,7 @@ namespace Finance
             Globals.cLanguage = Preferences.Default.Get("SettingLanguage", "");
             Globals.bLicense = Preferences.Default.Get("SettingLicense", false);
 
-            //// The height of the title bar is lower when an iPhone is in horizontal position
+            // The height of the title bar is lower when an iPhone is in horizontal position
             if (DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Phone)
             {
                 imgbtnAbout.VerticalOptions = LayoutOptions.Start;
@@ -55,11 +69,11 @@ namespace Finance
                 imgbtnSettings.VerticalOptions = LayoutOptions.Start;
             }
 
-            //// Set the theme and the number color
+            // Set the theme and the number color
             Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
 
-            //// Get and set the user interface language after a first start or reset of the application
+            // Get and set the user interface language after a first start or reset of the application
             try
             {
                 if (string.IsNullOrEmpty(Globals.cLanguage))
@@ -84,10 +98,10 @@ namespace Finance
                 Debug.WriteLine("MainPage - Globals.cLanguage: " + Globals.cLanguage);
             }
 
-            //// Set the text language
+            // Set the text language
             SetTextLanguage();
 
-            //// Get the system date format and set the date format
+            // Get the system date format and set the date format
             Globals.cSysDateFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         
             if (Globals.bDateFormatSystem == true)
@@ -100,10 +114,10 @@ namespace Finance
             }
             Debug.WriteLine($"Globals.cDateFormat: {Globals.cDateFormat}");  // For testing
 
-            //// Initialize the number format settings based on the current culture
+            // Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
 
-            //// Get the system culture and country code
+            // Get the system culture and country code
             string cCountry2LetterISO;
 
             try
@@ -119,22 +133,22 @@ namespace Finance
                 cCountry2LetterISO = "US";
             }
 
-            //// Get the system ISO currency code
+            // Get the system ISO currency code
             RegionInfo myRegInfo = new(cCountry2LetterISO);
             Globals.cISOCurrencyCode = myRegInfo.ISOCurrencySymbol;
             Debug.WriteLine($"ISO Currency Code: {Globals.cISOCurrencyCode}");
 
-            //// Set the page format
+            // Set the page format
             if (string.IsNullOrEmpty(Globals.cPageFormat))
             {
                 Globals.cPageFormat = "CA;CL;CO;CR;DO;GT;MX;PA;PH;US".Contains(cCountry2LetterISO) ? "Letter" : "A4";
             }
             
-            //// Test the rounding of numbers
+            // Test the rounding of numbers
             //ClassEntryMethods.TestRoundingNumbers();
         }
 
-        //// Buttons clicked events
+        // Buttons clicked events
         private async void OnPageInterestEffectiveClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PageInterestEffective());

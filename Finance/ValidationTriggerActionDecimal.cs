@@ -38,14 +38,14 @@
             {
                 if (isValid && isDecimalPlacesValid)
                 {
-                    if (Application.Current.Resources.TryGetValue("EntryValidNumber", out var validColor) && validColor is Color validColorValue)
+                    if (Application.Current.Resources.TryGetValue("EntryValidNumber", out object? validColor) && validColor is Color validColorValue)
                     {
                         border.Stroke = validColorValue;
                     }
                 }
                 else
                 {
-                    if (Application.Current.Resources.TryGetValue("EntryInvalidNumber", out var InvalidColor) && InvalidColor is Color InvalidColorValue)
+                    if (Application.Current.Resources.TryGetValue("EntryInvalidNumber", out object? InvalidColor) && InvalidColor is Color InvalidColorValue)
                     {
                         border.Stroke = InvalidColorValue;
                     }

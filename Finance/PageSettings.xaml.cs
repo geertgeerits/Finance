@@ -2,7 +2,7 @@
 {
     public sealed partial class PageSettings : ContentPage
     {
-        //// Local variables.
+        // Local variables.
         private readonly Stopwatch stopWatch = new();
 
         public PageSettings()
@@ -18,13 +18,13 @@
                 return;
             }
 #if WINDOWS
-            //// Set the margin of the title for windows
+            // Set the margin of the title for windows
             lblTitlePage.Margin = new Thickness(80, 15, 0, 0);
 #endif
-            //// Put text in the chosen language in the controls and variables
+            // Put text in the chosen language in the controls and variables
             SetLanguage();
 
-            //// Set the current language in the picker
+            // Set the current language in the picker
             pckLanguage.SelectedIndex = Globals.cLanguage switch
             {
                 "cs" => 0,      // Čeština - Czech
@@ -44,7 +44,7 @@
                 _ => 3,         // English
             };
 
-            //// Set the current theme in the picker
+            // Set the current theme in the picker
             pckTheme.SelectedIndex = Globals.cTheme switch
             {
                 "Light" => 1,   // Light
@@ -52,11 +52,11 @@
                 _ => 0,         // System
             };
 
-            //// Set the number of decimal digits after the decimal point
+            // Set the number of decimal digits after the decimal point
             entNumDec.Text = ClassEntryMethods.cNumDecimalDigits;
             entPercDec.Text = ClassEntryMethods.cPercDecimalDigits;
 
-            //// Set radiobutton to the date format
+            // Set radiobutton to the date format
             switch (Globals.bDateFormatSystem)
             {
                 case true:
@@ -67,7 +67,7 @@
                     break;
             }
 
-            //// Set radiobutton to the page format
+            // Set radiobutton to the page format
             switch (Globals.cPageFormat)
             {
                 case "A4":
@@ -78,7 +78,7 @@
                     break;
             }
 
-            //// Set radiobutton to the rounding numbers method
+            // Set radiobutton to the rounding numbers method
             switch (ClassEntryMethods.cRoundNumber)
             {
                 case "AwayFromZero":
@@ -92,7 +92,7 @@
                     break;
             }
 
-            //// Set radiobutton to the used keyboard
+            // Set radiobutton to the used keyboard
             switch (Globals.cKeyboard)
             {
                 case "Default":
@@ -106,10 +106,10 @@
                     break;
             }
 
-            //// Set the color of number to false or true
+            // Set the color of number to false or true
             swtColorNumber.IsToggled = ClassEntryMethods.bColorNumber;
 
-            //// Start the stopWatch for resetting all the settings
+            // Start the stopWatch for resetting all the settings
             stopWatch.Start();
         }
 
@@ -122,7 +122,7 @@
         {
             string cLanguageOld = Globals.cLanguage;
 
-            var picker = (Picker)sender;
+            Picker picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
@@ -166,7 +166,7 @@
         /// <param name="e"></param>
         private void OnPickerThemeChanged(object sender, EventArgs e)
         {
-            var picker = (Picker)sender;
+            Picker picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
