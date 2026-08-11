@@ -2,7 +2,7 @@
  * Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
  * Copyright ...: (C) 1992-2026
  * Version .....: 3.0.71
- * Date ........: 2026-07-05 (YYYY-MM-DD)
+ * Date ........: 2026-08-11 (YYYY-MM-DD)
  * Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
  * Description .: Financial calculations
  * Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI */
@@ -78,7 +78,7 @@ namespace Finance
             {
                 if (string.IsNullOrEmpty(Globals.cLanguage))
                 {
-                    Globals.cLanguage = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+                    Globals.cLanguage = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
 
                     // Chinese needs the language code as zh-CN and zh-TW
                     if (Globals.cLanguage == "zh")

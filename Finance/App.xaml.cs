@@ -11,7 +11,7 @@
 //            to the app's installation directory, which has restricted write permissions in Program Files.
 //            To resolve this issue, set the WEBVIEW2_USER_DATA_FOLDER environment variable before any WebView control
 //            is initialized. */
-//            var userDataFolder = Path.Combine(FileSystem.AppDataDirectory, "WebView2");
+//            var userDataFolder = Path.Combine(FileSystem.Current.AppDataDirectory, "WebView2");
 //            Environment.SetEnvironmentVariable("WEBVIEW2_USER_DATA_FOLDER", userDataFolder);
 //#endif
             InitializeComponent();
